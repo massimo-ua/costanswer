@@ -1,9 +1,17 @@
 .navbar-header .navbar-brand {
     color: yellow;
 }
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
 #pre-footer {
     margin-top: 100px;
 }
-.footer-text {
-    font-size: 0.8em;
-}
+/* Add a gray background color and some padding to the footer */
+footer {
+      background-color: #f2f2f2;
+      padding: 10px 0 5px 0;
+      font-size: 0.8em;
+}    
