@@ -1,5 +1,7 @@
-angular.module('costAnswer',[
+angular.module('costAnswer', [
     'ui.router',
     'satellizer',
-    'ngResource'
+    'ngResource',
+    'ngSanitize',
+    'costAnswer.core'
 ]);
