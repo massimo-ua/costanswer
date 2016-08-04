@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="costAnswer">
 <head>
   <title>CostAnswer Start Page</title>
   <base href="/main/">
@@ -9,8 +9,6 @@
   <link rel="stylesheet" href="app/libs/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="app/libs/bootstrap/dist/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="app/css/app.css">
-  <script src="app/libs/jquery/dist/jquery.min.js"></script>
-  <script src="app/libs/bootstrap/dist/js/bootstrap.min.js"></script>
   <style>
   .carousel-inner img {
       width: 100%; /* Set width to 100% */
@@ -63,66 +61,22 @@
   </div>
 </nav>
 
-<div ui-view></div>
-  
-<div id="pre-footer" class="container text-center">
-  <div class="row">
-    <div class="col-xs-2 col-xs-offset-1">
-      <p class="text-left"><b>About</b></p>
-      <p class="text-left"><a href="#">Lorem ipsum</a></p>
-      <p class="text-left"><a href="#">Donec non lacinia</a></p>
-      <p class="text-left"><a href="#">Aliquam a aliquam</a></p>
-      <p class="text-left"><a href="#">Etiam sem justo</a></p>
-    </div>
-    <div class="col-xs-2">
-      <p class="text-left"><b>Product</b></p>
-      <p class="text-left"><a href="#">Lorem ipsum</a></p>
-      <p class="text-left"><a href="#">Donec non lacinia</a></p>
-      <p class="text-left"><a href="#">Aliquam a aliquam</a></p>
-      <p class="text-left"><a href="#">Etiam sem justo</a></p>
-      <p class="text-left"><a href="#">Donec non lacinia</a></p>
-    </div>
-    <div class="col-xs-2">
-      <p class="text-left"><b>Partners</b></p>
-      <p class="text-left"><a href="#">Lorem ipsum</a></p>
-      <p class="text-left"><a href="#">Donec non lacinia</a></p>
-      <p class="text-left"><a href="#">Aliquam a aliquam</a></p>
-      <p class="text-left"><a href="#">Etiam sem justo</a></p>
-    </div>
-    <div class="col-xs-2">
-      <p class="text-left"><b>Links</b></p>
-      <p class="text-left"><a href="#">Lorem ipsum</a></p>
-      <p class="text-left"><a href="#">Donec non lacinia</a></p>
-      <p class="text-left"><a href="#">Aliquam a aliquam</a></p>
-      <p class="text-left"><a href="#">Etiam sem justo</a></p>
-      <p class="text-left"><a href="#">Aliquam a aliquam</a></p>
-      <p class="text-left"><a href="#">Etiam sem justo</a></p>
-    </div>
-    <div class="col-xs-2">
-      <p class="text-left"><b>Social</b></p>
-      <p class="text-left"><a href="#">Lorem ipsum</a></p>
-      <p class="text-left"><a href="#">Donec non lacinia</a></p>
-      <p class="text-left"><a href="#">Aliquam a aliquam</a></p>
-      <p class="text-left"><a href="#">Etiam sem justo</a></p>
-    </div>
-  </div>
-</div>
-<footer class="container-fluid">
-  <div class="row">
-    <div class="col-xs-7 col-xs-offset-1">
-      <p>
-        <span class="pull-left">CostAnswer, 01011, Ukraine</span><br>
-        <span class="pull-left">Copyright &copy; 2016-2016 is a service of ... All rights reserved.</span><br>
-        <span class="pull-left"><u>Terms of service</u>&nbsp;|&nbsp;<u>Terms of service</u>&nbsp;|&nbsp;<u>Terms of service</u></span>
-      </p>
-    </div>
-    <div class="col-sm-4">
-      <img src="https://placeholdit.imgix.net/~text?txtsize=16&txt=Other%20Logo&w=150&h=40" class="inline-block">
-      <img src="https://placeholdit.imgix.net/~text?txtsize=16&txt=CostAnswer%20Logo&w=150&h=40" class="inline-block">
-    </div>
-  </div>
-</footer>
-
+<div ui-view class="container fluid top-50"></div>
+<div id="pre-footer" class="container text-center" ng-include="'app/views/pre-footer.html'"></div>
+<footer class="container-fluid" ng-include="'app/views/footer.html'"></footer>
+  <script src="app/libs/jquery/dist/jquery.min.js"></script>
+  <script src="app/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- application dependencies -->
+  <script src="app/libs/angular/angular.min.js"></script>
+  <script src="app/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="app/libs/satellizer/dist/satellizer.min.js"></script>
+  <script src="app/libs/angular-resource/angular-resource.min.js"></script>
+  <script src="app/libs/sha256/index.js"></script>
+  <script src="app/libs/angular-sanitize/angular-sanitize.min.js"></script>
+  <!-- application code -->
+  <script src="app/js/app.js"></script>
+  <script src="app/modules/core/coreModule.js"></script>
+  <script src="app/modules/core/js/controllers.js"></script>
 </body>
 </html>
 
