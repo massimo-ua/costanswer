@@ -1,7 +1,7 @@
 angular.module('costAnswer.core.controllers',[]);
 angular.module('costAnswer.core.controllers')
-        .controller('descriptionController',['$scope', '$stateParams', function($scope, $stateParams){
-            console.log('descriptionController reached!');
+        .controller('descriptionCoreController',['$scope', '$stateParams', function($scope, $stateParams){
+            console.log('descriptionCoreController reached!');
             var descriptionKey = ($stateParams.costingMethod == undefined) ? 'standard-costing' : $stateParams.costingMethod;
             $scope.description = null;
             function search(){
@@ -33,4 +33,7 @@ angular.module('costAnswer.core.controllers')
             }
             ];
             search();
+        }])
+        .controller('startCoreController', ['$scope', function($scope){
+
         }]);
