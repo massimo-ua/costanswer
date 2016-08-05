@@ -1,0 +1,179 @@
+input[type=number] {
+    appearance:textfield;
+    -moz-appearance:textfield; /* Firefox */
+    -webkit-appearance:textfield; /* Safari and Chrome */
+}
+
+#dialog-confirm {
+    display: none;
+}
+#message-block {
+    position: fixed;
+    z-index: 99;
+    right: 10px;
+    font-size: 16px;
+    top: 6px;
+    /* background-color: #0AAF0A; */
+    background-color: rgba(76, 224, 204, 0.9);
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px dotted #3E3C3C;
+    display: none;
+}
+.calculator {
+    font-size: 12px;
+    position: relative;
+}
+.calculator .general-settings label{
+   float: right;
+}
+.calculator .general-settings {
+    width: 450px;
+}
+.calculator .general-settings  div{
+    height: 30px;
+}
+.calculator .general-settings input{
+    float: right;
+    width: 200px;
+    margin-left: 15px;
+}
+.calculator .general-settings select{
+    float: right;
+    width: 205px;
+    margin-left: 15px;
+}
+.calculator a{
+  text-decoration: none;
+    outline: none;
+}
+.calculator .show-hide-all-product{
+    float: right;
+    margin-top: -6px;
+}
+.calculator .add-products-block{
+    margin-top: 10px;
+}
+.calculator .add-product{
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px 0;
+    display: block;
+    width: 90px;
+    background-color: #C5ECC5;
+}
+.calculator .add-direct-material,.calculator .add-other-variable-cost,.calculator .a-additional-materials,.calculator .add-direct-labor{
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px 0;
+    display: block;
+    background-color: #EFDCBF;
+    float: left;
+}
+.calculator #tabs>div{
+ padding: 10px 10px;
+}
+.calculator .product-name{
+  font-weight: 700;
+}
+.calculator .product,.calculator .direct-material,.calculator .materials{
+    padding: 10px 10px;
+    margin: 5px 0;
+    border: 1px dotted grey;
+    border-radius: 10px;
+    position: relative;
+}
+.calculator table th,.calculator table td{
+    padding: 5px;
+}
+.calculator table {
+    margin: 10px 0;
+}
+.calculator .product>div,.calculator .product section>div:first-child {
+    margin-left: 35px;
+}
+.calculator .product section>div:first-child {
+    margin-top: 10px;
+}
+.calculator .product .show-hide-product{
+    position: absolute;
+    left: 10px;
+    font-size: 30px;
+    top: 3px;
+}
+.calculator .product .delete-product,.calculator .product .delete-direct-material,.calculator .delete-material {
+    position: absolute;
+    right: 10px;
+    font-size: 26px;
+    top: 4px;
+}
+.calculator .product .save-product{
+    position: absolute;
+    right: 45px;
+    font-size: 26px;
+    top: 4px;
+}
+.calculator .product .save-product i:hover{
+    border: 1px solid #ADAAAA;
+    border-radius: 6px;
+    background-color: #C9F1C9;
+    padding: 4px;
+}
+.calculator .product .delete-product i:hover, .calculator .product .delete-direct-material i:hover, .calculator .delete-material i:hover{
+    border: 1px solid #ADAAAA;
+    border-radius: 6px;
+    background-color: #FFBEBE;
+    padding: 4px;
+}
+
+.calculator .product .delete-product i,.calculator .product .delete-direct-material i,.calculator .delete-material i,.calculator .product .save-product i{
+    padding: 5px;
+}
+
+.calculator table td input{
+    width: 65px;
+}
+
+.calculator table td.input-blue {
+    background-color: #CFECF5;
+}
+
+.calculator table td.input-yellow {
+    background-color: #FFFCA0 !important;
+}
+
+.errorInput {
+    border: 2px solid red;
+    /*padding: 1px;*/
+}
+
+.tabs-materials table td:first-child {
+    width: 250px;
+}
+
+.total-table {
+    margin-left: 30px !important;
+}
+.total-table .total-tr td{
+    border: 2px solid black;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.materials-table td,.total-table td{
+    border-bottom: 1px solid grey;
+    border-right: 1px solid grey;
+}
+.materials-table tr:last-child td{
+    border-bottom: none;
+}
+.key-summary-assumptions {
+    font-size: 16px;
+    padding: 20px 0 0;
+    text-decoration: underline;
+    font-weight: 700;
+    font-style: italic;
+}

@@ -1,0 +1,19 @@
+/*Main stylesheet for Backtop jQuery Plugin */
+#backTop{
+    width: 13px;
+    height: 13px;
+    padding:10px;
+    border-radius:4px;
+    text-indent:-9999px;
+    cursor:pointer;
+    z-index:999999999;
+    display:none;
+    box-sizing:content-box;
+    -webkit-box-sizing:content-box;
+    background:url(totop.png) no-repeat center center rgba(255,255,255,0.8);
+    background-size: 20px;
+}
+/*#backTop.white{*/
+
+/*border:1px solid #ccc;*/
+/*}*/
