@@ -3,5 +3,7 @@ angular.module('costAnswer', [
     'satellizer',
     'ngResource',
     'ngSanitize',
-    'costAnswer.core'
+    'toastr',
+    'costAnswer.core',
+    'costAnswer.auth'
 ]);

@@ -34,6 +34,9 @@ angular.module('costAnswer.core.controllers')
             ];
             search();
         }])
-        .controller('startCoreController', ['$scope', function($scope){
+        .controller('startCoreController', ['$scope', 'toastr', function($scope, toastr){
+
+        }])
+        .controller('newProjectTypeController', ['$scope', function($scope) {
 
         }]);

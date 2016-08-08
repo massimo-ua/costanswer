@@ -1,3 +1,6 @@
+body { 
+	padding-top: 70px;
+	 }
 .navbar-header .navbar-brand {
     color: yellow;
 }
@@ -6,6 +9,7 @@
     margin-bottom: 0;
     border-radius: 0;
 }
+
 #pre-footer {
     margin-top: 100px;
 }
@@ -15,10 +19,62 @@ footer {
       padding: 10px 0 5px 0;
       font-size: 0.8em;
 }
-.top-50 {
-    margin-top: 50px;
+.top-10 {
+    margin-top: 10px;
 } 
 /* Start Core */
 .start-core-link {
     margin-top: 30px;
-}   
+}  
+
+/*********************
+* Social Buttons
+*********************/
+
+.btn-google-plus {
+  color: #fff;
+  background-color: #dd4b39;
+  border: 1px solid #d54331;
+}
+
+.btn-google-plus:hover,
+.btn-google-plus:focus {
+  color: #fff;
+  background-color: #cb3927;
+}
+
+.btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+  border: 1px solid #335190;
+}
+
+.btn-facebook:hover,
+.btn-facebook:focus {
+  color: #fff;
+  background-color: #294786;
+}
+
+.btn-linkedin {
+  color: #fff;
+  background-color: #007bb6;
+  border: 1px solid #0073ae;
+}
+
+.btn-linkedin:hover,
+.btn-linkedin:focus {
+  color: #fff;
+  background-color: #0069a4;
+}
+
+.btn-twitter {
+  color: #fff;
+  background-color: #00aced;
+  border: 1px solid #009fdb;
+}
+
+.btn-twitter:hover,
+.btn-twitter:focus {
+  color: #fff;
+  background-color: #0090c7;
+}

@@ -30,6 +30,7 @@
     "font-awesome": "^4.6.3",
     "angular-ui-tinymce": "^0.0.16",
     "tinymce": "tinymce-dist#4.3.12",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "angular-toastr": "^2.0.0"
   }
 }
