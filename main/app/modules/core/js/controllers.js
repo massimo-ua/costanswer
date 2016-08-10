@@ -37,6 +37,25 @@ angular.module('costAnswer.core.controllers')
         .controller('startCoreController', ['$scope', 'toastr', function($scope, toastr){
 
         }])
-        .controller('newProjectTypeController', ['$scope', function($scope) {
-
+        .controller('quickStartController', ['$scope', 'toastr', function($scope, toastr){
+            $scope.showOnNext = true;
+            $scope.showOnNextSave = function() {
+                toastr.info('Setting successfuly saved', 'Information');
+            }
+        }])
+        .controller('newProjectTypeController', ['$scope', '$state', 'projectSettingsService', 'toastr', function($scope, $state, projectSettingsService, toastr) {
+            $scope.setProjectType = function(type) {
+                if(type == undefined) {
+                    return;
+                }
+                if(projectSettingsService.set('projectType',type, true) == false) {
+                    toastr.error('Project settings was not saved properly!', "Oops! We've got an Error")
+                }
+                else {
+                    $state.go('projectSettings');
+                };
+            }
+        }])
+        .controller('projectSettingsController', ['$scope', 'toastr', 'projectSettingsService', 'PROJECT_TYPES', function($scope, toastr, projectSettingsService, PROJECT_TYPES) {
+            $scope.projectType = PROJECT_TYPES[projectSettingsService.get('projectType')];
         }]);

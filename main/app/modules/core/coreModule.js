@@ -1,5 +1,5 @@
 (function() {
-angular.module('costAnswer.core', ['costAnswer.core.controllers']);
+angular.module('costAnswer.core', ['costAnswer.core.controllers','costAnswer.core.services']);
 angular.module('costAnswer.core')
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $stateProvider
@@ -17,6 +17,16 @@ angular.module('costAnswer.core')
                 url: '/new-project-type',
                 controller: 'newProjectTypeController',
                 templateUrl: 'app/modules/core/views/new-project-type.html'
+            })
+            .state('quickStart', {
+                url: '/quick-start',
+                controller: 'quickStartController',
+                templateUrl: 'app/modules/core/views/quick-start.html'
+            })
+            .state('projectSettings', {
+                url: '/project-settings',
+                controller: 'projectSettingsController',
+                templateUrl: 'app/modules/core/views/project-settings.html'
             });
         $urlRouterProvider.otherwise('/description/standard-costing');
     }]);
