@@ -4,6 +4,7 @@ angular.module('costAnswer', [
     'ngResource',
     'ngSanitize',
     'toastr',
+    'costAnswer.services',
     'costAnswer.core',
     'costAnswer.auth'
 ]);
