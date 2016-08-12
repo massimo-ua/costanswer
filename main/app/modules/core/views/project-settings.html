@@ -1,12 +1,56 @@
 <div class="row">
     <div class="col-xs-12">
-        <h1>{{ projectType }}</h1>
+        <h3>Initial project settings</h3>
         <hr />
+    </div>
 </div>
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+		<ng-form id="global-settings-form" name="settingsForm">
+			<div ng-class="{'has-error': settingsForm.currency.$dirty && settingsForm.currency.$invalid}" class="form-group">
+				<label for="currency" class="text-default">Currency</label>
+				<select class="form-control"
+                    ng-model="settings.currency"
+                    name="currency"
+                    ng-required="true"
+                    ng-change="false"
+                    ng-options="currency.charCode+' ('+currency.name+')' for currency in currencies">
+                </select>
+				<div class="help-block error" ng-show="settingsForm.currency.$dirty && settingsForm.currency.$error.required">Please, fill in your email</div>
+			</div>
+			<div ng-class="{'has-error': settingsForm.companyName.$dirty && settingsForm.companyName.$invalid}" class="form-group">
+				<label for="companyName" class="text-default">Company name</label>
+				<input name="companyName" type="text" ng-required="true" ng-model="settings.companyName" class="form-control" placeholder="Enter your Company name here" />
+				<div class="help-block error" ng-show="settingsForm.companyName.$dirty && settingsForm.companyName.$error.required">Please, fill in your Company name</div>
+			</div>
+			<div ng-class="{'has-error': settingsForm.yearToBegin.$dirty && settingsForm.yearToBegin.$invalid}" class="form-group">
+				<label for="yearToBegin" class="text-default">Year to begin</label>
+				<input name="yearToBegin" type="text" ng-required="true" min="1900" max="3000" ng-model="settings.yearToBegin" class="form-control text-right" placeholder="Enter project starting year" />
+				<div class="help-block error" ng-show="settingsForm.yearToBegin.$dirty && settingsForm.yearToBegin.$error.required">Please, fill in project starting year</div>
+			</div>
+            <div ng-class="{'has-error': settingsForm.monthToBegin.$dirty && settingsForm.monthToBegin.$invalid}" class="form-group">
+				<label for="monthToBegin" class="text-default">Month to begin</label>
+				<select class="form-control"
+                    ng-model="settings.monthToBegin"
+                    name="monthToBegin"
+                    ng-required="true"
+                    ng-change="false"
+                    ng-options="month.full for month in monthes">
+                </select>
+				<div class="help-block error" ng-show="global-settingsForm.monthToBegin.$dirty && global-settingsForm.monthToBegin.$error.required">Please, fill in your email</div>
+			</div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="false" ng-model="showOnNext" ng-click="showOnNextSave()">
+                        Take into consideration Manufacturing Overheads
+                </label>
+            </div>
+            <hr />
+		</ng-form>
+    </div>
 </div>
-
 <div class="row">
     <div class="col-xs-8 col-xs-offset-2 text-center">
-        <button type="button" class="btn btn-default btn-lg btn-block" ui-sref="newProjectType">SetUp Project</button>
+        <button type="button" class="btn btn-default btn-lg btn-block" ng-click="next()">Next</button>
     </div>
 </div>

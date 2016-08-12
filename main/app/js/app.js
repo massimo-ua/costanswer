@@ -5,6 +5,7 @@ angular.module('costAnswer', [
     'ngSanitize',
     'toastr',
     'costAnswer.services',
+    'costAnswer.filters',
     'costAnswer.core',
     'costAnswer.auth'
 ]);
