@@ -56,6 +56,17 @@ angular.module('costAnswer.core.controllers')
                 };
             }
         }])
-        .controller('projectSettingsController', ['$scope', 'toastr', 'projectSettingsService', 'PROJECT_TYPES', function($scope, toastr, projectSettingsService, PROJECT_TYPES) {
-            $scope.projectType = PROJECT_TYPES[projectSettingsService.get('projectType')];
+        .controller('projectSettingsController', ['$scope', 'toastr', 'projectSettingsService', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES', function($scope, toastr, projectSettingsService, PROJECT_TYPES, CURRENCIES, MONTHES) {
+            function init() {
+                $scope.settings = {};
+                $scope.projectType = PROJECT_TYPES[projectSettingsService.get('projectType')];
+                $scope.currencies = CURRENCIES;
+                $scope.monthes = MONTHES;
+                $scope.settings.currency = $scope.currencies[0];
+                var currentTime = new Date();
+                $scope.settings.yearToBegin = currentTime.getFullYear(); 
+                $scope.settings.monthToBegin = $scope.monthes[currentTime.getMonth()];
+            }
+            init();
+            console.log(CURRENCIES);
         }]);
