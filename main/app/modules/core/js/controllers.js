@@ -56,7 +56,7 @@ angular.module('costAnswer.core.controllers')
                 };
             }
         }])
-        .controller('projectSettingsController', ['$scope', 'toastr', 'projectSettingsService', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES', function($scope, toastr, projectSettingsService, PROJECT_TYPES, CURRENCIES, MONTHES) {
+        .controller('projectSettingsController', ['$scope', '$state', 'toastr', 'projectSettingsService', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES', function($scope, $state, toastr, projectSettingsService, PROJECT_TYPES, CURRENCIES, MONTHES) {
             function init() {
                 $scope.settings = {};
                 $scope.projectType = PROJECT_TYPES[projectSettingsService.get('projectType')];
@@ -66,7 +66,30 @@ angular.module('costAnswer.core.controllers')
                 var currentTime = new Date();
                 $scope.settings.yearToBegin = currentTime.getFullYear(); 
                 $scope.settings.monthToBegin = $scope.monthes[currentTime.getMonth()];
+                $scope.settings.considerMOH = true;
             }
             init();
-            console.log(CURRENCIES);
+            $scope.next = function() {
+                projectSettingsService.set('projectSettings', $scope.settings, true);
+                if($scope.settings.considerMOH) {
+                    $state.go('mohDataInput.home');
+                }
+                else {
+                    $state.go('projectDataInput');
+                }
+            }
+        }])
+        .controller('mohDataInputController', [
+            '$scope', 'toastr', 'projectSettingsService', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES',
+            function($scope, toastr, projectSettingsService, PROJECT_TYPES, CURRENCIES, MONTHES){
+                function init() {
+
+                }
+                init();
+            }])
+        .controller('mohDataInputHomeController', [
+            '$scope', 'toastr', 'projectSettingsService', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES',
+            function($scope, toastr, projectSettingsService, PROJECT_TYPES, CURRENCIES, MONTHES){
+
+        
         }]);

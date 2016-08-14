@@ -25,8 +25,8 @@
 			</div>
 			<div ng-class="{'has-error': settingsForm.yearToBegin.$dirty && settingsForm.yearToBegin.$invalid}" class="form-group">
 				<label for="yearToBegin" class="text-default">Year to begin</label>
-				<input name="yearToBegin" type="text" ng-required="true" min="1900" max="3000" ng-model="settings.yearToBegin" class="form-control text-right" placeholder="Enter project starting year" />
-				<div class="help-block error" ng-show="settingsForm.yearToBegin.$dirty && settingsForm.yearToBegin.$error.required">Please, fill in project starting year</div>
+				<input name="yearToBegin" type="number" ng-required="true" min="1900" max="3000" ng-model="settings.yearToBegin" class="form-control text-right" placeholder="Enter project starting year" />
+				<div class="help-block error" ng-show="settingsForm.yearToBegin.$dirty && settingsForm.yearToBegin.$error.required">Please, fill in project starting year (value between 1900 and 3000)</div>
 			</div>
             <div ng-class="{'has-error': settingsForm.monthToBegin.$dirty && settingsForm.monthToBegin.$invalid}" class="form-group">
 				<label for="monthToBegin" class="text-default">Month to begin</label>
@@ -34,14 +34,14 @@
                     ng-model="settings.monthToBegin"
                     name="monthToBegin"
                     ng-required="true"
-                    ng-change="false"
+                    ng-change="null"
                     ng-options="month.full for month in monthes">
                 </select>
-				<div class="help-block error" ng-show="global-settingsForm.monthToBegin.$dirty && global-settingsForm.monthToBegin.$error.required">Please, fill in your email</div>
+				<div class="help-block error" ng-show="settingsForm.monthToBegin.$dirty && settingsForm.monthToBegin.$error.required">Please, select project starting month</div>
 			</div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="false" ng-model="showOnNext" ng-click="showOnNextSave()">
+                    <input type="checkbox" ng-model="settings.considerMOH">
                         Take into consideration Manufacturing Overheads
                 </label>
             </div>
@@ -51,6 +51,6 @@
 </div>
 <div class="row">
     <div class="col-xs-8 col-xs-offset-2 text-center">
-        <button type="button" class="btn btn-default btn-lg btn-block" ng-click="next()">Next</button>
+        <button ng-disabled="settingsForm.$invalid" type="button" class="btn btn-default btn-lg btn-block" ng-click="next()">Next</button>
     </div>
 </div>
