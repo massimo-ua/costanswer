@@ -3,9 +3,9 @@
 	angular.module('costAnswer.filters',[]);
 	angular.module('costAnswer.filters').filter('range', function(){
   				return function(input, total, start) {
-    				var start = start === undefined ? 1 : parseInt(start);
+    				var start = start === undefined ? 0 : parseInt(start);
     				total = parseInt(total);
-    				if(start <= 0) start = 1;
+    				if(start < 0) start = 0;
     				if(start >= total) {
     					return input;
     				}

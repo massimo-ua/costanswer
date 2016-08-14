@@ -1,6 +1,6 @@
 (function(){
-    angular.module('costAnswer.core.services', [])
-    .factory('projectSettingsService', [function(){
+    angular.module('costAnswer.core.services', []);
+    /*.factory('projectSettingsService', [function(){
         var settings = {};
         return {
             set: function(key, value, replace) {
@@ -30,5 +30,5 @@
                 return settings;
             }
         }
-    }]);
+    }]);*/
 }());

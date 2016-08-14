@@ -43,23 +43,19 @@ angular.module('costAnswer.core.controllers')
                 toastr.info('Setting successfuly saved', 'Information');
             }
         }])
-        .controller('newProjectTypeController', ['$scope', '$state', 'projectSettingsService', 'toastr', function($scope, $state, projectSettingsService, toastr) {
+        .controller('newProjectTypeController', ['$scope', '$state', '$localStorage', 'toastr', function($scope, $state, $localStorage, toastr) {
             $scope.setProjectType = function(type) {
                 if(type == undefined) {
                     return;
                 }
-                if(projectSettingsService.set('projectType',type, true) == false) {
-                    toastr.error('Project settings was not saved properly!', "Oops! We've got an Error")
-                }
-                else {
-                    $state.go('projectSettings');
-                };
+                $localStorage.projectType = type;
+                $state.go('projectSettings');
             }
         }])
-        .controller('projectSettingsController', ['$scope', '$state', 'toastr', 'projectSettingsService', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES', function($scope, $state, toastr, projectSettingsService, PROJECT_TYPES, CURRENCIES, MONTHES) {
+        .controller('projectSettingsController', ['$scope', '$state', 'toastr', '$localStorage', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES', function($scope, $state, toastr, $localStorage, PROJECT_TYPES, CURRENCIES, MONTHES) {
             function init() {
                 $scope.settings = {};
-                $scope.projectType = PROJECT_TYPES[projectSettingsService.get('projectType')];
+                $scope.projectType = PROJECT_TYPES[$localStorage.projectType];
                 $scope.currencies = CURRENCIES;
                 $scope.monthes = MONTHES;
                 $scope.settings.currency = $scope.currencies[0];
@@ -70,7 +66,7 @@ angular.module('costAnswer.core.controllers')
             }
             init();
             $scope.next = function() {
-                projectSettingsService.set('projectSettings', $scope.settings, true);
+                $localStorage.projectSettings = $scope.settings;
                 if($scope.settings.considerMOH) {
                     $state.go('mohDataInput.home');
                 }
@@ -79,17 +75,39 @@ angular.module('costAnswer.core.controllers')
                 }
             }
         }])
-        .controller('mohDataInputController', [
-            '$scope', 'toastr', 'projectSettingsService', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES',
-            function($scope, toastr, projectSettingsService, PROJECT_TYPES, CURRENCIES, MONTHES){
+        .controller('mohDataInputMainController', [
+            '$scope', 'toastr', '$localStorage', 'PROJECT_TYPES', 'MOH_ALLOCATION', 'MOH_METHOD', 'MOH_CATEGORY',
+            function($scope, toastr, $localStorage, PROJECT_TYPES, MOH_ALLOCATION, MOH_METHOD, MOH_CATEGORY){
                 function init() {
-
+                    $scope.projectType = PROJECT_TYPES[$localStorage.projectType];
+                    $scope.moh_allocation = MOH_ALLOCATION;
+                    $scope.moh_method = MOH_METHOD;
+                    $scope.moh_category = MOH_CATEGORY;
+                    $scope.mohMethod = $localStorage.projectSettings.mohMethod;
+                    $scope.mohAllocation = $localStorage.projectSettings.mohAllocation;
+                    $scope.list = {
+                        "window": 3,
+                        "start": 0
+                    };
                 }
                 init();
+                $scope.setMOHmethod = function (item) {
+                    $localStorage.projectSettings.mohMethod = item.id;
+                    $scope.mohMethod = item.id;
+                }
+                $scope.setMOHallocation = function (item) {
+                    $localStorage.projectSettings.mohAllocation = item.id;
+                    $scope.mohAllocation = item.id;
+                }
+                $scope.moveNav= function(target) {
+                    if(target < 0) return;
+                    if(target > $scope.moh_category.length - $scope.list.window - 1) return;
+                    $scope.list.start = target; 
+                }
             }])
         .controller('mohDataInputHomeController', [
-            '$scope', 'toastr', 'projectSettingsService', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES',
-            function($scope, toastr, projectSettingsService, PROJECT_TYPES, CURRENCIES, MONTHES){
-
+            '$scope', 'toastr', '$localStorage', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES',
+            function($scope, toastr, $localStorage, PROJECT_TYPES, CURRENCIES, MONTHES){
+                
         
         }]);

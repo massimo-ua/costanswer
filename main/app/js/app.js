@@ -4,17 +4,19 @@ angular.module('costAnswer', [
     'ngResource',
     'ngSanitize',
     'toastr',
+    'ngStorage',
     'costAnswer.services',
     'costAnswer.filters',
     'costAnswer.core',
     'costAnswer.auth'
-])
+]);
+/*
 .run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-}]);;
+}]);
 
-/*
+
 toastr.options = {
     "closeButton": true, // true/false
     "debug": false, // true/false
