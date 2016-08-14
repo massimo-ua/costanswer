@@ -11,7 +11,7 @@
                 .state('authSignup', {
                     url: '/signup',
                     controller: 'authSignupController',
-                    templateUrl: 'app/modules/auth/views/login.html'
+                    templateUrl: 'app/modules/auth/views/signup.html'
                 }); 
         }]);
 }());

@@ -56,14 +56,18 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Signup</a></li>
+        <li><a ui-sref="authSignup"><span class="glyphicon glyphicon-edit"></span> Signup</a></li>
         <li><a ui-sref="authLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div ui-view class="container fluid top-50"></div>
+<div ui-view="main" class="container fluid"></div>
+<div>
+  <h5>State debug</h5>
+  <pre>{{$state.current | json}}</pre>
+</div>
 <div id="pre-footer" class="container text-center" ng-include="'app/views/pre-footer.html'"></div>
 <footer class="container-fluid" ng-include="'app/views/footer.html'"></footer>
   <script src="app/libs/jquery/dist/jquery.min.js"></script>
