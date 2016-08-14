@@ -189,7 +189,7 @@ color: #b0a39f;
 .content-big {/* width: 1200px; *//* margin: 0 auto; *//* background: #ffffff; *//* box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.57); */}
 
 .page-img {
-    background: url(main-page.png) no-REPEAT 0PX 38PX;
+    background: url(main-page.png) no-REPEAT 0PX 0px/*38PX*/;
     background-attachment: fixed;
     height: 865px;
     background-size: cover;

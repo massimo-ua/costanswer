@@ -16,4 +16,25 @@
         {number: 11, short: 'NOV', full: 'November'},
         {number: 12, short: 'DEC', full: 'December'}
         ]);
+    angular.module('costAnswer.services').value('MOH_ALLOCATION', [
+        {"id": 1, "name": "Direct Labour"},
+        {"id": 2, "name": "Labour Hours"},
+        {"id": 3, "name": "Direct Materials"},
+        {"id": 4, "name": "Prime Cost"},
+        {"id": 5, "name": "Machine Hours"}
+    ]);
+    angular.module('costAnswer.services').value('MOH_METHOD', [
+        {"id": 1, "name": "Monthly Costs"},
+        {"id": 2, "name": "Predetermined Overhead Rate"}
+    ]);
+    angular.module('costAnswer.services').value('MOH_CATEGORY', [
+        {"id": 1, "name": "Indirect Materials"},
+        {"id": 2, "name": "Production managers salaries"},
+        {"id": 3, "name": "Production facilities insurance"},
+        {"id": 4, "name": "Production property taxes"},
+        {"id": 5, "name": "Indirect labour"},
+        {"id": 6, "name": "Production machinery rent"},
+        {"id": 7, "name": "Production utilities and other overhead expences"},
+        {"id": 7, "name": "Production facilities amortization"}
+    ]);
 }());

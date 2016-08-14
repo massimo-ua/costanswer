@@ -53,7 +53,7 @@ angular.module('costAnswer.core')
                 url: '/moh-data-input',
                 views: { 
                     "main": {
-                        controller: 'mohDataInputController',
+                        controller: 'mohDataInputMainController',
                         templateUrl: 'app/modules/core/views/moh/main.html'
                     }
                 }
