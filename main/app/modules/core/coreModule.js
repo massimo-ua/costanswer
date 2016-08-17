@@ -48,22 +48,49 @@ angular.module('costAnswer.core')
                     }
                 }
             })
-            .state('mohDataInput', {
-                abstract: true,
-                url: '/moh-data-input',
+            .state('projectDataInput', {
+                url: '/project-data-input',
                 views: { 
                     "main": {
-                        controller: 'mohDataInputMainController',
-                        templateUrl: 'app/modules/core/views/moh/main.html'
+                        controller: 'projectDataInputMainController',
+                        templateUrl: 'app/modules/core/views/project-data-input.html'
                     }
                 }
             })
-            .state('mohDataInput.home', {
+            .state('moh', {
+                url: '/moh',
+                abstract: true,
+                defaultChild: 'moh.settings',
+                parent: "projectDataInput",
+                controller: 'mohController',
+                templateUrl: 'app/modules/core/views/moh/home.html'
+            })
+            .state('moh.settings', {
+                url: '/settings',
+                controller: 'mohSettingsController',
+                templateUrl: 'app/modules/core/views/moh/settings.html'
+            })
+            .state('moh.im', {
+                url: '/indirect-materials',
+                controller: 'mohIndirectMaterialsController',
+                templateUrl: 'app/modules/core/views/moh/indirect-materials.html'
+            })
+            .state('moh.pms', {
+                url: '/production-managers-salaries',
+                controller: 'mohProductionManagersSalariesController',
+                templateUrl: 'app/modules/core/views/moh/production-managers-salaries.html'
+            })
+            .state('moh.pfi', {
+                url: '/production-facilities-insurance',
+                controller: 'mohProductionFacilitiesInsuranceController',
+                templateUrl: 'app/modules/core/views/moh/production-facilities-insurance.html'
+            })
+            /*.state('mohDataInput.home', {
                 parent: "mohDataInput",
                 url: '/',
                 controller: 'mohDataInputHomeController',
                 templateUrl: 'app/modules/core/views/moh/home.html'
-            });
+            })*/;
         $urlRouterProvider.otherwise('/description/standard-costing');
     }]);
 }());

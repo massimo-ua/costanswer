@@ -9,14 +9,13 @@ angular.module('costAnswer', [
     'costAnswer.filters',
     'costAnswer.core',
     'costAnswer.auth'
-]);
-/*
-.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
+])
+/*.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-}]);
+}]);*/
 
-
+/*
 toastr.options = {
     "closeButton": true, // true/false
     "debug": false, // true/false
@@ -35,3 +34,4 @@ toastr.options = {
     "hideMethod": "fadeOut"
 }
 */
+;

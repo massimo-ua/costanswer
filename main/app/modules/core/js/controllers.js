@@ -67,12 +67,12 @@ angular.module('costAnswer.core.controllers')
             init();
             $scope.next = function() {
                 $localStorage.projectSettings = $scope.settings;
-                if($scope.settings.considerMOH) {
+                /*if($scope.settings.considerMOH) {
                     $state.go('mohDataInput.home');
                 }
-                else {
-                    $state.go('projectDataInput');
-                }
+                else {*/
+                    $state.go('moh');
+                /*}*/
             }
         }])
         .controller('mohDataInputMainController', [
@@ -110,4 +110,58 @@ angular.module('costAnswer.core.controllers')
             function($scope, toastr, $localStorage, PROJECT_TYPES, CURRENCIES, MONTHES){
                 
         
-        }]);
+        }])
+        .controller('projectDataInputMainController', [
+            '$scope', 'toastr', '$localStorage', 'PROJECT_TYPES', 'DATAINPUT_HEADER',
+            function($scope, toastr, $localStorage, PROJECT_TYPES, DATAINPUT_HEADER){
+                function init() {
+                    $scope.projectType = PROJECT_TYPES[$localStorage.projectType];
+                    $scope.datainput_header = DATAINPUT_HEADER;
+                }
+                init();
+
+            }])
+        .controller('mohController', [
+            '$scope', 'toastr', '$localStorage', 'MOH_CATEGORY',
+            function($scope, toastr, $localStorage, MOH_CATEGORY) {
+                function init() {
+                    $scope.moh_category = MOH_CATEGORY;
+                };
+                init();
+            }])
+        .controller('mohSettingsController', [
+            '$scope', '$state', 'toastr', '$localStorage', 'MOH_ALLOCATION',
+            function($scope, $state, toastr, $localStorage, MOH_ALLOCATION) {
+                function init() {
+                    $scope.moh_allocation = MOH_ALLOCATION;
+                };
+                init();
+                
+            }])
+            .controller('mohIndirectMaterialsController', [
+            '$scope', '$state', 'toastr', '$localStorage',
+            function($scope, $state, toastr, $localStorage) {
+                function init() {
+                    console.log('AAAAAAAAAAAAAAAAA');
+                };
+                init();
+                
+            }])
+            .controller('mohProductionManagersSalariesController', [
+            '$scope', '$state', 'toastr', '$localStorage',
+            function($scope, $state, toastr, $localStorage) {
+                function init() {
+                    console.log('AAAAAAAAAAAAAAAAA');
+                };
+                init();
+                
+            }])
+            .controller('mohProductionFacilitiesInsuranceController', [
+            '$scope', '$state', 'toastr', '$localStorage',
+            function($scope, $state, toastr, $localStorage) {
+                function init() {
+                    console.log('AAAAAAAAAAAAAAAAA');
+                };
+                init();
+                
+            }]);
