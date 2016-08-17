@@ -22,10 +22,28 @@ footer {
 .m-t-10px {
     margin-top: 10px;
 } 
+.m-l-2px {
+  margin-left: 2px;
+}
 /* Start Core */
 .start-core-link {
     margin-top: 30px;
 }  
+
+/* tabs */
+.nav-tabs > li > a.inactive-tab {
+    white-space: nowrap;
+    width: 8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  white-space: nowrap;
+  width: auto;
+}
+
+
+
 
 /*********************
 * Social Buttons

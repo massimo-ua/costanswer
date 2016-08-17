@@ -1,6 +1,6 @@
 (function(){
     angular.module('costAnswer.services', []);
-    angular.module('costAnswer.services').value('PROJECT_TYPES', {1: 'Actual Project', 2: 'Forecast Project', 3: 'Variance Project'});
+    angular.module('costAnswer.services').value('PROJECT_TYPES', {1: 'Actual', 2: 'Forecast', 3: 'Variance'});
     angular.module('costAnswer.services').value('CURRENCIES', [{charCode: 'USD', code: 840, name: 'US Dollars'}, {charCode: 'EUR', code: 978, name: 'Euro'}, {charCode: 'GBP', code: 826, name: 'Great Britain Pounds'}]);
     angular.module('costAnswer.services').value('MONTHES', [
         {number: 1, short: 'JAN', full: 'January'},
@@ -28,13 +28,26 @@
         {"id": 2, "name": "Predetermined Overhead Rate"}
     ]);
     angular.module('costAnswer.services').value('MOH_CATEGORY', [
-        {"id": 1, "name": "Indirect Materials"},
-        {"id": 2, "name": "Production managers salaries"},
-        {"id": 3, "name": "Production facilities insurance"},
-        {"id": 4, "name": "Production property taxes"},
-        {"id": 5, "name": "Indirect labour"},
-        {"id": 6, "name": "Production machinery rent"},
-        {"id": 7, "name": "Production utilities and other overhead expences"},
-        {"id": 7, "name": "Production facilities amortization"}
+        {"id": 1, "name": "Settings", "sref": "moh.settings"},
+        {"id": 2, "name": "Indirect Materials", "sref": "moh.im"},
+        {"id": 3, "name": "Production managers salaries", "sref": "moh.pms"},
+        {"id": 4, "name": "Production facilities insurance", "sref": "moh.pfi"},
+        {"id": 5, "name": "Production property taxes", "sref": "moh.ppt"},
+        {"id": 6, "name": "Indirect labour", "sref": "moh.il"},
+        {"id": 7, "name": "Production machinery rent", "sref": "moh.pmr"},
+        {"id": 8, "name": "Production utilities and other overhead expences", "sref": "moh.puooe"},
+        {"id": 9, "name": "Production facilities amortization", "sref": "moh.pfa"}
+    ]);
+    angular.module('costAnswer.services').value('DATAINPUT_HEADER', [
+        {"id": 1, "name": "Manufacturing Overhead", "sref": "moh"},
+        {"id": 2, "name": "Standard Costing", "sref": "standardCosting"},
+        {"id": 3, "name": "Process Costing", "sref": "processCosting"},
+        {"id": 4, "name": "Job Order Costing", "sref": "jobOrderCosting"}
+    ]);
+    angular.module('costAnswer.services').value('DATAINPUT_FOOTER', [
+        {"id": 1, "name": "Clear", "sref": null},
+        {"id": 2, "name": "Save", "sref": null},
+        {"id": 3, "name": "Save As", "sref": null},
+        {"id": 4, "name": "Project Report", "sref": "projectReport"}
     ]);
 }());
