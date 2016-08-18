@@ -10,10 +10,10 @@ angular.module('costAnswer', [
     'costAnswer.core',
     'costAnswer.auth'
 ])
-/*.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
+.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-}]);*/
+}]);
 
 /*
 toastr.options = {

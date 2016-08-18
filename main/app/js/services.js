@@ -16,13 +16,18 @@
         {number: 11, short: 'NOV', full: 'November'},
         {number: 12, short: 'DEC', full: 'December'}
         ]);
-    angular.module('costAnswer.services').value('MOH_ALLOCATION', [
+    angular.module('costAnswer.services').value('MOH_ALLOCATION_BASE', [
         {"id": 1, "name": "Direct Labour"},
         {"id": 2, "name": "Labour Hours"},
         {"id": 3, "name": "Direct Materials"},
         {"id": 4, "name": "Prime Cost"},
         {"id": 5, "name": "Machine Hours"}
     ]);
+    angular.module('costAnswer.services').value('MOH_CALCULATION_BASE', [
+        {"id": 1, "name": "Monthly Costs"},
+        {"id": 2, "name": "Predetermined Overhead Rate"},
+        {"id": 3, "name": "Full Cost Applied"}
+    ])
     angular.module('costAnswer.services').value('MOH_METHOD', [
         {"id": 1, "name": "Monthly Costs"},
         {"id": 2, "name": "Predetermined Overhead Rate"}
@@ -36,7 +41,8 @@
         {"id": 6, "name": "Indirect labour", "sref": "moh.il"},
         {"id": 7, "name": "Production machinery rent", "sref": "moh.pmr"},
         {"id": 8, "name": "Production utilities and other overhead expences", "sref": "moh.puooe"},
-        {"id": 9, "name": "Production facilities amortization", "sref": "moh.pfa"}
+        {"id": 9, "name": "Production facilities amortization", "sref": "moh.pfa"},
+        {"id": 10, "name": "Report", "sref": "moh.report"}
     ]);
     angular.module('costAnswer.services').value('DATAINPUT_HEADER', [
         {"id": 1, "name": "Manufacturing Overhead", "sref": "moh"},

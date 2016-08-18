@@ -60,13 +60,12 @@ angular.module('costAnswer.core')
             .state('moh', {
                 url: '/moh',
                 abstract: true,
-                defaultChild: 'moh.settings',
                 parent: "projectDataInput",
                 controller: 'mohController',
                 templateUrl: 'app/modules/core/views/moh/home.html'
             })
             .state('moh.settings', {
-                url: '/settings',
+                url: '',
                 controller: 'mohSettingsController',
                 templateUrl: 'app/modules/core/views/moh/settings.html'
             })
@@ -84,6 +83,36 @@ angular.module('costAnswer.core')
                 url: '/production-facilities-insurance',
                 controller: 'mohProductionFacilitiesInsuranceController',
                 templateUrl: 'app/modules/core/views/moh/production-facilities-insurance.html'
+            })
+            .state('moh.ppt', {
+                url: '/production-property-taxes',
+                controller: 'mohProductionPropertyTaxesController',
+                templateUrl: 'app/modules/core/views/moh/production-property-taxes.html'
+            })
+            .state('moh.il', {
+                url: '/indirect-labour',
+                controller: 'mohIndirectLabourController',
+                templateUrl: 'app/modules/core/views/moh/indirect-labour.html'
+            })
+            .state('moh.pmr', {
+                url: '/production-machinery-rent',
+                controller: 'mohProductionMachineryRentController',
+                templateUrl: 'app/modules/core/views/moh/production-machinery-rent.html'
+            })
+            .state('moh.puooe', {
+                url: '/production-utilities-and-other-overhead-expences',
+                controller: 'mohProductionUtilitiesAndOtherOverheadExpencesController',
+                templateUrl: 'app/modules/core/views/moh/production-utilities-and-other-overhead-expences.html'
+            })
+            .state('moh.pfa', {
+                url: '/production-facilities-amortization',
+                controller: 'mohProductionFacilitiesAmortizationController',
+                templateUrl: 'app/modules/core/views/moh/production-facilities-amortization.html'
+            })
+            .state('moh.report', {
+                url: '/report',
+                controller: 'mohReportController',
+                templateUrl: 'app/modules/core/views/moh/report.html'
             })
             /*.state('mohDataInput.home', {
                 parent: "mohDataInput",
