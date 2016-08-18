@@ -1,5 +1,7 @@
 body { 
 	padding-top: 70px;
+  /*font-family: 'Droid Serif', serif;*/
+  font-family: 'Roboto Slab', serif;
 	 }
 .navbar-header .navbar-brand {
     color: yellow;
@@ -33,15 +35,19 @@ footer {
 /* tabs */
 .nav-tabs > li > a.inactive-tab {
     white-space: nowrap;
-    width: 8em;
+    width: 6em;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   white-space: nowrap;
   width: auto;
+  color: black;
 }
-
+.moh-data-input {
+  min-height: 200px;
+  padding-top: 30px;
+}
 
 
 
