@@ -1,0 +1,19 @@
+a.toolset {
+    border: none;
+    padding: 1px;
+    margin: 1px;
+    text-decoration: none;
+    color: #202020;
+}
+a.toolset.glyphicon {
+    font-size: 24px;
+}
+a.toolset:hover {
+    text-decoration: none;
+}
+a.toolset.add {
+    color: #2a6635;
+}
+a.toolset.remove {
+    color: red;
+}
