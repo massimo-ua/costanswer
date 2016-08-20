@@ -37,13 +37,17 @@ angular.module('costAnswer.core.controllers')
         .controller('startCoreController', ['$scope', 'toastr', function($scope, toastr){
 
         }])
-        .controller('quickStartController', ['$scope', 'toastr', function($scope, toastr){
+        .controller('quickStartController', ['$scope', '$localStorage', 'toastr', function($scope, $localStorage, toastr){
             $scope.showOnNext = true;
             $scope.showOnNextSave = function() {
-                toastr.info('Setting successfuly saved', 'Information');
+                $localStorage.showOnNextQuickStart = $scope.showOnNext;
             }
         }])
         .controller('newProjectTypeController', ['$scope', '$state', '$localStorage', 'toastr', function($scope, $state, $localStorage, toastr) {
+            function init() {
+                $scope.varianceDisabled = true;
+            }
+            init();
             $scope.setProjectType = function(type) {
                 if(type == undefined) {
                     return;
