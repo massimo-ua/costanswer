@@ -25,7 +25,6 @@
                     $localStorage.mohSettings = {};
                     $scope.moh_allocation_base = MOH_ALLOCATION_BASE;
                     $scope.moh_calculation_base = MOH_CALCULATION_BASE;
-                    $scope.mohSettings.calculationBase = $scope.moh_calculation_base[0];
                     $scope.mohSettings.allocationBase = $scope.moh_allocation_base[0];
                     $scope.saveCalculationBase();
                     $scope.saveAllocationBase();

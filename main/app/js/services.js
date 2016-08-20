@@ -24,14 +24,9 @@
         {"id": 5, "name": "Machine Hours"}
     ]);
     angular.module('costAnswer.services').value('MOH_CALCULATION_BASE', [
-        {"id": 1, "name": "Monthly Costs"},
-        {"id": 2, "name": "Predetermined Overhead Rate"},
-        {"id": 3, "name": "Full Cost Applied"}
+        {"id": 1, "name": "Predetermined Overhead Rate"},
+        {"id": 2, "name": "Full Cost Applied"}
     ])
-    angular.module('costAnswer.services').value('MOH_METHOD', [
-        {"id": 1, "name": "Monthly Costs"},
-        {"id": 2, "name": "Predetermined Overhead Rate"}
-    ]);
     angular.module('costAnswer.services').value('MOH_CATEGORY', [
         {"id": 1, "name": "Settings", "sref": "moh.settings"},
         {"id": 2, "name": "Indirect Materials", "sref": "moh.im"},

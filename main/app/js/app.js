@@ -7,6 +7,7 @@ angular.module('costAnswer', [
     'ngStorage',
     'costAnswer.services',
     'costAnswer.filters',
+    'costAnswer.directives',
     'costAnswer.core',
     'costAnswer.auth'
 ])
