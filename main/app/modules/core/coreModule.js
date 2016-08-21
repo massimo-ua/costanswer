@@ -1,5 +1,5 @@
 (function() {
-angular.module('costAnswer.core', ['costAnswer.core.controllers','costAnswer.core.services']);
+angular.module('costAnswer.core', ['costAnswer.core.controllers','costAnswer.core.services','costAnswer.core.directives']);
 angular.module('costAnswer.core')
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $stateProvider
