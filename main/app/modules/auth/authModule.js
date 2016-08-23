@@ -5,13 +5,22 @@
             $stateProvider
                 .state('authLogin', {
                     url: '/login',
-                    controller: 'authLoginController',
-                    templateUrl: 'app/modules/auth/views/login.html'
+                    views: {
+                        "main": {
+                            controller: 'authLoginController',
+                            templateUrl: 'app/modules/auth/views/login.html'
+                        }
+                    }
+
                 })
                 .state('authSignup', {
                     url: '/signup',
-                    controller: 'authSignupController',
-                    templateUrl: 'app/modules/auth/views/signup.html'
+                    views: {
+                        "main": {
+                            controller: 'authSignupController',
+                            templateUrl: 'app/modules/auth/views/signup.html'
+                        }
+                    }
                 }); 
         }]);
 }());

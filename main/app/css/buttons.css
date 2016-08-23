@@ -43,6 +43,9 @@
     background: #2a6635;
     box-shadow: none;
 }
+.btn-group.costanswer > ul.dropdown-menu > li > a  {
+    font-size: 1.2em;
+}
 /* Pills */
 .nav-pills.costanswer > li.item-list-pills > a.active, .nav-pills.costanswer > li.item-list-pills > a.active:hover, .nav-pills.costanswer > li.item-list-pills a.active:focus {
     color: #fffffc;

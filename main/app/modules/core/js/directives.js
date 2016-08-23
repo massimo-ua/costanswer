@@ -7,30 +7,32 @@
                 restrict: 'AEC',
                 replace: true,
                 scope: {
-                    displayBlock: '@displayBlock',
-                    itemsList: '=itemsList'
+                    displayBlock: '=',
+                    itemsList: '=',
+                    itemForm: '=',
+                    itemModel: '=',
+                    controls: '='
                 },
                 templateUrl: 'app/modules/core/views/directives/ca-thumbler.html',
                 link: function(scope, elem, attrs) {
                     function init() {
-                        scope.form = {};
+                        scope.itemModel = {};
                         scope.startItem = 1;
-                        scope.buttonText = "Add";
                         scope.activeItem = undefined;
-                    }
+                    };
                     init();
-                    var displayBlock = parseInt(scope.displayBlock);
-                    scope.addItem = function(newItem, position) {
+                    scope.displayBlock = parseInt(scope.displayBlock);
+                    scope.controls.addItem = function(newItem) {
                         if(newItem === undefined) return;
                         var copyOfNewItem = {};
                         angular.copy(newItem, copyOfNewItem);
-                        if(position === undefined) {
+                        if(scope.activeItem === undefined) {
                             scope.itemsList.push(copyOfNewItem);
-                            scope.next();
+                            scope.move(1);
                         }
                         else {
                             try {
-                                scope.itemsList[position-1] = copyOfNewItem;
+                                scope.itemsList[scope.activeItem-1] = copyOfNewItem;
                             } catch(err) {
                                 console.log(err.name + ' ' + err.message);
                             }
@@ -40,19 +42,22 @@
                     };
                     scope.loadItem = function(index) {
                         scope.activeItem = index+1;
-                        angular.copy(scope.itemsList[index], scope.form);
-                        scope.buttonText = "Update";
+                        angular.copy(scope.itemsList[index], scope.itemModel);
+                        scope.controls.buttonText = "Update";
                     };
                     scope.clearForm = function() {
-                        scope.form = {};
+                        scope.itemModel = {};
                         scope.activeItem = undefined;
                         scope.itemForm.$setPristine();
-                        scope.buttonText = "Add";
+                        scope.controls.buttonText = "Add";
                     }
                     scope.removeItem = function(index) {
                         scope.itemsList.splice(index,1);
-                        init();
-                        scope.prev();
+                        scope.itemModel = {};
+                        scope.activeItem = undefined;
+                        scope.itemForm.$setPristine();
+                        scope.controls.buttonText = "Add";
+                        scope.move(-1);
                     }
                     
                     scope.range = function(start,total) {
@@ -66,20 +71,15 @@
                         }
                         return result;
                     }
-                    scope.next = function() {
-                        console.log([scope.startItem,displayBlock,scope.itemsList.length]);
-                        if((scope.startItem + displayBlock) > scope.itemsList.length) {
+                    scope.move = function(i) {
+                        if(i > 0 && (scope.startItem + scope.displayBlock) > scope.itemsList.length) {
                             return;
-                        }
-                        scope.startItem += 1; 
-                    }
-                    scope.prev = function() {
-                        if(scope.startItem < 2) {
+                        };
+                        if(i < 0 && scope.startItem < 2) {
                             return;
-                        }
-                        scope.startItem -= 1; 
-                    }
-
+                        };
+                        scope.startItem += i;
+                    };
                 }
             };
         });
