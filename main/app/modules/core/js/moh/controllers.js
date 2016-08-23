@@ -35,7 +35,7 @@
             '$scope', '$state', 'toastr', '$localStorage',
             function($scope, $state, toastr, $localStorage) {
                 function init() {
-                    console.log('AAAAAAAAAAAAAAAAA');
+                    $scope.indirectMaterials = [];
                 };
                 init();
                 

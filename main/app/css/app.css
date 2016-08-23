@@ -24,8 +24,14 @@ footer {
 .m-t-10px {
     margin-top: 10px;
 } 
+.m-t-100px {
+    margin-top: 100px;
+} 
 .m-b-20px {
     margin-bottom: 20px;
+} 
+.m-b-10px {
+    margin-bottom: 10px;
 } 
 .m-l-2px {
   margin-left: 2px;
