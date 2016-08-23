@@ -44,7 +44,7 @@
     box-shadow: none;
 }
 /* Pills */
-.nav-pills.costanswer > li.active > a, .nav-pills.costanswer > li.active > a:hover, .nav-pills.costanswer > li.active > a:focus {
+.nav-pills.costanswer > li.item-list-pills > a.active, .nav-pills.costanswer > li.item-list-pills > a.active:hover, .nav-pills.costanswer > li.item-list-pills a.active:focus {
     color: #fffffc;
     background-color: #2a6635;
 }
@@ -57,6 +57,9 @@
     color: #202020;
     background-color: #f1a217;
 }
+/*.nav-pills.costanswer > li.item-list-pills {
+    height: 0.5em;
+}*/
 /* Tabs */
 .nav-tabs.costanswer {
     border-bottom: 1px solid #f1a217;

@@ -17,3 +17,8 @@ a.toolset.add {
 a.toolset.remove {
     color: red;
 }
+span.toolset.remove.small {
+    font-size: 1.2em;
+    margin-left: 1.2em;
+    color: red;
+}
