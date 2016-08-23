@@ -35,7 +35,16 @@
             '$scope', '$state', 'toastr', '$localStorage',
             function($scope, $state, toastr, $localStorage) {
                 function init() {
-                    $scope.indirectMaterials = [];
+                    $scope.form = {};
+                    try {
+                        $scope.indirectMaterials = $localStorage.Project.moh.mohComponents.indirectMaterials;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.indirectMaterials = [];
+                    }
+                    $scope.controls = {
+                        buttonText: "Add"
+                    }
                 };
                 init();
                 
