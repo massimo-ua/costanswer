@@ -13,21 +13,36 @@
             '$scope', '$state', 'toastr', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE',
             function($scope, $state, toastr, $localStorage, MOH_ALLOCATION_BASE, MOH_CALCULATION_BASE) {
                 $scope.saveCalculationBase = function() {
-                    if($scope.mohSettings.calculationBase == undefined) return;
-                    $localStorage.mohSettings.calculationBase = $scope.mohSettings.calculationBase;
+                if($scope.mohSettings.calculationBase == undefined) return;
+                try{
+                        $localStorage.Project.moh.method = $scope.mohSettings.calculationBase;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $localStorage.Project.moh = {
+                            "method": $scope.mohSettings.calculationBase
+                        } 
+                    }
                 }
                 $scope.saveAllocationBase = function() {
                     if($scope.mohSettings.allocationBase == undefined) return;
-                    $localStorage.mohSettings.allocationBase = $scope.mohSettings.allocationBase;
+                    $localStorage.Project.moh.allocation = $scope.mohSettings.allocationBase;
                 }
                 function init() {
                     $scope.mohSettings = {};
-                    $localStorage.mohSettings = {};
                     $scope.moh_allocation_base = MOH_ALLOCATION_BASE;
                     $scope.moh_calculation_base = MOH_CALCULATION_BASE;
-                    $scope.mohSettings.allocationBase = $scope.moh_allocation_base[0];
-                    $scope.saveCalculationBase();
-                    $scope.saveAllocationBase();
+                    try {
+                        $scope.mohSettings.allocationBase = $localStorage.Project.moh.allocation;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.mohSettings.allocationBase = $scope.moh_allocation_base[0];
+                    }
+                    try {
+                        $scope.mohSettings.calculationBase = $localStorage.Project.moh.method;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.mohSettings.allocationBase = {};
+                    }
                 };
                 init();
             }])
