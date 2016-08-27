@@ -11,7 +11,8 @@
                     itemsList: '=',
                     itemForm: '=',
                     itemModel: '=',
-                    controls: '='
+                    controls: '=',
+                    nameProperty: '='
                 },
                 templateUrl: 'app/modules/core/views/directives/ca-thumbler.html',
                 link: function(scope, elem, attrs) {
@@ -84,7 +85,7 @@
             };
         }]);
         angular.module('costAnswer.core.directives')
-            .directive('footedTabs', [function(){
+            .directive('caFootedTabs', [function(){
                 return {
                     restrict: 'AEC',
                     replace: true,
@@ -92,7 +93,7 @@
                         tabsList: '=',
                         initialState: '@'
                     },
-                    templateUrl: 'app/modules/core/views/directives/footed-tabs.html',
+                    templateUrl: 'app/modules/core/views/directives/ca-footed-tabs.html',
                     link: function(scope, elem, attrs) {
                         var i;
                         function init() {

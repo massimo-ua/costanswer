@@ -11,8 +11,8 @@
                 init();
             }])
         .controller('mohSettingsController', [
-            '$scope', '$state', 'toastr', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE',
-            function($scope, $state, toastr, $localStorage, MOH_ALLOCATION_BASE, MOH_CALCULATION_BASE) {
+            '$scope', 'toastr', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE',
+            function($scope, toastr, $localStorage, MOH_ALLOCATION_BASE, MOH_CALCULATION_BASE) {
                 $scope.saveCalculationBase = function() {
                 if($scope.mohSettings.calculationBase == undefined) return;
                 try{
@@ -36,20 +36,20 @@
                         $scope.mohSettings.allocationBase = $localStorage.Project.moh.allocation;
                     } catch(err) {
                         console.log(err.name + ' ' + err.message);
-                        $scope.mohSettings.allocationBase = $scope.moh_allocation_base[0];
+                        $scope.mohSettings.allocationBase = $scope.moh_allocation_base[0].id;
                     }
                     try {
                         $scope.mohSettings.calculationBase = $localStorage.Project.moh.method;
                     } catch(err) {
                         console.log(err.name + ' ' + err.message);
-                        $scope.mohSettings.allocationBase = {};
+                        $scope.mohSettings.allocationBase = undefined;
                     }
                 };
                 init();
             }])
             .controller('mohIndirectMaterialsController', [
-            '$scope', '$state', 'toastr', '$localStorage',
-            function($scope, $state, toastr, $localStorage) {
+            '$scope', 'toastr', '$localStorage',
+            function($scope, toastr, $localStorage) {
                 function init() {
                     $scope.form = {};
                     try {
@@ -60,13 +60,14 @@
                     }
                     $scope.controls = {
                         buttonText: "Add"
-                    }
+                    };
+                    $scope.nameProperty = "itemName";
                 };
                 init();
                 
             }])
             .controller('mohProductionManagersSalariesController', [
-            '$scope', '$state', 'toastr', '$localStorage',
+            '$scope', 'toastr', '$localStorage',
             function($scope, $state, toastr, $localStorage) {
                 function init() {
                     $scope.form = {};
@@ -78,63 +79,118 @@
                     }
                     $scope.controls = {
                         buttonText: "Add"
-                    }
+                    };
+                    $scope.nameProperty = "personelName";
                 };
                 init();        
             }])
             .controller('mohProductionFacilitiesInsuranceController', [
-            '$scope', '$state', 'toastr', '$localStorage',
-            function($scope, $state, toastr, $localStorage) {
+            '$scope', 'toastr', '$localStorage',
+            function($scope, toastr, $localStorage) {
                 function init() {
-                    console.log('AAAAAAAAAAAAAAAAA');
+                    $scope.form = {};
+                    try {
+                        $scope.productionFacilitiesInsurance = $localStorage.Project.moh.mohComponents.productionFacilitiesInsurance;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionFacilitiesInsurance = [];
+                    }
+                    $scope.controls = {
+                        buttonText: "Add"
+                    };
+                    $scope.nameProperty = "insuaranceType";
                 };
                 init();
-                
             }])
             .controller('mohProductionPropertyTaxesController', [
-            '$scope', '$state', 'toastr', '$localStorage',
-            function($scope, $state, toastr, $localStorage) {
+            '$scope', 'toastr', '$localStorage',
+            function($scope, toastr, $localStorage) {
                 function init() {
-                    console.log('AAAAAAAAAAAAAAAAA');
+                    $scope.form = {};
+                    try {
+                        $scope.productionPropertyTaxes = $localStorage.Project.moh.mohComponents.productionPropertyTaxes;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionPropertyTaxes = [];
+                    }
+                    $scope.controls = {
+                        buttonText: "Add"
+                    };
+                    $scope.nameProperty = "taxName";
                 };
                 init();
-                
             }])
-            .controller('mohIndirectLabourController', [
-            '$scope', '$state', 'toastr', '$localStorage',
-            function($scope, $state, toastr, $localStorage) {
+            .controller('mohIndirectLaborController', [
+            '$scope', 'toastr', '$localStorage',
+            function($scope, toastr, $localStorage) {
                 function init() {
-                    console.log('AAAAAAAAAAAAAAAAA');
+                    $scope.form = {};
+                    try {
+                        $scope.indirectLabor = $localStorage.Project.moh.mohComponents.indirectLabor;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.indirectLabor = [];
+                    }
+                    $scope.controls = {
+                        buttonText: "Add"
+                    };
+                    $scope.nameProperty = "personelName";
                 };
                 init();
-                
             }])
             .controller('mohProductionMachineryRentController', [
-            '$scope', '$state', 'toastr', '$localStorage',
-            function($scope, $state, toastr, $localStorage) {
+            '$scope', 'toastr', '$localStorage',
+            function($scope, toastr, $localStorage) {
                 function init() {
-                    console.log('AAAAAAAAAAAAAAAAA');
+                    $scope.form = {};
+                    try {
+                        $scope.productionMachineryRent = $localStorage.Project.moh.mohComponents.productionMachineryRent;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionMachineryRent = [];
+                    }
+                    $scope.controls = {
+                        buttonText: "Add"
+                    };
+                    $scope.nameProperty = "rentName";
                 };
                 init();
-                
             }])
             .controller('mohProductionUtilitiesAndOtherOverheadExpencesController', [
-            '$scope', '$state', 'toastr', '$localStorage',
-            function($scope, $state, toastr, $localStorage) {
+            '$scope', 'toastr', '$localStorage',
+            function($scope, toastr, $localStorage) {
                 function init() {
-                    console.log('AAAAAAAAAAAAAAAAA');
+                    $scope.form = {};
+                    try {
+                        $scope.productionUtilitiesAndOtherOverheadExpences = $localStorage.Project.moh.mohComponents.productionUtilitiesAndOtherOverheadExpences;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionUtilitiesAndOtherOverheadExpences = [];
+                    }
+                    $scope.controls = {
+                        buttonText: "Add"
+                    };
+                    $scope.nameProperty = "expenceName";
                 };
                 init();
-                
             }])
             .controller('mohProductionFacilitiesAmortizationController', [
             '$scope', '$state', 'toastr', '$localStorage',
             function($scope, $state, toastr, $localStorage) {
                 function init() {
-                    console.log('AAAAAAAAAAAAAAAAA');
+                    $scope.form = {};
+                    try {
+                        $scope.productionFacilitiesAmortization = $localStorage.Project.moh.mohComponents.productionFacilitiesAmortization;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionFacilitiesAmortization = [];
+                    }
+                    $scope.controls = {
+                        buttonText: "Add"
+                    };
+                    $scope.nameProperty = "assetName";
                 };
                 init();
-                
             }])
             .controller('mohReportController', [
             '$scope', '$state', 'toastr', '$localStorage',
