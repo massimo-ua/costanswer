@@ -9,6 +9,10 @@
                     $scope.initialState = $state.current.name;
                 };
                 init();
+                $scope.clearAll = function() {
+                    $localStorage.Project = {};
+                    $state.go('startCore');
+                };
             }])
         .controller('mohSettingsController', [
             '$scope', 'toastr', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE',
