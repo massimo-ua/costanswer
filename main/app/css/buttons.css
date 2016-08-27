@@ -47,6 +47,10 @@
     font-size: 1.2em;
 }
 /* Pills */
+.nav-justified.custom-not-stacked > li {
+    display: table-cell;
+    width: 1%;
+}
 .nav-pills.costanswer > li.item-list-pills > a.active, .nav-pills.costanswer > li.item-list-pills > a.active:hover, .nav-pills.costanswer > li.item-list-pills a.active:focus {
     color: #fffffc;
     background-color: #2a6635;

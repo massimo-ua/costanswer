@@ -1,5 +1,5 @@
 <div class="row">	
-    <ul  class="nav nav-pills costanswer nav-justified">
+    <ul  class="nav nav-pills costanswer nav-justified custom-not-stacked">
 		<li class="footed" ng-click="$parent.tabText = tab.name" ng-repeat="tab in tabsList track by tab.id"><a ui-sref="{{ tab.sref }}" ui-sref-active="active">{{ tab.name | strTruncate:false:1 }}</a></li>
 	</ul>
 	<div class="tab-content footed clearfix">

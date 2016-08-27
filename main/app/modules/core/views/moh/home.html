@@ -22,7 +22,7 @@
 </div>
 <div class="row m-t-10px">
     <div class="col-md-12 col-lg-12 text-center hidden-xs hidden-sm">
-        <button type="button" class="btn btn-costanswer"> Clear All </button>
+        <button type="button" class="btn btn-costanswer" ng-click="clearAll()"> Clear All </button>
         <button type="button" class="btn btn-costanswer"> Save </button>
         <button type="button" class="btn btn-costanswer"> Save as... </button>
         <button type="button" class="btn btn-costanswer"> Project Report </button>
@@ -46,7 +46,7 @@
             Action menu <span class="caret"></span>
             </button>
         <ul class="dropdown-menu col-xs-12 col-sm-12">
-            <li><a href="#"> Clear All </a></li>
+            <li><a ng-click="clearAll()"> Clear All </a></li>
             <li><a href="#"> Save </a></li>
             <li><a href="#"> Save as... </a></li>
             <li><a href="#"> Project Report </a></li>
