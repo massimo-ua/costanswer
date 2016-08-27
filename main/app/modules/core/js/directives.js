@@ -2,7 +2,7 @@
     'use strict'
     angular.module('costAnswer.core.directives',[]);
     angular.module('costAnswer.core.directives')
-        .directive('caThumbler', function() {
+        .directive('caThumbler', [function() {
             return {
                 restrict: 'AEC',
                 replace: true,
@@ -82,5 +82,28 @@
                     };
                 }
             };
-        });
+        }]);
+        angular.module('costAnswer.core.directives')
+            .directive('footedTabs', [function(){
+                return {
+                    restrict: 'AEC',
+                    replace: true,
+                    scope: {
+                        tabsList: '=',
+                        initialState: '@'
+                    },
+                    templateUrl: 'app/modules/core/views/directives/footed-tabs.html',
+                    link: function(scope, elem, attrs) {
+                        var i;
+                        function init() {
+                            for(i=0;i<scope.tabsList.length;i++) {
+                                if(scope.tabsList[i].sref == scope.initialState) {
+                                    scope.tabText = scope.tabsList[i].name;
+                                }
+                            }
+                        }
+                        init();
+                    }
+                }
+            }]);
 }());

@@ -13,7 +13,12 @@ angular.module('costAnswer', [
 ])
 .run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
+    $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+      if (to.redirectTo) {
+        evt.preventDefault();
+        $state.go(to.redirectTo, params);
+      }
+    });
 }]);
 
 /*

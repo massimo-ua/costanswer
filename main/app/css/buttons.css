@@ -51,7 +51,7 @@
     color: #fffffc;
     background-color: #2a6635;
 }
-.nav-pills.costanswer > li > a:hover, .nav-pills.costanswer > li > a:focus {
+.nav-pills.costanswer > li > a.active, .nav-pills.costanswer > li > a:hover, .nav-pills.costanswer > li > a:focus {
     color: #fffffc;
     background-color: #358042;
 }
@@ -60,9 +60,35 @@
     color: #202020;
     background-color: #f1a217;
 }
-/*.nav-pills.costanswer > li.item-list-pills {
-    height: 0.5em;
+.nav-pills.costanswer > li.footed > a {
+    border-radius: 2px 10px 0 0;
+    margin: 0;
+}
+.nav-pills.costanswer > li.footed > a.active {
+    background-color: #2a6635;
+    color: #fffffc;
+}
+/*.nav-pills.costanswer > li.footed > a.active, .nav-pills.costanswer > li.footed > a.active:hover, .nav-pills.costanswer > li.footed > a.active:focus {
+    background-color: #2a6635;
+    color: #fffffc;
 }*/
+.tab-content.footed {
+    padding: 0;
+}
+.tab-content.footed > .tab-pane.costanswer {
+    margin-top: 0;
+    background-color: #f1a217;
+    color: #202020;
+    font-weight: 700;
+    padding: 4px;
+    border-radius: 0 4px 4px 4px;
+    
+}
+.tab-content.footed > .tab-pane.costanswer.active {
+    background-color: #2a6635;
+    color: #fffffc; 
+}
+
 /* Tabs */
 .nav-tabs.costanswer {
     border-bottom: 1px solid #f1a217;

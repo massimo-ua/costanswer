@@ -1,5 +1,10 @@
 (function() {
-angular.module('costAnswer.core', ['costAnswer.core.controllers','costAnswer.core.services','costAnswer.core.directives']);
+angular.module('costAnswer.core', [
+    'costAnswer.core.controllers',
+    'costAnswer.core.services',
+    'costAnswer.core.directives',
+    'costAnswer.core.filters'
+    ]);
 angular.module('costAnswer.core')
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $stateProvider
@@ -59,13 +64,15 @@ angular.module('costAnswer.core')
             })
             .state('moh', {
                 url: '/moh',
-                abstract: true,
+                //abstract: true,
+                redirectTo: 'moh.settings',
                 parent: "projectDataInput",
                 controller: 'mohController',
                 templateUrl: 'app/modules/core/views/moh/home.html'
             })
             .state('moh.settings', {
-                url: '',
+                url: '/settings',
+                //url: '',
                 controller: 'mohSettingsController',
                 templateUrl: 'app/modules/core/views/moh/settings.html'
             })

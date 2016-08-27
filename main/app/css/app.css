@@ -59,7 +59,24 @@ footer a, footer a:hover {
   margin-left: 10px;
   margin-right: 10px;
 }
-
+/* fieldset */
+fieldset.costanswer {
+	border: 0.1em solid #f1a217;
+	padding: 0.5em;
+  margin: 2em 0 0 0;
+}
+legend.costanswer {
+    width:inherit; /* Or auto */
+    border-bottom: none;
+    color: #707070;
+    font-size: 1.1em;
+    margin-bottom: 2px;
+}
+fieldset > div > span.instant-results-header {
+  font-size: 1em;
+  color: #707070;
+  margin: 0 1em 0 1em;
+}
 
 
 /*********************
