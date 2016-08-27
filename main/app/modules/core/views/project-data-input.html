@@ -3,7 +3,7 @@
     <div class="col-md-1 col-lg-1 text-left hidden-xs hidden-sm"><h4><b>{{ projectType }}</b></h4></div>
     <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11">
         <ul class="nav nav-pills costanswer nav-justified">
-            <li role="presentation" ng-repeat = "item in datainput_header track by item.id" ui-sref="{{ item.sref }}" ui-sref-active="active" ><a>{{ item.name }}</a></li>
+            <li role="presentation" ng-repeat = "item in datainput_header track by item.id" ><a ui-sref-active="active" ui-sref="{{ item.sref }}">{{ item.name }}</a></li>
         </ul>
     </div>
 </div>

@@ -2,10 +2,11 @@
     angular.module('costAnswer.core.moh.controllers',[]);
     angular.module('costAnswer.core.moh.controllers')
         .controller('mohController', [
-            '$scope', 'toastr', '$localStorage', 'MOH_CATEGORY',
-            function($scope, toastr, $localStorage, MOH_CATEGORY) {
+            '$scope', '$state', 'toastr', '$localStorage', 'MOH_CATEGORY',
+            function($scope, $state, toastr, $localStorage, MOH_CATEGORY) {
                 function init() {
                     $scope.moh_category = MOH_CATEGORY;
+                    $scope.initialState = $state.current.name;
                 };
                 init();
             }])
@@ -68,10 +69,18 @@
             '$scope', '$state', 'toastr', '$localStorage',
             function($scope, $state, toastr, $localStorage) {
                 function init() {
-                    console.log('AAAAAAAAAAAAAAAAA');
+                    $scope.form = {};
+                    try {
+                        $scope.productionManagersSalaries = $localStorage.Project.moh.mohComponents.productionManagersSalaries;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionManagersSalaries = [];
+                    }
+                    $scope.controls = {
+                        buttonText: "Add"
+                    }
                 };
-                init();
-                
+                init();        
             }])
             .controller('mohProductionFacilitiesInsuranceController', [
             '$scope', '$state', 'toastr', '$localStorage',

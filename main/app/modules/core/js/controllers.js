@@ -89,7 +89,7 @@ angular.module('costAnswer.core.controllers')
                     $state.go('mohDataInput.home');
                 }
                 else {*/
-                    $state.go('moh.settings');
+                    $state.go('moh');
                 /*}*/
             }
         }])
