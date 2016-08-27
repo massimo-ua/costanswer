@@ -97,9 +97,9 @@ angular.module('costAnswer.core')
                 templateUrl: 'app/modules/core/views/moh/production-property-taxes.html'
             })
             .state('moh.il', {
-                url: '/indirect-labour',
-                controller: 'mohIndirectLabourController',
-                templateUrl: 'app/modules/core/views/moh/indirect-labour.html'
+                url: '/indirect-labor',
+                controller: 'mohIndirectLaborController',
+                templateUrl: 'app/modules/core/views/moh/indirect-labor.html'
             })
             .state('moh.pmr', {
                 url: '/production-machinery-rent',
