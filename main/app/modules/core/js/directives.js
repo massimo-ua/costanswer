@@ -39,7 +39,7 @@
                             }
 
                         }
-                        
+                        scope.clearForm();
                     };
                     scope.loadItem = function(index) {
                         scope.activeItem = index+1;

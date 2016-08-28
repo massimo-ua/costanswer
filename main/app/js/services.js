@@ -28,16 +28,16 @@
         {"id": 2, "name": "Full Cost Applied"}
     ])
     angular.module('costAnswer.services').value('MOH_CATEGORY', [
-        {"id": 1, "name": "Settings", "sref": "moh.settings"},
-        {"id": 2, "name": "Indirect Materials", "sref": "moh.im"},
-        {"id": 3, "name": "Production managers salaries", "sref": "moh.pms"},
-        {"id": 4, "name": "Production facilities insurance", "sref": "moh.pfi"},
-        {"id": 5, "name": "Production property taxes", "sref": "moh.ppt"},
-        {"id": 6, "name": "Indirect labour", "sref": "moh.il"},
-        {"id": 7, "name": "Production machinery rent", "sref": "moh.pmr"},
-        {"id": 8, "name": "Production utilities and other overhead expences", "sref": "moh.puooe"},
-        {"id": 9, "name": "Production facilities amortization", "sref": "moh.pfa"},
-        {"id": 10, "name": "Report", "sref": "moh.report"}
+        {"id": 1, "name": "Settings", "sref": "moh.settings", "iconClass": "ion-settings"},
+        {"id": 2, "name": "Indirect Materials", "sref": "moh.im", "iconClass": "ion-paintbucket"},
+        {"id": 3, "name": "Production managers salaries", "sref": "moh.pms", "iconClass": "ion-ios-briefcase"},
+        {"id": 4, "name": "Production facilities insurance", "sref": "moh.pfi", "iconClass": "ion-cash"},
+        {"id": 5, "name": "Production property taxes", "sref": "moh.ppt", "iconClass": "ion-calculator"},
+        {"id": 6, "name": "Indirect labour", "sref": "moh.il", "iconClass": "ion-ios-people"},
+        {"id": 7, "name": "Production machinery rent", "sref": "moh.pmr", "iconClass": "ion-android-bus"},
+        {"id": 8, "name": "Production utilities and other overhead expences", "sref": "moh.puooe", "iconClass": "ion-ios-cart"},
+        {"id": 9, "name": "Production facilities amortization", "sref": "moh.pfa", "iconClass": "ion-arrow-graph-down-right"},
+        {"id": 10, "name": "Report", "sref": "moh.report", "iconClass": "ion-clipboard"}
     ]);
     angular.module('costAnswer.services').value('DATAINPUT_HEADER', [
         {"id": 1, "name": "Manufacturing Overhead", "sref": "moh"},
