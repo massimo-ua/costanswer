@@ -70,3 +70,9 @@
 .form-horizontal .has-feedback-left .form-control-feedback {
   left: 15px;
 }
+input[type="number"].costanswer {
+  text-align: center;
+}
+input[type="text"].costanswer {
+  text-align: center;
+}
