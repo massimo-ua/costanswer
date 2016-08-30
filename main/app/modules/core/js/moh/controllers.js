@@ -52,8 +52,8 @@
                 init();
             }])
             .controller('mohIndirectMaterialsController', [
-            '$scope', 'toastr', '$localStorage',
-            function($scope, toastr, $localStorage) {
+            '$scope', 'toastr', '$localStorage', 'MONTHES',
+            function($scope, toastr, $localStorage, MONTHES) {
                 function init() {
                     $scope.form = {};
                     try {
@@ -68,7 +68,41 @@
                     $scope.nameProperty = "itemName";
                 };
                 init();
-                
+                $scope.gridOptions = {
+                    enableSorting: false,
+                    enableColumnMenu: false
+                };
+                $scope.gridOptions.columnDefs = [
+                    { name:'Property', width: "120", pinnedLeft:true, enableColumnMenu: false },
+                    { name:'JAN', width:"7%", minWidth: 50,  enableColumnMenu: false },
+                    { name:'FEB', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'MAR', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'APR', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'MAY', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'JUN', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'JUL', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'AUG', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'SEP', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'OCT', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'NOV', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'DEC', width:"7%", minWidth: 50, enableColumnMenu: false },
+                    { name:'Total', width: "90", pinnedRight:true, enableColumnMenu: false },
+                ];
+            var grid = [];
+            grid.push({"Property": "Indirect materials"});
+            grid.push({"Property": "Total MOH"});
+            for(var i=0;i<MONTHES.length;i++) {
+                for(var j=0;j<grid.length;j++) {
+                    try{
+                        grid[j][MONTHES[i]["short"]] = 5;
+                    }
+                    catch(err) {
+                        console.log(err);
+                    }
+                    
+                }
+            };
+            $scope.gridOptions.data = grid;
             }])
             .controller('mohProductionManagersSalariesController', [
             '$scope', 'toastr', '$localStorage',
