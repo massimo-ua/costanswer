@@ -5,6 +5,8 @@ angular.module('costAnswer', [
     'ngSanitize',
     'toastr',
     'ngStorage',
+    'ui.grid',
+    'ui.grid.pinning',
     'costAnswer.services',
     'costAnswer.filters',
     'costAnswer.directives',
