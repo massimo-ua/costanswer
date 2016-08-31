@@ -1,5 +1,5 @@
 (function(){
-    angular.module('costAnswer.core.services', []);
+    angular.module('costAnswer.core.services', ['costAnswer.core.moh.services']);
     /*.factory('projectSettingsService', [function(){
         var settings = {};
         return {
