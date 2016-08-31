@@ -12,7 +12,8 @@
                     itemForm: '=',
                     itemModel: '=',
                     controls: '=',
-                    nameProperty: '='
+                    nameProperty: '=',
+                    onSave: '&'
                 },
                 templateUrl: 'app/modules/core/views/directives/ca-thumbler.html',
                 link: function(scope, elem, attrs) {
@@ -40,6 +41,7 @@
 
                         }
                         scope.clearForm();
+                        scope.onSave()();
                     };
                     scope.loadItem = function(index) {
                         scope.activeItem = index+1;
@@ -59,6 +61,7 @@
                         scope.itemForm.$setPristine();
                         scope.controls.buttonText = "Add";
                         scope.move(-1);
+                        scope.onSave()();
                     }
                     
                     scope.range = function(start,total) {
