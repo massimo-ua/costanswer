@@ -3,7 +3,7 @@
             <h4>Choose manager:</h4>
         </div>
 </div>
-<div ca-thumbler name-property="nameProperty" display-block="5" items-list="productionManagersSalaries" item-form="itemForm" item-model="form" controls="controls"></div>
+<div ca-thumbler name-property="nameProperty" display-block="5" items-list="productionManagersSalaries" item-form="itemForm" item-model="form" controls="controls" on-save="onSave"></div>
 <div class="row">
     <ng-form id="item-form" name="itemForm">
         <div class="col-xs-12 col-md-12 col-lg-12 text-center">
@@ -46,4 +46,12 @@
             <button type="button" ng-disabled="itemForm.$invalid" class="btn btn-costanswer btn-lg" ng-click="controls.addItem(form)"> {{ controls.buttonText }} </button>
         </div>
     </ng-form>
+</div>
+<div ng-show="productionManagersSalaries.length > 0" class="row">
+    <fieldset class="costanswer">
+    <legend class="costanswer text-center"> Instant calculation results </legend>
+    <div class="row">
+    <div ui-grid="gridOptions" class="grid-table" ui-grid-pinning></div>
+    </div>
+    </fieldset>
 </div>
