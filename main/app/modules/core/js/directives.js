@@ -65,7 +65,7 @@
                     }
                     
                     scope.range = function(start,total) {
-                        if(scope.itemsList.length == 0) return;
+                        if(scope.itemsList == undefined || scope.itemsList.length == 0) return;
                         var result = [];
                         var i = 1;
                         start = start > 0 ? start : 1;
