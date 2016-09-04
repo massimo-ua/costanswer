@@ -1,6 +1,6 @@
-<div ng-show="indirectLabor.length > 0" class="row">
+<div ng-show="indirectMaterials.length > 0" class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            <h4>Choose worker:</h4>
+            <h4>Choose material:</h4>
         </div>
 </div>
 <div ca-thumbler name-property="nameProperty" display-block="5" items-list="indirectMaterials" item-form="itemForm" item-model="form" controls="controls" on-save="onSave"></div>
@@ -29,36 +29,10 @@
         </div>
     </ng-form>
 </div>
-<div class="row">
+<div ng-if="indirectMaterials.length > 0" class="row">
     <fieldset class="costanswer">
     <legend class="costanswer text-center"> Instant calculation results </legend>
-    <!--div class="row">
-    <span class="instant-results-header">Indirect materials:</span>
-    </div -->
     <div class="row">
-    <!-- div class="row div-table-wrapper">
-        <div class="div-table">
-             <div class="div-table-row">
-                <div class="div-table-cell fixed">Customer ID</div>
-                <div  class="div-table-cell">Customer Name</div>
-                <div  class="div-table-cell">Customer Address</div>
-             </div>
-            <div class="div-table-row">
-                <div class="div-table-cell fixed">001</div>
-                <div class="div-table-cell">002</div>
-                <div class="div-table-cell">003</div>
-            </div>
-            <div class="div-table-row">
-                <div class="div-table-cell fixed">xxx</div>
-                <div class="div-table-cell">yyy</div>
-                <div class="div-table-cell">www</div>
-           </div>
-            <div class="div-table-row">
-                <div class="div-table-cell fixed">ttt</div>
-                <div class="div-table-cell">uuu</div>
-                <div class="div-table-cell">Mkkk</div>
-           </div>
-    </div -->
     <div ui-grid="gridOptions" class="grid-table" ui-grid-pinning></div>
     </div>
     </fieldset>
