@@ -1,0 +1,31 @@
+.div-table{
+  display: table;         
+  width: auto;   
+  background-color:#fffffc;
+  border-collapse: collapse;
+  margin-left: 15px;
+}
+.div-table-row{
+  display:table-row;
+  width: auto;
+  clear: both;
+}
+.div-table-cell{
+  /*float: left;*/
+  display: table-cell;         
+  width: 200px;
+  padding: 4px;         
+  background-color:#fffffc;
+  border: 1px solid #909090;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.div-table-wrapper {
+    overflow-x: scroll;  
+    overflow-y: visible;
+}
+.div-table-cell.fixed {
+    position: absolute;
+    left: 30px;
+}

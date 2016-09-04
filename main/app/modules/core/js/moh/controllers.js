@@ -58,7 +58,7 @@
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
                     try {
-                        $scope.indirectMaterials = $localStorage.Project.moh.mohComponents.indirectMaterials;
+                        $scope.indirectMaterials = ($localStorage.Project.moh.mohComponents.indirectMaterials == undefined) ? [] : $localStorage.Project.moh.mohComponents.indirectMaterials;
                     } catch(err) {
                         console.log(err.name + ' ' + err.message);
                         $scope.indirectMaterials = [];
@@ -93,7 +93,13 @@
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    $scope.productionManagersSalaries = ($localStorage.Project.moh.mohComponents.productionManagersSalaries == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionManagersSalaries;
+                    try {
+
+                        $scope.productionManagersSalaries = ($localStorage.Project.moh.mohComponents.productionManagersSalaries == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionManagersSalaries;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionManagersSalaries = [];
+                    }
                     $scope.controls = {
                         buttonText: "Add"
                     };
@@ -123,7 +129,12 @@
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    $scope.productionFacilitiesInsurance = ($localStorage.Project.moh.mohComponents.productionFacilitiesInsurance == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionFacilitiesInsurance;
+                    try {
+                        $scope.productionFacilitiesInsurance = ($localStorage.Project.moh.mohComponents.productionFacilitiesInsurance == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionFacilitiesInsurance;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionFacilitiesInsurance = [];
+                    }
                     $scope.controls = {
                         buttonText: "Add"
                     };
@@ -154,7 +165,12 @@
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    $scope.productionPropertyTaxes = ($localStorage.Project.moh.mohComponents.productionPropertyTaxes == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionPropertyTaxes;
+                    try {
+                        $scope.productionPropertyTaxes = ($localStorage.Project.moh.mohComponents.productionPropertyTaxes == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionPropertyTaxes;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionPropertyTaxes = [];
+                    }
                     $scope.controls = {
                         buttonText: "Add"
                     };
@@ -184,7 +200,12 @@
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    $scope.indirectLabor = ($localStorage.Project.moh.mohComponents.indirectLabor == undefined) ? [] : $localStorage.Project.moh.mohComponents.indirectLabor;
+                    try {
+                        $scope.indirectLabor = ($localStorage.Project.moh.mohComponents.indirectLabor == undefined) ? [] : $localStorage.Project.moh.mohComponents.indirectLabor;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.indirectLabor = [];
+                    }
                     $scope.controls = {
                         buttonText: "Add"
                     };
@@ -214,7 +235,12 @@
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    $scope.productionMachineryRent = ($localStorage.Project.moh.mohComponents.productionMachineryRent == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionMachineryRent;
+                    try {
+                        $scope.productionMachineryRent = ($localStorage.Project.moh.mohComponents.productionMachineryRent == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionMachineryRent;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionMachineryRent = [];
+                    }
                     $scope.controls = {
                         buttonText: "Add"
                     };
@@ -244,7 +270,12 @@
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    $scope.productionUtilitiesAndOtherOverheadExpences = ($localStorage.Project.moh.mohComponents.productionUtilitiesAndOtherOverheadExpences == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionUtilitiesAndOtherOverheadExpences;
+                    try {
+                        $scope.productionUtilitiesAndOtherOverheadExpences = ($localStorage.Project.moh.mohComponents.productionUtilitiesAndOtherOverheadExpences == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionUtilitiesAndOtherOverheadExpences;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionUtilitiesAndOtherOverheadExpences = [];
+                    }
                     $scope.controls = {
                         buttonText: "Add"
                     };
@@ -274,7 +305,12 @@
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    $scope.productionFacilitiesAmortization = ($localStorage.Project.moh.mohComponents.productionFacilitiesAmortization == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionFacilitiesAmortization;
+                    try {
+                        $scope.productionFacilitiesAmortization = ($localStorage.Project.moh.mohComponents.productionFacilitiesAmortization == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionFacilitiesAmortization;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        $scope.productionFacilitiesAmortization = [];
+                    }
                     $scope.controls = {
                         buttonText: "Add"
                     };
