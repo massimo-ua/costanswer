@@ -99,7 +99,7 @@
                     };
                     $scope.nameProperty = "personelName";
                     if($scope.productionManagersSalaries && $scope.productionManagersSalaries.length > 0) {
-                        $scope.gridOptions.data = mohService.getInstanceResult("productionManagersSalaries", "Production Property Taxes");
+                        $scope.gridOptions.data = mohService.getInstanceResult("productionManagersSalaries", "Production Managers Salaries");
                     }
                 };
                 init();
@@ -114,7 +114,7 @@
                             }
                         } 
                     }
-                $scope.gridOptions.data = mohService.getInstanceResult("productionManagersSalaries", "Production Property Taxes");
+                $scope.gridOptions.data = mohService.getInstanceResult("productionManagersSalaries", "Production Managers Salaries");
                 }        
             }])
             .controller('mohProductionFacilitiesInsuranceController', [
@@ -179,22 +179,34 @@
             }
             }])
             .controller('mohIndirectLaborController', [
-            '$scope', 'toastr', '$localStorage',
-            function($scope, toastr, $localStorage) {
+            '$scope', 'toastr', '$localStorage', 'mohService',
+            function($scope, toastr, $localStorage, mohService) {
                 function init() {
+                    $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    try {
-                        $scope.indirectLabor = $localStorage.Project.moh.mohComponents.indirectLabor;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        $scope.indirectLabor = [];
-                    }
+                    $scope.indirectLabor = ($localStorage.Project.moh.mohComponents.indirectLabor == undefined) ? [] : $localStorage.Project.moh.mohComponents.indirectLabor;
                     $scope.controls = {
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "personelName";
+                    if($scope.indirectLabor && $scope.indirectLabor.length > 0) {
+                        $scope.gridOptions.data = mohService.getInstanceResult("indirectLabor", "Indirect Labor");
+                    }
                 };
                 init();
+                $scope.onSave = function() {
+                try {
+                        $localStorage.Project.moh.mohComponents.indirectLabor = $scope.indirectLabor;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        if(err.name == 'TypeError') {
+                            $localStorage.Project.moh.mohComponents = {
+                                "indirectLabor": $scope.indirectLabor
+                            }
+                        } 
+                    }
+                $scope.gridOptions.data = mohService.getInstanceResult("indirectLabor", "Indirect Labor");
+                }        
             }])
             .controller('mohProductionMachineryRentController', [
             '$scope', 'toastr', '$localStorage', 'mohService',
@@ -227,40 +239,64 @@
             }
             }])
             .controller('mohProductionUtilitiesAndOtherOverheadExpencesController', [
-            '$scope', 'toastr', '$localStorage',
-            function($scope, toastr, $localStorage) {
+            '$scope', 'toastr', '$localStorage', 'mohService',
+            function($scope, toastr, $localStorage, mohService) {
                 function init() {
+                    $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    try {
-                        $scope.productionUtilitiesAndOtherOverheadExpences = $localStorage.Project.moh.mohComponents.productionUtilitiesAndOtherOverheadExpences;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        $scope.productionUtilitiesAndOtherOverheadExpences = [];
-                    }
+                    $scope.productionUtilitiesAndOtherOverheadExpences = ($localStorage.Project.moh.mohComponents.productionUtilitiesAndOtherOverheadExpences == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionUtilitiesAndOtherOverheadExpences;
                     $scope.controls = {
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "expenceName";
+                    if($scope.productionUtilitiesAndOtherOverheadExpences && $scope.productionUtilitiesAndOtherOverheadExpences.length > 0) {
+                        $scope.gridOptions.data = mohService.getInstanceResult("productionUtilitiesAndOtherOverheadExpences", "Production Utilities And Other Overhead Expences");
+                    }
                 };
                 init();
-            }])
-            .controller('mohProductionFacilitiesAmortizationController', [
-            '$scope', '$state', 'toastr', '$localStorage',
-            function($scope, $state, toastr, $localStorage) {
-                function init() {
-                    $scope.form = {};
-                    try {
-                        $scope.productionFacilitiesAmortization = $localStorage.Project.moh.mohComponents.productionFacilitiesAmortization;
+                $scope.onSave = function() {
+                try {
+                        $localStorage.Project.moh.mohComponents.productionUtilitiesAndOtherOverheadExpences = $scope.productionUtilitiesAndOtherOverheadExpences;
                     } catch(err) {
                         console.log(err.name + ' ' + err.message);
-                        $scope.productionFacilitiesAmortization = [];
+                        if(err.name == 'TypeError') {
+                            $localStorage.Project.moh.mohComponents = {
+                                "productionUtilitiesAndOtherOverheadExpences": $scope.productionUtilitiesAndOtherOverheadExpences
+                            }
+                        } 
                     }
+                $scope.gridOptions.data = mohService.getInstanceResult("productionUtilitiesAndOtherOverheadExpences", "Production Utilities And Other Overhead Expences");
+            }
+            }])
+            .controller('mohProductionFacilitiesAmortizationController', [
+            '$scope', '$state', 'toastr', '$localStorage', 'mohService',
+            function($scope, $state, toastr, $localStorage, mohService) {
+                function init() {
+                    $scope.gridOptions = mohService.getGridOptions('ICR');
+                    $scope.form = {};
+                    $scope.productionFacilitiesAmortization = ($localStorage.Project.moh.mohComponents.productionFacilitiesAmortization == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionFacilitiesAmortization;
                     $scope.controls = {
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "assetName";
+                    if($scope.productionFacilitiesAmortization && $scope.productionFacilitiesAmortization.length > 0) {
+                        $scope.gridOptions.data = mohService.getInstanceResult("productionFacilitiesAmortization", "Production Facilities Amortization");
+                    }
                 };
                 init();
+                $scope.onSave = function() {
+                try {
+                        $localStorage.Project.moh.mohComponents.productionFacilitiesAmortization = $scope.productionFacilitiesAmortization;
+                    } catch(err) {
+                        console.log(err.name + ' ' + err.message);
+                        if(err.name == 'TypeError') {
+                            $localStorage.Project.moh.mohComponents = {
+                                "productionFacilitiesAmortization": $scope.productionFacilitiesAmortization
+                            }
+                        } 
+                    }
+                $scope.gridOptions.data = mohService.getInstanceResult("productionFacilitiesAmortization", "Production Facilities Amortization");
+            }
             }])
             .controller('mohReportController', [
             '$scope', '$state', 'toastr', '$localStorage',
