@@ -67,9 +67,9 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "itemName";
-                    if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
+                    //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                         $scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
-                    }
+                    //}
                 };
                 init();
                 $scope.onSave = function() {
@@ -104,9 +104,9 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "personelName";
-                    if($scope.productionManagersSalaries && $scope.productionManagersSalaries.length > 0) {
+                    //if($scope.productionManagersSalaries && $scope.productionManagersSalaries.length > 0) {
                         $scope.gridOptions.data = mohService.getInstanceResult("productionManagersSalaries", "Production Managers Salaries");
-                    }
+                    //}
                 };
                 init();
                 $scope.onSave = function() {
@@ -139,9 +139,9 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "insuaranceType";
-                    if($scope.productionFacilitiesInsurance && $scope.productionFacilitiesInsurance.length > 0) {
+                    //if($scope.productionFacilitiesInsurance && $scope.productionFacilitiesInsurance.length > 0) {
                         $scope.gridOptions.data = mohService.getInstanceResult("productionFacilitiesInsurance", "Production Facilities Insurance");
-                    }
+                    //}
                 };
                 init();
                 $scope.onSave = function() {
@@ -175,9 +175,9 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "taxName";
-                    if($scope.productionPropertyTaxes && $scope.productionPropertyTaxes.length > 0) {
+                    //if($scope.productionPropertyTaxes && $scope.productionPropertyTaxes.length > 0) {
                         $scope.gridOptions.data = mohService.getInstanceResult("productionPropertyTaxes", "Production Property Taxes");
-                    }
+                    //}
                 };
                 init();
                 $scope.onSave = function() {
@@ -210,9 +210,9 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "personelName";
-                    if($scope.indirectLabor && $scope.indirectLabor.length > 0) {
+                    //if($scope.indirectLabor && $scope.indirectLabor.length > 0) {
                         $scope.gridOptions.data = mohService.getInstanceResult("indirectLabor", "Indirect Labor");
-                    }
+                    //}
                 };
                 init();
                 $scope.onSave = function() {
@@ -245,9 +245,9 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "rentName";
-                    if($scope.productionMachineryRent && $scope.productionMachineryRent.length > 0) {
+                    //if($scope.productionMachineryRent && $scope.productionMachineryRent.length > 0) {
                         $scope.gridOptions.data = mohService.getInstanceResult("productionMachineryRent", "Production Machinery Rent");
-                    }
+                    //}
                 };
                 init();
                 $scope.onSave = function() {
@@ -280,9 +280,9 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "expenceName";
-                    if($scope.productionUtilitiesAndOtherOverheadExpences && $scope.productionUtilitiesAndOtherOverheadExpences.length > 0) {
+                    //if($scope.productionUtilitiesAndOtherOverheadExpences && $scope.productionUtilitiesAndOtherOverheadExpences.length > 0) {
                         $scope.gridOptions.data = mohService.getInstanceResult("productionUtilitiesAndOtherOverheadExpences", "Production Utilities And Other Overhead Expences");
-                    }
+                    //}
                 };
                 init();
                 $scope.onSave = function() {
@@ -315,9 +315,9 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "assetName";
-                    if($scope.productionFacilitiesAmortization && $scope.productionFacilitiesAmortization.length > 0) {
+                    //if($scope.productionFacilitiesAmortization && $scope.productionFacilitiesAmortization.length > 0) {
                         $scope.gridOptions.data = mohService.getInstanceResult("productionFacilitiesAmortization", "Production Facilities Amortization");
-                    }
+                    //}
                 };
                 init();
                 $scope.onSave = function() {
