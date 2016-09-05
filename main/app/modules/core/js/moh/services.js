@@ -9,7 +9,11 @@
                   *first row represents current component sums
                   *second row represents total amount calculated on MOH data
                   */
-                  var component = $localStorage.Project.moh.mohComponents[componentName];
+                  try {
+                      var component = $localStorage.Project.moh.mohComponents[componentName];
+                  } catch(err) {
+                      return;
+                  }
                   var grid = [];
                   grid.push({"Section": componentPluralName ? componentPluralName : componentName});
                   switch(componentName) {
