@@ -31,6 +31,9 @@
                 $scope.saveAllocationBase = function() {
                     if($scope.mohSettings.allocationBase == undefined) return;
                     $localStorage.Project.moh.allocation = $scope.mohSettings.allocationBase;
+                    if(!$localStorage.Project.moh.hasOwnProperty("mohComponents")) {
+                        $localStorage.Project.moh.mohComponents = {};
+                    }
                 }
                 function init() {
                     $scope.mohSettings = {};
@@ -68,7 +71,7 @@
                     };
                     $scope.nameProperty = "itemName";
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
-                        $scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
+                    $scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
                 };
                 init();
