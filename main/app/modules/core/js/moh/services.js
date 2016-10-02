@@ -1,8 +1,16 @@
 (function(){
     'use restrict'
     angular.module('costAnswer.core.moh.services', [])
-        .factory('mohService',['$localStorage','MONTHES', function($localStorage, MONTHES){
+        .factory('mohService',['$localStorage', '$http','MONTHES', 'REPORT_PREFIX', function($localStorage, $http, MONTHES, REPORT_PREFIX){
           return {
+              getTotalMohReport: function(uuid){
+                uuid = 'ac34501b-7abb-11e6-a3d8-021001c1a794';
+                var config = {
+                    method: 'GET',
+                    url: REPORT_PREFIX + '/moh/total/'+uuid
+                }
+                return $http(config);
+              },           
               getInstanceResult: function(componentName, componentPluralName) {
                   /*
                   *Return array that represents instance report for MOH component

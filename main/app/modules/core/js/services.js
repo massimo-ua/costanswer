@@ -1,5 +1,6 @@
 (function(){
     angular.module('costAnswer.core.services', ['costAnswer.core.moh.services']);
+    angular.module('costAnswer.core.services').value('REPORT_PREFIX','http://www.acl.pp.ua:10101/report');
     /*.factory('projectSettingsService', [function(){
         var settings = {};
         return {
