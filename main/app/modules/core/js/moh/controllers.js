@@ -338,10 +338,15 @@
             }
             }])
             .controller('mohReportController', [
-            '$scope', '$state', 'toastr', '$localStorage',
-            function($scope, $state, toastr, $localStorage) {
+            '$scope', '$state', 'toastr', '$localStorage', 'mohService',
+            function($scope, $state, toastr, $localStorage, mohService) {
                 function init() {
-                    console.log('AAAAAAAAAAAAAAAAA');
+                    mohService.getTotalMohReport()
+                        .then(function(response){
+                            $scope.report = response.data;
+                        }, function(response){
+                            console.log(response);
+                        });
                 };
                 init();
                 

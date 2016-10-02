@@ -1,0 +1,22 @@
+<div ng-show="report" class="row">
+    <div class="row" ng-repeat="(category_name, category) in report track by $index">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="text-center">
+                <h4>{{ category_name }}:</h4>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr ng-repeat="th_entry in category" ng-show="$first">
+                        <th></th><th ng-repeat="(th_month, th_cost) in th_entry">{{ th_month }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(tr_name, tr_entry) in category">
+                        <td style="width: 150px;">{{ tr_name }}</td><td ng-repeat="tr_cost in tr_entry">{{ tr_cost.toFixed(2) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
