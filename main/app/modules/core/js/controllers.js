@@ -71,7 +71,7 @@ angular.module('costAnswer.core.controllers')
                 $state.go('projectSettings');
             }
         }])
-        .controller('projectSettingsController', ['$scope', '$state', 'toastr', '$localStorage', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES', function($scope, $state, toastr, $localStorage, PROJECT_TYPES, CURRENCIES, MONTHES) {
+        .controller('projectSettingsController', ['$scope', '$state', 'toastr', '$localStorage', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES', 'DataModel', function($scope, $state, toastr, $localStorage, PROJECT_TYPES, CURRENCIES, MONTHES, DataModel) {
             function init() {
                 $scope.settings = {};
                 $scope.currencies = CURRENCIES;
@@ -84,12 +84,23 @@ angular.module('costAnswer.core.controllers')
             }
             init();
             $scope.next = function() {
-                $localStorage.Project.settings.globals = $scope.settings;
+                var project = new DataModel.Project();
+                project.begin_month = $scope.settings.begin_month;
+                project.begin_year = $scope.settings.begin_year;
+                project.currency_id = $scope.settings.currency_id;
+                project.company_name = $scope.settings.company_name;
+                project.type_id = $localStorage.Project.settings.type;
+                project.$save(function(response){
+                    console.log(response);
+                    $localStorage.Project.settings.uuid = response.uuid;
+                    $state.go('moh');
+                });
+                //$localStorage.Project.settings.globals = $scope.settings;
                 /*if($scope.settings.considerMOH) {
                     $state.go('mohDataInput.home');
                 }
                 else {*/
-                    $state.go('moh');
+                    //$state.go('moh');
                 /*}*/
             }
         }])

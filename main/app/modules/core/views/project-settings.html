@@ -10,32 +10,32 @@
 			<div ng-class="{'has-error': settingsForm.currency.$dirty && settingsForm.currency.$invalid}" class="form-group">
 				<label for="currency" class="text-default">Currency</label>
 				<select class="form-control costanswer"
-                    ng-model="settings.currency"
+                    ng-model="settings.currency_id"
                     name="currency"
                     ng-required="true"
                     ng-change="false"
-                    ng-options="currency.charCode+' ('+currency.name+')' for currency in currencies">
+                    ng-options="currency.code as currency.charCode+' ('+currency.name+')' for currency in currencies">
                 </select>
 				<div class="help-block error" ng-show="settingsForm.currency.$dirty && settingsForm.currency.$error.required">Please, fill in your email</div>
 			</div>
 			<div ng-class="{'has-error': settingsForm.companyName.$dirty && settingsForm.companyName.$invalid}" class="form-group">
 				<label for="companyName" class="text-default">Company name</label>
-				<input name="companyName" type="text" ng-model="settings.companyName" class="form-control costanswer" placeholder="Enter your Company name here" />
+				<input name="companyName" type="text" ng-model="settings.company_name" class="form-control costanswer" placeholder="Enter your Company name here" />
 				<div class="help-block error" ng-show="settingsForm.companyName.$dirty && settingsForm.companyName.$error.required">Please, fill in your Company name</div>
 			</div>
 			<div ng-class="{'has-error': settingsForm.yearToBegin.$dirty && settingsForm.yearToBegin.$invalid}" class="form-group">
 				<label for="yearToBegin" class="text-default">Year to begin</label>
-				<input name="yearToBegin" type="number" ng-required="true" min="1900" max="3000" ng-model="settings.yearToBegin" class="form-control costanswer text-right" placeholder="Enter project starting year" />
+				<input name="yearToBegin" type="number" ng-required="true" min="1900" max="3000" ng-model="settings.begin_year" class="form-control costanswer text-right" placeholder="Enter project starting year" />
 				<div class="help-block error" ng-show="settingsForm.yearToBegin.$dirty && settingsForm.yearToBegin.$error.required">Please, fill in project starting year (value between 1900 and 3000)</div>
 			</div>
             <div ng-class="{'has-error': settingsForm.monthToBegin.$dirty && settingsForm.monthToBegin.$invalid}" class="form-group">
 				<label for="monthToBegin" class="text-default">Month to begin</label>
 				<select class="form-control costanswer"
-                    ng-model="settings.monthToBegin"
+                    ng-model="settings.begin_month"
                     name="monthToBegin"
                     ng-required="true"
                     ng-change="null"
-                    ng-options="month.full for month in monthes">
+                    ng-options="month.number as month.full for month in monthes">
                 </select>
 				<div class="help-block error" ng-show="settingsForm.monthToBegin.$dirty && settingsForm.monthToBegin.$error.required">Please, select project starting month</div>
 			</div>
