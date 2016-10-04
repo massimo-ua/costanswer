@@ -38,23 +38,9 @@ angular.module('costAnswer.core.controllers')
 
         }])
         .controller('quickStartController', ['$scope', '$state', '$localStorage', 'toastr', function($scope, $state, $localStorage, toastr){
-            try {
-                $scope.showOnNext = $localStorage.Project.settings.showOnNext;
-            } catch(err) {
-                console.log(err.name + ' ' + err.message);
-                $scope.showOnNext = true;
-            }
+            $scope.showOnNext = $localStorage.showOnNext;
             $scope.next = function() {
-                try {
-                    $localStorage.Project.settings.showOnNext = $scope.showOnNext;
-                } catch(err) {
-                    console.log(err.name + ' ' + err.message);
-                    $localStorage.Project = {
-                        "settings": {
-                            "showOnNext": $scope.showOnNext
-                        }
-                    }
-                }
+                $localStorage.showOnNext = $scope.showOnNext;
                 $state.go('newProjectType');
             }
         }])
@@ -67,34 +53,59 @@ angular.module('costAnswer.core.controllers')
                 if(type == undefined) {
                     return;
                 }
-                $localStorage.Project.settings.type = type;
+                $localStorage.type = type;
                 $state.go('projectSettings');
             }
         }])
         .controller('projectSettingsController', ['$scope', '$state', 'toastr', '$localStorage', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES', 'DataModel', function($scope, $state, toastr, $localStorage, PROJECT_TYPES, CURRENCIES, MONTHES, DataModel) {
             function init() {
+                $scope.nextNew = true;
+                try {
+                    $scope.projectUuid = $localStorage.uuid;
+                } catch(err) {
+                    console.log(err.name + ' ' + err.message);
+                }
+                if($scope.projectUuid != undefined) {
+                    DataModel.Project.uuid({ uuid: $scope.projectUuid },
+                    function(response){
+                        $scope.settings.begin_month = parseInt(response.begin_month);
+                        $scope.settings.begin_year = parseInt(response.begin_year);
+                        $scope.settings.currency_id = parseInt(response.currency_id);
+                        $scope.settings.company_name = response.company_name;
+                        $scope.nextNew = false;
+                    },
+                    function(err){
+                        console.log(err);
+                    });
+
+                }
                 $scope.settings = {};
                 $scope.currencies = CURRENCIES;
                 $scope.monthes = MONTHES;
-                $scope.settings.currency = $scope.currencies[0];
-                var currentTime = new Date();
-                $scope.settings.yearToBegin = currentTime.getFullYear(); 
-                $scope.settings.monthToBegin = $scope.monthes[currentTime.getMonth()];
-                $scope.settings.considerMOH = true;
+                //$scope.settings.currency = $scope.currencies[0];
+                //var currentTime = new Date();
+                //$scope.settings.yearToBegin = currentTime.getFullYear(); 
+                //$scope.settings.monthToBegin = $scope.monthes[currentTime.getMonth()];
+                //$scope.settings.considerMOH = true;
             }
             init();
             $scope.next = function() {
-                var project = new DataModel.Project();
-                project.begin_month = $scope.settings.begin_month;
-                project.begin_year = $scope.settings.begin_year;
-                project.currency_id = $scope.settings.currency_id;
-                project.company_name = $scope.settings.company_name;
-                project.type_id = $localStorage.Project.settings.type;
-                project.$save(function(response){
-                    console.log(response);
-                    $localStorage.Project.settings.uuid = response.uuid;
+                if($scope.nextNew) {
+                    var project = new DataModel.Project();
+                    project.begin_month = $scope.settings.begin_month;
+                    project.begin_year = $scope.settings.begin_year;
+                    project.currency_id = $scope.settings.currency_id;
+                    project.company_name = $scope.settings.company_name;
+                    project.type_id = $localStorage.type;
+                    project.$save(function(response){
+                        console.log(response);
+                        $localStorage.uuid = response.uuid;
+                        $state.go('moh');
+                    });
+                } else {
+                    //todo: update project settings
                     $state.go('moh');
-                });
+                }
                 //$localStorage.Project.settings.globals = $scope.settings;
                 /*if($scope.settings.considerMOH) {
                     $state.go('mohDataInput.home');
@@ -151,7 +162,7 @@ angular.module('costAnswer.core.controllers')
             '$scope', 'toastr', '$localStorage', 'PROJECT_TYPES', 'DATAINPUT_HEADER',
             function($scope, toastr, $localStorage, PROJECT_TYPES, DATAINPUT_HEADER){
                 function init() {
-                    $scope.projectType = PROJECT_TYPES[$localStorage.Project.settings.type];
+                    $scope.projectType = PROJECT_TYPES[$localStorage.type];
                     $scope.datainput_header = DATAINPUT_HEADER;
                 }
                 init();
