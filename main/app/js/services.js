@@ -1,6 +1,6 @@
 (function(){
     angular.module('costAnswer.services', []);
-    angular.module('costAnswer.services').value('PROJECT_TYPES', {1: 'Actual', 2: 'Forecast', 3: 'Variance'});
+    angular.module('costAnswer.services').value('PROJECT_TYPES', {1: 'Forecast', 2: 'Actual', 3: 'Variance'});
     angular.module('costAnswer.services').value('CURRENCIES', [{charCode: 'USD', code: 840, name: 'US Dollars'}, {charCode: 'EUR', code: 978, name: 'Euro'}, {charCode: 'GBP', code: 826, name: 'Great Britain Pounds'}]);
     angular.module('costAnswer.services').value('MONTHES', [
         {number: 1, short: 'JAN', full: 'January'},

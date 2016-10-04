@@ -7,9 +7,9 @@
             <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
             <div ng-class="{'has-error': mohSettingsForm.mohCalculationBase.$dirty && mohSettingsForm.mohCalculationBase.$invalid}" class="form-group">
 				<select class="form-control costanswer"
-                    ng-model="mohSettings.calculationBase"
+                    ng-disabled = "mohId"
+                    ng-model="mohSettings.calculation_base_id"
                     name="mohCalculationBase"
-                    ng-change="saveCalculationBase()"
                     ng-options="item.id as item.name for item in moh_calculation_base">
                     <option value="">Choose option...</option>
                 </select>
@@ -22,8 +22,8 @@
                 <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
                 <div ng-class="{'has-error': mohSettingsForm.mohAllocationBase.$dirty && mohSettingsForm.mohAllocationBase.$invalid}" class="form-group">
                 <select class="form-control costanswer"
-                    ng-disabled="!mohSettings.calculationBase"
-                    ng-model="mohSettings.allocationBase"
+                    ng-disabled="!mohSettings.calculation_base_id"
+                    ng-model="mohSettings.allocation_base_id"
                     name="mohAllocationBase"
                     ng-required="true"
                     ng-change="saveAllocationBase()"
