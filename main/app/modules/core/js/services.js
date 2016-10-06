@@ -18,6 +18,37 @@
                 saveWithUuid: {
                     method: 'POST',
                     url: API_PREFIX+'/moh/uuid'
+                },
+                addMohComponent: {
+                    method: 'POST',
+                    params: { moh_id: '@moh_id', component: '@component' },
+                    url: API_PREFIX+'/moh/:moh_id/:component'
+                },
+                updateMohComponent: {
+                    method: 'PUT',
+                    params: { moh_id: '@id', component: '@component' },
+                    url: API_PREFIX+'/:component/:id/'
+                },
+                addComponentParam: {
+                    method: 'POST',
+                    params: { component: '@component', component_id: '@component_id'},
+                    url: API_PREFIX+'/:component/:component_id/params'
+                },
+                updateComponentParam: {
+                    method: 'PUT',
+                    params: { component: '@component', id: '@id'},
+                    url: API_PREFIX+'/:component/:id/params'
+                },
+                getMohComponent: {
+                    method: 'GET',
+                    params: { id: '@id', component: '@component' },
+                    url: API_PREFIX+'/:component/:id'
+                },
+                getMohComponents: {
+                    method: 'GET',
+                    params: { moh_id: '@moh_id', component: '@component' },
+                    isArray: true,
+                    url: API_PREFIX+'/moh/:moh_id/:component'
                 }
             })
         }

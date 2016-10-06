@@ -1,16 +1,48 @@
 (function(){
     'use restrict'
     angular.module('costAnswer.core.moh.services', [])
-        .factory('mohService',['$localStorage', '$http','MONTHES', 'API_PREFIX', function($localStorage, $http, MONTHES, REPORT_PREFIX){
+        .factory('mohService',['$localStorage', '$http','MONTHES', 'API_PREFIX', function($localStorage, $http, MONTHES, API_PREFIX){
           return {
               getTotalMohReport: function(uuid){
-                uuid = 'ac34501b-7abb-11e6-a3d8-021001c1a794';
+                //uuid = 'ac34501b-7abb-11e6-a3d8-021001c1a794';
                 var config = {
                     method: 'GET',
                     url: API_PREFIX + '/report/moh/total/'+uuid
                 }
                 return $http(config);
-              },           
+              },
+              parseMohResponse: function(response, mode) {
+                  switch(mode){
+                      case 1:
+                        return [];
+                      case 2:
+                        var result = [];
+                        for(var i=0; i<response.length; i++){
+                            var chunk = {};
+                            chunk.id = response[i].id;
+                            chunk.name = response[i].name;
+                            if(response[i].params[0].id) {
+                                chunk.param_id = parseInt(response[i].params[0].id);
+                            }
+                            if(response[i].params[0].cost_per_month) {
+                                chunk.cost_per_month = parseInt(response[i].params[0].cost_per_month)/100;
+                            }
+                            if(response[i].params[0].salary) {
+                                chunk.salary = parseInt(response[i].params[0].salary)/100;
+                            }
+                            if(response[i].params[0].annual_growth) {
+                                chunk.annual_growth = parseFloat(response[i].params[0].annual_growth)*100;
+                            }
+                            if(response[i].params[0].payroll_tax) {
+                                chunk.payroll_tax = parseInt(response[i].params[0].payroll_tax)/100;
+                            }
+                            result.push(chunk);
+                        }
+                        return result;
+                  }
+              },
+
+
               getInstanceResult: function(componentName, componentPluralName) {
                   /*
                   *Return array that represents instance report for MOH component
@@ -144,7 +176,11 @@
                 return +(Math.round(num + "e+2")  + "e-2");
             }
             function getAbsoluteMonth(month) {
-                var startMonth = ($localStorage.Project.settings.globals.monthToBegin.number) ? $localStorage.Project.settings.globals.monthToBegin.number-1 : 0;
+                try {
+                    var startMonth = ($localStorage.Project.settings.globals.monthToBegin.number) ? $localStorage.Project.settings.globals.monthToBegin.number-1 : 0;
+                } catch(err) {
+                    var startMonth = 0;
+                }
                 var month = startMonth + month;
                 if(month > 11) {
                     month = month - 12;

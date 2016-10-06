@@ -61,39 +61,62 @@
                 init();
             }])
             .controller('mohIndirectMaterialsController', [
-            '$scope', 'toastr', '$localStorage', 'mohService',
-            function($scope, toastr, $localStorage, mohService) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
+            function($scope, toastr, $localStorage, mohService, DataModel) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    try {
-                        $scope.indirectMaterials = ($localStorage.Project.moh.mohComponents.indirectMaterials == undefined) ? [] : $localStorage.Project.moh.mohComponents.indirectMaterials;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        $scope.indirectMaterials = [];
-                    }
+                    $scope.year_number = 1;
+                    $scope.month_number = 0;
+                    $scope.component = 'indirectmaterials';
+                    $scope.mohId = $localStorage.moh;
+                    $scope.indirectMaterials = [];
+                    DataModel.Moh.getMohComponents({ moh_id: $scope.mohId, component: $scope.component }, function(response){
+                        $scope.indirectMaterials = mohService.parseMohResponse(response,2);
+                    });
                     $scope.controls = {
                         buttonText: "Add"
                     };
-                    $scope.nameProperty = "itemName";
+                    $scope.nameProperty = "name";
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
-                    $scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
+                    //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
                 };
                 init();
-                $scope.onSave = function() {
-                try {
-                        $localStorage.Project.moh.mohComponents.indirectMaterials = $scope.indirectMaterials;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        if(err.name == 'TypeError') {
-                            $localStorage.Project.moh.mohComponents = {
-                                "indirectMaterials": $scope.indirectMaterials
-                            }
-                        } 
+                //нужен onDelete метод
+                $scope.onSave = function(newItem, callback) {
+                    if($scope.mohId != undefined) {
+                        var component = new DataModel.Moh();
+                        component.name = newItem.name;
+                        component.$addMohComponent({ moh_id: $scope.mohId, component: $scope.component }, function(response){
+                            newItem.id = response.id;
+                            var param = new DataModel.Moh();
+                            param.cost_per_month = Math.round(newItem.cost_per_month * 100);
+                            param.year_number = $scope.year_number;
+                            param.month_number = $scope.month_number;
+                            param.$addComponentParam({ component: $scope.component, component_id: response.id }, function(response){ 
+                                $scope.indirectMaterials.push(newItem);
+                                callback();
+                            });
+                        });
+                    } else {
+                        return;
                     }
-                $scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
-                
+                //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
+            }
+            $scope.onUpdate = function(item, callback) {
+                var component = new DataModel.Moh();
+                component.name = item.name;
+                component.$updateMohComponent({ id: item.id, component: $scope.component }, function(response){
+                    var param = new DataModel.Moh();
+                    param.cost_per_month = item.cost_per_month * 100;
+                    param.$updateComponentParam({ component: $scope.component, id: item.param_id }, function(response){
+                        callback();
+                    }); 
+                }); 
+            }
+            $scope.onDelete = function(id, callback) {
+
             }
             }])
             .controller('mohProductionManagersSalariesController', [
@@ -347,14 +370,15 @@
             '$scope', '$state', 'toastr', '$localStorage', 'mohService',
             function($scope, $state, toastr, $localStorage, mohService) {
                 function init() {
-                    mohService.getTotalMohReport()
+                    if($localStorage.uuid) {
+                        mohService.getTotalMohReport($localStorage.uuid)
                         .then(function(response){
                             $scope.report = response.data;
                         }, function(response){
                             console.log(response);
                         });
+                    }
                 };
-                init();
-                
+                init(); 
             }]);
 }());
