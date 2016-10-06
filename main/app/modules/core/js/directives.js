@@ -13,7 +13,9 @@
                     itemModel: '=',
                     controls: '=',
                     nameProperty: '=',
-                    onSave: '&'
+                    onSave: '&',
+                    onUpdate: '&',
+                    onDelete: '&'
                 },
                 templateUrl: 'app/modules/core/views/directives/ca-thumbler.html',
                 link: function(scope, elem, attrs) {
@@ -29,19 +31,17 @@
                         var copyOfNewItem = {};
                         angular.copy(newItem, copyOfNewItem);
                         if(scope.activeItem === undefined) {
-                            scope.itemsList.push(copyOfNewItem);
-                            scope.move(1);
+                            scope.onSave()(copyOfNewItem, function(){
+                                scope.move(1);
+                                scope.clearForm();
+                            });
                         }
                         else {
-                            try {
+                            scope.onUpdate()(copyOfNewItem, function(){
                                 scope.itemsList[scope.activeItem-1] = copyOfNewItem;
-                            } catch(err) {
-                                console.log(err.name + ' ' + err.message);
-                            }
-
+                                scope.clearForm();
+                            });
                         }
-                        scope.clearForm();
-                        scope.onSave()();
                     };
                     scope.loadItem = function(index) {
                         scope.activeItem = index+1;
@@ -55,13 +55,14 @@
                         scope.controls.buttonText = "Add";
                     }
                     scope.removeItem = function(index) {
-                        scope.itemsList.splice(index,1);
-                        scope.itemModel = {};
-                        scope.activeItem = undefined;
-                        scope.itemForm.$setPristine();
-                        scope.controls.buttonText = "Add";
-                        scope.move(-1);
-                        scope.onSave()();
+                        scope.onDelete()(scope.itemsList[index].id, function(){
+                            scope.itemsList.splice(index,1);
+                            scope.itemModel = {};
+                            scope.activeItem = undefined;
+                            scope.itemForm.$setPristine();
+                            scope.controls.buttonText = "Add";
+                            scope.move(-1);
+                        });
                     }
                     
                     scope.range = function(start,total) {
