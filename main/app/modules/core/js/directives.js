@@ -31,7 +31,8 @@
                         var copyOfNewItem = {};
                         angular.copy(newItem, copyOfNewItem);
                         if(scope.activeItem === undefined) {
-                            scope.onSave()(copyOfNewItem, function(){
+                            scope.onSave()(copyOfNewItem, function(response){
+                                scope.itemsList.push(response);
                                 scope.move(1);
                                 scope.clearForm();
                             });
@@ -55,12 +56,9 @@
                         scope.controls.buttonText = "Add";
                     }
                     scope.removeItem = function(index) {
-                        scope.onDelete()(scope.itemsList[index].id, function(){
+                        scope.onDelete()(scope.itemsList[index], function(){
                             scope.itemsList.splice(index,1);
-                            scope.itemModel = {};
-                            scope.activeItem = undefined;
-                            scope.itemForm.$setPristine();
-                            scope.controls.buttonText = "Add";
+                            scope.clearForm();
                             scope.move(-1);
                         });
                     }
