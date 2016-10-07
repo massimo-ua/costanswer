@@ -26,7 +26,12 @@
                 },
                 updateMohComponent: {
                     method: 'PUT',
-                    params: { moh_id: '@id', component: '@component' },
+                    params: { id: '@id', component: '@component' },
+                    url: API_PREFIX+'/:component/:id/'
+                },
+                deleteMohComponent: {
+                    method: 'DELETE',
+                    params: { id: '@id', component: '@component' },
                     url: API_PREFIX+'/:component/:id/'
                 },
                 addComponentParam: {

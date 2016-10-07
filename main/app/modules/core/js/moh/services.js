@@ -1,7 +1,7 @@
 (function(){
     'use restrict'
     angular.module('costAnswer.core.moh.services', [])
-        .factory('mohService',['$localStorage', '$http','MONTHES', 'API_PREFIX', function($localStorage, $http, MONTHES, API_PREFIX){
+        .factory('mohService',['$localStorage', '$http', 'MONTHES', 'API_PREFIX', 'DataModel', function($localStorage, $http, MONTHES, API_PREFIX, DataModel){
           return {
               getTotalMohReport: function(uuid){
                 //uuid = 'ac34501b-7abb-11e6-a3d8-021001c1a794';
@@ -13,9 +13,11 @@
               },
               parseMohResponse: function(response, mode) {
                   switch(mode){
-                      case 1:
+                      case "fc-predeterm-rate":
                         return [];
-                      case 2:
+                      case "ac-full-cost":
+                        return [];
+                      case "fc-full-cost":
                         var result = [];
                         for(var i=0; i<response.length; i++){
                             var chunk = {};
@@ -41,8 +43,64 @@
                         return result;
                   }
               },
-
-
+              onSave: function(mohId, componentName, year_number, month_number, newItem, callback) {
+                    if(mohId != undefined) {
+                        var component = new DataModel.Moh();
+                        component.name = newItem.name;
+                        component.$addMohComponent({ moh_id: mohId, component: componentName }, function(response){
+                            newItem.id = response.id;
+                            var param = new DataModel.Moh();
+                            if(newItem.cost_per_month) {
+                                param.cost_per_month = Math.round(newItem.cost_per_month * 100);
+                            }
+                            if(newItem.salary) {
+                                param.salary = Math.round(newItem.salary * 100);
+                            }
+                            if(newItem.payroll_tax) {
+                                param.payroll_tax = Math.round(newItem.payroll_tax * 100);
+                            }
+                            if(newItem.annual_growth) {
+                                param.annual_growth = Math.round(newItem.annual_growth * 100) / 10000;
+                            }
+                            param.year_number = year_number;
+                            param.month_number = month_number;
+                            param.$addComponentParam({ component: componentName, component_id: response.id }, function(response){ 
+                                newItem.param_id = response.id;
+                                callback(newItem);
+                            });
+                        });
+                    } else {
+                        return;
+                    }
+            },
+            onUpdate: function(componentName, item, callback) {
+                var component = new DataModel.Moh();
+                component.name = item.name;
+                component.$updateMohComponent({ id: item.id, component: componentName }, function(response){
+                    var param = new DataModel.Moh();
+                    if(item.cost_per_month) {
+                        param.cost_per_month = Math.round(item.cost_per_month * 100);
+                    }
+                    if(item.salary) {
+                        param.salary = Math.round(item.salary * 100);
+                    }
+                    if(item.payroll_tax) {
+                        param.payroll_tax = Math.round(item.payroll_tax * 100);
+                    }
+                    if(item.annual_growth) {
+                        param.annual_growth = Math.round(item.annual_growth * 100) / 10000;
+                    }
+                    param.$updateComponentParam({ component: componentName, id: item.param_id }, function(response){
+                        callback();
+                    });
+                }); 
+            },
+            onDelete: function(componentName, item, callback) {
+                DataModel.Moh.deleteMohComponent({ id: item.id, component: componentName }, function(response){
+                    console.log(response);
+                    callback();
+                });
+            },
               getInstanceResult: function(componentName, componentPluralName) {
                   /*
                   *Return array that represents instance report for MOH component
