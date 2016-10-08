@@ -51,16 +51,20 @@
                             newItem.id = response.id;
                             var param = new DataModel.Moh();
                             if(newItem.cost_per_month) {
+                                newItem.cost_per_month = roundToTwo(newItem.cost_per_month);
                                 param.cost_per_month = Math.round(newItem.cost_per_month * 100);
                             }
                             if(newItem.salary) {
+                                newItem.salary = roundToTwo(newItem.salary);
                                 param.salary = Math.round(newItem.salary * 100);
                             }
                             if(newItem.payroll_tax) {
+                                newItem.payroll_tax = roundToTwo(newItem.payroll_tax);
                                 param.payroll_tax = Math.round(newItem.payroll_tax * 100);
                             }
                             if(newItem.annual_growth) {
-                                param.annual_growth = Math.round(newItem.annual_growth * 100) / 10000;
+                                newItem.annual_growth = roundToTwo(newItem.annual_growth);
+                                param.annual_growth = newItem.annual_growth / 100;
                             }
                             param.year_number = year_number;
                             param.month_number = month_number;
@@ -79,16 +83,20 @@
                 component.$updateMohComponent({ id: item.id, component: componentName }, function(response){
                     var param = new DataModel.Moh();
                     if(item.cost_per_month) {
+                        item.cost_per_month = roundToTwo(item.cost_per_month);
                         param.cost_per_month = Math.round(item.cost_per_month * 100);
                     }
                     if(item.salary) {
+                        item.salary = roundToTwo(item.salary);
                         param.salary = Math.round(item.salary * 100);
                     }
                     if(item.payroll_tax) {
+                        item.payroll_tax = roundToTwo(item.payroll_tax);
                         param.payroll_tax = Math.round(item.payroll_tax * 100);
                     }
                     if(item.annual_growth) {
-                        param.annual_growth = Math.round(item.annual_growth * 100) / 10000;
+                        item.annual_growth = roundToTwo(item.annual_growth);
+                        param.annual_growth = item.annual_growth / 100;
                     }
                     param.$updateComponentParam({ component: componentName, id: item.param_id }, function(response){
                         callback();
