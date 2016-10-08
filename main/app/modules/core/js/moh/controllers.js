@@ -70,9 +70,9 @@
                     $scope.month_number = 0;
                     $scope.component = 'indirectmaterials';
                     $scope.mohId = $localStorage.moh;
-                    $scope.indirectMaterials = [];
+                    $scope.itemsList = [];
                     DataModel.Moh.getMohComponents({ moh_id: $scope.mohId, component: $scope.component }, function(response){
-                        $scope.indirectMaterials = mohService.parseMohResponse(response,"fc-full-cost");
+                        $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
                     });
                     $scope.controls = {
                         buttonText: "Add"
@@ -146,9 +146,9 @@
                     $scope.month_number = 0;
                     $scope.component = 'productionfacilitiesinsurance';
                     $scope.mohId = $localStorage.moh;
-                    $scope.productionFacilitiesInsurance = [];
+                    $scope.itemsList = [];
                     DataModel.Moh.getMohComponents({ moh_id: $scope.mohId, component: $scope.component }, function(response){
-                        $scope.productionFacilitiesInsurance = mohService.parseMohResponse(response,"fc-full-cost");
+                        $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
                     });
                     $scope.controls = {
                         buttonText: "Add"
@@ -177,39 +177,44 @@
                 }
             }])
             .controller('mohProductionPropertyTaxesController', [
-            '$scope', 'toastr', '$localStorage', 'mohService',
-            function($scope, toastr, $localStorage, mohService) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
+            function($scope, toastr, $localStorage, mohService, DataModel) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    try {
-                        $scope.productionPropertyTaxes = ($localStorage.Project.moh.mohComponents.productionPropertyTaxes == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionPropertyTaxes;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        $scope.productionPropertyTaxes = [];
-                    }
+                    $scope.year_number = 1;
+                    $scope.month_number = 0;
+                    $scope.component = 'productionpropertytaxes';
+                    $scope.mohId = $localStorage.moh;
+                    $scope.itemsList = [];
+                    DataModel.Moh.getMohComponents({ moh_id: $scope.mohId, component: $scope.component }, function(response){
+                        $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
+                    });
                     $scope.controls = {
                         buttonText: "Add"
                     };
-                    $scope.nameProperty = "taxName";
-                    //if($scope.productionPropertyTaxes && $scope.productionPropertyTaxes.length > 0) {
-                        $scope.gridOptions.data = mohService.getInstanceResult("productionPropertyTaxes", "Production Property Taxes");
+                    $scope.nameProperty = "name";
+                    //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
+                    //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
                 };
                 init();
-                $scope.onSave = function() {
-                try {
-                        $localStorage.Project.moh.mohComponents.productionPropertyTaxes = $scope.productionPropertyTaxes;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        if(err.name == 'TypeError') {
-                            $localStorage.Project.moh.mohComponents = {
-                                "productionPropertyTaxes": $scope.productionPropertyTaxes
-                            }
-                        } 
-                    }
-                $scope.gridOptions.data = mohService.getInstanceResult("productionPropertyTaxes", "Production Property Taxes");
-            }
+                $scope.onSave = function(newItem, callback) {
+                    mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
+                        callback(response);
+                        //add rebuild instanse report sentence here
+                    });
+                }
+                $scope.onUpdate = function(item, callback) {
+                    mohService.onUpdate($scope.component, item, function(){
+                        callback();
+                    });
+                }
+                $scope.onDelete = function(item, callback) {
+                    mohService.onDelete($scope.component, item, function(){
+                        callback();
+                    });
+                }
             }])
             .controller('mohIndirectLaborController', [
             '$scope', 'toastr', '$localStorage', 'mohService',
