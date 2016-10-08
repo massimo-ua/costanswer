@@ -1,9 +1,9 @@
-<div ng-show="indirectLabor.length > 0" class="row">
+<div ng-show="itemsList.length > 0" class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
             <h4>Choose worker:</h4>
         </div>
 </div>
-<div ca-thumbler name-property="nameProperty" display-block="5" items-list="indirectLabor" item-form="itemForm" item-model="form" controls="controls" on-save="onSave"></div>
+<div ca-thumbler name-property="nameProperty" display-block="5" items-list="itemsList" item-form="itemForm" item-model="form" controls="controls" on-save="onSave" on-update="onUpdate" on-delete="onDelete"></div>
 <div class="row">
     <ng-form id="item-form" name="itemForm">
         <div class="col-xs-12 col-md-12 col-lg-12 text-center">
@@ -11,7 +11,7 @@
         </div>
         <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
 		<div ng-class="{'has-error': itemForm.personelName.$dirty && itemForm.personelName.$invalid}" class="form-group">
-			<input name="personelName" maxlength="20" type="text" ng-required="true" ng-model="form.personelName" class="form-control costanswer" placeholder="Name" />
+			<input name="personelName" maxlength="20" type="text" ng-required="true" ng-model="form.name" class="form-control costanswer" placeholder="Name" />
 			<div class="help-block error" ng-show="itemForm.personelName.$dirty && itemForm.personelName.$error.required">Please, fill in Name of personnel</div>
 		</div>
         </div>
@@ -29,7 +29,7 @@
         </div>
         <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
 		<div ng-class="{'has-error': itemForm.payrollTaxes.$dirty && itemForm.payrollTaxes.$invalid}" class="form-group">
-            <input name="payrollTaxes" type="number" ng-required="true" min="0.01" ng-model="form.payrollTaxes" class="form-control costanswer" placeholder="$" />
+            <input name="payrollTaxes" type="number" ng-required="true" min="0.01" ng-model="form.payroll_tax" class="form-control costanswer" placeholder="$" />
 			<div class="help-block error" ng-show="itemForm.payrollTaxes.$dirty && itemForm.payrollTaxes.$invalid">Please, fill in Payroll taxes</div>
 		</div>
         </div>
@@ -38,7 +38,7 @@
         </div>
         <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
 		<div ng-class="{'has-error': itemForm.annualGrowthRate.$dirty && itemForm.annualGrowthRate.$invalid}" class="form-group">
-            <input name="annualGrowthRate" type="number" ng-required="true" min="1" max="100" ng-model="form.annualGrowthRate" class="form-control costanswer" placeholder="%" />
+            <input name="annualGrowthRate" type="number" ng-required="true" min="1" max="100" ng-model="form.annual_growth" class="form-control costanswer" placeholder="%" />
 			<div class="help-block error" ng-show="itemForm.annualGrowthRate.$dirty && itemForm.annualGrowthRate.$invalid">Please, fill in Annual Growth Rate</div>
 		</div>
         </div>

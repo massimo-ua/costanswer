@@ -217,39 +217,44 @@
                 }
             }])
             .controller('mohIndirectLaborController', [
-            '$scope', 'toastr', '$localStorage', 'mohService',
-            function($scope, toastr, $localStorage, mohService) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
+            function($scope, toastr, $localStorage, mohService, DataModel) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    try {
-                        $scope.indirectLabor = ($localStorage.Project.moh.mohComponents.indirectLabor == undefined) ? [] : $localStorage.Project.moh.mohComponents.indirectLabor;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        $scope.indirectLabor = [];
-                    }
+                    $scope.year_number = 1;
+                    $scope.month_number = 0;
+                    $scope.component = 'indirectlabor';
+                    $scope.mohId = $localStorage.moh;
+                    $scope.itemsList = [];
+                    DataModel.Moh.getMohComponents({ moh_id: $scope.mohId, component: $scope.component }, function(response){
+                        $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
+                    });
                     $scope.controls = {
                         buttonText: "Add"
                     };
-                    $scope.nameProperty = "personelName";
-                    //if($scope.indirectLabor && $scope.indirectLabor.length > 0) {
-                        $scope.gridOptions.data = mohService.getInstanceResult("indirectLabor", "Indirect Labor");
+                    $scope.nameProperty = "name";
+                    //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
+                    //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
                 };
                 init();
-                $scope.onSave = function() {
-                try {
-                        $localStorage.Project.moh.mohComponents.indirectLabor = $scope.indirectLabor;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        if(err.name == 'TypeError') {
-                            $localStorage.Project.moh.mohComponents = {
-                                "indirectLabor": $scope.indirectLabor
-                            }
-                        } 
-                    }
-                $scope.gridOptions.data = mohService.getInstanceResult("indirectLabor", "Indirect Labor");
-                }        
+                $scope.onSave = function(newItem, callback) {
+                    mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
+                        callback(response);
+                        //add rebuild instanse report sentence here
+                    });
+                }
+                $scope.onUpdate = function(item, callback) {
+                    mohService.onUpdate($scope.component, item, function(){
+                        callback();
+                    });
+                }
+                $scope.onDelete = function(item, callback) {
+                    mohService.onDelete($scope.component, item, function(){
+                        callback();
+                    });
+                }
             }])
             .controller('mohProductionMachineryRentController', [
             '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
@@ -332,39 +337,44 @@
                 }
             }])
             .controller('mohProductionFacilitiesAmortizationController', [
-            '$scope', '$state', 'toastr', '$localStorage', 'mohService',
-            function($scope, $state, toastr, $localStorage, mohService) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
+            function($scope, toastr, $localStorage, mohService, DataModel) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    try {
-                        $scope.productionFacilitiesAmortization = ($localStorage.Project.moh.mohComponents.productionFacilitiesAmortization == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionFacilitiesAmortization;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        $scope.productionFacilitiesAmortization = [];
-                    }
+                    $scope.year_number = 1;
+                    $scope.month_number = 0;
+                    $scope.component = 'productionfacilitiesamortization';
+                    $scope.mohId = $localStorage.moh;
+                    $scope.itemsList = [];
+                    DataModel.Moh.getMohComponents({ moh_id: $scope.mohId, component: $scope.component }, function(response){
+                        $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
+                    });
                     $scope.controls = {
                         buttonText: "Add"
                     };
-                    $scope.nameProperty = "assetName";
-                    //if($scope.productionFacilitiesAmortization && $scope.productionFacilitiesAmortization.length > 0) {
-                        $scope.gridOptions.data = mohService.getInstanceResult("productionFacilitiesAmortization", "Production Facilities Amortization");
+                    $scope.nameProperty = "name";
+                    //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
+                    //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
                 };
                 init();
-                $scope.onSave = function() {
-                try {
-                        $localStorage.Project.moh.mohComponents.productionFacilitiesAmortization = $scope.productionFacilitiesAmortization;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        if(err.name == 'TypeError') {
-                            $localStorage.Project.moh.mohComponents = {
-                                "productionFacilitiesAmortization": $scope.productionFacilitiesAmortization
-                            }
-                        } 
-                    }
-                $scope.gridOptions.data = mohService.getInstanceResult("productionFacilitiesAmortization", "Production Facilities Amortization");
-            }
+                $scope.onSave = function(newItem, callback) {
+                    mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
+                        callback(response);
+                        //add rebuild instanse report sentence here
+                    });
+                }
+                $scope.onUpdate = function(item, callback) {
+                    mohService.onUpdate($scope.component, item, function(){
+                        callback();
+                    });
+                }
+                $scope.onDelete = function(item, callback) {
+                    mohService.onDelete($scope.component, item, function(){
+                        callback();
+                    });
+                }
             }])
             .controller('mohReportController', [
             '$scope', '$state', 'toastr', '$localStorage', 'mohService',
