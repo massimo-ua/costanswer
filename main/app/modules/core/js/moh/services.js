@@ -105,7 +105,6 @@
             },
             onDelete: function(componentName, item, callback) {
                 DataModel.Moh.deleteMohComponent({ id: item.id, component: componentName }, function(response){
-                    console.log(response);
                     callback();
                 });
             },
