@@ -11,6 +11,16 @@
                 }
                 return $http(config);
               },
+              getInstantMohReport: function(uuid, component, callback){
+                //uuid = 'ac34501b-7abb-11e6-a3d8-021001c1a794';
+                var config = {
+                    method: 'GET',
+                    url: API_PREFIX + '/report/moh/instant/'+uuid+'/'+convertReportSectionName(component)
+                }
+                $http(config).then(function(response){
+                    callback(response.data);
+                });
+              },
               parseMohResponse: function(response, mode) {
                   switch(mode){
                       case "fc-predeterm-rate":
@@ -251,6 +261,28 @@
                     month = month - 12;
                 }
                 return MONTHES[month];
+            }
+            function convertReportSectionName(code) {
+                switch(code) {
+                    case "im":
+                        return "indirect_material";
+                    case "il":
+                        return "indirect_labor";
+                    case "pms":
+                        return "production_manager_salary";
+                    case "pfi":
+                        return "production_facilities_insurance";
+                    case "pfa":
+                        return "production_facilities_amortization";
+                    case "pmr":
+                        return "production_machinery_rent";
+                    case "ppt":
+                        return "production_property_tax";
+                    case "puaooe":
+                        return "production_utilities_and_other_overhead_expence";
+                    default:
+                        return "";
+                }
             }
         }]);
 }());
