@@ -101,40 +101,44 @@
                 }
             }])
             .controller('mohProductionManagersSalariesController', [
-            '$scope', 'toastr', '$localStorage', 'mohService',
-            function($scope, toastr, $localStorage, mohService) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
+            function($scope, toastr, $localStorage, mohService, DataModel) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
-                    try {
-
-                        $scope.productionManagersSalaries = ($localStorage.Project.moh.mohComponents.productionManagersSalaries == undefined) ? [] : $localStorage.Project.moh.mohComponents.productionManagersSalaries;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        $scope.productionManagersSalaries = [];
-                    }
+                    $scope.year_number = 1;
+                    $scope.month_number = 0;
+                    $scope.component = 'productionmanagerssalaries';
+                    $scope.mohId = $localStorage.moh;
+                    $scope.itemsList = [];
+                    DataModel.Moh.getMohComponents({ moh_id: $scope.mohId, component: $scope.component }, function(response){
+                        $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
+                    });
                     $scope.controls = {
                         buttonText: "Add"
                     };
-                    $scope.nameProperty = "personelName";
-                    //if($scope.productionManagersSalaries && $scope.productionManagersSalaries.length > 0) {
-                        $scope.gridOptions.data = mohService.getInstanceResult("productionManagersSalaries", "Production Managers Salaries");
+                    $scope.nameProperty = "name";
+                    //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
+                    //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
                 };
                 init();
-                $scope.onSave = function() {
-                try {
-                        $localStorage.Project.moh.mohComponents.productionManagersSalaries = $scope.productionManagersSalaries;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        if(err.name == 'TypeError') {
-                            $localStorage.Project.moh.mohComponents = {
-                                "productionManagersSalaries": $scope.productionManagersSalaries
-                            }
-                        } 
-                    }
-                $scope.gridOptions.data = mohService.getInstanceResult("productionManagersSalaries", "Production Managers Salaries");
-                }        
+                $scope.onSave = function(newItem, callback) {
+                    mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
+                        callback(response);
+                        //add rebuild instanse report sentence here
+                    });
+                }
+                $scope.onUpdate = function(item, callback) {
+                    mohService.onUpdate($scope.component, item, function(){
+                        callback();
+                    });
+                }
+                $scope.onDelete = function(item, callback) {
+                    mohService.onDelete($scope.component, item, function(){
+                        callback();
+                    });
+                }
             }])
             .controller('mohProductionFacilitiesInsuranceController', [
             '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
