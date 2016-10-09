@@ -109,4 +109,15 @@
                     }
                 }
             }]);
+        angular.module('costAnswer.core.directives')
+            .directive('caInstantReport', [function(){
+                return {
+                    restrict: 'AEC',
+                    replace: true,
+                    scope: {
+                        reportData: '='
+                    },
+                    templateUrl: 'app/modules/core/views/directives/ca-instant-report.html'
+                }
+            }]);
 }());

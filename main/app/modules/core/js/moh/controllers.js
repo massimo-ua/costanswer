@@ -78,6 +78,10 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "name";
+                    $scope.reportId = 'im';
+                    mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                        $scope.instantReport = response;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
@@ -86,17 +90,25 @@
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
                         callback(response);
-                        //add rebuild instanse report sentence here
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onUpdate = function(item, callback) {
                     mohService.onUpdate($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onDelete = function(item, callback) {
                     mohService.onDelete($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
             }])
@@ -118,6 +130,10 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "name";
+                    $scope.reportId = 'pms';
+                    mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                        $scope.instantReport = response;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
@@ -126,17 +142,25 @@
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
                         callback(response);
-                        //add rebuild instanse report sentence here
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onUpdate = function(item, callback) {
                     mohService.onUpdate($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onDelete = function(item, callback) {
                     mohService.onDelete($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
             }])
@@ -158,6 +182,10 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "name";
+                    $scope.reportId = 'pfi';
+                    mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                        $scope.instantReport = response;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
@@ -166,17 +194,25 @@
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
                         callback(response);
-                        //add rebuild instanse report sentence here
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onUpdate = function(item, callback) {
                     mohService.onUpdate($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onDelete = function(item, callback) {
                     mohService.onDelete($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
             }])
@@ -198,6 +234,10 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "name";
+                    $scope.reportId = "ppt";
+                    mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                        $scope.instantReport = response;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
@@ -206,17 +246,25 @@
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
                         callback(response);
-                        //add rebuild instanse report sentence here
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onUpdate = function(item, callback) {
                     mohService.onUpdate($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onDelete = function(item, callback) {
                     mohService.onDelete($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
             }])
@@ -238,6 +286,10 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "name";
+                    $scope.reportId = "il";
+                    mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                        $scope.instantReport = response;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
@@ -246,17 +298,25 @@
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
                         callback(response);
-                        //add rebuild instanse report sentence here
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onUpdate = function(item, callback) {
                     mohService.onUpdate($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onDelete = function(item, callback) {
                     mohService.onDelete($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
             }])
@@ -278,6 +338,10 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "name";
+                    $scope.reportId = "pmr";
+                    mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                        $scope.instantReport = response;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
@@ -286,17 +350,25 @@
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
                         callback(response);
-                        //add rebuild instanse report sentence here
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onUpdate = function(item, callback) {
                     mohService.onUpdate($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onDelete = function(item, callback) {
                     mohService.onDelete($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
             }])
@@ -318,6 +390,10 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "name";
+                    $scope.reportId = "puaooe";
+                    mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                        $scope.instantReport = response;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
@@ -326,17 +402,25 @@
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
                         callback(response);
-                        //add rebuild instanse report sentence here
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onUpdate = function(item, callback) {
                     mohService.onUpdate($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onDelete = function(item, callback) {
                     mohService.onDelete($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
             }])
@@ -358,6 +442,10 @@
                         buttonText: "Add"
                     };
                     $scope.nameProperty = "name";
+                    $scope.reportId = "pfa";
+                    mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                        $scope.instantReport = response;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
@@ -366,17 +454,25 @@
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
                         callback(response);
-                        //add rebuild instanse report sentence here
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onUpdate = function(item, callback) {
                     mohService.onUpdate($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
                 $scope.onDelete = function(item, callback) {
                     mohService.onDelete($scope.component, item, function(){
                         callback();
+                        mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                            $scope.instantReport = response;
+                        });
                     });
                 }
             }])
