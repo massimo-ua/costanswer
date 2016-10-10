@@ -7,6 +7,8 @@ angular.module('costAnswer', [
     'ngStorage',
     'ui.grid',
     'ui.grid.pinning',
+    'angular-loading-bar',
+    'ngAnimate',
     'costAnswer.services',
     'costAnswer.filters',
     'costAnswer.directives',

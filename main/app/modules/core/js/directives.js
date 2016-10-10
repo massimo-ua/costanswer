@@ -28,6 +28,7 @@
                     scope.displayBlock = parseInt(scope.displayBlock);
                     scope.controls.addItem = function(newItem) {
                         if(newItem === undefined) return;
+                        scope.controls.formDisabled = true;
                         var copyOfNewItem = {};
                         angular.copy(newItem, copyOfNewItem);
                         if(scope.activeItem === undefined) {
@@ -35,12 +36,14 @@
                                 scope.itemsList.push(response);
                                 scope.move(1);
                                 scope.clearForm();
+                                scope.controls.formDisabled = false;
                             });
                         }
                         else {
                             scope.onUpdate()(copyOfNewItem, function(){
                                 scope.itemsList[scope.activeItem-1] = copyOfNewItem;
                                 scope.clearForm();
+                                scope.controls.formDisabled = false;
                             });
                         }
                     };
@@ -56,10 +59,12 @@
                         scope.controls.buttonText = "Add";
                     }
                     scope.removeItem = function(index) {
+                        scope.controls.formDisabled = true;
                         scope.onDelete()(scope.itemsList[index], function(){
                             scope.itemsList.splice(index,1);
                             scope.clearForm();
                             scope.move(-1);
+                            scope.controls.formDisabled = false;
                         });
                     }
                     
