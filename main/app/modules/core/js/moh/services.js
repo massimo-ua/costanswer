@@ -60,19 +60,19 @@
                         component.$addMohComponent({ moh_id: mohId, component: componentName }, function(response){
                             newItem.id = response.id;
                             var param = new DataModel.Moh();
-                            if(newItem.cost_per_month) {
+                            if(typeof newItem.cost_per_month !== 'undefined') {
                                 newItem.cost_per_month = roundToTwo(newItem.cost_per_month);
                                 param.cost_per_month = Math.round(newItem.cost_per_month * 100);
                             }
-                            if(newItem.salary) {
+                            if(typeof newItem.salary !== 'undefined') {
                                 newItem.salary = roundToTwo(newItem.salary);
                                 param.salary = Math.round(newItem.salary * 100);
                             }
-                            if(newItem.payroll_tax) {
+                            if(typeof newItem.payroll_tax !== 'undefined') {
                                 newItem.payroll_tax = roundToTwo(newItem.payroll_tax);
                                 param.payroll_tax = Math.round(newItem.payroll_tax * 100);
                             }
-                            if(newItem.annual_growth) {
+                            if(typeof newItem.annual_growth !== 'undefined') {
                                 newItem.annual_growth = roundToTwo(newItem.annual_growth);
                                 param.annual_growth = newItem.annual_growth / 100;
                             }
@@ -92,19 +92,19 @@
                 component.name = item.name;
                 component.$updateMohComponent({ id: item.id, component: componentName }, function(response){
                     var param = new DataModel.Moh();
-                    if(item.cost_per_month) {
+                    if(typeof item.cost_per_month !== 'undefined') {
                         item.cost_per_month = roundToTwo(item.cost_per_month);
                         param.cost_per_month = Math.round(item.cost_per_month * 100);
                     }
-                    if(item.salary) {
+                    if(typeof item.salary !== 'undefined') {
                         item.salary = roundToTwo(item.salary);
                         param.salary = Math.round(item.salary * 100);
                     }
-                    if(item.payroll_tax) {
+                    if(typeof item.payroll_tax !== 'undefined') {
                         item.payroll_tax = roundToTwo(item.payroll_tax);
                         param.payroll_tax = Math.round(item.payroll_tax * 100);
                     }
-                    if(item.annual_growth) {
+                    if(typeof item.annual_growth !== 'undefined') {
                         item.annual_growth = roundToTwo(item.annual_growth);
                         param.annual_growth = item.annual_growth / 100;
                     }
