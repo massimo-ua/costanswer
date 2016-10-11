@@ -10,7 +10,7 @@
                 };
                 init();
                 $scope.clearAll = function() {
-                    $localStorage.Project = {};
+                    $localStorage.$reset();
                     $state.go('startCore');
                 };
             }])
