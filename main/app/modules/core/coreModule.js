@@ -68,58 +68,58 @@ angular.module('costAnswer.core')
                 redirectTo: 'moh.settings',
                 parent: "projectDataInput",
                 controller: 'mohController',
-                templateUrl: 'app/modules/core/views/moh/home.html'
+                templateUrl: 'app/modules/core/moh/views/home.html'
             })
             .state('moh.settings', {
                 url: '/settings',
                 //url: '',
                 controller: 'mohSettingsController',
-                templateUrl: 'app/modules/core/views/moh/settings.html'
+                templateUrl: 'app/modules/core/moh/views/settings.html'
             })
             .state('moh.im', {
                 url: '/indirect-materials',
                 controller: 'mohIndirectMaterialsController',
-                templateUrl: 'app/modules/core/views/moh/indirect-materials.html'
+                templateUrl: 'app/modules/core/moh/views/indirect-materials.html'
             })
             .state('moh.pms', {
                 url: '/production-managers-salaries',
                 controller: 'mohProductionManagersSalariesController',
-                templateUrl: 'app/modules/core/views/moh/production-managers-salaries.html'
+                templateUrl: 'app/modules/core/moh/views/production-managers-salaries.html'
             })
             .state('moh.pfi', {
                 url: '/production-facilities-insurance',
                 controller: 'mohProductionFacilitiesInsuranceController',
-                templateUrl: 'app/modules/core/views/moh/production-facilities-insurance.html'
+                templateUrl: 'app/modules/core/moh/views/production-facilities-insurance.html'
             })
             .state('moh.ppt', {
                 url: '/production-property-taxes',
                 controller: 'mohProductionPropertyTaxesController',
-                templateUrl: 'app/modules/core/views/moh/production-property-taxes.html'
+                templateUrl: 'app/modules/core/moh/views/production-property-taxes.html'
             })
             .state('moh.il', {
                 url: '/indirect-labor',
                 controller: 'mohIndirectLaborController',
-                templateUrl: 'app/modules/core/views/moh/indirect-labor.html'
+                templateUrl: 'app/modules/core/moh/views/indirect-labor.html'
             })
             .state('moh.pmr', {
                 url: '/production-machinery-rent',
                 controller: 'mohProductionMachineryRentController',
-                templateUrl: 'app/modules/core/views/moh/production-machinery-rent.html'
+                templateUrl: 'app/modules/core/moh/views/production-machinery-rent.html'
             })
             .state('moh.puooe', {
                 url: '/production-utilities-and-other-overhead-expences',
                 controller: 'mohProductionUtilitiesAndOtherOverheadExpencesController',
-                templateUrl: 'app/modules/core/views/moh/production-utilities-and-other-overhead-expences.html'
+                templateUrl: 'app/modules/core/moh/views/production-utilities-and-other-overhead-expences.html'
             })
             .state('moh.pfa', {
                 url: '/production-facilities-amortization',
                 controller: 'mohProductionFacilitiesAmortizationController',
-                templateUrl: 'app/modules/core/views/moh/production-facilities-amortization.html'
+                templateUrl: 'app/modules/core/moh/views/production-facilities-amortization.html'
             })
             .state('moh.report', {
                 url: '/report',
                 controller: 'mohReportController',
-                templateUrl: 'app/modules/core/views/moh/report.html'
+                templateUrl: 'app/modules/core/moh/views/report.html'
             })
             /*.state('mohDataInput.home', {
                 parent: "mohDataInput",

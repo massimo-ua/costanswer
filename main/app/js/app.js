@@ -9,6 +9,7 @@ angular.module('costAnswer', [
     //'ui.grid.pinning',
     'angular-loading-bar',
     'ngAnimate',
+    'ngDialog',
     'costAnswer.services',
     'costAnswer.filters',
     'costAnswer.directives',

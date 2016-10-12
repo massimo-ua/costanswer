@@ -1,4 +1,7 @@
-angular.module('costAnswer.core.controllers',['costAnswer.core.moh.controllers']);
+angular.module('costAnswer.core.controllers',[
+    'costAnswer.core.moh.controllers',
+    'costAnswer.core.standard.controllers'
+    ]);
 angular.module('costAnswer.core.controllers')
         .controller('descriptionCoreController',['$scope', '$stateParams', function($scope, $stateParams){
             console.log('descriptionCoreController reached!');
