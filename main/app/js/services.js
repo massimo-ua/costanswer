@@ -41,7 +41,7 @@
     ]);
     angular.module('costAnswer.services').value('DATAINPUT_HEADER', [
         {"id": 1, "name": "Manufacturing Overhead", "sref": "moh"},
-        {"id": 2, "name": "Standard Costing", "sref": "standardCosting"},
+        {"id": 2, "name": "Standard Costing", "sref": "standard"},
         {"id": 3, "name": "Process Costing", "sref": "processCosting"},
         {"id": 4, "name": "Job Order Costing", "sref": "jobOrderCosting"}
     ]);
