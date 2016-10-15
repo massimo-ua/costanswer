@@ -1,11 +1,11 @@
 <div class="row m-t-10px">
     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left p-l-0px">
-        <button class="btn btn-costanswer btn-lg" aria-label="Left Align" ng-click="addProduct()" title="Add product or service">
+        <button class="btn btn-costanswer btn-lg" aria-label="Left Align" ui-sref="standard.newProduct" title="Add product or service">
             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
         </button>
     </div>
     <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 text-left p-l-0px">
-        <div ca-thumbler name-property="nameProperty" display-block="5" items-list="itemsList" item-form="itemForm" item-model="form" controls="controls" on-save="onSave" on-update="onUpdate" on-delete="onDelete"></div>
+        <div ca-product-menu name-property="nameProperty" display-block="5" items-list="productsList" on-delete="onDelete"></div>
     </div>
     <!-- div ca-footed-tabs tabs-list="moh_category" initial-state="{{initialState}}"></div -->
     <!-- div class="col-xs-12">

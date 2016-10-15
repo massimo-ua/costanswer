@@ -1,0 +1,18 @@
+<div class="row m-b-10px">
+    <!-- div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" -->
+        <!-- a ng-click="clearForm()" class="glyphicon glyphicon-plus toolset add" title="Add"></a -->
+        <!-- a class="glyphicon glyphicon-chevron-left toolset" title="Backward"></a -->
+    <!--/div-->
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+        <a ng-show="startItem > 1" ng-click="move(-1)" class="glyphicon glyphicon-chevron-left toolset" title="Backward"></a>
+        
+    </div>
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+        <ul ng-show="itemsList.length > 0" class="nav nav-pills costanswer nav-justified">
+            <li class ="item-list-pills" role="presentation" ng-repeat = "i in range(startItem, displayBlock)"><a ui-sref-active="active" ui-sref="standard.singleProduct({ id: itemsList[i-1].id })" >{{ itemsList[i-1][nameProperty] | strTruncate:false:9 }}<span class="glyphicon glyphicon-remove toolset remove small pull-right" title="Remove" ng-click="removeItem(i-1)"></span></a></li>
+        </ul>
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+        <a ng-show="(startItem + displayBlock) <= itemsList.length" ng-click="move(1)" class="glyphicon glyphicon-chevron-right toolset" title="Forward"></a>
+    </div>
+</div>
