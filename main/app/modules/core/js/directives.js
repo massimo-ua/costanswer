@@ -23,9 +23,9 @@
                         scope.itemModel = {};
                         scope.startItem = 1;
                         scope.activeItem = undefined;
+                        scope.displayBlock = parseInt(scope.displayBlock);
                     };
                     init();
-                    scope.displayBlock = parseInt(scope.displayBlock);
                     scope.controls.addItem = function(newItem) {
                         if(newItem === undefined) return;
                         scope.controls.formDisabled = true;
@@ -123,6 +123,48 @@
                         reportData: '='
                     },
                     templateUrl: 'app/modules/core/views/directives/ca-instant-report.html'
+                }
+            }]);
+        angular.module('costAnswer.core.directives')
+            .directive('caProductMenu', [function(){
+                return {
+                    restrict: 'AEC',
+                    replace: true,
+                    scope: {
+                        displayBlock: '=',
+                        nameProperty: '=',
+                        itemsList: '=',
+                        onDelete: '&'
+                    },
+                    templateUrl: 'app/modules/core/views/directives/ca-product-menu.html',
+                    link: function(scope, elem, attrs) {
+                        function init() {
+                            scope.startItem = 1;
+                            scope.activeItem = undefined;
+                            scope.displayBlock = parseInt(scope.displayBlock);
+                        };
+                        init();
+                        scope.range = function(start,total) {
+                            if(scope.itemsList == undefined || scope.itemsList.length == 0) return;
+                            var result = [];
+                            var i = 1;
+                            start = start > 0 ? start : 1;
+                            var end = (scope.itemsList.length >= (start + total-1)) ? start + total - 1 : scope.itemsList.length; 
+                            for(i=start;i<=end;i++) {
+                                result.push(i);
+                            }
+                            return result;
+                        }
+                        scope.move = function(i) {
+                            if(i > 0 && (scope.startItem + scope.displayBlock) > scope.itemsList.length) {
+                                return;
+                            };
+                            if(i < 0 && scope.startItem < 2) {
+                                return;
+                            };
+                            scope.startItem += i;
+                        };
+                    }
                 }
             }]);
 }());

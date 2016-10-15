@@ -1,5 +1,8 @@
 (function(){
-    angular.module('costAnswer.core.services', ['costAnswer.core.moh.services']);
+    angular.module('costAnswer.core.services', [
+        'costAnswer.core.moh.services',
+        'costAnswer.core.standard.services'
+        ]);
     angular.module('costAnswer.core.services').value('API_PREFIX','http://www.acl.pp.ua:10101');
 
     angular.module('costAnswer.core.services')
@@ -55,6 +58,13 @@
                     isArray: true,
                     url: API_PREFIX+'/moh/:moh_id/:component'
                 }
+            }),
+            Product: $resource(API_PREFIX+'/products/:id', { id: '@_id' }, {
+                update: { method: 'PUT' },
+                saveWithUuid: {
+                    method: 'POST',
+                    url: API_PREFIX+'/products/uuid'
+                },
             })
         }
     }]);
