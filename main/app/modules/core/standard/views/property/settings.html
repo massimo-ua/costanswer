@@ -1,1 +1,47 @@
-<h1>Settings of product #{{ product_id }}</h1>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+        <h4>{{ controls.topHeader }}</h4>
+    </div>
+</div>
+<div class="row">
+    <ng-form id="item-form" name="itemForm">
+        <fieldset ng-disabled="controls.formDisabled">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
+            <label for="Name" class="text-center m-b-20px">{{ controls.nameMain }}:</label>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
+		<div ng-class="{'has-error': itemForm.Name.$dirty && itemForm.Name.$invalid}" class="form-group">
+			<input name="Name" maxlength="20" type="text" ng-required="true" ng-model="form.name" class="form-control costanswer" placeholder="{{ controls.namePlaceholder }}" />
+			<div class="help-block error" ng-show="itemForm.Name.$dirty && itemForm.Name.$error.required">{{ controls.nameErrorText }}</div>
+		</div>
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-12 text-center">
+            <label for="Units" class="text-center m-b-20px">{{ controls.unitMain }}:</label>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
+		<div ng-class="{'has-error': itemForm.Units.$dirty && itemForm.Units.$invalid}" class="form-group">
+            <input name="Units" maxlength="20" type="text" ng-required="true" ng-model="form.measurement_unit" class="form-control costanswer" placeholder="{{ controls.unitPlaceholder }}" />
+			<div class="help-block error" ng-show="itemForm.Units.$dirty && itemForm.Units.$invalid">{{ controls.unitErrorText }}</div>
+		</div>
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-12 text-center">
+            <label for="Division" class="text-center m-b-20px">{{ controls.divisionMain }}:</label>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
+		<div class="form-group">
+            <input name="Division" maxlength="20" type="text" ng-model="form.division" class="form-control costanswer" placeholder="{{ controls.divisionPlaceholder }}" />
+		</div>
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-12 text-center">
+            <label for="OrderNumber" class="text-center m-b-20px">{{ controls.orderMain }}:</label>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
+            <input name="OrderNumber" maxlength="20" type="text" ng-model="form.order_number" class="form-control costanswer" placeholder="{{ controls.orderPlaceholder }}" />
+		</div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 m-t-10px text-center">
+            <button type="button" ng-disabled="itemForm.$invalid" class="btn btn-costanswer btn-lg" ng-click="onSave(form)"> {{ controls.buttonText }} </button>
+        </div>
+        </fieldset>
+    </ng-form>
+</div>

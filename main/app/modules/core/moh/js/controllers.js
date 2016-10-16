@@ -75,7 +75,14 @@
                         $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
                     });
                     $scope.controls = {
-                        buttonText: "Add"
+                        buttonText: "Add",
+                        topHeader: "Choose material",
+                        nameMain: "Name of material",
+                        namePlaceholder: "Name",
+                        nameErrorText: "Please, fill in material name",
+                        costMain: "Cost per month",
+                        costPlaceholder: "$",
+                        costErrorText: "Please, fill in material monthly cost"
                     };
                     $scope.nameProperty = "name";
                     $scope.reportId = 'im';
@@ -127,7 +134,20 @@
                         $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
                     });
                     $scope.controls = {
-                        buttonText: "Add"
+                        buttonText: "Add",
+                        topHeader: "Choose manager",
+                        nameMain: "Worker name/title",
+                        namePlaceholder: "Name",
+                        nameErrorText: "Please, fill in Name of personnel",
+                        salaryMain: "Salary",
+                        salaryPlaceholder: "$",
+                        salaryErrorText: "Please, fill in Salary",
+                        taxMain: "Payroll taxes",
+                        taxPlaceholder: "$",
+                        taxErrorText: "Please, fill in Payroll taxes",
+                        growthMain: "Annual Growth Rate",
+                        growthPlaceholder: "%",
+                        growthErrorText: "Please, fill in Annual Growth Rate"
                     };
                     $scope.nameProperty = "name";
                     $scope.reportId = 'pms';
@@ -179,7 +199,14 @@
                         $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
                     });
                     $scope.controls = {
-                        buttonText: "Add"
+                        buttonText: "Add",
+                        topHeader: "Choose insurance",
+                        nameMain: "Type of insuarance",
+                        namePlaceholder: "Name",
+                        nameErrorText: "Please, fill in Type of insuarance",
+                        costMain: "Monthly payment",
+                        costPlaceholder: "$",
+                        costErrorText: "Please, fill in Monthly payment"
                     };
                     $scope.nameProperty = "name";
                     $scope.reportId = 'pfi';
@@ -231,7 +258,14 @@
                         $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
                     });
                     $scope.controls = {
-                        buttonText: "Add"
+                        buttonText: "Add",
+                        topHeader: "Choose tax",
+                        nameMain: "Type of tax",
+                        namePlaceholder: "Name",
+                        nameErrorText: "Please, fill in Type of tax",
+                        costMain: "Monthly payment",
+                        costPlaceholder: "$",
+                        costErrorText: "Please, fill in Monthly payment"
                     };
                     $scope.nameProperty = "name";
                     $scope.reportId = "ppt";
@@ -283,7 +317,20 @@
                         $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
                     });
                     $scope.controls = {
-                        buttonText: "Add"
+                        buttonText: "Add",
+                        topHeader: "Choose worker",
+                        nameMain: "Worker name/title",
+                        namePlaceholder: "Name",
+                        nameErrorText: "Please, fill in Name of personnel",
+                        salaryMain: "Salary",
+                        salaryPlaceholder: "$",
+                        salaryErrorText: "Please, fill in Salary",
+                        taxMain: "Payroll taxes",
+                        taxPlaceholder: "$",
+                        taxErrorText: "Please, fill in Payroll taxes",
+                        growthMain: "Annual Growth Rate",
+                        growthPlaceholder: "%",
+                        growthErrorText: "Please, fill in Annual Growth Rate"
                     };
                     $scope.nameProperty = "name";
                     $scope.reportId = "il";
@@ -335,7 +382,14 @@
                         $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
                     });
                     $scope.controls = {
-                        buttonText: "Add"
+                        buttonText: "Add",
+                        topHeader: "Choose rent",
+                        nameMain: "Type of rental",
+                        namePlaceholder: "Name",
+                        nameErrorText: "Please, fill in Name of Rent",
+                        costMain: "Monthly payment",
+                        costPlaceholder: "$",
+                        costErrorText: "Please, fill in Monthly payment"
                     };
                     $scope.nameProperty = "name";
                     $scope.reportId = "pmr";
@@ -387,7 +441,14 @@
                         $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
                     });
                     $scope.controls = {
-                        buttonText: "Add"
+                        buttonText: "Add",
+                        topHeader: "Choose utility",
+                        nameMain: "Name of expence",
+                        namePlaceholder: "Name",
+                        nameErrorText: "Please, fill in Name of expence",
+                        costMain: "Monthly payment",
+                        costPlaceholder: "$",
+                        costErrorText: "Please, fill in Monthly payment"
                     };
                     $scope.nameProperty = "name";
                     $scope.reportId = "puaooe";
@@ -439,7 +500,14 @@
                         $scope.itemsList = mohService.parseMohResponse(response,"fc-full-cost");
                     });
                     $scope.controls = {
-                        buttonText: "Add"
+                        buttonText: "Add",
+                        topHeader: "Choose facility",
+                        nameMain: "Name of asset",
+                        namePlaceholder: "Name",
+                        nameErrorText: "Please, fill in Name of asset",
+                        costMain: "Amount for amortization",
+                        costPlaceholder: "$",
+                        costErrorText: "Please, fill in Monthly payment"
                     };
                     $scope.nameProperty = "name";
                     $scope.reportId = "pfa";
