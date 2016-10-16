@@ -1,7 +1,7 @@
 (function(){
     angular.module('costAnswer.core.standard.controllers',[]);
     angular.module('costAnswer.core.standard.controllers')
-    .controller('standardController', ['$scope', 'standardService', '$localStorage', function($scope, standardService, $localStorage){
+    .controller('standardController', ['$scope', 'standardService', '$localStorage', 'DataModel', '$state', function($scope, standardService, $localStorage, DataModel, $state){
         function init() {
             $scope.nameProperty = "name";
             $scope.productsList = [];
@@ -17,6 +17,24 @@
             event.stopPropagation();
         });
         $scope.onDelete = function(item, callback) {
+            DataModel.Product.remove({id: item.id})
+                .$promise
+                    .then(function(response){
+                        callback();
+                        $state.go('standard.newProduct', undefined, {
+                            reload: true
+                        });
+                    })
+                    .catch(function(error){
+                        callback(error);
+                    });
+               //mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+               //    $scope.instantReport = response;
+               //});
+        }
+            
+            
+            
             /*ngDialog.openConfirm({
                         template: 'app/modules/core/standard/views/dialogs/add-product.html',
                         className: 'ngdialog-theme-plain',
@@ -35,7 +53,6 @@
                     console.log(value);
                     resetForm();
                 });*/
-        }
     }])
     .controller('standardProductController', ['$scope', function($scope){
         console.log('Standard Costing Product Home');
@@ -45,7 +62,18 @@
             $scope.form = {};
             $scope.costingMethod = 1;
             $scope.controls = {
-                buttonText: "Save"
+                buttonText: "Save",
+                topHeader: "Product settings",
+                nameMain: "Product/Service name",
+                namePlaceholder: "Name",
+                nameErrorText: "Please, fill in product name",
+                unitMain: "Measurement unit",
+                unitPlaceholder: "Unit",
+                unitErrorText: "Please, fill in product measurement unit",
+                divisionMain: "Division",
+                divisionPlaceholder: "Name",
+                orderMain: "Order #",
+                orderPlaceholder: "Name"
             }
         }
         init();
@@ -62,7 +90,6 @@
             product.order_number = form.order_number;
             product.$save()
                 .then(function(response){
-                    console.log(response);
                     $scope.$emit('NEW_ST_PRODUCT', response);
                     $scope.form = {};
                     $scope.itemForm.$setPristine();
@@ -94,12 +121,55 @@
         }
         init();
     }])
-    .controller('propertySettingsController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
+    .controller('propertySettingsController', ['$scope', 'standardService', '$stateParams', 'DataModel', function($scope, standardService, $stateParams, DataModel){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
+            $scope.form = {};
+            $scope.item = {};
+            $scope.controls = {
+                buttonText: "Update",
+                topHeader: "Product settings",
+                nameMain: "Product/Service name",
+                namePlaceholder: "Name",
+                nameErrorText: "Please, fill in product name",
+                unitMain: "Measurement unit",
+                unitPlaceholder: "Unit",
+                unitErrorText: "Please, fill in product measurement unit",
+                divisionMain: "Division",
+                divisionPlaceholder: "Name",
+                orderMain: "Order #",
+                orderPlaceholder: "Name"
+            }
+            DataModel.Product.get({ id: $stateParams.id })
+                .$promise
+                    .then(function(response){
+                        $scope.item = response;
+                        $scope.form.name = response.name;
+                        $scope.form.measurement_unit = response.measurement_unit;
+                        $scope.form.division = response.division;
+                        $scope.form.order_number = response.order_number;
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+
         }
         init();
+        $scope.onSave = function(form) {
+            $scope.controls.buttonText = "Updating...";
+            $scope.item.name = form.name;
+            $scope.item.measurement_unit = form.measurement_unit;
+            $scope.item.division = form.division;
+            $scope.item.order_number = form.order_number;
+            $scope.item.$update({ id: $stateParams.id })
+                .catch(function(error){
+                    console.log(error);
+                })
+                .finally(function(){
+                    $scope.controls.buttonText = "Update";
+                });
+        }
     }])
     .controller('propertyInventoryController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');

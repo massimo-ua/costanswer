@@ -162,8 +162,19 @@
                             if(i < 0 && scope.startItem < 2) {
                                 return;
                             };
-                            scope.startItem += i;
-                        };
+                            scope.activeItem = undefined;
+                        }
+                        scope.removeItem = function(index) {
+                            scope.onDelete()(scope.itemsList[index], function(error){
+                                if(error) {
+                                    console.log(error);
+                                    return;
+                                }
+                                scope.itemsList.splice(index,1);
+                                scope.move(-1);
+                            });
+                        }
+
                     }
                 }
             }]);

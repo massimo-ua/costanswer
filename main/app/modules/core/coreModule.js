@@ -79,42 +79,42 @@ angular.module('costAnswer.core')
             .state('moh.im', {
                 url: '/indirect-materials',
                 controller: 'mohIndirectMaterialsController',
-                templateUrl: 'app/modules/core/moh/views/indirect-materials.html'
+                templateUrl: 'app/modules/core/moh/views/cost-per-month.html'
             })
             .state('moh.pms', {
                 url: '/production-managers-salaries',
                 controller: 'mohProductionManagersSalariesController',
-                templateUrl: 'app/modules/core/moh/views/production-managers-salaries.html'
+                templateUrl: 'app/modules/core/moh/views/annual-growth-salary.html'
             })
             .state('moh.pfi', {
                 url: '/production-facilities-insurance',
                 controller: 'mohProductionFacilitiesInsuranceController',
-                templateUrl: 'app/modules/core/moh/views/production-facilities-insurance.html'
+                templateUrl: 'app/modules/core/moh/views/cost-per-month.html'
             })
             .state('moh.ppt', {
                 url: '/production-property-taxes',
                 controller: 'mohProductionPropertyTaxesController',
-                templateUrl: 'app/modules/core/moh/views/production-property-taxes.html'
+                templateUrl: 'app/modules/core/moh/views/cost-per-month.html'
             })
             .state('moh.il', {
                 url: '/indirect-labor',
                 controller: 'mohIndirectLaborController',
-                templateUrl: 'app/modules/core/moh/views/indirect-labor.html'
+                templateUrl: 'app/modules/core/moh/views/annual-growth-salary.html'
             })
             .state('moh.pmr', {
                 url: '/production-machinery-rent',
                 controller: 'mohProductionMachineryRentController',
-                templateUrl: 'app/modules/core/moh/views/production-machinery-rent.html'
+                templateUrl: 'app/modules/core/moh/views/cost-per-month.html'
             })
             .state('moh.puooe', {
                 url: '/production-utilities-and-other-overhead-expences',
                 controller: 'mohProductionUtilitiesAndOtherOverheadExpencesController',
-                templateUrl: 'app/modules/core/moh/views/production-utilities-and-other-overhead-expences.html'
+                templateUrl: 'app/modules/core/moh/views/cost-per-month.html'
             })
             .state('moh.pfa', {
                 url: '/production-facilities-amortization',
                 controller: 'mohProductionFacilitiesAmortizationController',
-                templateUrl: 'app/modules/core/moh/views/production-facilities-amortization.html'
+                templateUrl: 'app/modules/core/moh/views/cost-per-month.html'
             })
             .state('moh.report', {
                 url: '/report',

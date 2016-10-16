@@ -17,7 +17,7 @@
             .state('standard.newProduct', {
                 url: '/product/new',
                 controller: 'newProductController',
-                templateUrl: 'app/modules/core/standard/views/new-product.html',
+                templateUrl: 'app/modules/core/standard/views/property/settings.html',
             })
             .state('standard.singleProduct', {
                 url: '/product/:id',
