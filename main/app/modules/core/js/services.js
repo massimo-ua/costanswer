@@ -65,6 +65,22 @@
                     method: 'POST',
                     url: API_PREFIX+'/products/uuid'
                 },
+                getInventory: {
+                    method: 'GET',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/inventory'
+                },
+                saveInventory: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/inventory'
+                },
+                updateInventory: {
+                    method: 'PUT',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/inventory/:id'
+                }
             })
         }
     }]);
