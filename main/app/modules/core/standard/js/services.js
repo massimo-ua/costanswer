@@ -10,10 +10,9 @@
                 }
                 return $http(config);
             },
-            productPropeties: function(product_id) {
-                if(product_id == undefined) return [];
+            productPropeties: function() {
                 return [
-                    {"id": 1, "name": "Settings", "sref": "property.settings", "iconClass": "ion-settings"},
+                    {"id": 1, "name": "Product Settings", "sref": "property.settings", "iconClass": "ion-settings"},
                     {"id": 2, "name": "Inventory", "sref": "property.inventory", "iconClass": "ion-ios-box"},
                     {"id": 3, "name": "Production Plan", "sref": "property.pp", "iconClass": "ion-social-buffer"},
                     {"id": 4, "name": "Sales Plan", "sref": "property.sp", "iconClass": "ion-connection-bars"},

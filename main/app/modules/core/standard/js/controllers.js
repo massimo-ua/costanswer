@@ -21,7 +21,7 @@
                 .$promise
                     .then(function(response){
                         callback();
-                        $state.go('standard.newProduct', undefined, {
+                        $state.go('standard.start', undefined, {
                             reload: true
                         });
                     })
@@ -57,13 +57,12 @@
     .controller('standardProductController', ['$scope', function($scope){
         console.log('Standard Costing Product Home');
     }])
-    .controller('newProductController', ['$scope', '$rootScope', 'standardService', '$localStorage', 'DataModel', function($scope, $rootScope, standardService, $localStorage, DataModel){
+    .controller('newProductController', ['$scope', '$localStorage', '$state', 'DataModel', function($scope, $localStorage, $state, DataModel){
         function init() {
             $scope.form = {};
             $scope.costingMethod = 1;
             $scope.controls = {
                 buttonText: "Save",
-                topHeader: "Product settings",
                 nameMain: "Product/Service name",
                 namePlaceholder: "Name",
                 nameErrorText: "Please, fill in product name",
@@ -93,6 +92,9 @@
                     $scope.$emit('NEW_ST_PRODUCT', response);
                     $scope.form = {};
                     $scope.itemForm.$setPristine();
+                    $state.go('standard.singleProduct', { id: response.id }, {
+                        reload: true
+                    });
                 })
                 .catch(function(err){
                     console.log(err);
@@ -129,7 +131,6 @@
             $scope.item = {};
             $scope.controls = {
                 buttonText: "Update",
-                topHeader: "Product settings",
                 nameMain: "Product/Service name",
                 namePlaceholder: "Name",
                 nameErrorText: "Please, fill in product name",
