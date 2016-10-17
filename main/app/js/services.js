@@ -51,4 +51,18 @@
         {"id": 3, "name": "Save As", "sref": null},
         {"id": 4, "name": "Project Report", "sref": "projectReport"}
     ]);
+    angular.module('costAnswer.services').service('monthService', ['MONTHES', function(MONTHES) {
+        this.Month = function(number) {
+            var number = parseInt(number);
+            if( number == NaN || number < 1 || number > 12 ) {
+                return {};
+            }
+            for(i=0; i < MONTHES.length; i++) {
+                if(MONTHES[i].number == number) {
+                    return MONTHES[i];
+                }
+            }
+            return {};
+        }
+    }]);
 }());

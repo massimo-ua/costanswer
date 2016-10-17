@@ -119,7 +119,6 @@
     .controller('propertyController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');
         function init() {
-            console.log($stateParams);
         }
         init();
     }])
@@ -172,12 +171,68 @@
                 });
         }
     }])
-    .controller('propertyInventoryController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
+    .controller('propertyInventoryController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', function($scope, $localStorage, $stateParams, DataModel, monthService){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
+            $scope.form = {};
+            $scope.month_number = 1;
+            $scope.year_number = 1;
+            $scope.instantReport = [];
+            $scope.controls = {
+                buttonText: "Save",
+                nameMain: "Finished goods beginning",
+                namePlaceholder: "Units",
+                nameErrorText: "Please, fill in amount of finished goods"
+            }
+            DataModel.Product.getInventory({ id: $scope.product_id })
+                .$promise
+                    .then(function(response){
+                        $scope.id = response[0].id;
+                        $scope.controls.buttonText = "Update";
+                        $scope.form.finished_goods_beginning = parseInt(response[0].finished_goods_beginning) / 100;
+                    })
+                    .catch(function(){
+                        $scope.id = undefined;            
+                    })
+            if($localStorage.uuid !== undefined) {
+                DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                    .$promise
+                        .then(function(response){
+                            $scope.project = response;
+                            $scope.month = monthService.Month(response.begin_month);
+                        });
+            }
         }
         init();
+        $scope.onSave = function(form) {
+            var inventory = new DataModel.Product();
+            if($scope.id == undefined) {
+                $scope.controls.buttonText = "Saving...";
+                inventory.finished_goods_beginning = Math.round($scope.form.finished_goods_beginning * 100);
+                inventory.month_number = $scope.month_number;
+                inventory.year_number = $scope.year_number;
+                inventory.$saveInventory({ id: $scope.product_id })
+                    .then(function(response){
+                        $scope.controls.buttonText = "Update";
+                        $scope.id = response.id;
+                    })
+                    .catch(function(error){
+                        $scope.controls.buttonText = "Save";
+                    });
+            }
+            else {
+                $scope.controls.buttonText = "Updating...";
+                inventory.finished_goods_beginning = Math.round($scope.form.finished_goods_beginning * 100);
+                inventory.$updateInventory({ id: $scope.id })
+                    .catch(function(error){
+                        console.log(error);
+                    })
+                    .finally(function(){
+                        $scope.controls.buttonText = "Update";
+                    });
+            }
+        }
     }])
     .controller('propertyProductionPlanController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');

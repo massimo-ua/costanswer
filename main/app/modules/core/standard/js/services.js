@@ -6,14 +6,14 @@
             productsList: function(uuid) {
                 var config = {
                     method: 'GET',
-                    url: API_PREFIX + '/products/1/'+uuid
+                    url: API_PREFIX + '/products/list/1/'+uuid
                 }
                 return $http(config);
             },
             productPropeties: function() {
                 return [
                     {"id": 1, "name": "Product Settings", "sref": "property.settings", "iconClass": "ion-settings"},
-                    {"id": 2, "name": "Inventory", "sref": "property.inventory", "iconClass": "ion-ios-box"},
+                    {"id": 2, "name": "Inventory", "sref": "property.inventory", "iconClass": "ion-ios-home"},
                     {"id": 3, "name": "Production Plan", "sref": "property.pp", "iconClass": "ion-social-buffer"},
                     {"id": 4, "name": "Sales Plan", "sref": "property.sp", "iconClass": "ion-connection-bars"},
                     {"id": 5, "name": "WIP Beginning", "sref": "property.wb", "iconClass": "ion-ios-alarm-outline"},
