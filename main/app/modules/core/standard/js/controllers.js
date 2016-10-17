@@ -111,7 +111,7 @@
     .controller('singleProductController', ['$scope', '$state', 'standardService', '$stateParams', function($scope, $state, standardService, $stateParams){
         //console.log('singleProductController');
         function init() {
-            $scope.productPropeties = standardService.productPropeties($stateParams.id);
+            $scope.productPropeties = standardService.productPropeties();
             $scope.initialState = $state.current.name;
         }
         init();
