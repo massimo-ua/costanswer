@@ -27,7 +27,7 @@
             })
             .state('property', {
                 parent: "standard.singleProduct",
-                redirectTo: 'property.settings',
+                redirectTo: 'property.inventory',
                 url: "/property",
                 controller: 'propertyController',
                 templateUrl: 'app/modules/core/standard/views/property/home.html'
