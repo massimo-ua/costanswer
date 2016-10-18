@@ -248,12 +248,68 @@
         }
         init();
     }])
-    .controller('propertyWipBeginningController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
+    .controller('propertyWipBeginningController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', function($scope, $localStorage, $stateParams, DataModel, monthService){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
+            $scope.form = {};
+            $scope.month_number = 1;
+            $scope.year_number = 1;
+            $scope.instantReport = [];
+            $scope.controls = {
+                buttonText: "Save",
+                nameMain: "Work in process (WIP) beginning",
+                namePlaceholder: "$",
+                nameErrorText: "Please, fill in amount of beginning WIP costs (0 allowed)"
+            }
+            DataModel.Product.getWip({ id: $scope.product_id })
+                .$promise
+                    .then(function(response){
+                        $scope.id = response[0].id;
+                        $scope.controls.buttonText = "Update";
+                        $scope.form.beginning_costs = parseInt(response[0].beginning_costs) / 100;
+                    })
+                    .catch(function(){
+                        $scope.id = undefined;            
+                    })
+            if($localStorage.uuid !== undefined) {
+                DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                    .$promise
+                        .then(function(response){
+                            $scope.project = response;
+                            $scope.month = monthService.Month(response.begin_month);
+                        });
+            }
         }
         init();
+        $scope.onSave = function(form) {
+            var wip = new DataModel.Product();
+            if($scope.id == undefined) {
+                $scope.controls.buttonText = "Saving...";
+                wip.beginning_costs = Math.round($scope.form.beginning_costs * 100);
+                wip.month_number = $scope.month_number;
+                wip.year_number = $scope.year_number;
+                wip.$saveWip({ id: $scope.product_id })
+                    .then(function(response){
+                        $scope.controls.buttonText = "Update";
+                        $scope.id = response.id;
+                    })
+                    .catch(function(error){
+                        $scope.controls.buttonText = "Save";
+                    });
+            }
+            else {
+                $scope.controls.buttonText = "Updating...";
+                wip.beginning_costs = Math.round($scope.form.beginning_costs * 100);
+                wip.$updateWip({ id: $scope.id })
+                    .catch(function(error){
+                        console.log(error);
+                    })
+                    .finally(function(){
+                        $scope.controls.buttonText = "Update";
+                    });
+            }
+        }
     }])
     .controller('propertyDirectMaterialsController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');
