@@ -96,6 +96,22 @@
                     method: 'PUT',
                     params: { id: '@id' },
                     url: API_PREFIX+'/wip/:id'
+                },
+                getMachineHours: {
+                    method: 'GET',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/machinehours'
+                },
+                saveMachineHours: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/machinehours'
+                },
+                updateMachineHours: {
+                    method: 'PUT',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/machinehours/:id'
                 }
             })
         }

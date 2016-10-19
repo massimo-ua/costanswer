@@ -332,12 +332,66 @@
         }
         init();
     }])
-    .controller('propertyMachineHoursController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
+    .controller('propertyMachineHoursController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', function($scope, $localStorage, $stateParams, DataModel, monthService){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
+            $scope.form = {};
+            $scope.month_number = 0;
+            $scope.year_number = 1;
+            $scope.instantReport = [];
+            $scope.controls = {
+                buttonText: "Save",
+                nameMain: "Machine hours per batch required",
+                namePlaceholder: "Unit",
+                nameErrorText: "Please, fill in machine hours per batch (0 allowed)",
+                rateMain: "Hourly rate",
+                ratePlaceholder: "$",
+                rateErrorText: "Please, fill in hourly rate (0 allowed)"
+            }
+            DataModel.Product.getMachineHours({ id: $scope.product_id })
+                .$promise
+                    .then(function(response){
+                        $scope.id = response[0].id;
+                        $scope.controls.buttonText = "Update";
+                        $scope.form.hours_per_batch_required = parseInt(response[0].hours_per_batch_required) / 100;
+                        $scope.form.hourly_rate = parseInt(response[0].hourly_rate) / 100;
+                    })
+                    .catch(function(){
+                        $scope.id = undefined;            
+                    })
         }
         init();
+        $scope.onSave = function(form) {
+            var mh = new DataModel.Product();
+            if($scope.id == undefined) {
+                $scope.controls.buttonText = "Saving...";
+                mh.hours_per_batch_required = Math.round($scope.form.hours_per_batch_required * 100);
+                mh.hourly_rate = Math.round($scope.form.hourly_rate * 100);
+                mh.month_number = $scope.month_number;
+                mh.year_number = $scope.year_number;
+                mh.$saveMachineHours({ id: $scope.product_id })
+                    .then(function(response){
+                        $scope.controls.buttonText = "Update";
+                        $scope.id = response.id;
+                    })
+                    .catch(function(error){
+                        $scope.controls.buttonText = "Save";
+                    });
+            }
+            else {
+                $scope.controls.buttonText = "Updating...";
+                mh.hours_per_batch_required = Math.round($scope.form.hours_per_batch_required * 100);
+                mh.hourly_rate = Math.round($scope.form.hourly_rate * 100);
+                mh.$updateMachineHours({ id: $scope.id })
+                    .catch(function(error){
+                        console.log(error);
+                    })
+                    .finally(function(){
+                        $scope.controls.buttonText = "Update";
+                    });
+            }
+        }
     }])
     .controller('propertyWipEndingController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');
