@@ -45,7 +45,7 @@
             .state('property.pp', {
                 url: '/production-plan',
                 controller: 'propertyProductionPlanController',
-                templateUrl: 'app/modules/core/standard/views/property/production-plan.html',
+                templateUrl: 'app/modules/core/standard/views/property/plan.html',
             })
             .state('property.sp', {
                 url: '/sales-plan',

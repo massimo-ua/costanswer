@@ -51,18 +51,45 @@
         {"id": 3, "name": "Save As", "sref": null},
         {"id": 4, "name": "Project Report", "sref": "projectReport"}
     ]);
-    angular.module('costAnswer.services').service('monthService', ['MONTHES', function(MONTHES) {
-        this.Month = function(number) {
-            var number = parseInt(number);
-            if( number == NaN || number < 1 || number > 12 ) {
-                return {};
-            }
-            for(i=0; i < MONTHES.length; i++) {
-                if(MONTHES[i].number == number) {
-                    return MONTHES[i];
+    angular.module('costAnswer.services').factory('monthService', ['MONTHES', function(MONTHES) {
+        var factory = {
+            Month: function(number) {
+                var number = parseInt(number);
+                if( number == NaN || number < 1 || number > 12 ) {
+                    return {};
                 }
+                if(typeof MONTHES[number-1] === 'undefined') {
+                    return {};
+                }
+                return MONTHES[number-1];
+            },
+            AbsoluteMonth: function(month,start_month) {
+                if(start_month == undefined || start_month < 1 || start_month > 12) {
+                    start_month = 0;
+                }
+                else {
+                    start_month = start_month - 1;
+                }
+                if(month == undefined || month < 1 || month > 12) {
+                    month = 0;
+                }
+                else {
+                    month = month - 1;
+                }
+                month = start_month + month;
+                if(month > 11) {
+                    month = month - 12;
+                }
+                return MONTHES[month];
+            },
+            AbsoluteMonthes: function(start_month) {
+                var result = [];
+                for(i=0; i < MONTHES.length; i++) {
+                    result.push(factory.AbsoluteMonth(i+1, start_month));
+                }
+                return result;
             }
-            return {};
         }
+        return factory;
     }]);
 }());

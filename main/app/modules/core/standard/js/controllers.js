@@ -234,12 +234,26 @@
             }
         }
     }])
-    .controller('propertyProductionPlanController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
+    .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
+            $scope.controls = {
+                buttonText: "Save",
+                nameMain: "Finished goods manufactured",
+                namePlaceholder: "Units",
+                nameErrorText: "Please, fill in amount of finished goods"
+            }
+            if($localStorage.uuid !== undefined) {
+                DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                    .$promise
+                        .then(function(response){
+                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        });
+            }
         }
         init();
+        console.log($scope.monthes);
     }])
     .controller('propertySalesPlanController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');
