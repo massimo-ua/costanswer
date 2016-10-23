@@ -112,6 +112,18 @@
                     method: 'PUT',
                     params: { id: '@id' },
                     url: API_PREFIX+'/machinehours/:id'
+                },
+                getProductionPlan: {
+                    method: 'GET',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/productionplan'
+                },
+                saveProductionPlan: {
+                    method: 'POST',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/productionplan'
                 }
             })
         }
