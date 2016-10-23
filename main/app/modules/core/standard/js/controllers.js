@@ -237,7 +237,10 @@
     .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel){
         //console.log('singleProductController');
         function init() {
+            $scope.form = {};
+            $scope.form.finished_goods_manufactured = [];
             $scope.product_id = $stateParams.id;
+            $scope.year_number = 1;
             $scope.controls = {
                 buttonText: "Save",
                 nameMain: "Finished goods manufactured",
@@ -251,9 +254,43 @@
                             $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
                         });
             }
+            DataModel.Product.getProductionPlan({ id: $scope.product_id })
+                .$promise
+                    .then(function(response){
+                        for(var i=0; i < response.length; i++) {
+                            if(response[i].finished_goods_manufactured !== undefined) {
+                                $scope.form.finished_goods_manufactured[response[i].month_number-1] = {};
+                                $scope.form.finished_goods_manufactured[response[i].month_number-1].value = parseInt(response[i].finished_goods_manufactured) / 100;
+                            }
+                        }
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    })
         }
         init();
-        console.log($scope.monthes);
+        $scope.onSave = function(form) {
+            $scope.controls.buttonText = "Saving...";
+            $scope.controls.formDisabled = true;
+            var data = {};
+            for(var k in form.finished_goods_manufactured) {
+                data[k] = {};
+                data[k].month_number = +k + 1;
+                data[k].finished_goods_manufactured = Math.round(form.finished_goods_manufactured[k].value * 100);
+            }
+            var plan = {};
+            plan.year_number = $scope.year_number;
+            plan.data = data;
+            DataModel.Product.saveProductionPlan({ id: $scope.product_id }, plan)
+                .$promise
+                    .catch(function(error){
+                        console.log(error);
+                    })
+                    .finally(function(){
+                        $scope.controls.buttonText = "Save";
+                        $scope.controls.formDisabled = false;
+                    });
+        }
     }])
     .controller('propertySalesPlanController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');
