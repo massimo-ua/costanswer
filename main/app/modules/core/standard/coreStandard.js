@@ -50,7 +50,7 @@
             .state('property.sp', {
                 url: '/sales-plan',
                 controller: 'propertySalesPlanController',
-                templateUrl: 'app/modules/core/standard/views/property/sales-plan.html',
+                templateUrl: 'app/modules/core/standard/views/property/plan.html',
             })
             .state('property.wb', {
                 url: '/wip-beginning',
