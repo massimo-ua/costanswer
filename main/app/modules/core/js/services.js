@@ -124,6 +124,18 @@
                     isArray: true,
                     params: { id: '@id' },
                     url: API_PREFIX+'/products/:id/productionplan'
+                },
+                getSalesPlan: {
+                    method: 'GET',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/salesplan'
+                },
+                saveSalesPlan: {
+                    method: 'POST',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/salesplan'
                 }
             })
         }
