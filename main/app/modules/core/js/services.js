@@ -136,6 +136,18 @@
                     isArray: true,
                     params: { id: '@id' },
                     url: API_PREFIX+'/products/:id/salesplan'
+                },
+                getWipEnding: {
+                    method: 'GET',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/wipending'
+                },
+                saveWipEnding: {
+                    method: 'POST',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/wipending'
                 }
             })
         }
