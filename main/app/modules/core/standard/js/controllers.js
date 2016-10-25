@@ -237,7 +237,7 @@
     .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel){
         function init() {
             $scope.form = {};
-            $scope.form.finished_goods = [];
+            $scope.form.amount = [];
             $scope.product_id = $stateParams.id;
             $scope.year_number = 1;
             $scope.updateMode = false;
@@ -260,8 +260,8 @@
                         var emptyCounter = 0;
                         for(var i=0; i < response.length; i++) {
                             if(response[i].finished_goods_manufactured) {
-                                $scope.form.finished_goods[response[i].month_number-1] = {};
-                                $scope.form.finished_goods[response[i].month_number-1].value = parseInt(response[i].finished_goods_manufactured) / 100;
+                                $scope.form.amount[response[i].month_number-1] = {};
+                                $scope.form.amount[response[i].month_number-1].value = parseInt(response[i].finished_goods_manufactured) / 100;
                             } else {
                                 emptyCounter += 1;
                             }
@@ -280,10 +280,10 @@
             $scope.controls.buttonText = $scope.updateMode ? "Updating..." : "Saving...";
             $scope.controls.formDisabled = true;
             var data = {};
-            for(var k in form.finished_goods) {
+            for(var k in form.amount) {
                 data[k] = {};
                 data[k].month_number = +k + 1;
-                data[k].finished_goods_manufactured = Math.round(form.finished_goods[k].value * 100);
+                data[k].finished_goods_manufactured = Math.round(form.amount[k].value * 100);
             }
             var plan = {};
             plan.year_number = $scope.year_number;
@@ -305,7 +305,7 @@
     .controller('propertySalesPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel){
         function init() {
             $scope.form = {};
-            $scope.form.finished_goods = [];
+            $scope.form.amount = [];
             $scope.product_id = $stateParams.id;
             $scope.year_number = 1;
             $scope.updateMode = false;
@@ -328,8 +328,8 @@
                         var emptyCounter = 0;
                         for(var i=0; i < response.length; i++) {
                             if(response[i].finished_goods_sold) {
-                                $scope.form.finished_goods[response[i].month_number-1] = {};
-                                $scope.form.finished_goods[response[i].month_number-1].value = parseInt(response[i].finished_goods_sold) / 100;
+                                $scope.form.amount[response[i].month_number-1] = {};
+                                $scope.form.amount[response[i].month_number-1].value = parseInt(response[i].finished_goods_sold) / 100;
                             } else {
                                 emptyCounter += 1;
                             }
@@ -348,10 +348,10 @@
             $scope.controls.buttonText = $scope.updateMode ? "Updating..." : "Saving...";
             $scope.controls.formDisabled = true;
             var data = {};
-            for(var k in form.finished_goods) {
+            for(var k in form.amount) {
                 data[k] = {};
                 data[k].month_number = +k + 1;
-                data[k].finished_goods_sold = Math.round(form.finished_goods[k].value * 100);
+                data[k].finished_goods_sold = Math.round(form.amount[k].value * 100);
             }
             var plan = {};
             plan.year_number = $scope.year_number;
@@ -515,12 +515,73 @@
             }
         }
     }])
-    .controller('propertyWipEndingController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
-        //console.log('singleProductController');
+    .controller('propertyWipEndingController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel){
         function init() {
+            $scope.form = {};
+            $scope.form.amount = [];
             $scope.product_id = $stateParams.id;
+            $scope.year_number = 1;
+            $scope.updateMode = false;
+            $scope.controls = {
+                buttonText: "Save",
+                nameMain: "Work in process (WIP) ending",
+                namePlaceholder: "$",
+                nameErrorText: "Please, fill in WIP costing amount"
+            }
+            if($localStorage.uuid !== undefined) {
+                DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                    .$promise
+                        .then(function(response){
+                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        });
+            }
+            DataModel.Product.getWipEnding({ id: $scope.product_id })
+                .$promise
+                    .then(function(response){
+                        var emptyCounter = 0;
+                        for(var i=0; i < response.length; i++) {
+                            if(response[i].ending_costs) {
+                                $scope.form.amount[response[i].month_number-1] = {};
+                                $scope.form.amount[response[i].month_number-1].value = parseInt(response[i].ending_costs) / 100;
+                            } else {
+                                emptyCounter += 1;
+                            }
+                        }
+                        if(response.length == 12 && emptyCounter == 0) {
+                            $scope.controls.buttonText = "Update";
+                            $scope.updateMode = true;
+                        }
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    })
         }
         init();
+        $scope.onSave = function(form) {
+            $scope.controls.buttonText = $scope.updateMode ? "Updating..." : "Saving...";
+            $scope.controls.formDisabled = true;
+            var data = {};
+            for(var k in form.amount) {
+                data[k] = {};
+                data[k].month_number = +k + 1;
+                data[k].ending_costs = Math.round(form.amount[k].value * 100);
+            }
+            var plan = {};
+            plan.year_number = $scope.year_number;
+            plan.data = data;
+            DataModel.Product.saveWipEnding({ id: $scope.product_id }, plan)
+                .$promise
+                    .then(function(){
+                        $scope.updateMode = true;
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    })
+                    .finally(function(){
+                        $scope.controls.buttonText = $scope.updateMode ? "Update" : "Save";
+                        $scope.controls.formDisabled = false;
+                    });
+        }
     }])
     .controller('propertyMarkUpController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');
