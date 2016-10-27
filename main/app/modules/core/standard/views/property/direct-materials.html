@@ -1,1 +1,116 @@
-<h1>Direct Materials of product #{{ product_id }}</h1>
+<div ca-thumbler name-property="nameProperty" display-block="5" items-list="itemsList" item-form="itemForm" item-model="form" controls="controls" on-save="onSave" on-update="onUpdate" on-delete="onDelete"></div>
+<div class="row">
+    <ng-form id="item-form" name="itemForm">
+        <fieldset ng-disabled="controls.formDisabled">
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+                <div class="text-center">
+                    <label for="a" class="text-center m-b-20px">{{ controls.aMain }}:</label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                <div ng-class="{'has-error': itemForm.a.$dirty && itemForm.a.$invalid}" class="form-group">
+                    <input name="a" maxlength="20" type="text" ng-required="true" ng-model="form.name" class="form-control costanswer" placeholder="{{ controls.aPlaceholder }}" />
+                    <div class="help-block error" ng-show="itemForm.a.$dirty && itemForm.a.$error.required">{{ controls.aErrorText }}</div>
+                </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="text-center">
+                    <label for="d" class="text-center m-b-20px">{{ controls.dMain }}:</label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                <div ng-class="{'has-error': itemForm.d.$dirty && itemForm.d.$invalid}" class="form-group">
+                    <input name="d" type="number" ng-required="true" min="0" ng-model="form.purchasing_price_per_unit" class="form-control costanswer" placeholder="{{ controls.dPlaceholder }}" />
+                    <div class="help-block error" ng-show="itemForm.d.$dirty && itemForm.d.$invalid"> {{ controls.dErrorText }}</div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+                <div class="text-center">
+                    <label for="b" class="text-center m-b-20px">{{ controls.bMain }}:</label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                <div ng-class="{'has-error': itemForm.b.$dirty && itemForm.b.$invalid}" class="form-group">
+                    <input name="b" type="text" ng-required="true" maxlength="20" ng-model="form.measurement_unit" class="form-control costanswer" placeholder="{{ controls.bPlaceholder }}" />
+                    <div class="help-block error" ng-show="itemForm.b.$dirty && itemForm.b.$invalid"> {{ controls.bErrorText }}</div>
+                </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="text-center">
+                    <label for="e" class="text-center m-b-20px">{{ controls.eMain }}:</label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                <div ng-class="{'has-error': itemForm.e.$dirty && itemForm.e.$invalid}" class="form-group">
+                    <input name="e" type="number" ng-required="true" min="0" ng-model="form.normal_waste" class="form-control costanswer" placeholder="{{ controls.ePlaceholder }}" />
+                    <div class="help-block error" ng-show="itemForm.e.$dirty && itemForm.e.$invalid"> {{ controls.eErrorText }}</div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+                <div class="text-center">
+                    <label for="c" class="text-center m-b-20px">{{ controls.cMain }}:</label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                <div ng-class="{'has-error': itemForm.c.$dirty && itemForm.c.$invalid}" class="form-group">
+                    <input name="c" type="number" ng-required="true" min="0.01" ng-model="form.batch_quantity_required" class="form-control costanswer" placeholder="{{ controls.cPlaceholder }}" />
+                    <div class="help-block error" ng-show="itemForm.c.$dirty && itemForm.c.$invalid"> {{ controls.cErrorText }}</div>
+                </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="text-center">
+                    <label for="f" class="text-center m-b-20px">{{ controls.fMain }}:</label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                <div ng-class="{'has-error': itemForm.f.$dirty && itemForm.f.$invalid}" class="form-group">
+                    <input name="f" type="number" ng-required="true" min="0" ng-model="form.safety_stock" class="form-control costanswer" placeholder="{{ controls.fPlaceholder }}" />
+                    <div class="help-block error" ng-show="itemForm.f.$dirty && itemForm.f.$invalid"> {{ controls.fErrorText }}</div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+<div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12 text-center">
+            <label for="g" class="text-center m-b-20px">{{ controls.gMain }}:</label>
+        </div>
+        <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
+            <p><b>{{ start_month.full }}</b></p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+		<div ng-class="{'has-error': itemForm.g.$dirty && itemForm.g.$invalid}" class="form-group">
+            <input name="g" type="number" ng-required="true" min="0" ng-model="form.material_beginning" class="form-control costanswer" placeholder="{{ controls.gPlaceholder }}" />
+			<div class="help-block error" ng-show="itemForm.g.$dirty && itemForm.g.$invalid"> {{ controls.gErrorText }}</div>
+		</div>
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-12 text-center">
+            <label for="h" class="text-center m-b-20px">{{ controls.hMain }}:</label>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th ng-repeat="month in monthes">{{ month.short }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td ng-repeat="month in monthes"><input name="h" ng-class="{'has-error': itemForm.h.$dirty && itemForm.h.$invalid}" type="number" ng-required="true" ng-model="form.season_price_change_rate[$index].value" min="0" class="form-control costanswer" placeholder="{{ controls.hPlaceholder }}" /></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
+            <button type="button" ng-disabled="itemForm.$invalid" class="btn btn-costanswer btn-lg" ng-click="controls.addItem(form)"> {{ controls.buttonText }} </button>
+        </div>
+        </fieldset>
+    </ng-form>
+</div>

@@ -433,12 +433,76 @@
             }
         }
     }])
-    .controller('propertyDirectMaterialsController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
-        //console.log('singleProductController');
+    .controller('propertyDirectMaterialsController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
         function init() {
             $scope.product_id = $stateParams.id;
+            $scope.year_number = 1;
+            $scope.itemsList = [];
+            $scope.nameProperty = "name";
+            if($localStorage.uuid !== undefined) {
+                DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                    .$promise
+                        .then(function(response){
+                            $scope.project = response;
+                            $scope.start_month = monthService.Month(response.begin_month);
+                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        });
+            }
+            $scope.controls = {
+                buttonText: "Add",
+                aMain: "Name of raw material",
+                aPlaceholder: "Name",
+                aErrorText: "Please, fill in Name of material",
+                bMain: "Measurement unit",
+                bPlaceholder: "Unit",
+                bErrorText: "Please, fill in Measurement unit name",
+                cMain: "Batch quantity required",
+                cPlaceholder: "Unit",
+                cErrorText: "Please, fill in quantity required per batch",
+                dMain: "Price per unit",
+                dPlaceholder: "$",
+                dErrorText: "Please, fill in price per unit value",
+                eMain: "Normal waste",
+                ePlaceholder: "%",
+                eErrorText: "Please, fill in normal waste value",
+                fMain: "Safety stock",
+                fPlaceholder: "%",
+                fErrorText: "Please, fill in safety stock value",
+                gMain: "Cost of raw material beginning",
+                gPlaceholder: "$",
+                gErrorText: "Please, fill in beginning material cost",
+                hMain: "Season price change",
+                hPlaceholder: "+-%"
+            };
+            standardService.DMList($scope.product_id, function(itemsList){
+                $scope.itemsList = itemsList;
+            });
         }
         init();
+        $scope.onSave = function(newItem, callback) {
+            standardService.onDMSave($scope.product_id, $scope.year_number, newItem, function(response){
+                callback(response);
+                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                //    $scope.instantReport = response;
+                //});
+            });
+        }
+        $scope.onUpdate = function(item, callback) {
+            standardService.onDMUpdate($scope.year_number, item, function(){
+                callback();
+                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                //    $scope.instantReport = response;
+                //});
+            });
+        }
+        $scope.onDelete = function(item, callback) {
+            standardService.onDMDelete(item, function(){
+                callback();
+                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                //    $scope.instantReport = response;
+                //});
+            });
+        }
     }])
     .controller('propertyDirectLaborController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');

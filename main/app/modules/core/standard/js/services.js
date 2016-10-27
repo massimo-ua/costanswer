@@ -25,7 +25,110 @@
                     {"id": 11, "name": "Mark Up", "sref": "property.mu", "iconClass": "ion-pricetags"},
                     {"id": 12, "name": "Report", "sref": "property.report", "iconClass": "ion-clipboard"}
                 ]
+            },
+            DMList: function(product_id, callback) {
+                if(!product_id) return;
+                var list = [];
+                DataModel.Product.getDirectMaterial({ id: product_id })
+                    .$promise
+                        .then(function(response){
+                            for(var i=0; i<response.length; i++) {
+                                list.push(DMParamsConverter(response[i]));
+                            }
+                        })
+                        .finally(function(){
+                            callback(list);
+                        });
+            },
+            onDMSave: function(product_id, year_number, data, callback) {
+                if(product_id && year_number) {
+                    var payload = payloadConverter(year_number, data);
+                    DataModel.Product.saveDirectMaterial({ id: product_id }, payload)
+                        .$promise
+                            .then(function(response){
+                                callback(DMParamsConverter(response));
+                            });
+                }
+                return;
+            },
+            onDMUpdate: function(year_number, data, callback) {
+                if(year_number) {
+                    var payload = payloadConverter(year_number, data);
+                    DataModel.Product.updateDirectMaterial({ id: data.id }, payload)
+                        .$promise
+                            .then(function(response){
+                                callback();
+                            });
+                }
+                return;
+            },
+            onDMDelete: function(data, callback) {
+                if(data && data.id) {
+                    DataModel.Product.deleteDirectMaterial({ id: data.id })
+                        .$promise
+                            .then(function(response){
+                                callback();
+                            });
+                }
+                return;
             }
+        }
+        function DMParamsConverter(response) {
+            var item = {};
+            item.id = response.id;
+            item.name = response.name;
+            item.measurement_unit = response.measurement_unit;
+            for(var i=0; i<response.params.length; i++) {
+                if(response.params[i].material_beginning) {
+                    item.material_beginning = response.params[i].material_beginning / 100;
+                }
+                if(response.params[i].batch_quantity_required) {
+                    item.batch_quantity_required = response.params[i].batch_quantity_required / 100;
+                }
+                if(response.params[i].purchasing_price_per_unit) {
+                    item.purchasing_price_per_unit = response.params[i].purchasing_price_per_unit / 100;
+                }
+                if(response.params[i].normal_waste) {
+                    item.normal_waste = response.params[i].normal_waste * 100;
+                }
+                if(response.params[i].safety_stock) {
+                    item.safety_stock = response.params[i].safety_stock * 100;
+                }
+                if(response.params[i].season_price_change_rate && response.params[i].month_number > 0) {
+                    if(item.season_price_change_rate === undefined) {
+                        item.season_price_change_rate = {};
+                    }
+                    var month = +i - 1;
+                    item.season_price_change_rate[month] = {};
+                    item.season_price_change_rate[month].value = response.params[i].season_price_change_rate * 100;
+                }
+            }
+            return item;
+        }
+        function payloadConverter(year_number, data) {
+            var payload = {};
+            payload.name = data.name;
+            payload.measurement_unit = data.measurement_unit;
+            payload.year_number = year_number;
+            payload.data = {};
+            payload.data[0] = {};
+            payload.data[0].month_number = 0;
+            payload.data[0].batch_quantity_required = Math.round(data.batch_quantity_required * 100);
+            payload.data[0].purchasing_price_per_unit = Math.round(data.purchasing_price_per_unit * 100);
+            payload.data[0].normal_waste = data.normal_waste / 100;
+            payload.data[0].safety_stock = data.safety_stock / 100;
+            payload.data[1] = {};
+            payload.data[1].month_number = 1;
+            payload.data[1].material_beginning = Math.round(data.material_beginning * 100);
+            for(var i in data.season_price_change_rate) {
+                var month = +i + 1;
+                if(payload.data[month] === undefined) {
+                    payload.data[month] = {};
+                }
+                payload.data[month].month_number = month;
+                payload.data[month].season_price_change_rate = data.season_price_change_rate[i].value / 100;
+            }
+            return payload;
         }
     }]);
 }());

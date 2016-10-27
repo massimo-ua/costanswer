@@ -148,6 +148,27 @@
                     isArray: true,
                     params: { id: '@id' },
                     url: API_PREFIX+'/products/:id/wipending'
+                },
+                saveDirectMaterial: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/directmaterial'
+                },
+                getDirectMaterial: {
+                    method: 'GET',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/directmaterial'
+                },
+                updateDirectMaterial: {
+                    method: 'PUT',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/directmaterial/:id'
+                },
+                deleteDirectMaterial: {
+                    method: 'DELETE',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/directmaterial/:id'
                 }
             })
         }
