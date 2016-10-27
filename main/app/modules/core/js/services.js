@@ -169,6 +169,27 @@
                     method: 'DELETE',
                     params: { id: '@id' },
                     url: API_PREFIX+'/directmaterial/:id'
+                },
+                saveDirectLabor: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/directlabor'
+                },
+                getDirectLabor: {
+                    method: 'GET',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/directlabor'
+                },
+                deleteDirectLabor: {
+                    method: 'DELETE',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/directlabor/:id'
+                },
+                updateDirectLabor: {
+                    method: 'PUT',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/directlabor/:id'
                 }
             })
         }

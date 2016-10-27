@@ -4,9 +4,6 @@
         <div class="col-xs-12 col-md-12 col-lg-12 text-center">
             <label for="goods" class="text-center m-b-20px">{{ controls.nameMain }}:</label>
         </div>
-        <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
-            <p><b>{{ month.full }}</b></p>
-        </div>
         <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
 		<div ng-class="{'has-error': itemForm.goods.$dirty && itemForm.goods.$invalid}" class="form-group">
             <input name="goods" type="number" ng-required="true" min="0" ng-model="form.finished_goods_beginning" class="form-control costanswer" placeholder="{{ controls.namePlaceholder }}" />

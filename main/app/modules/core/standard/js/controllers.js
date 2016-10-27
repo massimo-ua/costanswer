@@ -200,7 +200,7 @@
                     .$promise
                         .then(function(response){
                             $scope.project = response;
-                            $scope.month = monthService.Month(response.begin_month);
+                            $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + ',' + monthService.Month(response.begin_month).full;
                         });
             }
         }
@@ -399,7 +399,7 @@
                     .$promise
                         .then(function(response){
                             $scope.project = response;
-                            $scope.month = monthService.Month(response.begin_month);
+                            $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + ',' + monthService.Month(response.begin_month).full;
                         });
             }
         }
@@ -439,15 +439,6 @@
             $scope.year_number = 1;
             $scope.itemsList = [];
             $scope.nameProperty = "name";
-            if($localStorage.uuid !== undefined) {
-                DataModel.Project.uuid({ uuid: $localStorage.uuid })
-                    .$promise
-                        .then(function(response){
-                            $scope.project = response;
-                            $scope.start_month = monthService.Month(response.begin_month);
-                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
-                        });
-            }
             $scope.controls = {
                 buttonText: "Add",
                 aMain: "Name of raw material",
@@ -474,6 +465,15 @@
                 hMain: "Season price change",
                 hPlaceholder: "+-%"
             };
+            if($localStorage.uuid !== undefined) {
+                DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                    .$promise
+                        .then(function(response){
+                            $scope.project = response;
+                            $scope.controls.gPlaceholder = $scope.controls.gPlaceholder + ',' + monthService.Month(response.begin_month).full;
+                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        });
+            }
             standardService.DMList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
             });
@@ -504,12 +504,69 @@
             });
         }
     }])
-    .controller('propertyDirectLaborController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
-        //console.log('singleProductController');
+    .controller('propertyDirectLaborController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
         function init() {
             $scope.product_id = $stateParams.id;
+            $scope.year_number = 1;
+            $scope.month_number = 0;
+            $scope.itemsList = [];
+            $scope.nameProperty = "worker";
+            $scope.controls = {
+                buttonText: "Add",
+                aMain: "Worker name/title",
+                aPlaceholder: "Name",
+                aErrorText: "Please, fill in worker name/title",
+                bMain: "Hours per batch required",
+                bPlaceholder: "Unit",
+                bErrorText: "Please, fill in amount of hours required per batch",
+                cMain: "Hourly rate",
+                cPlaceholder: "$",
+                cErrorText: "Please, fill in hourly rate",
+                dMain: "Payroll taxes",
+                dPlaceholder: "$",
+                dErrorText: "Please, fill in payroll tax value",
+                eMain: "Annual growth rate",
+                ePlaceholder: "%",
+                eErrorText: "Please, fill in annual growth rate value"
+            };
+            /*if($localStorage.uuid !== undefined) {
+                DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                    .$promise
+                        .then(function(response){
+                            $scope.project = response;
+                            $scope.controls.gPlaceholder = $scope.controls.gPlaceholder + ',' + monthService.Month(response.begin_month).full;
+                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        });
+            }*/
+            standardService.DLList($scope.product_id, function(itemsList){
+                $scope.itemsList = itemsList;
+            });
         }
         init();
+        $scope.onSave = function(newItem, callback) {
+            standardService.onDLSave($scope.product_id, $scope.year_number, newItem, function(response){
+                callback(response);
+                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                //    $scope.instantReport = response;
+                //});
+            });
+        }
+        $scope.onUpdate = function(item, callback) {
+            standardService.onDLUpdate($scope.year_number, item, function(){
+                callback();
+                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                //    $scope.instantReport = response;
+                //});
+            });
+        }
+        $scope.onDelete = function(item, callback) {
+            standardService.onDLDelete(item, function(){
+                callback();
+                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
+                //    $scope.instantReport = response;
+                //});
+            });
+        }
     }])
     .controller('propertyVariableOverheadController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');
