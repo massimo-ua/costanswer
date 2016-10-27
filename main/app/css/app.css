@@ -80,7 +80,10 @@ fieldset > div > span.instant-results-header {
   color: #707070;
   margin: 0 1em 0 1em;
 }
-
+input[type="text"].white-on-red {
+  background-color: red;
+  color: white;
+}
 
 /*********************
 * Social Buttons
