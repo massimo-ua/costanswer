@@ -9,7 +9,6 @@
 			var max = parseInt(max, 10);
 		}
 		catch(err) {
-			console.log(err);
 			return input;
 		}
 		if(input.length <= max) return input;

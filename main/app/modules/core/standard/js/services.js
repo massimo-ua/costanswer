@@ -47,6 +47,9 @@
                         .$promise
                             .then(function(response){
                                 callback(DMParamsConverter(response));
+                            })
+                            .catch(function(){
+                                callback(null);
                             });
                 }
                 return;
@@ -58,6 +61,9 @@
                         .$promise
                             .then(function(response){
                                 callback();
+                            })
+                            .catch(function(){
+                                callback(null);
                             });
                 }
                 return;

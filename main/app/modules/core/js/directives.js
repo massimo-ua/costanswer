@@ -162,7 +162,8 @@
                             if(i < 0 && scope.startItem < 2) {
                                 return;
                             };
-                            scope.activeItem = undefined;
+                            //scope.activeItem = undefined;
+                            scope.startItem += i;
                         }
                         scope.removeItem = function(index) {
                             scope.onDelete()(scope.itemsList[index], function(error){

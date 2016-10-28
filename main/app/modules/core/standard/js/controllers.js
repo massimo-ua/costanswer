@@ -435,6 +435,7 @@
     }])
     .controller('propertyDirectMaterialsController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
         function init() {
+            $scope.form = {};
             $scope.product_id = $stateParams.id;
             $scope.year_number = 1;
             $scope.itemsList = [];
