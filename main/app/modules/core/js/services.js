@@ -190,6 +190,27 @@
                     method: 'PUT',
                     params: { id: '@id' },
                     url: API_PREFIX+'/directlabor/:id'
+                },
+                saveVariableOverhead: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/variableoverhead'
+                },
+                getVariableOverhead: {
+                    method: 'GET',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/variableoverhead'
+                },
+                deleteVariableOverhead: {
+                    method: 'DELETE',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/variableoverhead/:id'
+                },
+                updateVariableOverhead: {
+                    method: 'PUT',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/variableoverhead/:id'
                 }
             })
         }

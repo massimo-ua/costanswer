@@ -124,6 +124,52 @@
                 }
                 return;
             },
+            VOList: function(product_id, callback) {
+                if(!product_id) return;
+                var list = [];
+                DataModel.Product.getVariableOverhead({ id: product_id })
+                    .$promise
+                        .then(function(response){
+                            for(var i=0; i<response.length; i++) {
+                                list.push(VOFCParamsConverter(response[i]));
+                            }
+                        })
+                        .finally(function(){
+                            callback(list);
+                        });
+            },
+            onVOSave: function(product_id, year_number, data, callback) {
+                if(product_id && year_number) {
+                    var payload = VOFCPayloadConverter(year_number, data);
+                    DataModel.Product.saveVariableOverhead({ id: product_id }, payload)
+                        .$promise
+                            .then(function(response){
+                                callback(VOFCParamsConverter(response));
+                            });
+                }
+                return;
+            },
+            onVOUpdate: function(year_number, data, callback) {
+                if(year_number) {
+                    var payload = VOFCPayloadConverter(year_number, data);
+                    DataModel.Product.updateVariableOverhead({ id: data.id }, payload)
+                        .$promise
+                            .then(function(response){
+                                callback();
+                            });
+                }
+                return;
+            },
+            onVODelete: function(data, callback) {
+                if(data && data.id) {
+                    DataModel.Product.deleteVariableOverhead({ id: data.id })
+                        .$promise
+                            .then(function(response){
+                                callback();
+                            });
+                }
+                return;
+            }
         }
         function DMParamsConverter(response) {
             var item = {};
@@ -223,6 +269,25 @@
             }
             if(response.params[0].annual_growth_rate) {
                 item.annual_growth_rate = response.params[0].annual_growth_rate * 100;
+            }
+            return item;
+        }
+        function VOFCPayloadConverter(year_number, data) {
+            var payload = {};
+            payload.name = data.name;
+            payload.year_number = year_number;
+            payload.params = {};
+            payload.params[0] = {};
+            payload.params[0].month_number = 0;
+            payload.params[0].amount_per_batch = Math.round(data.amount_per_batch * 100);
+            return payload;
+        }
+        function VOFCParamsConverter(response){
+            var item = {};
+            item.id = response.id;
+            item.name = response.name;
+            if(response.params[0].amount_per_batch) {
+                item.amount_per_batch = response.params[0].amount_per_batch / 100;
             }
             return item;
         }
