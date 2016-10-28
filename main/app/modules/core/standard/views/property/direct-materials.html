@@ -116,7 +116,7 @@
             </thead>
             <tbody>
                 <tr>
-                <td><input type="text" class="form-control costanswer text-center white-on-red" value="100%" ng-disabled="true"></input></td>
+                <td class="td-monthly-width-fix"><input type="text" class="form-control costanswer text-center white-on-red" value="100%" ng-disabled="true"></input></td>
                 <td ng-repeat="i in []|range:11:1"><input name="h" ng-class="{'has-error': itemForm.h.$dirty && itemForm.h.$invalid}" type="number" ng-required="true" ng-model="form.season_price_change_rate[i].value" min="-100" max="100" class="form-control costanswer text-center" placeholder="{{ controls.hPlaceholder }}" /></td>
                 </tr>
             </tbody>
