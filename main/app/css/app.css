@@ -84,6 +84,9 @@ input[type="text"].white-on-red {
   background-color: red;
   color: white;
 }
+td.td-monthly-width-fix {
+  width: 8.33%;
+}
 
 /*********************
 * Social Buttons
