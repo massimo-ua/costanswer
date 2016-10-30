@@ -211,6 +211,16 @@
                     method: 'PUT',
                     params: { id: '@id' },
                     url: API_PREFIX+'/variableoverhead/:id'
+                },
+                getMarkUp: {
+                    method: 'GET',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/markup'
+                },
+                saveMarkUp: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/products/:id/markup'
                 }
             })
         }

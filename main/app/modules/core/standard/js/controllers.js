@@ -685,7 +685,7 @@
             }
         }
     }])
-    .controller('propertyWipEndingController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel){
+    .controller('propertyWipEndingController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log){
         function init() {
             $scope.form = {};
             $scope.form.amount = [];
@@ -723,7 +723,7 @@
                         }
                     })
                     .catch(function(error){
-                        console.log(error);
+                        $log.debug(error);
                     })
         }
         init();
@@ -745,7 +745,7 @@
                         $scope.updateMode = true;
                     })
                     .catch(function(error){
-                        console.log(error);
+                        $log.debug(error);
                     })
                     .finally(function(){
                         $scope.controls.buttonText = $scope.updateMode ? "Update" : "Save";
@@ -753,12 +753,63 @@
                     });
         }
     }])
-    .controller('propertyMarkUpController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
-        //console.log('singleProductController');
+    .controller('propertyMarkUpController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', '$log', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService, $log){
         function init() {
             $scope.product_id = $stateParams.id;
+            $scope.year_number = 1;
+            $scope.month_number = 0;
+            $scope.form = {};
+            $scope.updateMode = false;
+            $scope.controls = {
+                buttonText: "Save",
+                aMain: "Mark Up",
+                aPlaceholder: "%",
+                aErrorText: "Please, fill in mark up rate",
+                bMain: "VAT (IFRS countries)",
+                bPlaceholder: "%",
+                bErrorText: "Please, fill in VAT rate"
+            };
+            if($localStorage.uuid !== undefined) {
+                DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                    .$promise
+                        .then(function(response){
+                            $scope.project = response;
+                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        });
+            }
+            if($scope.product_id) {
+                DataModel.Product.getMarkUp({ id: $scope.product_id })
+                    .$promise
+                        .then(function(response){
+                            $scope.form = standardService.MUFCParamsConverter(response);
+                            if(response.id != undefined) {
+                                $scope.controls.buttonText = "Update";
+                                $scope.updateMode = true;
+                            }
+                        })
+                        .catch(function(error){
+                            $log.debug(error);
+                        })
+            }
         }
         init();
+        $scope.onSave = function(form) {
+            $scope.controls.buttonText = $scope.updateMode ? "Updating..." : "Saving...";
+            $scope.controls.formDisabled = true;
+            var payload = standardService.MUFCPayloadConverter($scope.year_number, form);
+            DataModel.Product.saveMarkUp({ id: $scope.product_id }, payload)
+                .$promise
+                    .then(function(){
+                        $scope.updateMode = true;
+                    })
+                    .catch(function(error){
+                        $log.debug(error);
+                    })
+                    .finally(function(){
+                        $scope.controls.buttonText = $scope.updateMode ? "Update" : "Save";
+                        $scope.controls.formDisabled = false;
+                    });
+        }
     }])
     .controller('propertyReportController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
         //console.log('singleProductController');
