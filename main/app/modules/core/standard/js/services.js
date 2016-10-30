@@ -169,7 +169,42 @@
                             });
                 }
                 return;
+            },
+        MUFCPayloadConverter: function(year_number, data) {
+            var payload = {};
+            payload.year_number = year_number;
+            payload.params = {};
+            payload.params[0] = {};
+            payload.params[0].month_number = 0;
+            payload.params[0].vat_rate = data.vat_rate / 100;
+            for(var k in data.mark_up_rate) {
+                payload.params[k] = {};
+                payload.params[k].month_number = +k;
+                payload.params[k].mark_up_rate = data.mark_up_rate[k].value / 100;
             }
+            return payload;
+        },
+        MUFCParamsConverter: function(response){
+            if(response.params == undefined) return {};
+            var item = {};
+            item.id = response.id;
+            for(var i=0; i<response.params.length; i++) {
+                if(response.params[i].month_number == 0 && response.params[i].vat_rate) {
+                    item.vat_rate = response.params[i].vat_rate * 100;
+                }
+                if(response.params[i].month_number > 0 && response.params[i].mark_up_rate) {
+                    var month = +response.params[i].month_number;
+                    if(item.mark_up_rate === undefined) {
+                        item.mark_up_rate = {};
+                    }
+                    if(item.mark_up_rate[month] === undefined) {
+                        item.mark_up_rate[month] = {};
+                    }
+                    item.mark_up_rate[month].value = response.params[i].mark_up_rate * 100;
+                }
+            }
+            return item;
+        }
         }
         function DMParamsConverter(response) {
             var item = {};
