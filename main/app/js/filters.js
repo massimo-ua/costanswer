@@ -15,5 +15,9 @@
     				return input;
   				}
 			});
-
+	angular.module('costAnswer.filters').filter('naFilter', function(){
+  				return function(input, value, replace) {
+					return input == value ? replace : input;
+  				}
+			});
 }());
