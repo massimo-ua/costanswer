@@ -171,10 +171,11 @@
                 });
         }
     }])
-    .controller('propertyInventoryController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', function($scope, $localStorage, $stateParams, DataModel, monthService){
+    .controller('propertyInventoryController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
+            $scope.reportId = 'inventory';
             $scope.form = {};
             $scope.month_number = 1;
             $scope.year_number = 1;
@@ -203,8 +204,18 @@
                             $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + ',' + monthService.Month(response.begin_month).full;
                         });
             }
+            refreshReport();
+        }
+        function refreshReport() {
+            if($scope.product_id) {
+                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
+                    $scope.instantReport = response;
+                });
+            }
+            return;
         }
         init();
+
         $scope.onSave = function(form) {
             var inventory = new DataModel.Product();
             if($scope.id == undefined) {
@@ -216,6 +227,7 @@
                     .then(function(response){
                         $scope.controls.buttonText = "Update";
                         $scope.id = response.id;
+                        refreshReport();
                     })
                     .catch(function(error){
                         $scope.controls.buttonText = "Save";
@@ -225,6 +237,9 @@
                 $scope.controls.buttonText = "Updating...";
                 inventory.finished_goods_beginning = Math.round($scope.form.finished_goods_beginning * 100);
                 inventory.$updateInventory({ id: $scope.id })
+                    .then(function(){
+                        refreshReport();
+                    })
                     .catch(function(error){
                         console.log(error);
                     })
@@ -234,13 +249,15 @@
             }
         }
     }])
-    .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel){
+    .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log){
         function init() {
             $scope.form = {};
             $scope.form.amount = [];
             $scope.product_id = $stateParams.id;
             $scope.year_number = 1;
             $scope.updateMode = false;
+            $scope.instantReport = [];
+            $scope.reportId = 'inventory';
             $scope.controls = {
                 buttonText: "Save",
                 nameMain: "Finished goods manufactured",
@@ -272,8 +289,17 @@
                         }
                     })
                     .catch(function(error){
-                        console.log(error);
+                        $log.debug(error);
                     })
+            refreshReport();
+        }
+        function refreshReport() {
+            if($scope.product_id) {
+                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
+                    $scope.instantReport = response;
+                });
+            }
+            return;
         }
         init();
         $scope.onSave = function(form) {
@@ -292,9 +318,10 @@
                 .$promise
                     .then(function(){
                         $scope.updateMode = true;
+                        refreshReport();
                     })
                     .catch(function(error){
-                        console.log(error);
+                        $log.debug(error);
                     })
                     .finally(function(){
                         $scope.controls.buttonText = $scope.updateMode ? "Update" : "Save";
@@ -302,13 +329,15 @@
                     });
         }
     }])
-    .controller('propertySalesPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel){
+    .controller('propertySalesPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log){
         function init() {
             $scope.form = {};
             $scope.form.amount = [];
             $scope.product_id = $stateParams.id;
             $scope.year_number = 1;
             $scope.updateMode = false;
+            $scope.instantReport = [];
+            $scope.reportId = 'inventory';
             $scope.controls = {
                 buttonText: "Save",
                 nameMain: "Finished goods sold",
@@ -340,8 +369,17 @@
                         }
                     })
                     .catch(function(error){
-                        console.log(error);
+                        $log.debug(error);
                     })
+                    refreshReport();
+        }
+        function refreshReport() {
+            if($scope.product_id) {
+                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
+                    $scope.instantReport = response;
+                });
+            }
+            return;
         }
         init();
         $scope.onSave = function(form) {
@@ -360,9 +398,10 @@
                 .$promise
                     .then(function(){
                         $scope.updateMode = true;
+                        refreshReport();
                     })
                     .catch(function(error){
-                        console.log(error);
+                        $log.debug(error);
                     })
                     .finally(function(){
                         $scope.controls.buttonText = $scope.updateMode ? "Update" : "Save";

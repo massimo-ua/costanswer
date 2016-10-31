@@ -204,6 +204,15 @@
                 }
             }
             return item;
+        },
+        getInstantReport: function(product_id, component, callback){
+                var config = {
+                    method: 'GET',
+                    url: API_PREFIX + '/report/standard/instant/products/'+product_id+'/'+component
+                }
+                $http(config).then(function(response){
+                    callback(response.data);
+                });
         }
         }
         function DMParamsConverter(response) {
