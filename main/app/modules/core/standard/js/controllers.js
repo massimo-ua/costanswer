@@ -530,7 +530,8 @@
                     .$promise
                         .then(function(response){
                             $scope.project = response;
-                            $scope.controls.gPlaceholder = $scope.controls.gPlaceholder + ',' + monthService.Month(response.begin_month).full;
+                            $scope.controls.gPlaceholder = $scope.controls.gPlaceholder + ', s' + monthService.Month(response.begin_month).full;
+                            $scope.controls.cPlaceholder = $scope.controls.cPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
                             $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
                         });
             }
@@ -589,15 +590,13 @@
                 ePlaceholder: "%",
                 eErrorText: "Please, fill in annual growth rate value"
             };
-            /*if($localStorage.uuid !== undefined) {
+            if($localStorage.uuid !== undefined) {
                 DataModel.Project.uuid({ uuid: $localStorage.uuid })
                     .$promise
                         .then(function(response){
-                            $scope.project = response;
-                            $scope.controls.gPlaceholder = $scope.controls.gPlaceholder + ',' + monthService.Month(response.begin_month).full;
-                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                            $scope.controls.bPlaceholder = $scope.controls.bPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
                         });
-            }*/
+            }
             standardService.DLList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
             });
@@ -644,15 +643,13 @@
                 bPlaceholder: "$",
                 bErrorText: "Please, fill in amount required per batch"
             };
-            /*if($localStorage.uuid !== undefined) {
+            if($localStorage.uuid !== undefined) {
                 DataModel.Project.uuid({ uuid: $localStorage.uuid })
                     .$promise
                         .then(function(response){
-                            $scope.project = response;
-                            $scope.controls.gPlaceholder = $scope.controls.gPlaceholder + ',' + monthService.Month(response.begin_month).full;
-                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                            $scope.controls.bPlaceholder = $scope.controls.bPlaceholder + ', ' + monthService.Month(response.begin_month).full;
                         });
-            }*/
+            }
             standardService.VOList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
             });
@@ -711,7 +708,14 @@
                     })
                     .catch(function(){
                         $scope.id = undefined;            
-                    })
+                    });
+            if($localStorage.uuid !== undefined) {
+                DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                    .$promise
+                        .then(function(response){
+                            $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + 's, ' + monthService.Month(response.begin_month).full;
+                        });
+            }
             refreshReport();
         }
         function refreshReport() {
