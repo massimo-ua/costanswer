@@ -765,6 +765,7 @@
             $scope.product_id = $stateParams.id;
             $scope.year_number = 1;
             $scope.updateMode = false;
+            $scope.reportId = 'wip';
             $scope.min = function(index) {
                 return 0;
             }
@@ -801,6 +802,15 @@
                     .catch(function(error){
                         $log.debug(error);
                     })
+            refreshReport();
+        }
+        function refreshReport() {
+            if($scope.product_id) {
+                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
+                    $scope.instantReport = response;
+                });
+            }
+            return;
         }
         init();
         $scope.onSave = function(form) {
@@ -819,6 +829,7 @@
                 .$promise
                     .then(function(){
                         $scope.updateMode = true;
+                        refreshReport();
                     })
                     .catch(function(error){
                         $log.debug(error);
