@@ -258,6 +258,9 @@
             $scope.updateMode = false;
             $scope.instantReport = [];
             $scope.reportId = 'inventory';
+            $scope.min = function(index) {
+                return index === 0 ? 1 : 0;
+            }
             $scope.controls = {
                 buttonText: "Save",
                 nameMain: "Finished goods manufactured",
@@ -338,6 +341,9 @@
             $scope.updateMode = false;
             $scope.instantReport = [];
             $scope.reportId = 'inventory';
+            $scope.min = function(index) {
+                return 0;
+            }
             $scope.controls = {
                 buttonText: "Save",
                 nameMain: "Finished goods sold",
@@ -409,7 +415,7 @@
                     });
         }
     }])
-    .controller('propertyWipBeginningController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', function($scope, $localStorage, $stateParams, DataModel, monthService){
+    .controller('propertyWipBeginningController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
@@ -417,6 +423,7 @@
             $scope.month_number = 1;
             $scope.year_number = 1;
             $scope.instantReport = [];
+            $scope.reportId = 'wip';
             $scope.controls = {
                 buttonText: "Save",
                 nameMain: "Work in process (WIP) beginning",
@@ -441,6 +448,15 @@
                             $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + ',' + monthService.Month(response.begin_month).full;
                         });
             }
+            refreshReport();
+        }
+        function refreshReport() {
+            if($scope.product_id) {
+                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
+                    $scope.instantReport = response;
+                });
+            }
+            return;
         }
         init();
         $scope.onSave = function(form) {
@@ -454,6 +470,7 @@
                     .then(function(response){
                         $scope.controls.buttonText = "Update";
                         $scope.id = response.id;
+                        refreshReport();
                     })
                     .catch(function(error){
                         $scope.controls.buttonText = "Save";
@@ -463,6 +480,9 @@
                 $scope.controls.buttonText = "Updating...";
                 wip.beginning_costs = Math.round($scope.form.beginning_costs * 100);
                 wip.$updateWip({ id: $scope.id })
+                    .then(function(response){
+                        refreshReport();
+                    })
                     .catch(function(error){
                         console.log(error);
                     })
@@ -663,7 +683,7 @@
             });
         }
     }])
-    .controller('propertyMachineHoursController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', function($scope, $localStorage, $stateParams, DataModel, monthService){
+    .controller('propertyMachineHoursController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
@@ -671,6 +691,7 @@
             $scope.month_number = 0;
             $scope.year_number = 1;
             $scope.instantReport = [];
+            $scope.reportId = 'machinehours';
             $scope.controls = {
                 buttonText: "Save",
                 nameMain: "Machine hours per batch required",
@@ -691,6 +712,15 @@
                     .catch(function(){
                         $scope.id = undefined;            
                     })
+            refreshReport();
+        }
+        function refreshReport() {
+            if($scope.product_id) {
+                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
+                    $scope.instantReport = response;
+                });
+            }
+            return;
         }
         init();
         $scope.onSave = function(form) {
@@ -705,6 +735,7 @@
                     .then(function(response){
                         $scope.controls.buttonText = "Update";
                         $scope.id = response.id;
+                        refreshReport();
                     })
                     .catch(function(error){
                         $scope.controls.buttonText = "Save";
@@ -715,6 +746,9 @@
                 mh.hours_per_batch_required = Math.round($scope.form.hours_per_batch_required * 100);
                 mh.hourly_rate = Math.round($scope.form.hourly_rate * 100);
                 mh.$updateMachineHours({ id: $scope.id })
+                    .then(function(response){
+                        refreshReport();
+                    })
                     .catch(function(error){
                         console.log(error);
                     })
@@ -731,6 +765,9 @@
             $scope.product_id = $stateParams.id;
             $scope.year_number = 1;
             $scope.updateMode = false;
+            $scope.min = function(index) {
+                return 0;
+            }
             $scope.controls = {
                 buttonText: "Save",
                 nameMain: "Work in process (WIP) ending",
