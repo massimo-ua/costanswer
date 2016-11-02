@@ -205,10 +205,12 @@
             }
             return item;
         },
-        getInstantReport: function(product_id, component, callback){
+        getInstantReport: function(product_id, component, callback, component_id){
+                var url = API_PREFIX + '/report/standard/instant/products/'+product_id+'/'+component;
+                url = (component_id === undefined) ? url : url + '/' + component_id; 
                 var config = {
                     method: 'GET',
-                    url: API_PREFIX + '/report/standard/instant/products/'+product_id+'/'+component
+                    url: url
                 }
                 $http(config).then(function(response){
                     callback(response.data);

@@ -15,7 +15,8 @@
                     nameProperty: '=',
                     onSave: '&',
                     onUpdate: '&',
-                    onDelete: '&'
+                    onDelete: '&',
+                    onLoad: '&'
                 },
                 templateUrl: 'app/modules/core/views/directives/ca-thumbler.html',
                 link: function(scope, elem, attrs) {
@@ -51,6 +52,9 @@
                         scope.activeItem = index+1;
                         angular.copy(scope.itemsList[index], scope.itemModel);
                         scope.controls.buttonText = "Update";
+                        if(scope.onLoad() !== undefined) {
+                            scope.onLoad()(scope.itemsList[index].id);
+                        }
                     };
                     scope.clearForm = function() {
                         scope.itemModel = {};

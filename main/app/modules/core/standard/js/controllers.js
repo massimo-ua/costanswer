@@ -634,6 +634,7 @@
             $scope.month_number = 0;
             $scope.itemsList = [];
             $scope.nameProperty = "name";
+            $scope.reportId = "variableoverhead";
             $scope.controls = {
                 buttonText: "Add",
                 aMain: "Name of variable overhead",
@@ -653,31 +654,37 @@
             standardService.VOList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
             });
+            refreshReport();
+        }
+        function refreshReport(component_id) {
+            if($scope.product_id) {
+                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
+                    $scope.instantReport = response;
+                }, component_id);
+            }
+            return;
         }
         init();
         $scope.onSave = function(newItem, callback) {
             standardService.onVOSave($scope.product_id, $scope.year_number, newItem, function(response){
                 callback(response);
-                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-                //    $scope.instantReport = response;
-                //});
+                refreshReport();
             });
         }
         $scope.onUpdate = function(item, callback) {
             standardService.onVOUpdate($scope.year_number, item, function(){
                 callback();
-                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-                //    $scope.instantReport = response;
-                //});
+                refreshReport();
             });
         }
         $scope.onDelete = function(item, callback) {
             standardService.onVODelete(item, function(){
                 callback();
-                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-                //    $scope.instantReport = response;
-                //});
+                refreshReport();
             });
+        }
+        $scope.onLoad = function(component_id) {
+            refreshReport(component_id);
         }
     }])
     .controller('propertyMachineHoursController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
