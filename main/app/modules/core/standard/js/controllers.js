@@ -499,6 +499,7 @@
             $scope.year_number = 1;
             $scope.itemsList = [];
             $scope.nameProperty = "name";
+            $scope.reportId = "directmaterials";
             $scope.controls = {
                 buttonText: "Add",
                 aMain: "Name of raw material",
@@ -538,31 +539,37 @@
             standardService.DMList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
             });
+            refreshReport();
+        }
+        function refreshReport(component_id) {
+            if($scope.product_id) {
+                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
+                    $scope.instantReport = response;
+                }, component_id);
+            }
+            return;
         }
         init();
         $scope.onSave = function(newItem, callback) {
             standardService.onDMSave($scope.product_id, $scope.year_number, newItem, function(response){
                 callback(response);
-                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-                //    $scope.instantReport = response;
-                //});
+                refreshReport();
             });
         }
         $scope.onUpdate = function(item, callback) {
             standardService.onDMUpdate($scope.year_number, item, function(){
                 callback();
-                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-                //    $scope.instantReport = response;
-                //});
+                refreshReport();
             });
         }
         $scope.onDelete = function(item, callback) {
             standardService.onDMDelete(item, function(){
                 callback();
-                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-                //    $scope.instantReport = response;
-                //});
+                refreshReport();
             });
+        }
+        $scope.onLoad = function(component_id) {
+            refreshReport(component_id);
         }
     }])
     .controller('propertyDirectLaborController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
