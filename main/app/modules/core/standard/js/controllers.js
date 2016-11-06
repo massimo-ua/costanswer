@@ -579,6 +579,7 @@
             $scope.month_number = 0;
             $scope.itemsList = [];
             $scope.nameProperty = "worker";
+            $scope.reportId = "directlabor";
             $scope.controls = {
                 buttonText: "Add",
                 aMain: "Worker name/title",
@@ -607,31 +608,37 @@
             standardService.DLList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
             });
+            refreshReport();
+        }
+        function refreshReport(component_id) {
+            if($scope.product_id) {
+                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
+                    $scope.instantReport = response;
+                }, component_id);
+            }
+            return;
         }
         init();
         $scope.onSave = function(newItem, callback) {
             standardService.onDLSave($scope.product_id, $scope.year_number, newItem, function(response){
                 callback(response);
-                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-                //    $scope.instantReport = response;
-                //});
+                refreshReport();
             });
         }
         $scope.onUpdate = function(item, callback) {
             standardService.onDLUpdate($scope.year_number, item, function(){
                 callback();
-                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-                //    $scope.instantReport = response;
-                //});
+                refreshReport();
             });
         }
         $scope.onDelete = function(item, callback) {
             standardService.onDLDelete(item, function(){
                 callback();
-                //standardService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-                //    $scope.instantReport = response;
-                //});
+                refreshReport();
             });
+        }
+        $scope.onLoad = function(component_id) {
+            refreshReport(component_id);
         }
     }])
     .controller('propertyVariableOverheadController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
