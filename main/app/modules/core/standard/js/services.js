@@ -215,7 +215,14 @@
                 $http(config).then(function(response){
                     callback(response.data);
                 });
-        }
+        },
+        getTotalStandardReport: function(uuid){
+            var config = {
+                method: 'GET',
+                url: API_PREFIX + '/report/standard/total/'+uuid
+            }
+            return $http(config);
+        },
         }
         function DMParamsConverter(response) {
             var item = {};

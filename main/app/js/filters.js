@@ -20,4 +20,9 @@
 					return input == value ? replace : input;
   				}
 			});
+	angular.module('costAnswer.filters').filter('toFixed', function(){
+  		return function(input, value) {
+			return parseFloat(input) ? input.toFixed(value) : input;
+  		}
+	});
 }());

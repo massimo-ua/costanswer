@@ -923,11 +923,19 @@
                     });
         }
     }])
-    .controller('propertyReportController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
-        //console.log('singleProductController');
-        function init() {
-            $scope.product_id = $stateParams.id;
-        }
-        init();
-    }]);
+    .controller('propertyReportController', [
+            '$scope', '$localStorage', 'standardService', '$log',
+            function($scope, $localStorage, standardService, $log) {
+                function init() {
+                    if($localStorage.uuid) {
+                        standardService.getTotalStandardReport($localStorage.uuid)
+                        .then(function(response){
+                            $scope.report = response.data;
+                        }, function(response){
+                            $log.debug(response);
+                        });
+                    }
+                };
+                init(); 
+            }]);
 }());
