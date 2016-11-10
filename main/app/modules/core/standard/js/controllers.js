@@ -924,11 +924,12 @@
         }
     }])
     .controller('propertyReportController', [
-            '$scope', '$localStorage', 'standardService', '$log',
-            function($scope, $localStorage, standardService, $log) {
+            '$scope', '$localStorage', 'standardService', '$log', '$stateParams',
+            function($scope, $localStorage, standardService, $log, $stateParams) {
                 function init() {
-                    if($localStorage.uuid) {
-                        standardService.getTotalStandardReport($localStorage.uuid)
+                    $scope.product_id = $stateParams.id;
+                    if($scope.product_id) {
+                        standardService.getTotalProductReport($scope.product_id)
                         .then(function(response){
                             $scope.report = response.data;
                         }, function(response){

@@ -12,7 +12,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="(tr_name, tr_entry) in category">
-                        <td style="width: 150px;">{{ tr_name | strTruncate:false:20 }}</td><td ng-repeat="tr_cost in tr_entry">{{ tr_cost|toFixed:2 }}</td>
+                        <td style="width: 150px;">{{ tr_name | strTruncate:false:20 }}</td><td ng-repeat="tr_cost in tr_entry">{{ tr_cost|toFixed:2|naFilter:undefined:'n/a' }}</td>
                     </tr>
                 </tbody>
             </table>

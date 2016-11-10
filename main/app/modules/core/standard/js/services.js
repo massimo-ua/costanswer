@@ -216,10 +216,10 @@
                     callback(response.data);
                 });
         },
-        getTotalStandardReport: function(uuid){
+        getTotalProductReport: function(id){
             var config = {
                 method: 'GET',
-                url: API_PREFIX + '/report/standard/total/'+uuid
+                url: API_PREFIX + '/report/standard/product/'+id+'/total/'
             }
             return $http(config);
         },
