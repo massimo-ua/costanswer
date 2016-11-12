@@ -22,7 +22,7 @@
 			});
 	angular.module('costAnswer.filters').filter('toFixed', function(){
   		return function(input, value) {
-			return parseFloat(input) ? input.toFixed(value) : input;
+			return (parseFloat(input) || input == 0) ? input.toFixed(value) : input;
   		}
 	});
 }());
