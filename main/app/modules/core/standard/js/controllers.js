@@ -872,6 +872,7 @@
             $scope.month_number = 0;
             $scope.form = {};
             $scope.updateMode = false;
+            $scope.reportId = 'markup';
             $scope.controls = {
                 buttonText: "Save",
                 aMain: "Mark Up",
@@ -903,6 +904,15 @@
                             $log.debug(error);
                         })
             }
+            refreshReport();
+        }
+        function refreshReport() {
+            if($scope.product_id) {
+                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
+                    $scope.instantReport = response;
+                });
+            }
+            return;
         }
         init();
         $scope.onSave = function(form) {
@@ -913,6 +923,7 @@
                 .$promise
                     .then(function(){
                         $scope.updateMode = true;
+                        refreshReport();
                     })
                     .catch(function(error){
                         $log.debug(error);
