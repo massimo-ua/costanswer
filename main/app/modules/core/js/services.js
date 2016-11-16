@@ -22,6 +22,10 @@
                     method: 'POST',
                     url: API_PREFIX+'/moh/uuid'
                 },
+                updateWithUuid: {
+                    method: 'PUT',
+                    url: API_PREFIX+'/moh/uuid'
+                },
                 addMohComponent: {
                     method: 'POST',
                     params: { moh_id: '@moh_id', component: '@component' },

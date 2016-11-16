@@ -15,8 +15,8 @@
                 };
             }])
         .controller('mohSettingsController', [
-            '$scope', 'toastr', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE', 'DataModel',
-            function($scope, toastr, $localStorage, MOH_ALLOCATION_BASE, MOH_CALCULATION_BASE, DataModel) {
+            '$scope', '$log', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE', 'DataModel',
+            function($scope, $log, $localStorage, MOH_ALLOCATION_BASE, MOH_CALCULATION_BASE, DataModel) {
                 /*$scope.saveCalculationBase = function() {
                 if($scope.mohSettings.calculationBase == undefined) return;
                 try{
@@ -39,10 +39,18 @@
                             $localStorage.moh = response.id;
                         },
                         function(err){
-                            console.log(err);
+                            $log.debug(err);
                         });
                     } else {
-                        //todo update moh settings
+                        if(!$localStorage.uuid || $scope.mohSettings.allocation_base_id == undefined) return;
+                        var moh = {};
+                        moh.project_uuid = $localStorage.uuid;
+                        moh.allocation_base_id = $scope.mohSettings.allocation_base_id;
+                        $log.debug(moh);
+                        DataModel.Moh.updateWithUuid(moh).$promise
+                            .catch(function(err){
+                                $log.debug(err);
+                            });
                     }
 
                 }
