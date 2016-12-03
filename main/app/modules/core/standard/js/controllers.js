@@ -942,7 +942,8 @@
                     if($scope.product_id) {
                         standardService.getTotalProductReport($scope.product_id)
                         .then(function(response){
-                            $scope.report = response.data;
+                            $scope.report = response.data.reportdata;
+                            $scope.reportstyes = response.data.reportstyes;
                         }, function(response){
                             $log.debug(response);
                         });
