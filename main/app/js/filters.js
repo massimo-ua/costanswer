@@ -17,12 +17,20 @@
 			});
 	angular.module('costAnswer.filters').filter('naFilter', function(){
   				return function(input, value, replace) {
-					return input == value ? replace : input;
+					if(input === false) return '';
+					else {
+						return input == value ? replace : input;
+					}
   				}
 			});
 	angular.module('costAnswer.filters').filter('toFixed', function(){
   		return function(input, value) {
-			return (parseFloat(input) || input == 0) ? input.toFixed(value) : input;
+			try {
+				return (parseFloat(input) || input == 0) ? input.toFixed(value) : input;
+			}
+			catch(err) {
+				 return input;
+			}
   		}
 	});
 }());

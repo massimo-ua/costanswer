@@ -1010,6 +1010,12 @@ fieldset[disabled] .ui-grid-menu .ui-grid-menu-inner .ui-grid-menu-close-button.
   left: 10px;
 }
 /*
+Report styles
+*/
+.costanswer.report.subheader {
+  font-weight: bolder;
+}
+/*
    Animation example, for spinners
 */
 .ui-grid-animate-spin {
