@@ -935,9 +935,28 @@
         }
     }])
     .controller('propertyReportController', [
-            '$scope', '$localStorage', 'standardService', '$log', '$stateParams',
-            function($scope, $localStorage, standardService, $log, $stateParams) {
+            '$scope', '$localStorage', 'standardService', '$log', '$stateParams', 'monthService', 'DataModel', 'PROJECT_TYPES',
+            function($scope, $localStorage, standardService, $log, $stateParams, monthService, DataModel, PROJECT_TYPES) {
                 function init() {
+                    if($localStorage.uuid !== undefined) {
+                        DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                            .$promise
+                                .then(function(response){
+                                    $scope.project = response;
+                                    $scope.project.begin_month = monthService.Month(response.begin_month).short;
+                                    $scope.project.type_id = PROJECT_TYPES[response.type_id];
+                                });
+                        $log.debug($stateParams.id);
+                        DataModel.Product.get({ id: $stateParams.id })
+                            .$promise
+                                .then(function(response){
+                                    $scope.product = response;
+                                })
+                                .catch(function(error){
+                                    $log.debug(error);
+                                });
+
+                    }
                     $scope.product_id = $stateParams.id;
                     if($scope.product_id) {
                         standardService.getTotalProductReport($scope.product_id)
