@@ -62,6 +62,13 @@ angular.module('costAnswer.core')
                     }
                 }
             })
+            .state('projectReport', {
+                url: '/report',
+                parent: "projectDataInput",
+                controller: 'ProjectReportController',
+                controllerAs: 'prc',
+                templateUrl: 'app/modules/core/views/project-report.html'
+            })
             .state('moh', {
                 url: '/moh',
                 //abstract: true,
@@ -120,13 +127,7 @@ angular.module('costAnswer.core')
                 url: '/report',
                 controller: 'mohReportController',
                 templateUrl: 'app/modules/core/moh/views/report.html'
-            })
-            /*.state('mohDataInput.home', {
-                parent: "mohDataInput",
-                url: '/',
-                controller: 'mohDataInputHomeController',
-                templateUrl: 'app/modules/core/views/moh/home.html'
-            })*/;
+            });
         $urlRouterProvider.otherwise('/description/standard-costing');
     }]);
 }());

@@ -1,0 +1,63 @@
+<div>
+    <h4>{{ prc.someText }}</h4>
+    <div ng-show="report" cass="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h4>General settings</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Company name:</div>
+                <div class="col-xs-3"><b>{{ project.company_name }}</b></div>
+                <div class="col-xs-3">Product/Service:</div>
+                <div class="col-xs-3"><b>{{ product.name }}</b></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Currency:</div>
+                <div class="col-xs-3"><b>{{ project.currency_id }}</b></div>
+                <div class="col-xs-3">Meas. Unit:</div>
+                <div class="col-xs-3"><b>{{ product.measurement_unit }}</b></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Year to begin:</div>
+                <div class="col-xs-3"><b>{{ project.begin_year }}</b></div>
+                <div class="col-xs-3">Division:</div>
+                <div class="col-xs-3"><b>{{ product.division }}</b></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Month to begin:</div>
+                <div class="col-xs-3"><b>{{ project.begin_month }}</b></div>
+                <div class="col-xs-3">Order #:</div>
+                <div class="col-xs-3"><b>{{ product.order_number }}</b></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Time mode:</div>
+                <div class="col-xs-3"><b>{{ project.type_id }}</b></div>
+                <div class="col-xs-3"></div>
+                <div class="col-xs-3"></div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="report" class="row">
+        <div class="row" ng-repeat="(category_name, category) in report track by $index">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div ng-show="reportstyes[category_name].display" class="text-center">
+                    <h4>{{ category_name }}:</h4>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr ng-repeat="th_entry in category" ng-show="$first">
+                            <th></th><th ng-repeat="(th_month, th_cost) in th_entry">{{ th_month }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(tr_name, tr_entry) in category">
+                            <td ng-class="reportstyes[category_name][tr_name].class_name" style="width: 200px;">{{ tr_name | strTruncate:false:30 }}</td><td ng-repeat="tr_cost in tr_entry">{{ tr_cost|toFixed:2|naFilter:undefined:'n/a'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

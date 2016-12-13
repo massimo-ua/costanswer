@@ -85,11 +85,6 @@ angular.module('costAnswer.core.controllers')
                 $scope.settings = {};
                 $scope.currencies = CURRENCIES;
                 $scope.monthes = MONTHES;
-                //$scope.settings.currency = $scope.currencies[0];
-                //var currentTime = new Date();
-                //$scope.settings.yearToBegin = currentTime.getFullYear(); 
-                //$scope.settings.monthToBegin = $scope.monthes[currentTime.getMonth()];
-                //$scope.settings.considerMOH = true;
             }
             init();
             $scope.next = function() {
@@ -109,65 +104,27 @@ angular.module('costAnswer.core.controllers')
                     //todo: update project settings
                     $state.go('moh');
                 }
-                //$localStorage.Project.settings.globals = $scope.settings;
-                /*if($scope.settings.considerMOH) {
-                    $state.go('mohDataInput.home');
-                }
-                else {*/
-                    //$state.go('moh');
-                /*}*/
             }
         }])
-        /*.controller('mohDataInputMainController', [
-            '$scope', 'toastr', '$localStorage', 'PROJECT_TYPES', 'MOH_ALLOCATION', 'MOH_METHOD', 'MOH_CATEGORY',
-            function($scope, toastr, $localStorage, PROJECT_TYPES, MOH_ALLOCATION, MOH_METHOD, MOH_CATEGORY){
-                function init() {
-                    $scope.projectType = PROJECT_TYPES[$localStorage.projectType];
-                    $scope.moh_allocation = MOH_ALLOCATION;
-                    $scope.moh_method = MOH_METHOD;
-                    $scope.moh_category = MOH_CATEGORY;
-                    $scope.mohMethod = $localStorage.Project.moh.method;
-                    $scope.mohAllocation = $localStorage.Project.moh.allocation;
-                    $scope.list = {
-                        "window": 3,
-                        "start": 0
-                    };
-                }
-                init();
-                $scope.setMOHmethod = function (item) {
-                    try{
-                        $localStorage.Project.moh.method = item.id;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        $localStorage.Project.moh = {
-                            "method": item.id
-                        } 
-                    }
-                    $scope.mohMethod = item.id;
-                }
-                $scope.setMOHallocation = function (item) {
-                    $localStorage.Project.moh.allocation = item.id;
-                    $scope.mohAllocation = item.id;
-                }
-                $scope.moveNav= function(target) {
-                    if(target < 0) return;
-                    if(target > $scope.moh_category.length - $scope.list.window - 1) return;
-                    $scope.list.start = target; 
-                }
-            }])
-        .controller('mohDataInputHomeController', [
-            '$scope', 'toastr', '$localStorage', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES',
-            function($scope, toastr, $localStorage, PROJECT_TYPES, CURRENCIES, MONTHES){
-                
-        
-        }])*/
         .controller('projectDataInputMainController', [
-            '$scope', 'toastr', '$localStorage', 'PROJECT_TYPES', 'DATAINPUT_HEADER',
-            function($scope, toastr, $localStorage, PROJECT_TYPES, DATAINPUT_HEADER){
+            '$scope', 'toastr', '$localStorage', 'PROJECT_TYPES', 'DATAINPUT_HEADER', '$state',
+            function($scope, toastr, $localStorage, PROJECT_TYPES, DATAINPUT_HEADER, $state){
                 function init() {
                     $scope.projectType = PROJECT_TYPES[$localStorage.type];
                     $scope.datainput_header = DATAINPUT_HEADER;
                 }
                 init();
-
+                $scope.clearAll = function() {
+                    $localStorage.$reset();
+                    $state.go('startCore');
+                };
             }]);
+
+        var ProjectReportController = function(toastr, $log) {
+            var vm = this;
+            vm.someText = "ProjectReportController";
+        }
+        //
+        ProjectReportController.$inject = ['toastr','$log'];
+        //
+        angular.module('costAnswer.core.controllers').controller('ProjectReportController', ProjectReportController);

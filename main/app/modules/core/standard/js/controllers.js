@@ -935,8 +935,12 @@
         }
     }])
     .controller('propertyReportController', [
-            '$scope', '$localStorage', 'standardService', '$log', '$stateParams', 'monthService', 'DataModel', 'PROJECT_TYPES',
-            function($scope, $localStorage, standardService, $log, $stateParams, monthService, DataModel, PROJECT_TYPES) {
+            '$scope', '$localStorage', 'standardService', '$log',
+            '$stateParams', 'monthService', 'DataModel', 'PROJECT_TYPES',
+            'currencyService',
+            function($scope, $localStorage, standardService, $log,
+            $stateParams, monthService, DataModel, PROJECT_TYPES, currencyService
+            ) {
                 function init() {
                     if($localStorage.uuid !== undefined) {
                         DataModel.Project.uuid({ uuid: $localStorage.uuid })
@@ -945,6 +949,7 @@
                                     $scope.project = response;
                                     $scope.project.begin_month = monthService.Month(response.begin_month).short;
                                     $scope.project.type_id = PROJECT_TYPES[response.type_id];
+                                    $scope.project.currency_id = currencyService.getCurrency(response.currency_id).charCode;
                                 });
                         $log.debug($stateParams.id);
                         DataModel.Product.get({ id: $stateParams.id })
