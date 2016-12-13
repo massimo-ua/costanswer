@@ -92,4 +92,14 @@
         }
         return factory;
     }]);
+    angular.module('costAnswer.services').factory('currencyService', ['CURRENCIES', function(CURRENCIES) {
+        return {
+            getCurrency: function(code) {
+                for(var i = 0; i < CURRENCIES.length; i++) {
+                    if(code == CURRENCIES[i].code) return CURRENCIES[i];
+                }
+                return {}
+            }
+        }
+    }]);
 }());
