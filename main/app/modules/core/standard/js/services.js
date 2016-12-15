@@ -223,6 +223,13 @@
             }
             return $http(config);
         },
+        getTotalProjectReport: function(uuid) {
+            var config = {
+                method: 'GET',
+                url: API_PREFIX + '/report/total/'+uuid
+            }
+            return $http(config);
+        },
         }
         function DMParamsConverter(response) {
             var item = {};
