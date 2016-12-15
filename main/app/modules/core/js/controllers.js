@@ -120,11 +120,32 @@ angular.module('costAnswer.core.controllers')
                 };
             }]);
 
-        var ProjectReportController = function(toastr, $log) {
+        var ProjectReportController = function(toastr, $log, $localStorage, DataModel, monthService, currencyService, PROJECT_TYPES, standardService) {
             var vm = this;
             vm.someText = "ProjectReportController";
+            function init() {
+                var projectUuid = $localStorage.uuid;
+                if($localStorage.uuid !== undefined) {
+                        DataModel.Project.uuid({ uuid: projectUuid })
+                            .$promise
+                                .then(function(response){
+                                    vm.project = response;
+                                    vm.project.begin_month = monthService.Month(response.begin_month).short;
+                                    vm.project.type_id = PROJECT_TYPES[response.type_id];
+                                    vm.project.currency_id = currencyService.getCurrency(response.currency_id).charCode;
+                                });
+                        standardService.getTotalProjectReport(projectUuid)
+                                .then(function(response){
+                                    vm.report = response.data.reportdata;
+                                    vm.reportstyes = response.data.reportstyes;
+                                },function(error){
+                                    $log.debug(error);
+                                });
+                    }
+            };
+            init();
         }
         //
-        ProjectReportController.$inject = ['toastr','$log'];
+        ProjectReportController.$inject = ['toastr','$log','$localStorage','DataModel','monthService','currencyService','PROJECT_TYPES','standardService'];
         //
         angular.module('costAnswer.core.controllers').controller('ProjectReportController', ProjectReportController);
