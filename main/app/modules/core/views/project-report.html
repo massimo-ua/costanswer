@@ -1,52 +1,50 @@
 <div>
     <div cass="row">
-        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <h4>General settings</h4>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-3">Company name:</div>
-                <div class="col-xs-3"><b>{{ prc.project.company_name }}</b></div>
+                <div class="col-xs-3 text-right">Company name:</div>
+                <div class="col-xs-3 text-left"><b>{{ prc.project.company_name }}</b></div>
+                <div class="col-xs-3 text-right">Month to begin:</div>
+                <div class="col-xs-3 text-left"><b>{{ prc.project.begin_month }}</b></div>
             </div>
             <div class="row">
-                <div class="col-xs-3">Currency:</div>
-                <div class="col-xs-3"><b>{{ prc.project.currency_id }}</b></div>
+                <div class="col-xs-3 text-right">Currency:</div>
+                <div class="col-xs-3 text-left"><b>{{ prc.project.currency_id }}</b></div>
+                <div class="col-xs-3 text-right">Time mode:</div>
+                <div class="col-xs-3 text-left"><b>{{ prc.project.type_id }}</b></div>
             </div>
             <div class="row">
-                <div class="col-xs-3">Year to begin:</div>
-                <div class="col-xs-3"><b>{{ prc.project.begin_year }}</b></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Month to begin:</div>
-                <div class="col-xs-3"><b>{{ prc.project.begin_month }}</b></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">Time mode:</div>
-                <div class="col-xs-3"><b>{{ prc.project.type_id }}</b></div>
+                <div class="col-xs-3 text-right">Year to begin:</div>
+                <div class="col-xs-3 text-left"><b>{{ prc.project.begin_year }}</b></div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="row" ng-repeat="(category_name, category) in prc.report track by $index">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div ng-show="prc.reportstyes[category_name].display" class="text-center">
-                    <h4>{{ category_name }}:</h4>
-                </div>
-                <table class="table table-hover">
-                    <thead>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <table class="table table-hover">
+                <!-- div ng-show="prc.reportstyes[category_name].display" class="text-center" -->
+                    <!-- h4 -->
+                    <tbody ng-repeat="(category_name, category) in prc.report track by $index">
+                        <tr><th style="border-bottom: 1px;" colspan="14" class="text-center">{{ category_name }}:<th></tr>
+                    <!-- /h4 -->
+                <!-- /div -->
+                
+                    <!-- thead -->
                         <tr ng-repeat="th_entry in category" ng-show="$first">
-                            <th></th><th ng-repeat="(th_month, th_cost) in th_entry">{{ th_month }}</th>
+                            <th style="width: 200px;" class="text-center">Section</th><th class="text-center" ng-repeat="(th_month, th_cost) in th_entry">{{ th_month }}</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                    <!-- /thead -->
+                    <!-- tbody -->
                         <tr ng-repeat="(tr_name, tr_entry) in category">
-                            <td ng-class="prc.reportstyes[category_name][tr_name].class_name" style="width: 200px;">{{ tr_name | strTruncate:false:30 }}</td><td ng-repeat="tr_cost in tr_entry">{{ tr_cost|toFixed:2|naFilter:undefined:'n/a'}}</td>
+                            <td ng-class="prc.reportstyes[category_name][tr_name].class_name" class="text-left" style="min-width: 200px;">{{ tr_name | strTruncate:false:30 }}</td><td ng-class="prc.reportstyes[category_name][tr_name][$index].class_name" ng-repeat="tr_cost in tr_entry">{{ tr_cost|toFixed:2|naFilter:undefined:'n/a'}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</div>
