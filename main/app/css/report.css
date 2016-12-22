@@ -1,0 +1,26 @@
+/*
+.table { border: 1px solid #2980B9; }
+.table thead > tr > th { border-bottom: none; }
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td { border: 1px solid #2980B9; }
+*/
+
+
+.table.table-hover.costanswer-report,
+.table.table-hover.costanswer-report tbody,
+.table.table-hover.costanswer-report tbody tr td,
+.table.table-hover.costanswer-report tbody tr th,
+.table.table-hover.costanswer-report thead tr th,
+.table.table-hover.costanswer-report thead tr td,
+.table.table-hover.costanswer-report tfoot tr th,
+.table.table-hover.costanswer-report tfoot tr td {
+    border: none;
+}
+.table.table-hover.costanswer-report tbody tr td.category {
+    font-size: 1.3em;
+    text-decoration: underline;
+}
+.table.table-hover.costanswer-report > tbody.main > tr > td.block-header  {
+    font-weight: bolder;
+    border-bottom: 3px black !important;
+    text-align: center;
+}
