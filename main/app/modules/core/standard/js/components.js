@@ -8,14 +8,12 @@
             controllerAs: 'crc',
             bindings: {
                 report: '=',
-                reportstyes: '=',
+                reportstyles: '=',
                 header: '='
             }
         });
         function CaReportController($log) {
             var vm = this;
-            $log.info('CaReportController loaded!');
-
         }
         CaReportController.$inject = ['$log'];
 })();
