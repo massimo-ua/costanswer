@@ -137,7 +137,7 @@ angular.module('costAnswer.core.controllers')
                         standardService.getTotalProjectReport(projectUuid)
                                 .then(function(response){
                                     vm.report = response.data.reportdata;
-                                    vm.reportstyes = response.data.reportstyes;
+                                    vm.reportstyles = response.data.reportstyles;
                                 },function(error){
                                     $log.debug(error);
                                 });

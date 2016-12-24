@@ -21,6 +21,14 @@
 }
 .table.table-hover.costanswer-report > tbody.main > tr > td.block-header  {
     font-weight: bolder;
-    border-bottom: 3px black !important;
+    text-align: center;
+}
+.table.table-hover.costanswer-report > tbody.main > tr > td.data-cell-default  {
+    text-align: right;
+}
+.table.table-hover.costanswer-report > tbody.main > tr > td.data-cell-left  {
+    text-align: left;
+}
+.table.table-hover.costanswer-report > tbody.main > tr > td.data-cell-center  {
     text-align: center;
 }
