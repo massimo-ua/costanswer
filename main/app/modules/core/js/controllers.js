@@ -123,16 +123,22 @@ angular.module('costAnswer.core.controllers')
         var ProjectReportController = function(toastr, $log, $localStorage, DataModel, monthService, currencyService, PROJECT_TYPES, standardService) {
             var vm = this;
             vm.someText = "ProjectReportController";
+            vm.reportHeader = [];
             function init() {
                 var projectUuid = $localStorage.uuid;
                 if($localStorage.uuid !== undefined) {
                         DataModel.Project.uuid({ uuid: projectUuid })
                             .$promise
                                 .then(function(response){
-                                    vm.project = response;
-                                    vm.project.begin_month = monthService.Month(response.begin_month).short;
-                                    vm.project.type_id = PROJECT_TYPES[response.type_id];
-                                    vm.project.currency_id = currencyService.getCurrency(response.currency_id).charCode;
+                                    vm.reportHeader[0] = [];
+                                    vm.reportHeader[0][0] = {name: "Company name", value: response.company_name};
+                                    vm.reportHeader[0][1] = {name: "Month to begin", value: monthService.Month(response.begin_month).short};
+                                    vm.reportHeader[1] = [];
+                                    vm.reportHeader[1][0] = {name: "Currency", value: currencyService.getCurrency(response.currency_id).charCode};
+                                    vm.reportHeader[1][1] = {name: "Time mode", value: PROJECT_TYPES[response.type_id]};
+                                    vm.reportHeader[2] = [];
+                                    vm.reportHeader[2][0] = {name: "Year to begin", value: response.begin_year};
+                                    vm.reportHeader[2][1] = {name: "", value: ""};
                                 });
                         standardService.getTotalProjectReport(projectUuid)
                                 .then(function(response){
