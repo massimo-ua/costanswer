@@ -5,15 +5,13 @@
         <table class="table table-hover costanswer-report">
             <tbody>
                 <tr><td colspan="15" class="text-center category">General settings:</td></tr>
-                <tr><td colspan="3" class="text-right">Company name:</td><td colspan="4" class="text-left"><b>{{ crc.project.company_name }}</b></td><td colspan="3" class="text-right">Month to begin:</td><td colspan="5" class="text-left"><b>{{ crc.project.begin_month }}</b></td></tr>
-                <tr><td colspan="3" class="text-right">Currency:</td><td colspan="4" class="text-left"><b>{{ crc.project.currency_id }}</b></td><td colspan="3" class="text-right">Time mode:</td><td colspan="5" class="text-left"><b>{{ crc.project.type_id }}</b></td></tr>
-                <tr><td colspan="3" class="text-right">Year to begin:</td><td colspan="4" class="text-left"><b>{{ crc.project.begin_year }}</b></td><td colspan="3" class="text-right"></td><td colspan="5" class="text-left"></td></tr>
+                <tr ng-repeat="block in crc.header"><td colspan="3" class="text-right">{{ block[0].name }}:</td><td colspan="4" class="text-left"><b>{{ block[0].value }}</b></td><td colspan="3" class="text-right">{{ block[1].name }}:</td><td colspan="5" class="text-left"><b>{{ block[1].value }}</b></td></tr>
             </tbody>
                 <!-- div ng-show="crc.reportstyes[category_name].display" class="text-center" -->
                     <!-- h4 -->
                     <tbody class="main" ng-repeat="(category_name, category) in crc.report track by $index">
                         <tr><td colspan="15" class="text-center category"></td></tr>
-                        <tr><td colspan="15" class="text-center category">{{ category_name }}:</td></tr>
+                        <tr ng-show="crc.reportstyes[category_name].display"><td colspan="15" class="text-center category">{{ category_name }}:</td></tr>
                     <!-- /h4 -->
                 <!-- /div -->
                 
@@ -24,7 +22,7 @@
                     <!-- /thead -->
                     <!-- tbody -->
                         <tr ng-repeat="(tr_name, tr_entry) in category">
-                            <td ng-class="crc.reportstyes[category_name][tr_name].class_name" style="min-width: 200px;">{{ tr_name | strTruncate:false:30 }}</td><td style="border: 1px black !important;" ng-class="crc.reportstyes[category_name][tr_name][$index].class_name" ng-repeat="tr_cost in tr_entry">{{ tr_cost|toFixed:2|naFilter:undefined:'n/a'}}</td>
+                            <td ng-class="crc.reportstyes[category_name][tr_name].class_name" style="min-width: 200px;">{{ tr_name | strTruncate:false:30 }}</td><td ng-class="crc.reportstyes[category_name][tr_name][$index].class_name" ng-repeat="tr_cost in tr_entry">{{ tr_cost|toFixed:2|naFilter:undefined:'n/a'}}</td>
                         </tr>
                     </tbody>
                 </table>

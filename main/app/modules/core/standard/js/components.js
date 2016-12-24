@@ -9,8 +9,7 @@
             bindings: {
                 report: '=',
                 reportstyes: '=',
-                project: '='
-
+                header: '='
             }
         });
         function CaReportController($log) {

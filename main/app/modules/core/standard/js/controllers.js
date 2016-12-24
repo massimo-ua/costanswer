@@ -943,19 +943,27 @@
             ) {
                 function init() {
                     if($localStorage.uuid !== undefined) {
+                        $scope.reportHeader = [];
+                        for(var i=0;i<5;i++) {
+                            $scope.reportHeader[i] = [];
+                        }
                         DataModel.Project.uuid({ uuid: $localStorage.uuid })
                             .$promise
                                 .then(function(response){
-                                    $scope.project = response;
-                                    $scope.project.begin_month = monthService.Month(response.begin_month).short;
-                                    $scope.project.type_id = PROJECT_TYPES[response.type_id];
-                                    $scope.project.currency_id = currencyService.getCurrency(response.currency_id).charCode;
+                                    $scope.reportHeader[0][0] = {name: "Company name", value: response.company_name};
+                                    $scope.reportHeader[1][0] = {name: "Currency", value: currencyService.getCurrency(response.currency_id).charCode};
+                                    $scope.reportHeader[4][0] = {name: "Time mode", value: PROJECT_TYPES[response.type_id]};
+                                    $scope.reportHeader[2][0] = {name: "Year to begin", value: response.begin_year};
+                                    $scope.reportHeader[3][0] = {name: "Month to begin", value: monthService.Month(response.begin_month).short};
                                 });
-                        $log.debug($stateParams.id);
                         DataModel.Product.get({ id: $stateParams.id })
                             .$promise
                                 .then(function(response){
-                                    $scope.product = response;
+                                    $scope.reportHeader[0][1] = {name: "Product/Service", value: response.name};
+                                    $scope.reportHeader[1][1] = {name: "Meas. Unit", value: response.measurement_unit};
+                                    $scope.reportHeader[2][1] = {name: "Division", value: response.division};
+                                    $scope.reportHeader[3][1] = {name: "Order #", value: response.order_number};
+                                    $scope.reportHeader[4][1] = {name: "", value: ""};
                                 })
                                 .catch(function(error){
                                     $log.debug(error);
@@ -967,7 +975,7 @@
                         standardService.getTotalProductReport($scope.product_id)
                         .then(function(response){
                             $scope.report = response.data.reportdata;
-                            $scope.reportstyes = response.data.reportstyes;
+                            $scope.reportstyles = response.data.reportstyles;
                         }, function(response){
                             $log.debug(response);
                         });
