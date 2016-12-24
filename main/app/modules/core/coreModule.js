@@ -3,7 +3,8 @@ angular.module('costAnswer.core', [
     'costAnswer.core.controllers',
     'costAnswer.core.services',
     'costAnswer.core.directives',
-    'costAnswer.core.filters'
+    'costAnswer.core.filters',
+    'costAnswer.core.components'
     ]);
 angular.module('costAnswer.core')
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {

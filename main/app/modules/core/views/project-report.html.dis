@@ -1,0 +1,34 @@
+<div ng-cloak="true" ng-show="prc.report">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!-- div class="table-responsive" -->
+        <table class="table table-hover costanswer-report">
+            <tbody>
+                <tr><td colspan="15" class="text-center category">General settings:</td></tr>
+                <tr><td colspan="3" class="text-right">Company name:</td><td colspan="4" class="text-left"><b>{{ prc.project.company_name }}</b></td><td colspan="3" class="text-right">Month to begin:</td><td colspan="5" class="text-left"><b>{{ prc.project.begin_month }}</b></td></tr>
+                <tr><td colspan="3" class="text-right">Currency:</td><td colspan="4" class="text-left"><b>{{ prc.project.currency_id }}</b></td><td colspan="3" class="text-right">Time mode:</td><td colspan="5" class="text-left"><b>{{ prc.project.type_id }}</b></td></tr>
+                <tr><td colspan="3" class="text-right">Year to begin:</td><td colspan="4" class="text-left"><b>{{ prc.project.begin_year }}</b></td><td colspan="3" class="text-right"></td><td colspan="5" class="text-left"></td></tr>
+            </tbody>
+                <!-- div ng-show="prc.reportstyes[category_name].display" class="text-center" -->
+                    <!-- h4 -->
+                    <tbody class="main" ng-repeat="(category_name, category) in prc.report track by $index">
+                        <tr><td colspan="15" class="text-center category"></td></tr>
+                        <tr><td colspan="15" class="text-center category">{{ category_name }}:</td></tr>
+                    <!-- /h4 -->
+                <!-- /div -->
+                
+                    <!-- thead -->
+                        <tr ng-repeat="th_entry in category" ng-show="$first">
+                            <td style="width: 200px; border-bottom: 1px solid black !important;" class="block-header">Section</td><td style="border-bottom: 1px solid black !important;" class="block-header" ng-repeat="(th_month, th_cost) in th_entry">{{ th_month }}</td>
+                        </tr>
+                    <!-- /thead -->
+                    <!-- tbody -->
+                        <tr ng-repeat="(tr_name, tr_entry) in category">
+                            <td ng-class="prc.reportstyes[category_name][tr_name].class_name" class="text-left" style="min-width: 200px;">{{ tr_name | strTruncate:false:30 }}</td><td style="border: 1px solid black;" ng-class="prc.reportstyes[category_name][tr_name][$index].class_name" ng-repeat="tr_cost in tr_entry">{{ tr_cost|toFixed:2|naFilter:undefined:'n/a'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        <!-- /div -->
+            </div>
+        </div>
+    </div>
