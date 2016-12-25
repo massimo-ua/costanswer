@@ -555,7 +555,8 @@
                     if($localStorage.uuid) {
                         mohService.getTotalMohReport($localStorage.uuid)
                         .then(function(response){
-                            $scope.report = response.data;
+                            $scope.report = response.data.reportdata;
+                            $scope.reportstyles = response.data.reportstyles;
                         }, function(response){
                             console.log(response);
                         });
