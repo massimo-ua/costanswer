@@ -549,9 +549,13 @@
                 }
             }])
             .controller('mohReportController', [
-            '$scope', '$state', 'toastr', '$localStorage', 'mohService',
-            function($scope, $state, toastr, $localStorage, mohService) {
+            '$scope', '$state', 'toastr', '$localStorage', 'mohService', 'DataModel', 'monthService', 'currencyService', 'PROJECT_TYPES',
+            function($scope, $state, toastr, $localStorage, mohService, DataModel, monthService, currencyService, PROJECT_TYPES) {
                 function init() {
+                    $scope.reportHeader = [];
+                    for(var i=0;i<4;i++) {
+                        $scope.reportHeader[i] = [];
+                    }
                     if($localStorage.uuid) {
                         mohService.getTotalMohReport($localStorage.uuid)
                         .then(function(response){
@@ -560,6 +564,22 @@
                         }, function(response){
                             console.log(response);
                         });
+                        DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                            .$promise
+                                .then(function(response){
+                                    $scope.reportHeader[0][0] = {name: "Company name", value: response.company_name};
+                                    $scope.reportHeader[1][0] = {name: "Currency", value: currencyService.getCurrency(response.currency_id).charCode};
+                                    $scope.reportHeader[2][0] = {name: "Year to begin", value: response.begin_year};
+                                    $scope.reportHeader[2][1] = {name: "Month to begin", value: monthService.Month(response.begin_month).short};
+                                    $scope.reportHeader[3][0] = {name: "Time mode", value: PROJECT_TYPES[response.type_id]};
+                                    $scope.reportHeader[3][1] = {name: "", value: ""};
+                                });
+                        if($localStorage.moh != undefined) {
+                            DataModel.Moh.get({ id: $localStorage.moh }, function(response){
+                                $scope.reportHeader[0][1] = {name: "Calculation based on", value: mohService.getCalculationBase(response.calculation_base_id).name};
+                                $scope.reportHeader[1][1] = {name: "Allocation based on", value: mohService.getAllocationBase(response.allocation_base_id).name};
+                            });
+                        }
                     }
                 };
                 init(); 

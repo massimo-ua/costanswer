@@ -1,7 +1,23 @@
 (function(){
     'use restrict'
     angular.module('costAnswer.core.moh.services', [])
-        .factory('mohService',['$localStorage', '$http', 'MONTHES', 'API_PREFIX', 'DataModel', function($localStorage, $http, MONTHES, API_PREFIX, DataModel){
+        .factory('mohService',[
+            '$localStorage',
+            '$http',
+            'MONTHES',
+            'API_PREFIX',
+            'DataModel',
+            'MOH_ALLOCATION_BASE',
+            'MOH_CALCULATION_BASE',
+            function(
+                $localStorage,
+                $http,
+                MONTHES,
+                API_PREFIX,
+                DataModel,
+                MOH_ALLOCATION_BASE,
+                MOH_CALCULATION_BASE
+                ){
           return {
               getTotalMohReport: function(uuid){
                 //uuid = 'ac34501b-7abb-11e6-a3d8-021001c1a794';
@@ -20,6 +36,18 @@
                 $http(config).then(function(response){
                     callback(response.data);
                 });
+              },
+              getAllocationBase: function(id) {
+                for(var i = 0; i < MOH_ALLOCATION_BASE.length; i++) {
+                    if(id == MOH_ALLOCATION_BASE[i].id) return MOH_ALLOCATION_BASE[i];
+                }
+                return {}
+              },
+              getCalculationBase: function(id) {
+                for(var i = 0; i < MOH_CALCULATION_BASE.length; i++) {
+                    if(id == MOH_CALCULATION_BASE[i].id) return MOH_CALCULATION_BASE[i];
+                }
+                return {}
               },
               parseMohResponse: function(response, mode) {
                   switch(mode){
