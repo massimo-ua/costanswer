@@ -8,18 +8,18 @@
 		<ng-form id="signup-form" name="vm.signupForm">
 			<div ng-class="{'has-error': vm.signupForm.email.$dirty && vm.signupForm.email.$invalid}" class="form-group has-feedback has-feedback-left">
     				<!-- label class="control-label">Email</label -->
-					<input name="email" type="email" ng-required="true" ng-model="vm.auth.email" class="form-control costanswer" placeholder="Enter your Email" />
+					<input name="email" type="email" ng-required="true" ng-model="vm.auth.email" class="form-control costanswer" placeholder="Enter your email" />
 					<i class="glyphicon glyphicon-envelope form-control-feedback costanswer"></i>
 				<div class="help-block error" ng-show="vm.signupForm.email.$dirty && vm.signupForm.email.$error.required">Please, fill in your email</div>
 			</div>
 			<div ng-class="{'has-error': vm.signupForm.display_name.$dirty && vm.signupForm.display_name.$invalid}" class="form-group has-feedback has-feedback-left">
-					<input name="display_name" type="display_name" ng-model="vm.auth.display_name" class="form-control costanswer" placeholder="Enter your Display Name" />
+					<input name="display_name" type="display_name" ng-model="vm.auth.display_name" class="form-control costanswer" placeholder="Enter your display name" />
 					<i class="glyphicon glyphicon-user form-control-feedback costanswer"></i>
-				<div class="help-block error" ng-show="vm.signupForm.display_name.$dirty && vm.signupForm.display_name.$error.required">Please, fill in Display Name for your account</div>
+				<div class="help-block error" ng-show="vm.signupForm.display_name.$dirty && vm.signupForm.display_name.$error.required">Please, fill in display name for your account</div>
 			</div>
 			<div ng-class="{'has-error': vm.signupForm.password.$dirty && vm.signupForm.password.$invalid}" class="form-group has-feedback has-feedback-left">
     				<!-- label class="control-label">Password</label -->
-					<input name="password" type="password" ng-required="true" ng-model="vm.auth.password" class="form-control costanswer" placeholder="Enter your Password" />
+					<input name="password" type="password" ng-required="true" ng-model="vm.auth.password" class="form-control costanswer" placeholder="Enter your password" />
 					<i class="glyphicon glyphicon-lock form-control-feedback costanswer"></i>
 				<div class="help-block error" ng-show="vm.signupForm.password.$dirty && vm.signupForm.password.$error.required">Please, fill in your password</div>
 			</div>
