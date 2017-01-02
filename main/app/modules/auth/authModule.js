@@ -7,7 +7,8 @@
                     url: '/login',
                     views: {
                         "main": {
-                            controller: 'authLoginController',
+                            controller: 'AuthLoginController',
+                            controllerAs: 'vm',
                             templateUrl: 'app/modules/auth/views/login.html'
                         }
                     }
@@ -17,7 +18,8 @@
                     url: '/signup',
                     views: {
                         "main": {
-                            controller: 'authSignupController',
+                            controller: 'AuthSignupController',
+                            controllerAs: 'vm',
                             templateUrl: 'app/modules/auth/views/signup.html'
                         }
                     }

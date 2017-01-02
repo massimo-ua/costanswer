@@ -102,4 +102,5 @@
             }
         }
     }]);
+    angular.module('costAnswer.services').value('AUTH_PREFIX','http://www.acl.pp.ua:10101/auth');
 }());
