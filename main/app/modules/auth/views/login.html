@@ -5,21 +5,21 @@
 </div>
 <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
-		<ng-form id="login-form" name="loginForm">
-			<div ng-class="{'has-error': loginForm.email.$dirty && loginForm.email.$invalid}" class="form-group has-feedback has-feedback-left">
+		<ng-form id="login-form" name="vm.loginForm">
+			<div ng-class="{'has-error': vm.loginForm.email.$dirty && vm.loginForm.email.$invalid}" class="form-group has-feedback has-feedback-left">
     				<!-- label class="control-label">Email</label -->
-					<input name="email" type="email" ng-required="true" ng-model="auth.email" class="form-control costanswer" placeholder="Enter your email here" />
+					<input name="email" type="email" ng-required="true" ng-model="vm.auth.email" class="form-control costanswer" placeholder="Enter your email here" />
 					<i class="glyphicon glyphicon-envelope form-control-feedback costanswer"></i>
-				<div class="help-block error" ng-show="loginForm.email.$dirty && loginForm.email.$error.required">Please, fill in your email</div>
+				<div class="help-block error" ng-show="vm.loginForm.email.$dirty && vm.loginForm.email.$error.required">Please, fill in your email</div>
 			</div>
-			<div ng-class="{'has-error': loginForm.password.$dirty && loginForm.password.$invalid}" class="form-group has-feedback has-feedback-left">
+			<div ng-class="{'has-error': vm.loginForm.password.$dirty && vm.loginForm.password.$invalid}" class="form-group has-feedback has-feedback-left">
     				<!-- label class="control-label">Password</label -->
-					<input name="password" type="password" ng-required="true" ng-model="auth.password" class="form-control costanswer" placeholder="Enter your password here" />
+					<input name="password" type="password" ng-required="true" ng-model="vm.auth.password" class="form-control costanswer" placeholder="Enter your password here" />
 					<i class="glyphicon glyphicon-lock form-control-feedback costanswer"></i>
-                <div class="help-block error" ng-show="loginForm.password.$dirty && loginForm.password.$error.required">Please, fill in your password</div>
+                <div class="help-block error" ng-show="vm.loginForm.password.$dirty && vm.loginForm.password.$error.required">Please, fill in your password</div>
 			</div>
 			<div class="form-group">
-				<input type="button" class="btn btn-lg btn-costanswer btn-block" ng-click="login()" ng-disabled="loginForm.$invalid" value="LOGIN" />
+				<input type="button" class="btn btn-lg btn-costanswer btn-block" ng-click="vm.login()" ng-disabled="vm.loginForm.$invalid" value="Login" />
 			</div>
 			<div class="form-group">
 				<span>Do not have account yet? Please, <a ui-sref="authSignup">sign up</a></span>
