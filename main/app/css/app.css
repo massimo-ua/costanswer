@@ -1101,3 +1101,6 @@ Report styles
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
