@@ -49,7 +49,8 @@ angular.module('costAnswer.core')
                 url: '/project-settings',
                 views: { 
                     "main": {
-                        controller: 'projectSettingsController',
+                        controller: 'ProjectSettingsController',
+                        controllerAs: 'vm',
                         templateUrl: 'app/modules/core/views/project-settings.html'
                     }
                 }
