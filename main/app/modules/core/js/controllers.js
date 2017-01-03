@@ -60,52 +60,6 @@ angular.module('costAnswer.core.controllers')
                 $state.go('projectSettings');
             }
         }])
-        .controller('projectSettingsController', ['$scope', '$state', 'toastr', '$localStorage', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES', 'DataModel', function($scope, $state, toastr, $localStorage, PROJECT_TYPES, CURRENCIES, MONTHES, DataModel) {
-            function init() {
-                $scope.nextNew = true;
-                try {
-                    $scope.projectUuid = $localStorage.uuid;
-                } catch(err) {
-                    console.log(err.name + ' ' + err.message);
-                }
-                if($scope.projectUuid != undefined) {
-                    DataModel.Project.uuid({ uuid: $scope.projectUuid },
-                    function(response){
-                        $scope.settings.begin_month = parseInt(response.begin_month);
-                        $scope.settings.begin_year = parseInt(response.begin_year);
-                        $scope.settings.currency_id = parseInt(response.currency_id);
-                        $scope.settings.company_name = response.company_name;
-                        $scope.nextNew = false;
-                    },
-                    function(err){
-                        console.log(err);
-                    });
-
-                }
-                $scope.settings = {};
-                $scope.currencies = CURRENCIES;
-                $scope.monthes = MONTHES;
-            }
-            init();
-            $scope.next = function() {
-                if($scope.nextNew) {
-                    var project = new DataModel.Project();
-                    project.begin_month = $scope.settings.begin_month;
-                    project.begin_year = $scope.settings.begin_year;
-                    project.currency_id = $scope.settings.currency_id;
-                    project.company_name = $scope.settings.company_name;
-                    project.type_id = $localStorage.type;
-                    project.$save(function(response){
-                        console.log(response);
-                        $localStorage.uuid = response.uuid;
-                        $state.go('moh');
-                    });
-                } else {
-                    //todo: update project settings
-                    $state.go('moh');
-                }
-            }
-        }])
         .controller('projectDataInputMainController', [
             '$scope', 'toastr', '$localStorage', 'PROJECT_TYPES', 'DATAINPUT_HEADER', '$state',
             function($scope, toastr, $localStorage, PROJECT_TYPES, DATAINPUT_HEADER, $state){
