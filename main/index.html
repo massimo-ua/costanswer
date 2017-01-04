@@ -84,7 +84,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Wellcome, {{ vm.userProfile.display_name | strTruncate:false:15 }} <span class="caret"></span></a>
           <ul style="width:100%;" class="dropdown-menu">
-            <li><a><span class="glyphicon glyphicon-user"></span> Account</a></li>
+            <li ui-sref-active="active"><a ui-sref="dashboard"><span class="glyphicon glyphicon-user"></span> Account</a></li>
             <li><a ng-click="vm.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           </ul>
         </li>
@@ -138,6 +138,10 @@
   <script src="app/modules/core/standard/js/controllers.js"></script>
   <script src="app/modules/core/standard/js/services.js"></script>
   <script src="app/modules/core/standard/js/components.js"></script>
+  <script src="app/modules/dashboard/dashboardModule.js"></script>
+  <script src="app/modules/dashboard/controllers/controllers.js"></script>
+  <script src="app/modules/dashboard/controllers/home.controller.js"></script>
+  <script src="app/modules/dashboard/services/services.js"></script>
 </body>
 </html>
 

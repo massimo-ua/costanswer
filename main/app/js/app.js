@@ -16,7 +16,8 @@
         'costAnswer.filters',
         'costAnswer.directives',
         'costAnswer.core',
-        'costAnswer.auth'
+        'costAnswer.auth',
+        'costAnswer.dashboard'
     ])
     .run(['$rootScope', '$state', '$stateParams','authService', function ($rootScope, $state, $stateParams, authService) {
         $rootScope.$state = $state;
