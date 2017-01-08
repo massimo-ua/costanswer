@@ -12,13 +12,16 @@
           </tr>
       </thead>
       <tbody>
-          <tr ng-repeat="project in vm.projects | filter: { type_id: vm.type_filter } track by project.id">
+          <tr dir-paginate="project in vm.projects | filter: { type_id: vm.type_filter } | itemsPerPage: 20 track by project.id">
               <td>{{ project.company_name }}</td>
               <td>{{ project.created_at | date:'yyyy-MM-dd' }}</td>
               <td> Save as | Delete </td>
           </tr>
       </tbody>
   </table>
+  <div>
+    <dir-pagination-controls></dir-pagination-controls>
+  </div>
   </div>
 </div>
 </div>

@@ -37,7 +37,6 @@
                 return $auth.setStorageType(StorageType);
             },
             signup: function(user) {
-                $log.debug(user);
                 try {
                     user.password = CryptoJS.SHA256(user.password).toString();
                 }

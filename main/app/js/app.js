@@ -12,6 +12,7 @@
         'angular-loading-bar',
         'ngAnimate',
         'ngDialog',
+        'angularUtils.directives.dirPagination',
         'costAnswer.services',
         'costAnswer.filters',
         'costAnswer.directives',
