@@ -1,10 +1,13 @@
 (function(){
     'use strict';
-    function DashboardSettingsController($log) {
+    function DashboardSettingsController($log,authService) {
         var vm = this;
-        vm.headText = 'DashboardSettingsController Home Page';
+        function init() {
+            vm.profile = authService.profile();
+        }
+        init();
     }
-    DashboardSettingsController.$inject = ['$log'];
+    DashboardSettingsController.$inject = ['$log','authService'];
     angular.module('costAnswer.dashboard.controllers')
         .controller('DashboardSettingsController', DashboardSettingsController);
 }());
