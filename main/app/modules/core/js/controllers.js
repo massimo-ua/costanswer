@@ -59,21 +59,7 @@ angular.module('costAnswer.core.controllers')
                 $localStorage.type = type;
                 $state.go('projectSettings');
             }
-        }])
-        .controller('projectDataInputMainController', [
-            '$scope', 'toastr', '$localStorage', 'PROJECT_TYPES', 'DATAINPUT_HEADER', '$state',
-            function($scope, toastr, $localStorage, PROJECT_TYPES, DATAINPUT_HEADER, $state){
-                function init() {
-                    $scope.projectType = PROJECT_TYPES[$localStorage.type];
-                    $scope.datainput_header = DATAINPUT_HEADER;
-                }
-                init();
-                $scope.clearAll = function() {
-                    $localStorage.$reset();
-                    $state.go('startCore');
-                };
-            }]);
-
+        }]);
         var ProjectReportController = function(toastr, $log, $localStorage, DataModel, monthService, currencyService, PROJECT_TYPES, standardService) {
             var vm = this;
             vm.someText = "ProjectReportController";

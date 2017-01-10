@@ -1,17 +1,17 @@
-<div class="row text-center visible-xs-12 visible-sm-12 hidden-md hidden-lg"><h4><b>{{ projectType }}</b></h4></div>
+<div class="row text-center visible-xs-12 visible-sm-12 hidden-md hidden-lg"><h4><b>{{ vm.projectType }}</b></h4></div>
 <div class="row">
-    <div class="col-md-1 col-lg-1 text-left hidden-xs hidden-sm"><h4><b>{{ projectType }}</b></h4></div>
+    <div class="col-md-1 col-lg-1 text-left hidden-xs hidden-sm"><h4><b>{{ vm.projectType }}</b></h4></div>
     <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11">
         <ul class="nav nav-pills costanswer nav-justified">
-            <li role="presentation" ng-repeat = "item in datainput_header track by item.id" ><a ui-sref-active="active" ui-sref="{{ item.sref }}">{{ item.name }}</a></li>
+            <li role="presentation" ng-repeat = "item in vm.datainput_header track by item.id" ><a ui-sref-active="active" ui-sref="{{ item.sref }}">{{ item.name }}</a></li>
         </ul>
     </div>
 </div>
 <div ui-view class="container fluid"></div>
 <div class="row m-t-10px">
     <div class="col-md-12 col-lg-12 text-center hidden-xs hidden-sm">
-        <button type="button" class="btn btn-md btn-costanswer" ng-click="clearAll()"> Clear all </button>
-        <button type="button" class="btn btn-md btn-costanswer"> Save </button>
+        <button type="button" class="btn btn-md btn-costanswer" ng-click="vm.clearAll()"> Clear all </button>
+        <button type="button" class="btn btn-md btn-costanswer" ng-click="vm.Save()"> Save </button>
         <button type="button" class="btn btn-md btn-costanswer"> Save as... </button>
         <button ui-sref-active="active" ui-sref="projectSettings" type="button" class="btn btn-md btn-costanswer"> Project settings </button>
         <button ui-sref-active="active" ui-sref="projectReport" type="button" class="btn btn-md btn-costanswer"> Project report </button>
@@ -21,8 +21,8 @@
             Action menu <span class="caret"></span>
             </button>
         <ul class="dropdown-menu col-xs-12 col-sm-12">
-            <li><a ng-click="clearAll()"> Clear all </a></li>
-            <li><a href="#"> Save </a></li>
+            <li><a ng-click="vm.clearAll()"> Clear all </a></li>
+            <li><a ng-click="vm.Save()"> Save </a></li>
             <li><a href="#"> Save as... </a></li>
             <li><a ui-sref-active="active" ui-sref="projectSettings"> Project settings </a></li>
             <li><a ui-sref-active="active" ui-sref="projectReport"> Project report </a></li>

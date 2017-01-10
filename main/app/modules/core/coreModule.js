@@ -59,7 +59,8 @@ angular.module('costAnswer.core')
                 url: '/project-data-input',
                 views: { 
                     "main": {
-                        controller: 'projectDataInputMainController',
+                        controller: 'ProjectDataInputMainController',
+                        controllerAs: 'vm',
                         templateUrl: 'app/modules/core/views/project-data-input.html'
                     }
                 }
