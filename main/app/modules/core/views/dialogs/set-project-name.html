@@ -1,0 +1,18 @@
+<div class="row">
+    <ng-form id="item-form" name="itemForm">
+        <fieldset ng-disabled="controls.formDisabled">
+        <div class="col-xs-12 col-md-12 col-lg-12 text-center">
+            <label for="Name" class="text-center m-b-20px">Set project name:</label>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div ng-class="{'has-error': itemForm.Name.$dirty && itemForm.Name.$invalid}" class="form-group">
+			<input name="Name" maxlength="20" type="text" ng-required="true" ng-model="form.name" class="form-control costanswer" placeholder="Name" />
+			<div class="help-block error" ng-show="itemForm.Name.$dirty && itemForm.Name.$error.required">Please, fill in project name</div>
+		</div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <button type="button" ng-disabled="itemForm.$invalid" class="btn btn-costanswer" ng-click="confirm(form)"> {{ confirmButtonText }} </button>
+        </div>
+        </fieldset>
+    </ng-form>
+</div>
