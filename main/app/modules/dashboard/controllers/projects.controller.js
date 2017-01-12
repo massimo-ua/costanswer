@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    function DashboardProjectsController($log,DataModel) {
+    function DashboardProjectsController($log,DataModel,$localStorage,$state) {
         var vm = this;
         function init() {
             DataModel.Project
@@ -23,8 +23,16 @@
         vm.setFilterValue = function(value) {
             vm.type_filter = value;
         }
+        vm.OpenProject = function(uuid) {
+            if(uuid == undefined) return;
+            $localStorage.uuid = uuid;
+            DataModel.Moh.getWithUuid({ uuid: uuid }, function(response){
+                $localStorage.moh = parseInt(response.id);
+                $state.go('projectSettings');
+            });
+        }
     }
-    DashboardProjectsController.$inject = ['$log','DataModel'];
+    DashboardProjectsController.$inject = ['$log','DataModel','$localStorage','$state'];
     angular.module('costAnswer.dashboard.controllers')
         .controller('DashboardProjectsController', DashboardProjectsController);
 }());

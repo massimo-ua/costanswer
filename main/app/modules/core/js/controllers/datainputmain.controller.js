@@ -13,7 +13,11 @@
         ){
         var vm = this;
         function init() {
-            vm.projectType = PROJECT_TYPES[$localStorage.type];
+            DataModel.Project.uuid({ uuid: $localStorage.uuid })
+                .$promise
+                    .then(function(response){
+                        vm.projectType = PROJECT_TYPES[response.type_id];
+                    });
             vm.datainput_header = DATAINPUT_HEADER;
             $scope.confirmButtonText = 'Save';
         }

@@ -13,7 +13,7 @@
       </thead>
       <tbody>
           <tr dir-paginate="project in vm.projects | filter: { type_id: vm.type_filter } | itemsPerPage: 20 track by project.id">
-              <td>{{ project.name }}</td>
+              <td><a ng-click="vm.OpenProject(project.uuid)">{{ project.name }}</a></td>
               <td>{{ project.created_at | date:'yyyy-MM-dd' }}</td>
               <td> Save as | Delete </td>
           </tr>
