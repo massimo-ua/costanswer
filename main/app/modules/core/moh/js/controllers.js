@@ -52,9 +52,9 @@
                 }
                 function init() {
                     $scope.mohSettings = {};
-                    $scope.mohId = $localStorage.moh;
-                    if($scope.mohId != undefined) {
-                        DataModel.Moh.get({ id: $localStorage.moh }, function(response){
+                    $scope.uuid = $localStorage.uuid;
+                    if($scope.uuid != undefined) {
+                        DataModel.Moh.getWithUuid({ uuid: $scope.uuid }, function(response){
                             $scope.mohSettings.calculation_base_id = parseInt(response.calculation_base_id);
                             $scope.mohSettings.allocation_base_id = parseInt(response.allocation_base_id);
                         });

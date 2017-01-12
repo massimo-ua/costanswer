@@ -31,6 +31,11 @@
                     method: 'PUT',
                     url: API_PREFIX+'/moh/uuid'
                 },
+                getWithUuid: {
+                    method: 'GET',
+                    params: { uuid: '@uuid' },
+                    url: API_PREFIX+'/moh/uuid/:uuid'
+                },
                 addMohComponent: {
                     method: 'POST',
                     params: { moh_id: '@moh_id', component: '@component' },
