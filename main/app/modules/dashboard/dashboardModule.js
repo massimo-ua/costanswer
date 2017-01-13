@@ -7,7 +7,7 @@
         $stateProvider
             .state('dashboard', {
                 url: '/dashboard',
-                redirectTo: 'dashboard.projects',
+                redirectTo: 'dashboard.Projects',
                 views: {
                     "main": {
                         controller: 'DashboardHomeController',
@@ -16,16 +16,14 @@
                     }
                 }
             })
-            .state('dashboard.projects', {
+            .state('dashboard.Projects', {
                 url: '/projects',
-                parent: 'dashboard',
                 controller: 'DashboardProjectsController',
                 controllerAs: 'vm',
                 templateUrl: 'app/modules/dashboard/views/projects.html'
             })
-            .state('dashboard.settings', {
+            .state('dashboard.Settings', {
                 url: '/settings',
-                parent: 'dashboard',
                 controller: 'DashboardSettingsController',
                 controllerAs: 'vm',
                 templateUrl: 'app/modules/dashboard/views/settings.html'

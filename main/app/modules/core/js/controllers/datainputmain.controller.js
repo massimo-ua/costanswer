@@ -9,7 +9,8 @@
         $state,
         DataModel,
         authService,
-        ngDialog
+        ngDialog,
+        popupService
         ){
         var vm = this;
         function init() {
@@ -50,13 +51,7 @@
                             });
                     });
             } else {
-                ngDialog.openConfirm({
-                    template: 'app/modules/core/views/dialogs/option-not-allowed.html',
-                    className: 'ngdialog-theme-plain',
-                    closeByDocument: false,
-                    closeByEscape: false,
-                    showClose: true
-                });
+                popupService.OptionNotAllowed();
             }
         }
     }
@@ -69,7 +64,8 @@
         '$state',
         'DataModel',
         'authService',
-        'ngDialog'
+        'ngDialog',
+        'popupService'
     ];
     angular.module('costAnswer.core.controllers')
         .controller('ProjectDataInputMainController', ProjectDataInputMainController);
