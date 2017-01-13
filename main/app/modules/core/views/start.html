@@ -9,7 +9,7 @@
         </div -->
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4 start-core-link">
-        <button ng-disabled="true" type="button" class="btn btn-costanswer btn-lg btn-block"> Open project</button>
+        <a ng-disabled="!vm.isAuthenticated" class="btn btn-costanswer btn-lg btn-block" ng-click="vm.Open()"> Open project</a>
         <!-- div class="list-group">
             <a ui-sref="startCore" class="list-group-item default disabled">
                 <h4 class="list-group-item-heading">Open Project</h4>

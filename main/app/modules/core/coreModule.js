@@ -22,7 +22,8 @@ angular.module('costAnswer.core')
                 url: '/start',
                 views: { 
                     "main": {
-                controller: 'startCoreController',
+                controller: 'StartCoreController',
+                controllerAs: 'vm',
                 templateUrl: 'app/modules/core/views/start.html'
                 }
             }

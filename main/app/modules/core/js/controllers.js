@@ -37,9 +37,6 @@ angular.module('costAnswer.core.controllers')
             ];
             search();
         }])
-        .controller('startCoreController', ['$scope', '$state', '$localStorage', 'toastr', function($scope, $state, $localStorage, toastr){
-
-        }])
         .controller('quickStartController', ['$scope', '$state', '$localStorage', 'toastr', function($scope, $state, $localStorage, toastr){
             $scope.showOnNext = $localStorage.showOnNext;
             $scope.next = function() {
