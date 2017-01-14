@@ -48,6 +48,16 @@
                     method: 'POST',
                     url: AUTH_PREFIX+'/signup'
                 });
+            },
+            activateAccount: function(uuid) {
+                var config = {
+                    method: 'POST',
+                    data: {
+                        activation_code: uuid
+                    },
+                    url: AUTH_PREFIX+'/activate'
+                }
+                return $http(config);
             }
         }
     }

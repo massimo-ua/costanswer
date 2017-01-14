@@ -23,6 +23,16 @@
                             templateUrl: 'app/modules/auth/views/signup.html'
                         }
                     }
+                })
+                .state('authActivate', {
+                    url: '/activate/:uuid',
+                    views: {
+                        "main": {
+                            controller: 'AuthActivateController',
+                            controllerAs: 'vm',
+                            templateUrl: 'app/modules/auth/views/activate.html'
+                        }
+                    }
                 }); 
         }]);
 }());
