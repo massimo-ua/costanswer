@@ -19,6 +19,11 @@
                     params: { uuid: '@uuid' },
                     url: API_PREFIX+'/projects/name/:uuid'
                 },
+                delete: {
+                    method: 'DELETE',
+                    params: { uuid: '@uuid' },
+                    url: API_PREFIX+'/projects/:uuid'
+                }
             }),
             Moh: $resource(API_PREFIX+'/moh/:id', { id: '@_id' }, {
                 update: { method: 'PUT' },

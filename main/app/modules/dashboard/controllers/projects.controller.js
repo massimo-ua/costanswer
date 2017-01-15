@@ -35,7 +35,21 @@
             popupService.ConfirmAction('Please confirm deletion of project "' + project.name + '"!')
             .then(
                 function(value) {
-                    $log.debug('Make deletion!');
+                    DataModel
+                        .Project
+                            .delete({ uuid: project.uuid })
+                            .$promise
+                                .then(function(response){
+                                    for(var i=0; i < vm.projects.length; i++) {
+                                        if(vm.projects[i].id == project.id) {
+                                            $log.debug(i);
+                                            vm.projects.splice(i, 1);
+                                        }
+                                    }
+                                })
+                                .catch(function(err){
+                                    $log.error(err);
+                                });
                 },
                 function(value){
                     $log.debug('Cancel deletion');
