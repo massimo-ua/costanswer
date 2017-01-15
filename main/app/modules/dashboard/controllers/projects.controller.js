@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    function DashboardProjectsController($log,DataModel,$localStorage,$state) {
+    function DashboardProjectsController($log,DataModel,$localStorage,$state,popupService) {
         var vm = this;
         function init() {
             DataModel.Project
@@ -31,8 +31,18 @@
                 $state.go('projectSettings');
             });
         }
+        vm.DeleteProject = function(project) {
+            popupService.ConfirmAction('Please confirm deletion of project "' + project.name + '"!')
+            .then(
+                function(value) {
+                    $log.debug('Make deletion!');
+                },
+                function(value){
+                    $log.debug('Cancel deletion');
+                });
+        }
     }
-    DashboardProjectsController.$inject = ['$log','DataModel','$localStorage','$state'];
+    DashboardProjectsController.$inject = ['$log','DataModel','$localStorage','$state','popupService'];
     angular.module('costAnswer.dashboard.controllers')
         .controller('DashboardProjectsController', DashboardProjectsController);
 }());
