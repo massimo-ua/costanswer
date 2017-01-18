@@ -43,7 +43,7 @@
             authService.signup(user)
                 .then(function(){
                     $scope.$emit('USER_LOGIN_EVENT');
-                    $state.go('startCore');
+                    $state.go('authSignupGreetings');
                 })
                 .catch(function(error){
                     $log.error(error);
@@ -55,7 +55,7 @@
                 });
         }
     }
-    function AuthMenuController(authService,$log,$scope,$state) {
+    function AuthMenuController(authService,$log,$scope,$state,$localStorage) {
         var vm = this;
         function init() {
             if(authService.isAuthenticated()) {
@@ -77,12 +77,13 @@
         });
         $scope.$on('USER_LOGOUT_EVENT', function() {
             vm.userProfile = undefined;
+            $localStorage.$reset();
         });
     }
     //dependencies injection block
     AuthLoginController.$inject = ['authService','$log','$state','$scope'];
     AuthSignupController.$inject = ['authService','$log','$state','$scope'];
-    AuthMenuController.$inject = ['authService','$log','$scope','$state'];
+    AuthMenuController.$inject = ['authService','$log','$scope','$state','$localStorage'];
     //controller function linking
     angular.module('costAnswer.auth.controllers')
         .controller('AuthLoginController', AuthLoginController)
