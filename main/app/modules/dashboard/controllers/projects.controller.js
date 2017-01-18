@@ -55,6 +55,9 @@
                     $log.debug('Cancel deletion');
                 });
         }
+        vm.SaveAsProject = function(project) {
+            $log.debug(project);
+        }
     }
     DashboardProjectsController.$inject = ['$log','DataModel','$localStorage','$state','popupService'];
     angular.module('costAnswer.dashboard.controllers')

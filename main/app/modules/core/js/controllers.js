@@ -4,7 +4,6 @@ angular.module('costAnswer.core.controllers',[
     ]);
 angular.module('costAnswer.core.controllers')
         .controller('descriptionCoreController',['$scope', '$stateParams', function($scope, $stateParams){
-            console.log('descriptionCoreController reached!');
             var descriptionKey = ($stateParams.costingMethod == undefined) ? 'standard-costing' : $stateParams.costingMethod;
             $scope.description = null;
             function search(){

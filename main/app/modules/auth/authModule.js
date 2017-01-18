@@ -33,6 +33,24 @@
                             templateUrl: 'app/modules/auth/views/activate.html'
                         }
                     }
+                })
+                .state('authRequestRecovery', {
+                    url: '/request/recovery',
+                    views: {
+                        "main": {
+                            controller: 'AuthRequestRecoveryController',
+                            controllerAs: 'vm',
+                            templateUrl: 'app/modules/auth/views/request-recovery.html'
+                        }
+                    }
+                })
+                .state('authSignupGreetings', {
+                    url: '/signup/greetings',
+                    views: {
+                        "main": {
+                            templateUrl: 'app/modules/auth/views/greetings.html'
+                        }
+                    }
                 }); 
         }]);
 }());

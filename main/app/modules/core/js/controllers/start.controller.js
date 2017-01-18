@@ -3,6 +3,7 @@
     function StartCoreController(
         $log,
         $state,
+        $localStorage,
         authService,
         popupService
         ){
@@ -11,7 +12,11 @@
             vm.isAuthenticated = authService.isAuthenticated();
         }
         init();
-        vm.Open = function(){
+        vm.newProject = function() {
+            $localStorage.$reset();
+            $state.go('quickStart');
+        }
+        vm.openProject = function(){
             if(authService.isAuthenticated()) {
                 $state.go('dashboard.Projects');
             } else {
@@ -22,6 +27,7 @@
     StartCoreController.$inject = [
         '$log',
         '$state',
+        '$localStorage',
         'authService',
         'popupService'
     ];

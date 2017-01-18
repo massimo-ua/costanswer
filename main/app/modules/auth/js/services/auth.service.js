@@ -58,6 +58,16 @@
                     url: AUTH_PREFIX+'/activate'
                 }
                 return $http(config);
+            },
+            requestRecovery: function(email) {
+                var config = {
+                    method: 'POST',
+                    data: {
+                        email: email
+                    },
+                    url: AUTH_PREFIX+'/request/recover'
+                }
+                return $http(config);
             }
         }
     }
