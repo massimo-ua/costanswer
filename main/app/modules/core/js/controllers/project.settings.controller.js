@@ -41,7 +41,7 @@
                 project.currency_id = vm.settings.currency_id;
                 project.company_name = vm.settings.company_name;
                 project.type_id = $localStorage.type;
-                project.$save
+                project.$save()
                     .then(function(response){
                         $localStorage.uuid = response.uuid;
                         $state.go('moh');
@@ -56,10 +56,10 @@
                         project.begin_year = vm.settings.begin_year;
                         project.currency_id = vm.settings.currency_id;
                         project.company_name = vm.settings.company_name;
-                    project.$update({ id: vm.projectId })
-                        .catch(function(err){
-                            $log.error(err.name + ' ' + err.message);
-                        });
+                        project.$update({ id: vm.projectId })
+                            .catch(function(err){
+                                $log.error(err.name + ' ' + err.message);
+                            });
                 }
                 $state.go('moh');
             }
