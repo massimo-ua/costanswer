@@ -1,0 +1,32 @@
+<div ng-cloak ng-hide="vm.success" class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+        <div><h3>Password recovery</h3></div>
+    </div>
+</div>
+<div ng-cloak ng-show="!vm.success" class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+		<ng-form id="recovery-form" name="vm.recoveryForm">
+			<div ng-class="{'has-error': vm.recoveryForm.password.$dirty && vm.recoveryForm.password.$invalid}" class="form-group has-feedback has-feedback-left">
+    				<!-- label class="control-label">Password</label -->
+					<input name="password" type="password" ng-required="true" ng-model="vm.auth.password" class="form-control costanswer" placeholder="Enter your password" />
+					<i class="glyphicon glyphicon-lock form-control-feedback costanswer"></i>
+				<div class="help-block error" ng-show="vm.recoveryForm.password.$dirty && vm.recoveryForm.password.$error.required">Please, fill in your password</div>
+			</div>
+			<div ng-class="{'has-error': vm.recoveryForm.confirmpassword.$dirty && vm.recoveryForm.confirmpassword.$invalid}" class="form-group has-feedback has-feedback-left">
+    				<!-- label class="control-label">Confirm password</label -->
+					<input name="confirmpassword" type="password" ng-required="true" ng-model="vm.auth.confirmpassword" class="form-control costanswer" placeholder="Confirm your password" />
+					<i class="glyphicon glyphicon-lock form-control-feedback costanswer"></i>
+				<div class="help-block error" ng-show="vm.recoveryForm.confirmpassword.$dirty && vm.recoveryForm.confirmpassword.$error.required">Please, confirm your password</div>
+			</div>
+			<div class="form-group">
+				<input type="button" class="btn btn-lg btn-costanswer btn-block" ng-click="vm.recoverPassword()" ng-disabled="vm.recoveryForm.$invalid" value="{{ vm.buttonText }}" />
+			</div>
+		</ng-form>
+    </div>
+</div>
+<div ng-cloak ng-show="vm.success" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
+        <h3 class="text-center">{{ vm.messageHeader }}</h3>
+        <p class="text-center"><b>{{ vm.messageText }}</b></p>
+    </div>
+</div>

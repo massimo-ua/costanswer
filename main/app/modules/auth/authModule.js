@@ -51,6 +51,16 @@
                             templateUrl: 'app/modules/auth/views/greetings.html'
                         }
                     }
+                })
+                .state('authRecover', {
+                    url: '/recover/:uuid',
+                    views: {
+                        "main": {
+                            controller: 'AuthRecoverController',
+                            controllerAs: 'vm',
+                            templateUrl: 'app/modules/auth/views/recover.html'
+                        }
+                    }
                 }); 
         }]);
 }());

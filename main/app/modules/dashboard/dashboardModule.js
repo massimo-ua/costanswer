@@ -14,19 +14,22 @@
                         controllerAs: 'vm',
                         templateUrl: 'app/modules/dashboard/views/home.html'
                     }
-                }
+                },
+                data: {requiredLogin: true}
             })
             .state('dashboard.Projects', {
                 url: '/projects',
                 controller: 'DashboardProjectsController',
                 controllerAs: 'vm',
-                templateUrl: 'app/modules/dashboard/views/projects.html'
+                templateUrl: 'app/modules/dashboard/views/projects.html',
+                data: {requiredLogin: true}
             })
             .state('dashboard.Settings', {
                 url: '/settings',
                 controller: 'DashboardSettingsController',
                 controllerAs: 'vm',
-                templateUrl: 'app/modules/dashboard/views/settings.html'
+                templateUrl: 'app/modules/dashboard/views/settings.html',
+                data: {requiredLogin: true}
             });
     }
     DashboardConfig.$inject = ['$stateProvider'];
