@@ -68,6 +68,24 @@
                     url: AUTH_PREFIX+'/request/recover'
                 }
                 return $http(config);
+            },
+            recoverPassword: function(uuid, password) {
+                try {
+                    var hashedPassword = CryptoJS.SHA256(password).toString();
+                }
+                catch(err) {
+                    $log.error(err);
+                    hashedPassword = undefined;
+                }
+                var config = {
+                    method: 'POST',
+                    data: {
+                        uuid: uuid,
+                        password: hashedPassword
+                    },
+                    url: AUTH_PREFIX+'/confirm/recover'
+                }
+                return $http(config);
             }
         }
     }
