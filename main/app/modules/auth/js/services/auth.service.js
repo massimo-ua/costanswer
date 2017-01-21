@@ -86,7 +86,23 @@
                     url: AUTH_PREFIX+'/confirm/recover'
                 }
                 return $http(config);
-            }
+            },
+            fullProfile: function() {
+                var config = {
+                    method: 'GET',
+                    url: AUTH_PREFIX+'/me'
+                }
+                return $http(config);
+            },
+            updateFullProfile: function(settings) {
+                var config = {
+                    method: 'PUT',
+                    data: settings, 
+                    url: AUTH_PREFIX+'/me'
+                }
+                return $http(config);
+            },
+
         }
     }
 }());

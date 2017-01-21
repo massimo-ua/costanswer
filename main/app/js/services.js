@@ -51,6 +51,14 @@
         {"id": 3, "name": "Save As", "sref": null},
         {"id": 4, "name": "Project Report", "sref": "projectReport"}
     ]);
+    angular.module('costAnswer.services').value('DATAINPUT_BUSINESS_PROFILE', [
+        "Retail",
+        "Wholesale",
+        "Manufacturing",
+        "Professional services",
+        "Technology",
+        "Other"
+    ]);
     angular.module('costAnswer.services').factory('monthService', ['MONTHES', function(MONTHES) {
         var factory = {
             Month: function(number) {
