@@ -102,7 +102,23 @@
                 }
                 return $http(config);
             },
-
+            changePassword: function(password) {
+                var config = {
+                    method: 'PUT',
+                    data: {
+                        password: CryptoJS.SHA256(password).toString()
+                    },
+                    url: AUTH_PREFIX+'/password'
+                }
+                return $http(config);
+            },
+            deleteAccount: function() {
+                var config = {
+                    method: 'DELETE',
+                    url: AUTH_PREFIX+'/me'
+                }
+                return $http(config);
+            }
         }
     }
 }());
