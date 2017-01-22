@@ -34,6 +34,34 @@
                     vm.text = text;
                 }
                 ConfirmActionController.$inject = ['$log','text'];
+            },
+            ChangePassword: function() {
+                var config = {
+                    template: 'app/modules/core/views/dialogs/change-password.html',
+                    className: 'ngdialog-theme-plain',
+                    closeByDocument: true,
+                    closeByEscape: true,
+                    showClose: true,
+                    controller: ChangePasswordController,
+                    controllerAs: 'vm'
+                }
+                return ngDialog.openConfirm(config);
+                function ChangePasswordController() {
+                    var vm = this;
+                    function init() {
+                        vm.form = {}; 
+                        vm.passwordPlaceholder = 'Password';
+                        vm.passwordHelpText = 'Please, fill in Password (min 8 characters)';
+                        vm.confirmPlaceholder = 'Confirm password';
+                        vm.confirmHelpText = 'Please, confirm Password (min 8 characters)';
+                        vm.actionText = 'Change';
+                    }
+                    init();
+                    vm.checkPassword = function() {
+                        return vm.form.password === vm.form.confirm;
+                    }
+                }
+                ChangePasswordController.$inject['$log'];
             }
         }
     }

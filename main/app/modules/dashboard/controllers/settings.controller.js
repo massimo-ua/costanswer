@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    function DashboardSettingsController($log,authService,DATAINPUT_BUSINESS_PROFILE) {
+    function DashboardSettingsController($log,authService,DATAINPUT_BUSINESS_PROFILE,popupService,$scope,$state) {
         var vm = this;
         function init() {
             vm.settings = {};
@@ -38,8 +38,34 @@
                     vm.buttonText = "Update";
                 });
         }
+        vm.changePassword = function() {
+            popupService.ChangePassword()
+                .then(function(value){
+                    authService.changePassword(value)
+                        .catch(function(err){
+                            $log.error(err);
+                        });
+                });
+        }
+        vm.deleteAccount = function() {
+            popupService.ConfirmAction('Are you shure want to delete your account with all saved projects?')
+            .then(
+                function(value) {
+                    authService.deleteAccount()
+                        .then(function(response){
+                            authService.logout()
+                                .then(function(){
+                                    $scope.$emit('USER_LOGOUT_EVENT');
+                                    $state.go('startCore');
+                                });
+                        });
+                },
+                function(value){
+                    $log.debug('Cancel deletion');
+                });
+        }
     }
-    DashboardSettingsController.$inject = ['$log','authService','DATAINPUT_BUSINESS_PROFILE'];
+    DashboardSettingsController.$inject = ['$log','authService','DATAINPUT_BUSINESS_PROFILE','popupService','$scope','$state'];
     angular.module('costAnswer.dashboard.controllers')
         .controller('DashboardSettingsController', DashboardSettingsController);
 }());
