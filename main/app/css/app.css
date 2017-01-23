@@ -1104,3 +1104,26 @@ Report styles
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+div.well.costanswer.subscription.price {
+    display: block;
+    background: #ff9933;
+    color: #339966;
+    font-size: 1.4em;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bolder;
+    margin-right: 5px;
+    padding: 2px;
+}
+div.well.costanswer.subscription.description {
+    display: block;
+    background: #fffffc;
+    border: 2px solid brown;
+    color: #202020;
+    font-size: 1.5em;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bolder;
+    margin-right: 5px;
+}

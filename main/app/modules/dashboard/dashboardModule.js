@@ -30,6 +30,13 @@
                 controllerAs: 'vm',
                 templateUrl: 'app/modules/dashboard/views/settings.html',
                 data: {requiredLogin: true}
+            })
+            .state('dashboard.Billing', {
+                url: '/billing',
+                controller: 'DashboardBillingsController',
+                controllerAs: 'vm',
+                templateUrl: 'app/modules/dashboard/views/billing.html',
+                data: {requiredLogin: true}
             });
     }
     DashboardConfig.$inject = ['$stateProvider'];
