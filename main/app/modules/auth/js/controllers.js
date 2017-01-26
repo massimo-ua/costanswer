@@ -2,7 +2,7 @@
     'use strict'
     angular.module('costAnswer.auth.controllers',[]);
     //controller functions definitions
-    function AuthLoginController(authService, $log, $state, $scope) {
+    function AuthLoginController(authService, $log, $state, $scope, toastr) {
         var vm = this;
         vm.login = function() {
             vm.buttonText = 'Loging in ...'
@@ -14,6 +14,7 @@
             })
             .catch(function(error){
                     $log.error(error);
+                    toastr.error('Sorry, we encountered error during authorization handling. Please, check if your credentials are correct', 'Authorization error');
                     vm.invalidLogin = error.data.message;
             })
             .finally(function(){
@@ -81,7 +82,7 @@
         });
     }
     //dependencies injection block
-    AuthLoginController.$inject = ['authService','$log','$state','$scope'];
+    AuthLoginController.$inject = ['authService','$log','$state','$scope','toastr'];
     AuthSignupController.$inject = ['authService','$log','$state','$scope'];
     AuthMenuController.$inject = ['authService','$log','$scope','$state','$localStorage'];
     //controller function linking
