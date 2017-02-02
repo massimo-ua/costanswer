@@ -19,6 +19,11 @@
                     params: { uuid: '@uuid' },
                     url: API_PREFIX+'/projects/name/:uuid'
                 },
+                saveAs: { 
+                    method: 'POST',
+                    params: { uuid: '@uuid' },
+                    url: API_PREFIX+'/projects/clone/:uuid'
+                },
                 delete: {
                     method: 'DELETE',
                     params: { uuid: '@uuid' },

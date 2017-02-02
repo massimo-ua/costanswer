@@ -13,8 +13,13 @@
                 $state.go('startCore');
             })
             .catch(function(error){
+                if(error.status == 401) {
+                    toastr.error('Your email or password is incorrect', 'Authorization error');
+                } else {
+                    toastr.error('Internal server error', 'Authorization error');
+                }
                     $log.error(error);
-                    toastr.error('Sorry, we encountered error during authorization handling. Please, check if your credentials are correct', 'Authorization error');
+                    
                     vm.invalidLogin = error.data.message;
             })
             .finally(function(){
