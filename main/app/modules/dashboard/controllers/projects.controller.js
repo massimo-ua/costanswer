@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    function DashboardProjectsController($log,DataModel,$localStorage,$state,popupService,ngDialog,$scope) {
+    function DashboardProjectsController($log,DataModel,$localStorage,$state,popupService,ngDialog,$scope,toastr) {
         var vm = this;
         function init() {
             vm.confirmButtonText = 'Save';
@@ -68,20 +68,20 @@
                 })
                 .then(
                     function(value) {
-                        vm.confirmButtonText = 'Saving...';
-                        /*var project = new DataModel.Project();
-                        project.name = value.name;
-                        project.$setName({ uuid: $localStorage.uuid })
+                        var newProject = new DataModel.Project();
+                        newProject.name = value.name;
+                        newProject.$saveAs({ uuid: project.uuid })
+                            .then(function(response){
+                                vm.projects.push(response);
+                                toastr.info('Project was cloned succesfuly', 'Operation succesful!');
+                            })
                             .catch(function(err){
                                 $log.error(err);
-                            })
-                            .finally(function(){
-                                $scope.confirmButtonText = 'Save';
-                            });*/
+                            });
                     });
         }
     }
-    DashboardProjectsController.$inject = ['$log','DataModel','$localStorage','$state','popupService','ngDialog','$scope'];
+    DashboardProjectsController.$inject = ['$log','DataModel','$localStorage','$state','popupService','ngDialog','$scope','toastr'];
     angular.module('costAnswer.dashboard.controllers')
         .controller('DashboardProjectsController', DashboardProjectsController);
 }());
