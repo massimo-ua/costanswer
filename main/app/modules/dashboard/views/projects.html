@@ -13,9 +13,9 @@
       </thead>
       <tbody>
           <tr dir-paginate="project in vm.projects | filter: { type_id: vm.type_filter } | itemsPerPage: 20 track by project.id">
-              <td><a ng-click="vm.OpenProject(project.uuid)">{{ project.name }}</a></td>
+              <td><a ng-click="vm.OpenProject(project.uuid)" title="{{ vm.openButtonText }}">{{ project.name }}</a></td>
               <td>{{ project.created_at | date:'yyyy-MM-dd' }}</td>
-              <td><a ng-click="vm.SaveAsProject(project)"> Save as </a> | <a ng-click="vm.DeleteProject(project)"> Delete </a></td>
+              <td><a ng-click="vm.DuplicateProject(project)"> {{ vm.duplicateButtonText }} </a> | <a ng-click="vm.DeleteProject(project)"> {{ vm.deleteButtonText }} </a></td>
           </tr>
       </tbody>
   </table>
