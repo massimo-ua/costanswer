@@ -2,7 +2,7 @@
     'use strict';
     angular.module('costAnswer.core.services')
         .factory('popupService', popupService);
-    function popupService(ngDialog, $log) {
+    function popupService(ngDialog, $log, DataModel, $q) {
         return {
             OptionNotAllowed: function() {
                 ngDialog.open({
@@ -62,8 +62,32 @@
                     }
                 }
                 ChangePasswordController.$inject['$log'];
+            },
+            DuplicateProject: function(project) {
+                    var vm = this;
+                    var defer = $q.defer();
+                    ngDialog.openConfirm({
+                        template: 'app/modules/core/views/dialogs/set-project-name.html',
+                        className: 'ngdialog-theme-plain',
+                        closeByDocument: true,
+                        closeByEscape: true,
+                        showClose: true
+                    })
+                    .then(
+                        function(value) {
+                            var newProject = new DataModel.Project();
+                            newProject.name = value.name;
+                            newProject.$saveAs({ uuid: project.uuid })
+                                .then(function(response){
+                                    defer.resolve(response);
+                                })
+                                .catch(function(err){
+                                    defer.reject(err);
+                                });
+                        });
+                    return defer.promise;
             }
         }
     }
-    popupService.$inject = ['ngDialog','$log'];
+    popupService.$inject = ['ngDialog','$log','DataModel','$q'];
 }());

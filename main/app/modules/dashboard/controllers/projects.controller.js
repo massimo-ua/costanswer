@@ -20,6 +20,9 @@
                 { text: "Variance", filter: 3 }
             ];
             vm.confirmButtonText = 'Save';
+            vm.duplicateButtonText = 'Duplicate';
+            vm.deleteButtonText = 'Delete';
+            vm.openButtonText = 'Open';
         }
         init();
         vm.setFilterValue = function(value) {
@@ -57,28 +60,16 @@
                     $log.debug('Cancel deletion');
                 });
         }
-        vm.SaveAsProject = function(project) {
-                ngDialog.openConfirm({
-                    template: 'app/modules/core/views/dialogs/set-project-name.html',
-                    className: 'ngdialog-theme-plain',
-                    closeByDocument: false,
-                    closeByEscape: false,
-                    showClose: true,
-                    scope: $scope
+        vm.DuplicateProject = function(project) {
+            popupService.DuplicateProject(project)
+                .then(function(response){
+                    vm.projects.push(response);
+                    toastr.info('Project was cloned succesfuly', 'Operation succesful!');
                 })
-                .then(
-                    function(value) {
-                        var newProject = new DataModel.Project();
-                        newProject.name = value.name;
-                        newProject.$saveAs({ uuid: project.uuid })
-                            .then(function(response){
-                                vm.projects.push(response);
-                                toastr.info('Project was cloned succesfuly', 'Operation succesful!');
-                            })
-                            .catch(function(err){
-                                $log.error(err);
-                            });
-                    });
+                .catch(function(err){
+                    $log.error(err);
+                    toastr.info('There was an error during project duplication', 'Operation failed!');
+                });
         }
     }
     DashboardProjectsController.$inject = ['$log','DataModel','$localStorage','$state','popupService','ngDialog','$scope','toastr'];

@@ -10,7 +10,8 @@
         DataModel,
         authService,
         ngDialog,
-        popupService
+        popupService,
+        toastr
         ){
         var vm = this;
         function init() {
@@ -20,6 +21,7 @@
                         vm.projectType = PROJECT_TYPES[response.type_id];
                     });
             vm.datainput_header = DATAINPUT_HEADER;
+            vm.duplicateButtonText = 'Duplicate';
             $scope.confirmButtonText = 'Save';
         }
         init();
@@ -54,6 +56,25 @@
                 popupService.OptionNotAllowed();
             }
         }
+        vm.DuplicateProject = function() {
+            if(authService.isAuthenticated()) {
+                popupService.DuplicateProject({
+                    uuid: $localStorage.uuid
+                })
+                    .then(function(){
+                        toastr.info('Project was cloned succesfuly', 'Operation succesful!');
+                        $state.go('dashboard.Projects');
+                    })
+                    .catch(function(err){
+                        $log.error(err);
+                        toastr.info('There was an error during project duplication', 'Operation failed!');
+                    });
+            }
+            else {
+                popupService.OptionNotAllowed();
+            }
+
+        }
     }
     ProjectDataInputMainController.$inject = [
         '$log',
@@ -65,7 +86,8 @@
         'DataModel',
         'authService',
         'ngDialog',
-        'popupService'
+        'popupService',
+        'toastr'
     ];
     angular.module('costAnswer.core.controllers')
         .controller('ProjectDataInputMainController', ProjectDataInputMainController);

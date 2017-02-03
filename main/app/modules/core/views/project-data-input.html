@@ -12,7 +12,7 @@
     <div class="col-md-12 col-lg-12 text-center hidden-xs hidden-sm">
         <button type="button" class="btn btn-md btn-costanswer" ng-click="vm.clearAll()"> Clear all </button>
         <button type="button" class="btn btn-md btn-costanswer" ng-click="vm.Save()"> Save </button>
-        <button type="button" class="btn btn-md btn-costanswer"> Save as... </button>
+        <button ng-click="vm.DuplicateProject()" type="button" class="btn btn-md btn-costanswer"> {{ vm.duplicateButtonText }} </button>
         <button ui-sref-active="active" ui-sref="projectSettings" type="button" class="btn btn-md btn-costanswer"> Project settings </button>
         <button ui-sref-active="active" ui-sref="projectReport" type="button" class="btn btn-md btn-costanswer"> Project report </button>
     </div>
