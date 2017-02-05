@@ -10,6 +10,7 @@
                     ng-disabled = "mohId"
                     ng-model="mohSettings.calculation_base_id"
                     name="mohCalculationBase"
+                    ng-change="saveCalculationBase()"
                     ng-options="item.id as item.name for item in moh_calculation_base">
                     <option value="">Choose option...</option>
                 </select>
