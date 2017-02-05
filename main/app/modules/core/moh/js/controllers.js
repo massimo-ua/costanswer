@@ -13,17 +13,19 @@
         .controller('mohSettingsController', [
             '$scope', '$log', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE', 'DataModel',
             function($scope, $log, $localStorage, MOH_ALLOCATION_BASE, MOH_CALCULATION_BASE, DataModel) {
-                /*$scope.saveCalculationBase = function() {
-                if($scope.mohSettings.calculationBase == undefined) return;
-                try{
-                        $localStorage.Project.moh.method = $scope.mohSettings.calculationBase;
-                    } catch(err) {
-                        console.log(err.name + ' ' + err.message);
-                        $localStorage.Project.moh = {
-                            "method": $scope.mohSettings.calculationBase
-                        } 
-                    }
-                }*/
+                $scope.saveCalculationBase = function() {
+                        if($localStorage.moh && $localStorage.uuid && $scope.mohSettings.calculation_base_id != undefined) {
+                            var moh = {};
+                            moh.project_uuid = $localStorage.uuid;
+                            moh.calculation_base_id = $scope.mohSettings.calculation_base_id;
+                            $log.debug(moh);
+                            DataModel.Moh.updateWithUuid(moh).$promise
+                                .catch(function(err){
+                                    $log.debug(err);
+                                });
+                        }
+                        return;
+                }
                 $scope.saveAllocationBase = function() {
                     if(!$localStorage.moh) {
                         if(!$localStorage.uuid || $scope.mohSettings.allocation_base_id == undefined || $scope.mohSettings.calculation_base_id == undefined) return;
