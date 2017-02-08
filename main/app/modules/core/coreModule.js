@@ -84,7 +84,8 @@ angular.module('costAnswer.core')
             .state('moh.settings', {
                 url: '/settings',
                 //url: '',
-                controller: 'mohSettingsController',
+                controller: 'MohSettingsController',
+                controllerAs: 'vm',
                 templateUrl: 'app/modules/core/moh/views/settings.html'
             })
             .state('moh.im', {

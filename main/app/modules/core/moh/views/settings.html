@@ -1,36 +1,36 @@
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
-		<ng-form id="mohSettings-form" name="mohSettingsForm">
+		<ng-form id="mohSettings-form" name="vm.mohSettingsForm">
             <div class="col-xs-12 col-md-12 col-lg-12 text-center">
                 <label for="mohCalculationBase" class="text-center m-b-20px">Manufacturing overhead calculation based on:</label>
             </div>
             <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
-            <div ng-class="{'has-error': mohSettingsForm.mohCalculationBase.$dirty && mohSettingsForm.mohCalculationBase.$invalid}" class="form-group">
+            <div ng-class="{'has-error': vm.mohSettingsForm.mohCalculationBase.$dirty && vm.mohSettingsForm.mohCalculationBase.$invalid}" class="form-group">
 				<select class="form-control costanswer"
                     ng-disabled = "mohId"
-                    ng-model="mohSettings.calculation_base_id"
+                    ng-model="vm.mohSettings.calculation_base_id"
                     name="mohCalculationBase"
-                    ng-change="saveCalculationBase()"
-                    ng-options="item.id as item.name for item in moh_calculation_base">
+                    ng-change="vm.saveCalculationBase()"
+                    ng-options="item.id as item.name for item in vm.moh_calculation_base">
                     <option value="">Choose option...</option>
                 </select>
-				<div class="help-block error" ng-show="mohSettingsForm.mohCalculationBase.$dirty && mohSettingsForm.mohCalculationBase.$error.required">Please, select Manufacturing overhead calculation base</div>
+				<div class="help-block error" ng-show="vm.mohSettingsForm.mohCalculationBase.$dirty && vm.mohSettingsForm.mohCalculationBase.$error.required">Please, select Manufacturing overhead calculation base</div>
 			</div>
             </div>
 				<div class="col-xs-12 col-md-12 col-lg-12 text-center">
                     <label for="mohAllocationBase" class="text-center m-b-20px">Manufacturing overhead allocation based on:</label>
 				</div>
                 <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
-                <div ng-class="{'has-error': mohSettingsForm.mohAllocationBase.$dirty && mohSettingsForm.mohAllocationBase.$invalid}" class="form-group">
+                <div ng-class="{'has-error': vm.mohSettingsForm.mohAllocationBase.$dirty && vm.mohSettingsForm.mohAllocationBase.$invalid}" class="form-group">
                 <select class="form-control costanswer"
-                    ng-disabled="!mohSettings.calculation_base_id"
-                    ng-model="mohSettings.allocation_base_id"
+                    ng-disabled="!vm.mohSettings.calculation_base_id"
+                    ng-model="vm.mohSettings.allocation_base_id"
                     name="mohAllocationBase"
                     ng-required="true"
-                    ng-change="saveAllocationBase()"
-                    ng-options="item.id as item.name for item in moh_allocation_base">
+                    ng-change="vm.saveAllocationBase()"
+                    ng-options="item.id as item.name for item in vm.moh_allocation_base">
                 </select>
-				    <div class="help-block error" ng-show="mohSettingsForm.mohAllocationBase.$dirty && mohSettingsForm.mohAllocationBase.$error.required">Please, select Manufacturing overhead allocation base</div>
+				    <div class="help-block error" ng-show="vm.mohSettingsForm.mohAllocationBase.$dirty && vm.mohSettingsForm.mohAllocationBase.$error.required">Please, select Manufacturing overhead allocation base</div>
 			    </div>
                 </div>
 		</ng-form>
