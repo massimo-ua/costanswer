@@ -27,18 +27,34 @@
         {"id": 1, "name": "Predetermined Overhead Rate"},
         {"id": 2, "name": "Full Cost Applied"}
     ])
-    angular.module('costAnswer.services').value('MOH_CATEGORY', [
-        {"id": 1, "name": "Settings", "sref": "moh.settings", "iconClass": "ion-settings"},
-        {"id": 2, "name": "Indirect Materials", "sref": "moh.im", "iconClass": "ion-paintbucket"},
-        {"id": 3, "name": "Production managers salaries", "sref": "moh.pms", "iconClass": "ion-ios-briefcase"},
-        {"id": 4, "name": "Production facilities insurance", "sref": "moh.pfi", "iconClass": "ion-cash"},
-        {"id": 5, "name": "Production property taxes", "sref": "moh.ppt", "iconClass": "ion-calculator"},
-        {"id": 6, "name": "Indirect labor", "sref": "moh.il", "iconClass": "ion-ios-people"},
-        {"id": 7, "name": "Production machinery rent", "sref": "moh.pmr", "iconClass": "ion-android-bus"},
-        {"id": 8, "name": "Production utilities and other overhead expences", "sref": "moh.puooe", "iconClass": "ion-ios-cart"},
-        {"id": 9, "name": "Production facilities amortization", "sref": "moh.pfa", "iconClass": "ion-arrow-graph-down-right"},
-        {"id": 10, "name": "Report", "sref": "moh.report", "iconClass": "ion-clipboard"}
-    ]);
+    angular.module('costAnswer.services').factory('MOH_CATEGORY', function() {
+        var list = [
+            {"id": 1, "name": "Settings", "sref": "moh.settings", "iconClass": "ion-settings", "disabled": false},
+            {"id": 2, "name": "Indirect Materials", "sref": "moh.im", "iconClass": "ion-paintbucket", "disabled": false},
+            {"id": 3, "name": "Production managers salaries", "sref": "moh.pms", "iconClass": "ion-ios-briefcase", "disabled": false},
+            {"id": 4, "name": "Production facilities insurance", "sref": "moh.pfi", "iconClass": "ion-cash", "disabled": false},
+            {"id": 5, "name": "Production property taxes", "sref": "moh.ppt", "iconClass": "ion-calculator", "disabled": false},
+            {"id": 6, "name": "Indirect labor", "sref": "moh.il", "iconClass": "ion-ios-people", "disabled": false},
+            {"id": 7, "name": "Production machinery rent", "sref": "moh.pmr", "iconClass": "ion-android-bus", "disabled": false},
+            {"id": 8, "name": "Production utilities and other overhead expences", "sref": "moh.puooe", "iconClass": "ion-ios-cart", "disabled": false},
+            {"id": 9, "name": "Production facilities amortization", "sref": "moh.pfa", "iconClass": "ion-arrow-graph-down-right", "disabled": false},
+            {"id": 10, "name": "Report", "sref": "moh.report", "iconClass": "ion-clipboard", "disabled": false}
+        ];
+        return {
+            getCategories: function(calculation_base_id){
+                var disabled = [];
+                switch(calculation_base_id) {
+                    case 1:
+                        disabled = [2,3,4,5,6,7,8,9];
+                    break;
+                }
+                for(var i=0;i<list.length;i++) {
+                    list[i].disabled = disabled.indexOf( list[i].id ) > -1
+                }
+                return list;
+            }
+        }
+    });
     angular.module('costAnswer.services').value('DATAINPUT_HEADER', [
         {"id": 1, "name": "Manufacturing Overhead", "sref": "moh"},
         {"id": 2, "name": "Standard Costing", "sref": "standard"},

@@ -12,18 +12,18 @@
             },
             productPropeties: function() {
                 return [
-                    {"id": 1, "name": "Product Settings", "sref": "property.settings", "iconClass": "ion-settings"},
-                    {"id": 2, "name": "Inventory", "sref": "property.inventory", "iconClass": "ion-ios-home"},
-                    {"id": 3, "name": "Production Plan", "sref": "property.pp", "iconClass": "ion-social-buffer"},
-                    {"id": 4, "name": "Sales Plan", "sref": "property.sp", "iconClass": "ion-connection-bars"},
-                    {"id": 5, "name": "WIP Beginning", "sref": "property.wb", "iconClass": "ion-ios-alarm-outline"},
-                    {"id": 6, "name": "Direct Materials", "sref": "property.dm", "iconClass": "ion-paintbucket"},
-                    {"id": 7, "name": "Direct Labor", "sref": "property.dl", "iconClass": "ion-ios-people"},
-                    {"id": 8, "name": "Variable Overhead", "sref": "property.vo", "iconClass": "ion-ios-pie"},
-                    {"id": 9, "name": "Machine Hours", "sref": "property.mh", "iconClass": "ion-ios-cog"},
-                    {"id": 10, "name": "WIP Ending", "sref": "property.we", "iconClass": "ion-ios-alarm"},
-                    {"id": 11, "name": "Mark Up", "sref": "property.mu", "iconClass": "ion-pricetags"},
-                    {"id": 12, "name": "Report", "sref": "property.report", "iconClass": "ion-clipboard"}
+                    {"id": 1, "name": "Product Settings", "sref": "property.settings", "iconClass": "ion-settings", "disabled": false},
+                    {"id": 2, "name": "Inventory", "sref": "property.inventory", "iconClass": "ion-ios-home", "disabled": false},
+                    {"id": 3, "name": "Production Plan", "sref": "property.pp", "iconClass": "ion-social-buffer", "disabled": false},
+                    {"id": 4, "name": "Sales Plan", "sref": "property.sp", "iconClass": "ion-connection-bars", "disabled": false},
+                    {"id": 5, "name": "WIP Beginning", "sref": "property.wb", "iconClass": "ion-ios-alarm-outline", "disabled": false},
+                    {"id": 6, "name": "Direct Materials", "sref": "property.dm", "iconClass": "ion-paintbucket", "disabled": false},
+                    {"id": 7, "name": "Direct Labor", "sref": "property.dl", "iconClass": "ion-ios-people", "disabled": false},
+                    {"id": 8, "name": "Variable Overhead", "sref": "property.vo", "iconClass": "ion-ios-pie", "disabled": false},
+                    {"id": 9, "name": "Machine Hours", "sref": "property.mh", "iconClass": "ion-ios-cog", "disabled": false},
+                    {"id": 10, "name": "WIP Ending", "sref": "property.we", "iconClass": "ion-ios-alarm", "disabled": false},
+                    {"id": 11, "name": "Mark Up", "sref": "property.mu", "iconClass": "ion-pricetags", "disabled": false},
+                    {"id": 12, "name": "Report", "sref": "property.report", "iconClass": "ion-clipboard", "disabled": false}
                 ]
             },
             DMList: function(product_id, callback) {

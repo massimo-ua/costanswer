@@ -115,6 +115,9 @@
                             }
                         }
                         init();
+                        scope.disabled = function() {
+                            return;
+                        }
                     }
                 }
             }]);

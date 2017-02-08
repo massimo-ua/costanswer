@@ -3,68 +3,15 @@
     angular.module('costAnswer.core.moh.controllers')
         .controller('mohController', [
             '$scope', '$state', 'toastr', '$localStorage', 'MOH_CATEGORY',
-            function($scope, $state, toastr, $localStorage, MOH_CATEGORY) {
+            function($scope, $state, toastr, $localStorage, MOH_CATEGORY, $log) {
                 function init() {
-                    $scope.moh_category = MOH_CATEGORY;
+                    $scope.moh_category = MOH_CATEGORY.getCategories();
                     $scope.initialState = $state.current.name;
                 };
                 init();
-            }])
-        .controller('mohSettingsController', [
-            '$scope', '$log', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE', 'DataModel',
-            function($scope, $log, $localStorage, MOH_ALLOCATION_BASE, MOH_CALCULATION_BASE, DataModel) {
-                $scope.saveCalculationBase = function() {
-                        if($localStorage.moh && $localStorage.uuid && $scope.mohSettings.calculation_base_id != undefined) {
-                            var moh = {};
-                            moh.project_uuid = $localStorage.uuid;
-                            moh.calculation_base_id = $scope.mohSettings.calculation_base_id;
-                            $log.debug(moh);
-                            DataModel.Moh.updateWithUuid(moh).$promise
-                                .catch(function(err){
-                                    $log.debug(err);
-                                });
-                        }
-                        return;
-                }
-                $scope.saveAllocationBase = function() {
-                    if(!$localStorage.moh) {
-                        if(!$localStorage.uuid || $scope.mohSettings.allocation_base_id == undefined || $scope.mohSettings.calculation_base_id == undefined) return;
-                        var moh = new DataModel.Moh();
-                        moh.project_uuid = $localStorage.uuid;
-                        moh.calculation_base_id = $scope.mohSettings.calculation_base_id;
-                        moh.allocation_base_id = $scope.mohSettings.allocation_base_id;
-                        moh.$saveWithUuid(function(response){
-                            $localStorage.moh = response.id;
-                        },
-                        function(err){
-                            $log.debug(err);
-                        });
-                    } else {
-                        if(!$localStorage.uuid || $scope.mohSettings.allocation_base_id == undefined) return;
-                        var moh = {};
-                        moh.project_uuid = $localStorage.uuid;
-                        moh.allocation_base_id = $scope.mohSettings.allocation_base_id;
-                        $log.debug(moh);
-                        DataModel.Moh.updateWithUuid(moh).$promise
-                            .catch(function(err){
-                                $log.debug(err);
-                            });
-                    }
-
-                }
-                function init() {
-                    $scope.mohSettings = {};
-                    $scope.uuid = $localStorage.uuid;
-                    if($scope.uuid != undefined) {
-                        DataModel.Moh.getWithUuid({ uuid: $scope.uuid }, function(response){
-                            $scope.mohSettings.calculation_base_id = parseInt(response.calculation_base_id);
-                            $scope.mohSettings.allocation_base_id = parseInt(response.allocation_base_id);
-                        });
-                    }
-                    $scope.moh_allocation_base = MOH_ALLOCATION_BASE;
-                    $scope.moh_calculation_base = MOH_CALCULATION_BASE;
-                };
-                init();
+                $scope.$on('MOH_CALCULATION_CHANGE',function(event, data){
+                    $scope.moh_category = MOH_CATEGORY.getCategories(data);
+                });
             }])
             .controller('mohIndirectMaterialsController', [
             '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',

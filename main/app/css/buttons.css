@@ -65,6 +65,11 @@
     color: #202020;
     background-color: #ff9933;
 }
+.nav-pills.costanswer > li.disabled > a {
+    margin-left: 2px;
+    color: #202020;
+    background-color: #e0e0e0;
+}
 .nav-pills.costanswer > li > a > i  {
     font-size: 24px;
 }
