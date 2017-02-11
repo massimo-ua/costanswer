@@ -1,38 +1,37 @@
 <div class="row">
-    <div class="col-xs-12 col-md-12 col-lg-12">
-		<ng-form id="mohSettings-form" name="vm.mohSettingsForm">
-            <div class="col-xs-12 col-md-12 col-lg-12 text-center">
-                <label for="mohCalculationBase" class="text-center m-b-20px">Manufacturing overhead calculation based on:</label>
-            </div>
-            <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
-            <div ng-class="{'has-error': vm.mohSettingsForm.mohCalculationBase.$dirty && vm.mohSettingsForm.mohCalculationBase.$invalid}" class="form-group">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-md-offset-3 col-lg-offset-3">
+		<ng-form id="global-settings-form" name="vm.settingsForm">
+			<div ng-class="{'has-error': vm.mohSettingsForm.mohAllocationBase.$dirty && vm.mohSettingsForm.mohAllocationBase.$invalid}" class="form-group text-center">
+				<label for="mohAllocationBase" class="text-center m-b-20px">Manufacturing overhead allocation based on:</label>
 				<select class="form-control costanswer"
                     ng-disabled = "mohId"
                     ng-model="vm.mohSettings.calculation_base_id"
                     name="mohCalculationBase"
-                    ng-change="vm.saveCalculationBase()"
                     ng-options="item.id as item.name for item in vm.moh_calculation_base">
                     <option value="">Choose option...</option>
                 </select>
-				<div class="help-block error" ng-show="vm.mohSettingsForm.mohCalculationBase.$dirty && vm.mohSettingsForm.mohCalculationBase.$error.required">Please, select Manufacturing overhead calculation base</div>
+				<div class="help-block error" ng-show="vm.mohSettingsForm.mohAllocationBase.$dirty && vm.mohSettingsForm.mohAllocationBase.$error.required">Please, select Manufacturing overhead allocation base</div>
 			</div>
-            </div>
-				<div class="col-xs-12 col-md-12 col-lg-12 text-center">
-                    <label for="mohAllocationBase" class="text-center m-b-20px">Manufacturing overhead allocation based on:</label>
-				</div>
-                <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
-                <div ng-class="{'has-error': vm.mohSettingsForm.mohAllocationBase.$dirty && vm.mohSettingsForm.mohAllocationBase.$invalid}" class="form-group">
-                <select class="form-control costanswer"
+			<div ng-class="{'has-error': vm.mohSettingsForm.mohCalculationBase.$dirty && vm.mohSettingsForm.mohCalculationBase.$invalid}" class="form-group text-center">
+				<label for="mohCalculationBase" class="text-center m-b-20px">Manufacturing overhead calculation based on:</label>
+               <select class="form-control costanswer"
                     ng-disabled="!vm.mohSettings.calculation_base_id"
                     ng-model="vm.mohSettings.allocation_base_id"
                     name="mohAllocationBase"
                     ng-required="true"
-                    ng-change="vm.saveAllocationBase()"
                     ng-options="item.id as item.name for item in vm.moh_allocation_base">
                 </select>
-				    <div class="help-block error" ng-show="vm.mohSettingsForm.mohAllocationBase.$dirty && vm.mohSettingsForm.mohAllocationBase.$error.required">Please, select Manufacturing overhead allocation base</div>
-			    </div>
-                </div>
+				<div class="help-block error" ng-show="vm.mohSettingsForm.mohCalculationBase.$dirty && vm.mohSettingsForm.mohCalculationBase.$error.required">Please, select Manufacturing overhead calculation base</div>
+			</div>
+			<div ng-class="{'has-error': vm.mohSettingsForm.por_rate.$dirty && vm.mohSettingsForm.por_rate.$invalid}" class="form-group text-center" ng-show="vm.mohSettings.calculation_base_id == 1">
+				<label for="por_rate" class="text-center m-b-20px">POR rate:</label>
+				<input name="por_rate" type="number" ng-required="true" min="0" max="100" ng-model="vm.mohSettings.por_rate" class="form-control costanswer" placeholder="%" />
+				<div class="help-block error" ng-show="vm.mohSettingsForm.por_rate.$dirty && vm.mohSettingsForm.por_rate.$invalid">Please, fill in your POR rate</div>
+			</div>
+            <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
+                <button type="button" ng-disabled="vm.mohSettingsForm.$invalid" class="btn btn-costanswer btn-lg" ng-click="vm.saveSettings()"> {{ vm.buttonText }} </button>
+            </div>
+            </fieldset>
 		</ng-form>
     </div>
 </div>
