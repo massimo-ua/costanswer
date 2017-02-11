@@ -23,7 +23,7 @@
         <ul class="dropdown-menu col-xs-12 col-sm-12">
             <li><a ng-click="vm.clearAll()"> Clear all </a></li>
             <li><a ng-click="vm.Save()"> Save </a></li>
-            <li><a href="#"> Save as... </a></li>
+            <li><a ng-click="vm.DuplicateProject()"> {{ vm.duplicateButtonText }} </a></li>
             <li><a ui-sref-active="active" ui-sref="projectSettings"> Project settings </a></li>
             <li><a ui-sref-active="active" ui-sref="projectReport"> Project report </a></li>
         </ul>
