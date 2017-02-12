@@ -2,10 +2,15 @@
     angular.module('costAnswer.core.moh.controllers',[]);
     angular.module('costAnswer.core.moh.controllers')
         .controller('mohController', [
-            '$scope', '$state', 'toastr', '$localStorage', 'MOH_CATEGORY',
-            function($scope, $state, toastr, $localStorage, MOH_CATEGORY, $log) {
+            '$scope', '$state', 'toastr', '$localStorage', 'MOH_CATEGORY', '$log', 'DataModel',
+            function($scope, $state, toastr, $localStorage, MOH_CATEGORY, $log, DataModel) {
                 function init() {
                     $scope.moh_category = MOH_CATEGORY.getCategories();
+                    if($localStorage.uuid != undefined) {
+                        DataModel.Moh.getWithUuid({ uuid: $localStorage.uuid }, function(response){
+                            $scope.moh_category = MOH_CATEGORY.getCategories(parseInt(response.calculation_base_id));
+                        });
+                    }
                     $scope.initialState = $state.current.name;
                 };
                 init();
@@ -527,6 +532,9 @@
                             DataModel.Moh.get({ id: $localStorage.moh }, function(response){
                                 $scope.reportHeader[0][1] = {name: "Calculation based on", value: mohService.getCalculationBase(response.calculation_base_id).name};
                                 $scope.reportHeader[1][1] = {name: "Allocation based on", value: mohService.getAllocationBase(response.allocation_base_id).name};
+                                if(response.calculation_base_id == 1) {
+                                    $scope.reportHeader[3][1] = { name: "Rate (%)", value: response.por_rate * 100 };
+                                }
                             });
                         }
                     }
