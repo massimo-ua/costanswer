@@ -17,11 +17,11 @@
         {number: 12, short: 'DEC', full: 'December'}
         ]);
     angular.module('costAnswer.services').value('MOH_ALLOCATION_BASE', [
-        {"id": 1, "name": "Direct Labour"},
-        {"id": 2, "name": "Labour Hours"},
-        {"id": 3, "name": "Direct Materials"},
-        {"id": 4, "name": "Prime Cost"},
-        {"id": 5, "name": "Machine Hours"}
+        {"id": 1, "name": "Direct Labour", "measures": "%", "multiplexor": 100},
+        {"id": 2, "name": "Labour Hours", "measures": "$", "multiplexor": 1},
+        {"id": 3, "name": "Direct Materials", "measures": "%", "multiplexor": 100},
+        {"id": 4, "name": "Prime Cost", "measures": "%", "multiplexor": 100},
+        {"id": 5, "name": "Machine Hours", "measures": "$", "multiplexor": 1}
     ]);
     angular.module('costAnswer.services').value('MOH_CALCULATION_BASE', [
         {"id": 1, "name": "Predetermined Overhead Rate"},
