@@ -11,7 +11,8 @@
                 moh.project_uuid = $localStorage.uuid;
                 moh.calculation_base_id = vm.mohSettings.calculation_base_id;
                 moh.allocation_base_id = vm.mohSettings.allocation_base_id;
-                moh.por_rate = vm.mohSettings.por_rate / 100;
+                moh.por_rate = vm.mohSettings.por_rate;
+                moh.por_divider = vm.porMultiplexor;
                 moh.$saveWithUuid(function(response){
                     $localStorage.moh = response.id;
                     vm.buttonText = "Update";
@@ -28,7 +29,8 @@
                     moh.project_uuid = $localStorage.uuid;
                     moh.allocation_base_id = vm.mohSettings.allocation_base_id;
                     moh.calculation_base_id = vm.mohSettings.calculation_base_id;
-                    moh.por_rate = vm.mohSettings.por_rate / 100;
+                    moh.por_rate = vm.mohSettings.por_rate;
+                    moh.por_divider = vm.porMultiplexor;
                     DataModel.Moh.updateWithUuid(moh).$promise
                         .then(function(response){
                             $scope.$emit('MOH_CALCULATION_CHANGE', response.calculation_base_id);
@@ -42,6 +44,7 @@
                 }
             }
                 function init() {
+                    vm.porMultiplexor = 1;
                     vm.mohSettings = {};
                     vm.uuid = $localStorage.uuid;
                     vm.buttonText = $localStorage.moh ? "Update" : "Save";
@@ -49,7 +52,7 @@
                         DataModel.Moh.getWithUuid({ uuid: vm.uuid }, function(response){
                             vm.mohSettings.calculation_base_id = parseInt(response.calculation_base_id);
                             vm.mohSettings.allocation_base_id = parseInt(response.allocation_base_id);
-                            vm.mohSettings.por_rate = response.por_rate * 100;
+                            vm.mohSettings.por_rate = parseInt(response.por_rate);
                             $scope.$emit('MOH_CALCULATION_CHANGE', vm.mohSettings.calculation_base_id);
                         });
                     }
@@ -57,6 +60,14 @@
                     vm.moh_calculation_base = MOH_CALCULATION_BASE;
                 };
                 init();
+            vm.changePlaceholder = function() {
+                for(var i=0;i<vm.moh_allocation_base.length;i++) {
+                    if(vm.moh_allocation_base[i].id == vm.mohSettings.allocation_base_id) {
+                        vm.porPlaceholder = vm.moh_allocation_base[i].measures;
+                        vm.porMultiplexor = vm.moh_allocation_base[i].multiplexor;
+                    }
+                }
+            }
     }
     //dependencies injection block
     MohSettingsController.$inject = ['$scope', '$log', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE', 'DataModel'];
