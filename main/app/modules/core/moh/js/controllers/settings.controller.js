@@ -12,7 +12,7 @@
                 moh.calculation_base_id = vm.mohSettings.calculation_base_id;
                 moh.allocation_base_id = vm.mohSettings.allocation_base_id;
                 moh.por_rate = vm.mohSettings.por_rate;
-                moh.por_divider = vm.porMultiplexor;
+                moh.por_divider = mohService.getAllocationBase(vm.mohSettings.allocation_base_id).multiplexor;
                 moh.$saveWithUuid(function(response){
                     $localStorage.moh = response.id;
                     vm.buttonText = "Update";
@@ -30,7 +30,7 @@
                     moh.allocation_base_id = vm.mohSettings.allocation_base_id;
                     moh.calculation_base_id = vm.mohSettings.calculation_base_id;
                     moh.por_rate = vm.mohSettings.por_rate;
-                    moh.por_divider = vm.porMultiplexor;
+                    moh.por_divider = mohService.getAllocationBase(vm.mohSettings.allocation_base_id).multiplexor;
                     DataModel.Moh.updateWithUuid(moh).$promise
                         .then(function(response){
                             $scope.$emit('MOH_CALCULATION_CHANGE', response.calculation_base_id);
