@@ -533,7 +533,7 @@
                                 $scope.reportHeader[0][1] = {name: "Calculation based on", value: mohService.getCalculationBase(response.calculation_base_id).name};
                                 $scope.reportHeader[1][1] = {name: "Allocation based on", value: mohService.getAllocationBase(response.allocation_base_id).name};
                                 if(response.calculation_base_id == 1) {
-                                    $scope.reportHeader[3][1] = { name: "Rate (%)", value: response.por_rate * 100 };
+                                    $scope.reportHeader[3][1] = { name: "Rate (" + mohService.getAllocationBase(response.allocation_base_id).measures + ")", value: parseFloat(response.por_rate) };
                                 }
                             });
                         }

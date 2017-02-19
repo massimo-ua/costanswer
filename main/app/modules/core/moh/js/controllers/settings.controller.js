@@ -1,7 +1,7 @@
 (function(){
     'use strict'
     //controller functions definitions
-    function MohSettingsController($scope, $log, $localStorage, MOH_ALLOCATION_BASE, MOH_CALCULATION_BASE, DataModel) {
+    function MohSettingsController($scope, $log, $localStorage, MOH_ALLOCATION_BASE, MOH_CALCULATION_BASE, DataModel, mohService) {
         var vm = this;
         vm.saveSettings =  function() {
             if(!$localStorage.moh) {
@@ -61,16 +61,14 @@
                 };
                 init();
             vm.changePlaceholder = function() {
-                for(var i=0;i<vm.moh_allocation_base.length;i++) {
-                    if(vm.moh_allocation_base[i].id == vm.mohSettings.allocation_base_id) {
-                        vm.porPlaceholder = vm.moh_allocation_base[i].measures;
-                        vm.porMultiplexor = vm.moh_allocation_base[i].multiplexor;
-                    }
-                }
+                //show correct placeholder and set divider if allocation_base changes
+                var allocationBaseSettings = mohService.getAllocationBase(vm.mohSettings.allocation_base_id);
+                vm.porPlaceholder = allocationBaseSettings.measures;
+                vm.porMultiplexor = allocationBaseSettings.multiplexor;
             }
     }
     //dependencies injection block
-    MohSettingsController.$inject = ['$scope', '$log', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE', 'DataModel'];
+    MohSettingsController.$inject = ['$scope', '$log', '$localStorage', 'MOH_ALLOCATION_BASE', 'MOH_CALCULATION_BASE', 'DataModel', 'mohService'];
     //controller function linking
     angular.module('costAnswer.core.moh.controllers')
         .controller('MohSettingsController', MohSettingsController)
