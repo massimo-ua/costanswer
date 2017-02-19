@@ -53,6 +53,7 @@
                             vm.mohSettings.calculation_base_id = parseInt(response.calculation_base_id);
                             vm.mohSettings.allocation_base_id = parseInt(response.allocation_base_id);
                             vm.mohSettings.por_rate = parseFloat(response.por_rate).toFixed(2);
+                            vm.porPlaceholder = mohService.getAllocationBase(vm.mohSettings.allocation_base_id).measures;
                             $scope.$emit('MOH_CALCULATION_CHANGE', vm.mohSettings.calculation_base_id);
                         });
                     }

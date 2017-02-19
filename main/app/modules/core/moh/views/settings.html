@@ -25,7 +25,7 @@
 				<div class="help-block error" ng-show="vm.mohSettingsForm.mohCalculationBase.$dirty && vm.mohSettingsForm.mohCalculationBase.$error.required">Please, select Manufacturing overhead calculation base</div>
 			</div>
 			<div ng-class="{'has-error': vm.mohSettingsForm.por_rate.$dirty && vm.mohSettingsForm.por_rate.$invalid}" class="form-group text-center" ng-show="vm.mohSettings.calculation_base_id == 1">
-				<label for="por_rate" class="text-center m-b-20px">Rate:</label>
+				<label for="por_rate" class="text-center m-b-20px">Rate({{ vm.porPlaceholder }}):</label>
 				<input name="por_rate" type="text" ng-required="true" min="0" ng-model="vm.mohSettings.por_rate" class="form-control costanswer" placeholder="{{ vm.porPlaceholder }}" />
 				<div class="help-block error" ng-show="vm.mohSettingsForm.por_rate.$dirty && vm.mohSettingsForm.por_rate.$invalid">Please, fill in your POR rate</div>
 			</div>
