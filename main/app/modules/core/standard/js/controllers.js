@@ -249,7 +249,7 @@
             }
         }
     }])
-    .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log){
+    .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', 'toastr', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log, toastr){
         function init() {
             $scope.form = {};
             $scope.form.amount = [];
@@ -272,6 +272,7 @@
                     .$promise
                         .then(function(response){
                             $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                            $scope.begin_month = response.begin_month;
                         });
             }
             DataModel.Product.getProductionPlan({ id: $scope.product_id })
@@ -324,7 +325,10 @@
                         refreshReport();
                     })
                     .catch(function(error){
-                        $log.debug(error);
+                        if(error.status == 422) {
+                            var suggestedValue = parseInt(error.data.errors[0].suggestion) / 100;
+                            toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, $scope.begin_month).full + '. Please, change your input data and try again. Suggested value: ' + suggestedValue, 'Аttention!');
+                        }
                     })
                     .finally(function(){
                         $scope.controls.buttonText = $scope.updateMode ? "Update" : "Save";

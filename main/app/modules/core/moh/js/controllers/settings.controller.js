@@ -4,6 +4,7 @@
     function MohSettingsController($scope, $log, $localStorage, MOH_ALLOCATION_BASE, MOH_CALCULATION_BASE, DataModel, mohService) {
         var vm = this;
         vm.saveSettings =  function() {
+            vm.mohSettings.por_rate = mohService.roundToTwo(vm.mohSettings.por_rate);
             if(!$localStorage.moh) {
                 vm.buttonText = "Saving...";
                 if(!$localStorage.uuid || vm.mohSettings.allocation_base_id == undefined || vm.mohSettings.calculation_base_id == undefined) return;
@@ -52,7 +53,7 @@
                         DataModel.Moh.getWithUuid({ uuid: vm.uuid }, function(response){
                             vm.mohSettings.calculation_base_id = parseInt(response.calculation_base_id);
                             vm.mohSettings.allocation_base_id = parseInt(response.allocation_base_id);
-                            vm.mohSettings.por_rate = parseFloat(response.por_rate).toFixed(2);
+                            vm.mohSettings.por_rate = mohService.roundToTwo(parseFloat(response.por_rate));
                             vm.porPlaceholder = mohService.getAllocationBase(vm.mohSettings.allocation_base_id).measures;
                             $scope.$emit('MOH_CALCULATION_CHANGE', vm.mohSettings.calculation_base_id);
                         });
