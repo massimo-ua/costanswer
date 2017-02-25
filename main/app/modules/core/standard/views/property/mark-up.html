@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <tr>
-                <td ng-repeat="i in []|range:12:1"><input name="a" ng-class="{'has-error': itemForm.a.$dirty && itemForm.a.$invalid}" type="number" ng-required="true" ng-model="form.mark_up_rate[i].value" min="0" class="form-control costanswer text-center" placeholder="{{ controls.aPlaceholder }}" /></td>
+                <td ng-repeat="i in []|range:12:1"><input name="a" ng-class="{'has-error': itemForm.a.$dirty && itemForm.a.$invalid}" type="number" ng-required="true" ng-model="form.mark_up_rate[i].value" min="0" max="100" class="form-control costanswer text-center" placeholder="{{ controls.aPlaceholder }}" /></td>
                 </tr>
             </tbody>
             </table>
