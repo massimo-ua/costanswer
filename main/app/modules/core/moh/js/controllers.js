@@ -503,8 +503,8 @@
                 }
             }])
             .controller('mohReportController', [
-            '$scope', '$state', 'toastr', '$localStorage', 'mohService', 'DataModel', 'monthService', 'currencyService', 'PROJECT_TYPES',
-            function($scope, $state, toastr, $localStorage, mohService, DataModel, monthService, currencyService, PROJECT_TYPES) {
+            '$scope', '$state', 'toastr', '$localStorage', 'mohService', 'DataModel', 'monthService', 'currencyService', 'PROJECT_TYPES', 'EXPORT_PREFIX',
+            function($scope, $state, toastr, $localStorage, mohService, DataModel, monthService, currencyService, PROJECT_TYPES, EXPORT_PREFIX) {
                 function init() {
                     $scope.reportHeader = [];
                     for(var i=0;i<4;i++) {
@@ -539,6 +539,12 @@
                         }
                     }
                 };
-                init(); 
+                init();
+                $scope.getDownloadLink = function(type) {
+                    if($localStorage.uuid) {
+                        return EXPORT_PREFIX + '/moh/' + $localStorage.uuid + '/' + type;
+                    }
+                    return; 
+                } 
             }]);
 }());
