@@ -64,6 +64,7 @@
     margin-left: 2px;
     color: #202020;
     background-color: #ff9933;
+    height: 37px;
 }
 .nav-pills.costanswer > li.disabled > a {
     margin-left: 2px;
@@ -76,7 +77,7 @@
 .nav-pills.costanswer > li.footed > a {
     border-radius: 2px 10px 0 0;
     margin: 0 0 0 1px;
-    padding: 5px 0 5px 0;
+    padding: 2px 0 2px 0;
 }
 .nav-pills.costanswer > li.footed > a.active {
     background-color: #339966;
