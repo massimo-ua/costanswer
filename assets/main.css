@@ -43,12 +43,12 @@ background: #221d1d;}
 
 .top-menu {height: 65px;}
 
-.logo {width: 225px;
+.logo {
+width: 225px;
 height: 47px;
-padding-top: 18px;
-float: left;padding-left: 40px;}
-
-.logo  img{
+float: left;
+padding-left: 40px;
+color: #fffffc;
 }
 
 nav {
