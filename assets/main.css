@@ -47,7 +47,9 @@ background: #221d1d;}
 width: 225px;
 height: 47px;
 float: left;
-padding-left: 40px;
+padding: 0px 40px 0px 0px;
+margin: 0 0 0 10px;
+text-transform: uppercase;
 color: #fffffc;
 }
 
@@ -720,7 +722,7 @@ margin: 0px;
 font-size: 14px;
 color: #d7d6d6;
 font-family: 'Roboto', sans-serif;
-
+text-transform: uppercase;
 font-weight: 300;
 padding-top: 33px;
 width: 600px;
