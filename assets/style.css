@@ -3,7 +3,6 @@ input[type=number] {
     -moz-appearance:textfield; /* Firefox */
     -webkit-appearance:textfield; /* Safari and Chrome */
 }
-
 #dialog-confirm {
     display: none;
 }
