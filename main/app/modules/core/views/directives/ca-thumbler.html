@@ -9,7 +9,7 @@
     </div>
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
         <ul ng-show="itemsList.length > 0" ng-class="{ 'nav-justified' : itemsList.length > 3 }" class="nav nav-pills costanswer">
-            <li class ="item-list-pills" role="presentation" ng-repeat = "i in range(startItem, displayBlock)"><a ng-class="{ 'active' : i == activeItem }" ng-click="loadItem(i-1)">{{ itemsList[i-1][nameProperty] | strTruncate:false:9 }}<span class="glyphicon glyphicon-remove toolset remove small pull-right" title="Remove" ng-click="removeItem(i-1)"></span></a></li>
+            <li style="width: 200px;" class ="item-list-pills" role="presentation" ng-repeat = "i in range(startItem, displayBlock)"><a ng-class="{ 'active' : i == activeItem }" ng-click="loadItem(i-1)">{{ itemsList[i-1][nameProperty] | strTruncate:false:9 }}<span class="glyphicon glyphicon-remove toolset remove small pull-right" title="Remove" ng-click="removeItem(i-1)"></span></a></li>
         </ul>
     </div>
     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
