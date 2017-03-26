@@ -34,7 +34,7 @@
                     });
                     $scope.controls = {
                         buttonText: "Add",
-                        topHeader: "Choose material",
+                        //topHeader: "Choose material",
                         nameMain: "Name of material",
                         namePlaceholder: "Name",
                         nameErrorText: "Please, fill in material name",
@@ -93,7 +93,7 @@
                     });
                     $scope.controls = {
                         buttonText: "Add",
-                        topHeader: "Choose manager",
+                        //topHeader: "Choose manager",
                         nameMain: "Worker name/title",
                         namePlaceholder: "Name",
                         nameErrorText: "Please, fill in Name of personnel",
@@ -158,7 +158,7 @@
                     });
                     $scope.controls = {
                         buttonText: "Add",
-                        topHeader: "Choose insurance",
+                        //topHeader: "Choose insurance",
                         nameMain: "Type of insuarance",
                         namePlaceholder: "Name",
                         nameErrorText: "Please, fill in Type of insuarance",
@@ -217,7 +217,7 @@
                     });
                     $scope.controls = {
                         buttonText: "Add",
-                        topHeader: "Choose tax",
+                        //topHeader: "Choose tax",
                         nameMain: "Type of tax",
                         namePlaceholder: "Name",
                         nameErrorText: "Please, fill in Type of tax",
@@ -276,7 +276,7 @@
                     });
                     $scope.controls = {
                         buttonText: "Add",
-                        topHeader: "Choose worker",
+                        //topHeader: "Choose worker",
                         nameMain: "Worker name/title",
                         namePlaceholder: "Name",
                         nameErrorText: "Please, fill in Name of personnel",
@@ -341,7 +341,7 @@
                     });
                     $scope.controls = {
                         buttonText: "Add",
-                        topHeader: "Choose rent",
+                        //topHeader: "Choose rent",
                         nameMain: "Type of rental",
                         namePlaceholder: "Name",
                         nameErrorText: "Please, fill in Name of Rent",
@@ -400,7 +400,7 @@
                     });
                     $scope.controls = {
                         buttonText: "Add",
-                        topHeader: "Choose utility",
+                        //topHeader: "Choose utility",
                         nameMain: "Name of expence",
                         namePlaceholder: "Name",
                         nameErrorText: "Please, fill in Name of expence",
@@ -459,7 +459,7 @@
                     });
                     $scope.controls = {
                         buttonText: "Add",
-                        topHeader: "Choose facility",
+                        //topHeader: "Choose facility",
                         nameMain: "Name of asset",
                         namePlaceholder: "Name",
                         nameErrorText: "Please, fill in Name of asset",
