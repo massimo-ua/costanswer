@@ -9,6 +9,7 @@
             'DataModel',
             'MOH_ALLOCATION_BASE',
             'MOH_CALCULATION_BASE',
+            '$log',
             function(
                 $localStorage,
                 $http,
@@ -16,7 +17,8 @@
                 API_PREFIX,
                 DataModel,
                 MOH_ALLOCATION_BASE,
-                MOH_CALCULATION_BASE
+                MOH_CALCULATION_BASE,
+                $log
                 ){
           return {
               getTotalMohReport: function(uuid){
@@ -61,22 +63,28 @@
                             var chunk = {};
                             chunk.id = response[i].id;
                             chunk.name = response[i].name;
-                            if(response[i].params[0].id) {
-                                chunk.param_id = parseInt(response[i].params[0].id);
+                            // todo if there is no params[0]
+                            try {
+                                if(response[i].params[0].id) {
+                                    chunk.param_id = parseInt(response[i].params[0].id);
+                                }
+                                if(response[i].params[0].cost_per_month) {
+                                    chunk.cost_per_month = parseInt(response[i].params[0].cost_per_month)/100;
+                                }
+                                if(response[i].params[0].salary) {
+                                    chunk.salary = parseInt(response[i].params[0].salary)/100;
+                                }
+                                if(response[i].params[0].annual_growth) {
+                                    chunk.annual_growth = parseFloat(response[i].params[0].annual_growth)*100;
+                                }
+                                if(response[i].params[0].payroll_tax) {
+                                    chunk.payroll_tax = parseInt(response[i].params[0].payroll_tax)/100;
+                                }
+                                result.push(chunk);
                             }
-                            if(response[i].params[0].cost_per_month) {
-                                chunk.cost_per_month = parseInt(response[i].params[0].cost_per_month)/100;
+                            catch (err) {
+                                $log.error('Params parsing error');
                             }
-                            if(response[i].params[0].salary) {
-                                chunk.salary = parseInt(response[i].params[0].salary)/100;
-                            }
-                            if(response[i].params[0].annual_growth) {
-                                chunk.annual_growth = parseFloat(response[i].params[0].annual_growth)*100;
-                            }
-                            if(response[i].params[0].payroll_tax) {
-                                chunk.payroll_tax = parseInt(response[i].params[0].payroll_tax)/100;
-                            }
-                            result.push(chunk);
                         }
                         return result;
                   }
