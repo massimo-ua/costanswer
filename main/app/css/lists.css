@@ -29,3 +29,7 @@ a.list-group-item.costanswer .list-group-item-heading {
     color: #505050;
     background: #f0f0f0;
 }
+/* select centered */
+.bootstrap-select.btn-group .dropdown-menu li > a {
+    text-align: center;
+}
