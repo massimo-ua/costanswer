@@ -70,7 +70,7 @@ angular.module('costAnswer.core')
                 url: '/report',
                 parent: "projectDataInput",
                 controller: 'ProjectReportController',
-                controllerAs: 'prc',
+                controllerAs: 'vm',
                 templateUrl: 'app/modules/core/views/project-report.html'
             })
             .state('moh', {
