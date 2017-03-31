@@ -946,8 +946,9 @@
             '$scope', '$localStorage', 'standardService', '$log',
             '$stateParams', 'monthService', 'DataModel', 'PROJECT_TYPES',
             'currencyService',
+            'EXPORT_PREFIX',
             function($scope, $localStorage, standardService, $log,
-            $stateParams, monthService, DataModel, PROJECT_TYPES, currencyService
+            $stateParams, monthService, DataModel, PROJECT_TYPES, currencyService, EXPORT_PREFIX
             ) {
                 function init() {
                     if($localStorage.uuid !== undefined) {
@@ -989,6 +990,12 @@
                         });
                     }
                 };
-                init(); 
+                init();
+                $scope.getDownloadLink = function(type) {
+                    if($localStorage.uuid) {
+                        return EXPORT_PREFIX + '/product/' + $stateParams.id + '/' + type;
+                    }
+                    return; 
+                }
             }]);
 }());

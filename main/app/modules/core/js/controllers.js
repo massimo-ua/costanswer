@@ -56,7 +56,7 @@ angular.module('costAnswer.core.controllers')
                 $state.go('projectSettings');
             }
         }]);
-        var ProjectReportController = function(toastr, $log, $localStorage, DataModel, monthService, currencyService, PROJECT_TYPES, standardService) {
+        var ProjectReportController = function(toastr, $log, $localStorage, DataModel, monthService, currencyService, PROJECT_TYPES, standardService, EXPORT_PREFIX) {
             var vm = this;
             vm.someText = "ProjectReportController";
             vm.reportHeader = [];
@@ -86,8 +86,14 @@ angular.module('costAnswer.core.controllers')
                     }
             };
             init();
+            vm.getDownloadLink = function(type) {
+                    if($localStorage.uuid) {
+                        return EXPORT_PREFIX + '/project/' + $localStorage.uuid + '/' + type;
+                    }
+                    return; 
+            } 
         }
         //
-        ProjectReportController.$inject = ['toastr','$log','$localStorage','DataModel','monthService','currencyService','PROJECT_TYPES','standardService'];
+        ProjectReportController.$inject = ['toastr','$log','$localStorage','DataModel','monthService','currencyService','PROJECT_TYPES','standardService', 'EXPORT_PREFIX'];
         //
         angular.module('costAnswer.core.controllers').controller('ProjectReportController', ProjectReportController);
