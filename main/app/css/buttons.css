@@ -1,14 +1,14 @@
 .btn-costanswer {
     /*padding: 14px 24px;*/
     border: 0 none;
-    font-weight: 500;
+    font-weight: bolder;
     box-shadow: 0 2px 10px 0 #63430b;
     /*text-transform: uppercase;*/
 }
 
 
 .btn-group.costanswer > .btn-costanswer {
-    padding: 5px 10px;
+    /*padding: 5px 10px;*/
     font-weight: 300;
     border: none;
     -webkit-box-shadow: none;
@@ -33,6 +33,7 @@
 .btn-costanswer {
     background: #ff9933;
     color: #202020;
+    height: 37px;
 }
  
 .btn-costanswer:hover, .btn-costanswer:focus, .btn-costanswer:active, .btn-costanswer.active, .open > .dropdown-toggle.btn-costanswer {
