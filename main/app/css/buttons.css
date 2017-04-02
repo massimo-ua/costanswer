@@ -2,10 +2,14 @@
     /*padding: 14px 24px;*/
     border: 0 none;
     font-weight: bolder;
+    min-width: 100px;
     box-shadow: 0 2px 10px 0 #63430b;
+    min-width: 130px;
     /*text-transform: uppercase;*/
+    background: #ff9933;
+    color: #202020;
+    height: 37px;
 }
-
 
 .btn-group.costanswer > .btn-costanswer {
     /*padding: 5px 10px;*/
@@ -28,12 +32,6 @@
  
 .btn-costanswer:focus, .btn-costanswer:active:focus, .btn-costanswer.active:focus {
     outline: 0 none;
-}
- 
-.btn-costanswer {
-    background: #ff9933;
-    color: #202020;
-    height: 37px;
 }
  
 .btn-costanswer:hover, .btn-costanswer:focus, .btn-costanswer:active, .btn-costanswer.active, .open > .dropdown-toggle.btn-costanswer {
