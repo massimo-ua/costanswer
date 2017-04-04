@@ -1,3 +1,24 @@
+.btn {
+    display: inline-block;
+    padding: 9px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 .btn-costanswer {
     /*padding: 14px 24px;*/
     border: 0 none;
@@ -25,7 +46,7 @@
     font-weight: 300;
 }
 .btn-group.costanswer > ul.dropdown-menu > li > a:hover, .btn-group.costanswer > ul.dropdown-menu > li > a:active, .btn-group.costanswer > ul.dropdown-menu > li > a.active {
-    background: #339966;
+    background: #2a6635;
     color: #fffffc;
     font-weight: 300;
 }
@@ -35,12 +56,12 @@
 }
  
 .btn-costanswer:hover, .btn-costanswer:focus, .btn-costanswer:active, .btn-costanswer.active, .open > .dropdown-toggle.btn-costanswer {
-    background: #339966;
+    background: #2a6635;
     color: #fffffc;
 }
  
 .btn-costanswer:active, .btn-costanswer.active {
-    background: #339966;
+    background: #2a6635;
     box-shadow: none;
 }
 .btn-group.costanswer > ul.dropdown-menu > li > a  {
@@ -53,11 +74,11 @@
 }
 .nav-pills.costanswer > li.item-list-pills > a.active, .nav-pills.costanswer > li.item-list-pills > a.active:hover, .nav-pills.costanswer > li.item-list-pills a.active:focus {
     color: #fffffc;
-    background-color: #339966;
+    background-color: #2a6635;
 }
 .nav-pills.costanswer > li > a.active, .nav-pills.costanswer > li > a:hover, .nav-pills.costanswer > li > a:focus {
     color: #fffffc;
-    background-color: #339966;
+    background-color: #2a6635;
 }
 .nav-pills.costanswer > li > a {
     margin-left: 2px;
@@ -79,11 +100,11 @@
     padding: 2px 0 2px 0;
 }
 .nav-pills.costanswer > li.footed > a.active {
-    background-color: #339966;
+    background-color: #2a6635;
     color: #fffffc;
 }
 /*.nav-pills.costanswer > li.footed > a.active, .nav-pills.costanswer > li.footed > a.active:hover, .nav-pills.costanswer > li.footed > a.active:focus {
-    background-color: #339966;
+    background-color: #2a6635;
     color: #fffffc;
 }*/
 .tab-content.footed {
@@ -100,7 +121,7 @@
     
 }
 .tab-content.footed > .tab-pane.costanswer.active {
-    background-color: #339966;
+    background-color: #2a6635;
     color: #fffffc; 
 }
 
@@ -120,5 +141,5 @@
   white-space: nowrap;
   width: auto;
   color: #fffffc;
-  background-color: #339966;
+  background-color: #2a6635;
 }
