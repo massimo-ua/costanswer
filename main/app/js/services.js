@@ -17,27 +17,27 @@
         {number: 12, short: 'DEC', full: 'December'}
         ]);
     angular.module('costAnswer.services').value('MOH_ALLOCATION_BASE', [
-        {"id": 1, "name": "Direct Labour", "measures": "%", "multiplexor": 100},
-        {"id": 2, "name": "Labour Hours", "measures": "$", "multiplexor": 1},
-        {"id": 3, "name": "Direct Materials", "measures": "%", "multiplexor": 100},
-        {"id": 4, "name": "Prime Cost", "measures": "%", "multiplexor": 100},
-        {"id": 5, "name": "Machine Hours", "measures": "$", "multiplexor": 1}
+        {"id": 1, "name": "Direct labor", "measures": "%", "multiplexor": 100},
+        {"id": 2, "name": "Labor hours", "measures": "$", "multiplexor": 1},
+        {"id": 3, "name": "Direct materials", "measures": "%", "multiplexor": 100},
+        {"id": 4, "name": "Prime cost", "measures": "%", "multiplexor": 100},
+        {"id": 5, "name": "Machine hours", "measures": "$", "multiplexor": 1}
     ]);
     angular.module('costAnswer.services').value('MOH_CALCULATION_BASE', [
-        {"id": 1, "name": "Predetermined Overhead Rate"},
-        {"id": 2, "name": "Full Cost Applied"}
+        {"id": 1, "name": "Predetermined overhead rate"},
+        {"id": 2, "name": "Full cost applied"}
     ])
     angular.module('costAnswer.services').factory('MOH_CATEGORY', function() {
         var list = [
             {"id": 1, "name": "Settings", "sref": "moh.settings", "iconClass": "ion-settings", "disabled": false},
-            {"id": 2, "name": "Indirect Materials", "sref": "moh.im", "iconClass": "ion-paintbucket", "disabled": false},
+            {"id": 2, "name": "Indirect materials", "sref": "moh.im", "iconClass": "ion-paintbucket", "disabled": false},
             {"id": 3, "name": "Production managers salaries", "sref": "moh.pms", "iconClass": "ion-ios-briefcase", "disabled": false},
             {"id": 4, "name": "Production facilities insurance", "sref": "moh.pfi", "iconClass": "ion-cash", "disabled": false},
             {"id": 5, "name": "Production property taxes", "sref": "moh.ppt", "iconClass": "ion-calculator", "disabled": false},
             {"id": 6, "name": "Indirect labor", "sref": "moh.il", "iconClass": "ion-ios-people", "disabled": false},
             {"id": 7, "name": "Production machinery rent", "sref": "moh.pmr", "iconClass": "ion-android-bus", "disabled": false},
-            {"id": 8, "name": "Production utilities and other overhead expences", "sref": "moh.puooe", "iconClass": "ion-ios-cart", "disabled": false},
-            {"id": 9, "name": "Production facilities amortization", "sref": "moh.pfa", "iconClass": "ion-arrow-graph-down-right", "disabled": false},
+            {"id": 8, "name": "Production utilities and other overhead expenses", "sref": "moh.puooe", "iconClass": "ion-ios-cart", "disabled": false},
+            {"id": 9, "name": "Production facilities depreciation", "sref": "moh.pfa", "iconClass": "ion-arrow-graph-down-right", "disabled": false},
             {"id": 10, "name": "Report", "sref": "moh.report", "iconClass": "ion-clipboard", "disabled": false}
         ];
         return {

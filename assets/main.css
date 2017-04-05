@@ -47,10 +47,17 @@ background: #221d1d;}
 width: 225px;
 height: 47px;
 float: left;
-padding: 0px 40px 0px 0px;
-margin: 0 0 0 10px;
-text-transform: uppercase;
+padding: 0px 20px 0px 0px;
+margin: 0 0 0 0;
 color: #fffffc;
+}
+.logo > span {
+    text-transform: uppercase;
+    position: absolute;
+    font-weight: bolder;
+    font-size: 1.5em;
+    left: 60px;
+    top: 20px;
 }
 
 nav {

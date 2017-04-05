@@ -434,7 +434,7 @@
             $scope.reportId = 'wip';
             $scope.controls = {
                 buttonText: "Save",
-                nameMain: "Work in process (WIP) beginning",
+                //nameMain: "Work in process (WIP) beginning",
                 namePlaceholder: "$",
                 nameErrorText: "Please, fill in amount of beginning WIP costs (0 allowed)"
             }
@@ -539,7 +539,7 @@
                     .$promise
                         .then(function(response){
                             $scope.project = response;
-                            $scope.controls.gPlaceholder = $scope.controls.gPlaceholder + ', s' + monthService.Month(response.begin_month).full;
+                            $scope.controls.gPlaceholder = $scope.controls.gPlaceholder + ', ' + monthService.Month(response.begin_month).full;
                             $scope.controls.cPlaceholder = $scope.controls.cPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
                             $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
                         });
@@ -804,7 +804,7 @@
             }
             $scope.controls = {
                 buttonText: "Save",
-                nameMain: "Work in process (WIP) ending",
+                //nameMain: "Work in process (WIP) ending",
                 namePlaceholder: "$",
                 nameErrorText: "Please, fill in WIP costing amount"
             }
@@ -883,10 +883,10 @@
             $scope.reportId = 'markup';
             $scope.controls = {
                 buttonText: "Save",
-                aMain: "Mark Up",
+                //aMain: "Mark Up",
                 aPlaceholder: "%",
                 aErrorText: "Please, fill in mark up rate",
-                bMain: "VAT (IFRS countries)",
+                bMain: "VAT (non-US companies)",
                 bPlaceholder: "%",
                 bErrorText: "Please, fill in VAT rate"
             };
