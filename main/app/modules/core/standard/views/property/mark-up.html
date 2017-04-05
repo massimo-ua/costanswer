@@ -3,14 +3,14 @@
         <fieldset ng-disabled="controls.formDisabled">
 <div class="row">
 
-        <div class="col-xs-12 col-md-12 col-lg-12 text-center">
+        <div ng-show="controls.aMain" class="col-xs-12 col-md-12 col-lg-12 text-center">
             <label for="a" class="text-center">{{ controls.aMain }}:</label>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
             <table class="table table-condensed">
             <thead>
                 <tr>
-                    <th ng-repeat="month in monthes">{{ month.short }}</th>
+                    <th class="text-center" ng-repeat="month in monthes">{{ month.short }}</th>
                 </tr>
             </thead>
             <tbody>
