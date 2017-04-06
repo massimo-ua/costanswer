@@ -1,7 +1,7 @@
 <div class="row m-t-10px">
     <ng-form id="item-form" name="itemForm">
         <fieldset ng-disabled="controls.formDisabled">
-        <div class="col-xs-12 col-md-12 col-lg-12 text-center">
+        <div ng-show="controls.nameMain" class="col-xs-12 col-md-12 col-lg-12 text-center">
             <label for="goods" class="text-center m-b-20px">{{ controls.nameMain }}:</label>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">

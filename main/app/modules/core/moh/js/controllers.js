@@ -401,9 +401,9 @@
                     $scope.controls = {
                         buttonText: "Add",
                         //topHeader: "Choose utility",
-                        nameMain: "Name of expence",
+                        nameMain: "Name of expense",
                         namePlaceholder: "Name",
-                        nameErrorText: "Please, fill in Name of expence",
+                        nameErrorText: "Please, fill in Name of expense",
                         costMain: "Monthly payment",
                         costPlaceholder: "$",
                         costErrorText: "Please, fill in Monthly payment"
