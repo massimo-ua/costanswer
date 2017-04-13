@@ -34,7 +34,8 @@
             })
             .state('property.settings', {
                 url: '/settings',
-                controller: 'propertySettingsController',
+                controller: 'PropertySettingsController',
+                controllerAs: 'vm',
                 templateUrl: 'app/modules/core/standard/views/property/settings.html',
             })
             .state('property.inventory', {

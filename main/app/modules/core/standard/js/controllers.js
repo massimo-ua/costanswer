@@ -122,7 +122,7 @@
         }
         init();
     }])
-    .controller('propertySettingsController', ['$scope', 'standardService', '$stateParams', 'DataModel', function($scope, standardService, $stateParams, DataModel){
+    /*.controller('propertySettingsController', ['$scope', 'standardService', '$stateParams', 'DataModel', function($scope, standardService, $stateParams, DataModel){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
@@ -170,7 +170,7 @@
                     $scope.controls.buttonText = "Update";
                 });
         }
-    }])
+    }])*/
     .controller('propertyInventoryController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
         //console.log('singleProductController');
         function init() {

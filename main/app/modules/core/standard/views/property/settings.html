@@ -1,41 +1,61 @@
 <div class="row m-t-10px">
     <ng-form id="item-form" name="itemForm">
-        <fieldset ng-disabled="controls.formDisabled">
+        <fieldset ng-disabled="vm.controls.formDisabled">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
-            <label for="Name" class="text-center m-b-20px">{{ controls.nameMain }}:</label>
+            <label for="Name" class="text-center m-b-20px">{{ vm.controls.nameMain }}:</label>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
 		<div ng-class="{'has-error': itemForm.Name.$dirty && itemForm.Name.$invalid}" class="form-group">
-			<input name="Name" maxlength="20" type="text" ng-required="true" ng-model="form.name" class="form-control costanswer" placeholder="{{ controls.namePlaceholder }}" />
-			<div class="help-block error" ng-show="itemForm.Name.$dirty && itemForm.Name.$error.required">{{ controls.nameErrorText }}</div>
+			<input name="Name" maxlength="20" type="text" ng-required="true" ng-model="vm.form.name" class="form-control costanswer" placeholder="{{ vm.controls.namePlaceholder }}" />
+			<div class="help-block error" ng-show="itemForm.Name.$dirty && itemForm.Name.$error.required">{{ vm.controls.nameErrorText }}</div>
 		</div>
         </div>
         <div class="col-xs-12 col-md-12 col-lg-12 text-center">
-            <label for="Units" class="text-center m-b-20px">{{ controls.unitMain }}:</label>
+            <label for="Units" class="text-center m-b-20px">{{ vm.controls.unitMain }}:</label>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
 		<div ng-class="{'has-error': itemForm.Units.$dirty && itemForm.Units.$invalid}" class="form-group">
-            <input name="Units" maxlength="20" type="text" ng-required="true" ng-model="form.measurement_unit" class="form-control costanswer" placeholder="{{ controls.unitPlaceholder }}" />
-			<div class="help-block error" ng-show="itemForm.Units.$dirty && itemForm.Units.$invalid">{{ controls.unitErrorText }}</div>
+            <input name="Units" maxlength="20" type="text" ng-required="true" ng-model="vm.form.measurement_unit" class="form-control costanswer" placeholder="{{ vm.controls.unitPlaceholder }}" />
+			<div class="help-block error" ng-show="itemForm.Units.$dirty && itemForm.Units.$invalid">{{ vm.controls.unitErrorText }}</div>
 		</div>
         </div>
         <div class="col-xs-12 col-md-12 col-lg-12 text-center">
-            <label for="Division" class="text-center m-b-20px">{{ controls.divisionMain }}:</label>
+            <label for="Division" class="text-center m-b-20px">{{ vm.controls.divisionMain }}:</label>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
 		<div class="form-group">
-            <input name="Division" maxlength="20" type="text" ng-model="form.division" class="form-control costanswer" placeholder="{{ controls.divisionPlaceholder }}" />
+            <input name="Division" maxlength="20" type="text" ng-model="vm.form.division" class="form-control costanswer" placeholder="{{ vm.controls.divisionPlaceholder }}" />
 		</div>
         </div>
         <div class="col-xs-12 col-md-12 col-lg-12 text-center">
-            <label for="OrderNumber" class="text-center m-b-20px">{{ controls.orderMain }}:</label>
+            <label for="OrderNumber" class="text-center m-b-20px">{{ vm.controls.orderMain }}:</label>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
-            <input name="OrderNumber" maxlength="20" type="text" ng-model="form.order_number" class="form-control costanswer" placeholder="{{ controls.orderPlaceholder }}" />
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 m-b-20px text-center">
+            <input name="OrderNumber" maxlength="20" type="text" ng-model="vm.form.order_number" class="form-control costanswer" placeholder="{{ vm.controls.orderPlaceholder }}" />
+		</div>  
+        </div>
+		<div ng-class="{'has-error': vm.itemForm.quantity_calculation_method.$dirty && vm.itemForm.quantity_calculation_method.$invalid}" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 form-group text-center">
+				<label for="quantity_calculation_method" class="text-center m-b-20px">{{ vm.controls.quantityCalculationMethodLabel }}:</label>
+				<select class="form-control costanswer"
+                    ng-model="vm.form.quantity_calculation_method_id"
+                    name="quantity_calculation_method"
+                    ng-required="true"
+                    ng-change="false"
+                    ng-options="quantity_calculation_method.id as quantity_calculation_method.name for quantity_calculation_method in vm.quantity_calculation_methods">
+                </select>
+				<div class="help-block error" ng-show="vm.itemForm.quantity_calculation_method.$dirty && vm.itemForm.quantity_calculation_method.$error.required">Please, fill in {{ vm.controls.quantityCalculationMethodLabel }}</div>
 		</div>
+            <div ng-cloack ng-show="vm.checkQuantityPerBatch()">
+            <div class="col-xs-12 col-md-12 col-lg-12 text-center">
+                <label for="QuantityPerBatch" class="text-center m-b-20px">{{ vm.controls.QuantityPerBatchLabel }}:</label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 m-b-20px text-center">
+                <input name="QuantityPerBatch" ng-required="vm.checkQuantityPerBatch()" min="0" type="number" ng-model="vm.form.quantity_per_batch" class="form-control costanswer" placeholder="{{ vm.controls.QuantityPerBatchLabel }}" />
+            </div>  
+            </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 m-t-10px text-center">
-            <button type="button" ng-disabled="itemForm.$invalid" class="btn btn-costanswer" ng-click="onSave(form)"> {{ controls.buttonText }} </button>
+            <button type="button" ng-disabled="itemForm.$invalid" class="btn btn-costanswer" ng-click="vm.onSave(vm.form)">{{ vm.controls.buttonText }} </button>
         </div>
         </fieldset>
     </ng-form>
