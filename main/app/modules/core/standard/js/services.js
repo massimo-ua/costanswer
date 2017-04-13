@@ -10,6 +10,12 @@
                 }
                 return $http(config);
             },
+            quantityCalculationMethods: function(){
+                return [
+                    { "id": 1, "name": "Standard quantity per month" },
+                    { "id": 2, "name": "Standard quantity per batch" } 
+                ];
+            },
             productPropeties: function() {
                 return [
                     {"id": 1, "name": "Product/Service settings", "sref": "property.settings", "iconClass": "ion-settings", "disabled": false},
