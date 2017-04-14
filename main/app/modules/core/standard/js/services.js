@@ -32,6 +32,9 @@
                     {"id": 12, "name": "Report", "sref": "property.report", "iconClass": "ion-clipboard", "disabled": false}
                 ]
             },
+            isBatchMode: function(mode) {
+                return parseInt(mode) == 2;
+            },
             DMList: function(product_id, callback) {
                 if(!product_id) return;
                 var list = [];
