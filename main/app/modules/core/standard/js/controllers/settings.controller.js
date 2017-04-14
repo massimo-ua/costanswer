@@ -40,7 +40,7 @@
                             vm.form.quantity_per_batch = parseInt(response.quantity_per_batch) / 100;
                         })
                         .catch(function(error){
-                            $og.error(error);
+                            $log.error(error);
                         });
 
             }

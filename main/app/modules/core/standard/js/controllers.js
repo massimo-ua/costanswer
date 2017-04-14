@@ -122,55 +122,6 @@
         }
         init();
     }])
-    /*.controller('propertySettingsController', ['$scope', 'standardService', '$stateParams', 'DataModel', function($scope, standardService, $stateParams, DataModel){
-        //console.log('singleProductController');
-        function init() {
-            $scope.product_id = $stateParams.id;
-            $scope.form = {};
-            $scope.item = {};
-            $scope.controls = {
-                buttonText: "Update",
-                nameMain: "Product/Service name",
-                namePlaceholder: "Name",
-                nameErrorText: "Please, fill in product name",
-                unitMain: "Measurement unit",
-                unitPlaceholder: "Unit",
-                unitErrorText: "Please, fill in product measurement unit",
-                divisionMain: "Division",
-                divisionPlaceholder: "Name",
-                orderMain: "Order #",
-                orderPlaceholder: "Name"
-            }
-            DataModel.Product.get({ id: $stateParams.id })
-                .$promise
-                    .then(function(response){
-                        $scope.item = response;
-                        $scope.form.name = response.name;
-                        $scope.form.measurement_unit = response.measurement_unit;
-                        $scope.form.division = response.division;
-                        $scope.form.order_number = response.order_number;
-                    })
-                    .catch(function(error){
-                        console.log(error);
-                    });
-
-        }
-        init();
-        $scope.onSave = function(form) {
-            $scope.controls.buttonText = "Updating...";
-            $scope.item.name = form.name;
-            $scope.item.measurement_unit = form.measurement_unit;
-            $scope.item.division = form.division;
-            $scope.item.order_number = form.order_number;
-            $scope.item.$update({ id: $stateParams.id })
-                .catch(function(error){
-                    console.log(error);
-                })
-                .finally(function(){
-                    $scope.controls.buttonText = "Update";
-                });
-        }
-    }])*/
     .controller('propertyInventoryController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
         //console.log('singleProductController');
         function init() {
@@ -543,11 +494,19 @@
                             $scope.controls.cPlaceholder = $scope.controls.cPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
                             $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
                         });
+                DataModel.Product.get({ id: $stateParams.id })
+                    .$promise
+                        .then(function(response){
+                            if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                                $scope.controls.gPlaceholder = 'Units, Batch';
+                                $scope.controls.cPlaceholder = '$, Batch';
+                            }
+                });
             }
             standardService.DMList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
             });
-            refreshReport();
+            refreshReport($scope.itemsList);
         }
         function refreshReport(component_id) {
             if($scope.product_id) {
@@ -613,6 +572,13 @@
                             $scope.controls.bPlaceholder = $scope.controls.bPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
                         });
             }
+            DataModel.Product.get({ id: $stateParams.id })
+                .$promise
+                    .then(function(response){
+                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                            $scope.controls.bPlaceholder = 'Units, Batch';
+                        }
+            });
             standardService.DLList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
             });
@@ -672,6 +638,13 @@
                         .then(function(response){
                             $scope.controls.bPlaceholder = $scope.controls.bPlaceholder + ', ' + monthService.Month(response.begin_month).full;
                         });
+                DataModel.Product.get({ id: $stateParams.id })
+                    .$promise
+                        .then(function(response){
+                            if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                                $scope.controls.bPlaceholder = 'Units, Batch';
+                            }
+                });
             }
             standardService.VOList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
@@ -745,6 +718,13 @@
                             $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + 's, ' + monthService.Month(response.begin_month).full;
                         });
             }
+            DataModel.Product.get({ id: $stateParams.id })
+                .$promise
+                    .then(function(response){
+                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                            $scope.controls.namePlaceholder = 'Units, Batch';
+                        }
+            });
             refreshReport();
         }
         function refreshReport() {
