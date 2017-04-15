@@ -10,11 +10,18 @@
                 }
                 return $http(config);
             },
-            quantityCalculationMethods: function(){
-                return [
-                    { "id": 1, "name": "Standard quantity per month" },
-                    { "id": 2, "name": "Standard quantity per batch" } 
+            quantityCalculationMethods: function(id){
+                var methods = [
+                    { "id": 1, "name": "Standard quantity per month", shortName: "Month" },
+                    { "id": 2, "name": "Standard quantity per batch", shortName: "Batch" } 
                 ];
+                if(id == undefined) {
+                    return methods;
+                }
+                for(var i = 0; i < methods.length; i++) {
+                    if(id == methods[i].id) return methods[i];
+                }
+                return [];
             },
             productPropeties: function() {
                 return [
