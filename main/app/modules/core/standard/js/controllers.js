@@ -493,15 +493,15 @@
                             $scope.controls.gPlaceholder = $scope.controls.gPlaceholder + ', ' + monthService.Month(response.begin_month).full;
                             $scope.controls.cPlaceholder = $scope.controls.cPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
                             $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                            DataModel.Product.get({ id: $stateParams.id })
+                                .$promise
+                                    .then(function(response){
+                                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                                            //$scope.controls.gPlaceholder = 'Units, Batch';
+                                            $scope.controls.cPlaceholder = 'Units, Batch';
+                                        }
+                            });
                         });
-                DataModel.Product.get({ id: $stateParams.id })
-                    .$promise
-                        .then(function(response){
-                            if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
-                                $scope.controls.gPlaceholder = 'Units, Batch';
-                                $scope.controls.cPlaceholder = '$, Batch';
-                            }
-                });
             }
             standardService.DMList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
@@ -570,15 +570,15 @@
                     .$promise
                         .then(function(response){
                             $scope.controls.bPlaceholder = $scope.controls.bPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
+                            DataModel.Product.get({ id: $stateParams.id })
+                                .$promise
+                                    .then(function(response){
+                                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                                            $scope.controls.bPlaceholder = 'Units, Batch';
+                                        }
+                            });
                         });
             }
-            DataModel.Product.get({ id: $stateParams.id })
-                .$promise
-                    .then(function(response){
-                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
-                            $scope.controls.bPlaceholder = 'Units, Batch';
-                        }
-            });
             standardService.DLList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
             });
@@ -637,14 +637,14 @@
                     .$promise
                         .then(function(response){
                             $scope.controls.bPlaceholder = $scope.controls.bPlaceholder + ', ' + monthService.Month(response.begin_month).full;
+                            DataModel.Product.get({ id: $stateParams.id })
+                                .$promise
+                                    .then(function(response){
+                                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                                            $scope.controls.bPlaceholder = 'Units, Batch';
+                                        }
+                            });
                         });
-                DataModel.Product.get({ id: $stateParams.id })
-                    .$promise
-                        .then(function(response){
-                            if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
-                                $scope.controls.bPlaceholder = 'Units, Batch';
-                            }
-                });
             }
             standardService.VOList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
@@ -716,15 +716,15 @@
                     .$promise
                         .then(function(response){
                             $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + 's, ' + monthService.Month(response.begin_month).full;
+                            DataModel.Product.get({ id: $stateParams.id })
+                                .$promise
+                                    .then(function(response){
+                                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                                            $scope.controls.namePlaceholder = 'Units, Batch';
+                                        }
+                            });
                         });
             }
-            DataModel.Product.get({ id: $stateParams.id })
-                .$promise
-                    .then(function(response){
-                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
-                            $scope.controls.namePlaceholder = 'Units, Batch';
-                        }
-            });
             refreshReport();
         }
         function refreshReport() {

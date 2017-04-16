@@ -41,7 +41,7 @@
                     name="quantity_calculation_method"
                     ng-required="true"
                     ng-change="false"
-                    ng-options="quantity_calculation_method.id as quantity_calculation_method.name for quantity_calculation_method in vm.quantity_calculation_methods">
+                    ng-options="quantity_calculation_method.id as quantity_calculation_method.shortName for quantity_calculation_method in vm.quantity_calculation_methods">
                 </select>
 				<div class="help-block error" ng-show="vm.itemForm.quantity_calculation_method.$dirty && vm.itemForm.quantity_calculation_method.$error.required">Please, fill in {{ vm.controls.quantityCalculationMethodLabel }}</div>
 		</div>
