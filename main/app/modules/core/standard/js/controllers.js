@@ -152,7 +152,7 @@
                     .$promise
                         .then(function(response){
                             $scope.project = response;
-                            $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + ',' + monthService.Month(response.begin_month).full;
+                            $scope.controls.namePlaceholder = monthService.Month(response.begin_month).full + ',' + $scope.controls.namePlaceholder;
                         });
             }
             refreshReport();
@@ -404,7 +404,7 @@
                     .$promise
                         .then(function(response){
                             $scope.project = response;
-                            $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + ',' + monthService.Month(response.begin_month).full;
+                            $scope.controls.namePlaceholder = monthService.Month(response.begin_month).full + ',' + $scope.controls.namePlaceholder;
                         });
             }
             refreshReport();
@@ -467,7 +467,7 @@
                 bMain: "Measurement unit",
                 bPlaceholder: "Unit",
                 bErrorText: "Please, fill in Measurement unit name",
-                cMain: "Batch quantity required",
+                cMain: "Standard quantity required",
                 cPlaceholder: "Unit",
                 cErrorText: "Please, fill in quantity required per batch",
                 dMain: "Price per unit",
@@ -490,7 +490,7 @@
                     .$promise
                         .then(function(response){
                             $scope.project = response;
-                            $scope.controls.gPlaceholder = $scope.controls.gPlaceholder + ', ' + monthService.Month(response.begin_month).full;
+                            $scope.controls.gPlaceholder = monthService.Month(response.begin_month).full + ', ' + $scope.controls.gPlaceholder;
                             $scope.controls.cPlaceholder = $scope.controls.cPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
                             $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
                             DataModel.Product.get({ id: $stateParams.id })
@@ -498,7 +498,7 @@
                                     .then(function(response){
                                         if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
                                             //$scope.controls.gPlaceholder = 'Units, Batch';
-                                            $scope.controls.cPlaceholder = 'Units, Batch';
+                                            $scope.controls.cPlaceholder = 'Batch, Units';
                                         }
                             });
                         });
@@ -552,8 +552,8 @@
                 aMain: "Worker name/title",
                 aPlaceholder: "Name",
                 aErrorText: "Please, fill in worker name/title",
-                bMain: "Hours per batch required",
-                bPlaceholder: "Unit",
+                bMain: "Standard quantity of hours",
+                bPlaceholder: "Hour",
                 bErrorText: "Please, fill in amount of hours required per batch",
                 cMain: "Hourly rate",
                 cPlaceholder: "$",
@@ -574,7 +574,7 @@
                                 .$promise
                                     .then(function(response){
                                         if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
-                                            $scope.controls.bPlaceholder = 'Units, Batch';
+                                            $scope.controls.bPlaceholder = 'Batch, Hours';
                                         }
                             });
                         });
@@ -628,7 +628,7 @@
                 aMain: "Name of variable overhead",
                 aPlaceholder: "Name",
                 aErrorText: "Please, fill in variable overhead name",
-                bMain: "Amount per batch",
+                bMain: "Standard cost",
                 bPlaceholder: "$",
                 bErrorText: "Please, fill in amount required per batch"
             };
@@ -641,7 +641,7 @@
                                 .$promise
                                     .then(function(response){
                                         if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
-                                            $scope.controls.bPlaceholder = 'Units, Batch';
+                                            $scope.controls.bPlaceholder = 'Batch, $';
                                         }
                             });
                         });
@@ -693,7 +693,7 @@
             $scope.reportId = 'machinehours';
             $scope.controls = {
                 buttonText: "Save",
-                nameMain: "Machine hours per batch required",
+                nameMain: "Standard quantity required",
                 namePlaceholder: "Unit",
                 nameErrorText: "Please, fill in machine hours per batch (0 allowed)",
                 rateMain: "Hourly rate",
@@ -720,7 +720,7 @@
                                 .$promise
                                     .then(function(response){
                                         if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
-                                            $scope.controls.namePlaceholder = 'Units, Batch';
+                                            $scope.controls.namePlaceholder = 'Batch, Units';
                                         }
                             });
                         });
