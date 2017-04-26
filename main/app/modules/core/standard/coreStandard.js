@@ -16,7 +16,8 @@
             })
             .state('standard.newProduct', {
                 url: '/product/new',
-                controller: 'newProductController',
+                controller: 'NewProductController',
+                controllerAs: 'vm',
                 templateUrl: 'app/modules/core/standard/views/property/settings.html',
             })
             .state('standard.singleProduct', {
