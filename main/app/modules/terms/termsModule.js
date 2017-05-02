@@ -2,20 +2,25 @@
     angular.module('costAnswer.terms', []);
     function TermsConfig($stateProvider) {
         $stateProvider
-            .state('terms', {
-                url: '/terms',
-                redirectTo: 'terms.OfUse',
+            .state('TermsOfUse', {
+                url: '/terms-of-use',
                 views: {
                     "main": {
-                        templateUrl: 'app/modules/terms/views/home.html'
+                        templateUrl: 'app/modules/terms/views/terms-of-use.html'
                     }
                 }
             })
-            .state('terms.OfUse', {
-                url: '/terms-of-use',
-                templateUrl: 'app/modules/terms/views/terms-of-use.html',
+            .state('PrivacyPolicy', {
+                url: '/privacy-policy',
+                views: {
+                    "main": {
+                        templateUrl: 'app/modules/terms/views/privacy-policy.html'
+                    }
+                }
             });
     }
     TermsConfig.$inject = ['$stateProvider'];
     angular.module('costAnswer.terms').config(TermsConfig);
 }());
+
+ 
