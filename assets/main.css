@@ -280,7 +280,8 @@ margin: 10px;
 .main-features {height: 1000px;}
 
 .features-block  {
-background-color: #3aa99d;
+background: url(PeopleImages.com-ID1165119.jpg) no-repeat;
+padding-top: 30px; 
 }
 
 .line {
@@ -524,9 +525,60 @@ color: #FFC217;
      transition:  2s;
 	 }
 
+/* main features */
+.main-features-section {
+/*width: 380px;*/
+padding-left: 17px;
+height: 270px;
+/*background: #f1edeb;*/
+float: left;
+margin: 10px;
+}
 
+.main-features-section section{
+width: 275px;
+height: 200px;
+border: 2px solid  #FFC217;
+text-align: center;
+background: #FFC217;
+box-shadow: 2px 2px 4px #303070;
+border-radius: 15px;
+}
 
+.main-features-section section p{
+font-family: "CenturyGothicRegular";
+font-size: 1.2em;
+min-height: 100px;
+color: #fffffc;
+font-weight: bold;
+margin: 5px auto;
+padding: 5px;
+}
 
+.main-features-section a {
+display: block;
+width: 200px;
+height: 30px;
+background: #ea322d;
+color: #fffffc;
+font-size: 20px;
+padding-top: 8px;
+text-decoration: none;
+text-align: center;
+font-family: 'MYRIADPROREGULAR';
+margin: 0px auto;
+margin-top: 20px;
+border-radius: 5px;
+}
+
+.main-features-section a:hover{
+background: #fffffc;
+color: #ea322d;
+ -webkit-transition: 2s;
+     -moz-transition:  2s;
+     -o-transition:  2s;
+     transition:  2s;
+     }
 
 .info {
 }
@@ -790,7 +842,9 @@ height:80px;
 .main-features .content-small {
 }
 
-.features-wrap {background: #3AA99D;}
+.features-wrap {
+       
+}
 
 
 
