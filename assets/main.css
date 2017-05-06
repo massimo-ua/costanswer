@@ -277,10 +277,10 @@ margin: 10px;
 .grey-line {
 }
 
-.main-features {height: 1000px;}
+.main-features {height: 750px;}
 
 .features-block  {
-background: url(PeopleImages.com-ID1165119.jpg) no-repeat;
+background: url(PeopleImages.com-ID1165119-2.jpg) no-repeat;
 padding-top: 30px; 
 }
 
@@ -538,9 +538,9 @@ margin: 10px;
 .main-features-section section{
 width: 275px;
 height: 200px;
-border: 2px solid  #FFC217;
+border: 2px solid  #ff9933;
 text-align: center;
-background: #FFC217;
+background: #ff9933;
 box-shadow: 2px 2px 4px #303070;
 border-radius: 15px;
 }
@@ -549,7 +549,7 @@ border-radius: 15px;
 font-family: "CenturyGothicRegular";
 font-size: 1.2em;
 min-height: 100px;
-color: #fffffc;
+color: #000000;
 font-weight: bold;
 margin: 5px auto;
 padding: 5px;
