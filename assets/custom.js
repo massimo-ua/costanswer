@@ -19,8 +19,10 @@ $(document).ready(function () {
             localStorage.setItem(ITEM + SEP + name, value.value);
         }
     });
-
-    
+    $("a[id^='mfs']").
+    fancybox({
+		'titleShow'     : false
+	});
 });
 
 function decimalAdjust(type, value, exp) {
