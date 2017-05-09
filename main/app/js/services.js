@@ -26,7 +26,7 @@
     angular.module('costAnswer.services').value('MOH_CALCULATION_BASE', [
         {"id": 1, "name": "Predetermined overhead rate"},
         {"id": 2, "name": "Full cost applied"}
-    ])
+    ]);
     angular.module('costAnswer.services').factory('MOH_CATEGORY', function() {
         var list = [
             {"id": 1, "name": "Settings", "sref": "moh.settings", "iconClass": "ion-settings", "disabled": false},
@@ -53,7 +53,7 @@
                 }
                 return list;
             }
-        }
+        };
     });
     angular.module('costAnswer.services').value('DATAINPUT_HEADER', [
         {"id": 1, "name": "Fixed Manufacturing Overhead", "sref": "moh"},
@@ -88,13 +88,13 @@
                 return MONTHES[number-1];
             },
             AbsoluteMonth: function(month,start_month) {
-                if(start_month == undefined || start_month < 1 || start_month > 12) {
+                if(start_month === undefined || start_month < 1 || start_month > 12) {
                     start_month = 0;
                 }
                 else {
                     start_month = start_month - 1;
                 }
-                if(month == undefined || month < 1 || month > 12) {
+                if(month === undefined || month < 1 || month > 12) {
                     month = 0;
                 }
                 else {
@@ -113,7 +113,7 @@
                 }
                 return result;
             }
-        }
+        };
         return factory;
     }]);
     angular.module('costAnswer.services').factory('currencyService', ['CURRENCIES', function(CURRENCIES) {
@@ -122,9 +122,9 @@
                 for(var i = 0; i < CURRENCIES.length; i++) {
                     if(code == CURRENCIES[i].code) return CURRENCIES[i];
                 }
-                return {}
+                return {};
             }
-        }
+        };
     }]);
     angular.module('costAnswer.services').value('AUTH_PREFIX','http://www.acl.pp.ua:10101/auth');
     angular.module('costAnswer.services').value('EXPORT_PREFIX','http://www.acl.pp.ua:10101/export');

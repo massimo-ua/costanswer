@@ -27,7 +27,7 @@
                             return text;
                         }
                     }
-                }
+                };
                 return ngDialog.openConfirm(config);
                 function ConfirmActionController($log,text){
                     var vm = this;
@@ -59,7 +59,7 @@
                     init();
                     vm.checkPassword = function() {
                         return vm.form.password === vm.form.confirm;
-                    }
+                    };
                 }
                 ChangePasswordController.$inject['$log'];
             },

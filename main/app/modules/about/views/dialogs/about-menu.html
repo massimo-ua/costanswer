@@ -1,0 +1,8 @@
+<div class="row about-menu text-center">
+    <div ng-repeat="item in vm.listItems track by item.id">
+        <div class="clearfix" ng-if="$index % 4 == 0"></div>
+        <div class="col-sm-3">
+            <a class="costanswer" ui-sref-active="active" ui-sref="{{ item.sref }}">{{ item.name }}</a>
+        </div>
+    </div>
+</div>
