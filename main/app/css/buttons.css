@@ -82,12 +82,14 @@
 }
 .nav-pills.costanswer > li > a {
     margin-left: 2px;
+    margin-bottom: 2px;
     color: #202020;
     background-color: #ff9933;
     height: 37px;
 }
 .nav-pills.costanswer > li.disabled > a {
     margin-left: 2px;
+    margin-bottom: 2px;
     color: #202020;
     background-color: #e0e0e0;
 }
@@ -142,4 +144,34 @@
   width: auto;
   color: #fffffc;
   background-color: #2a6635;
+}
+/* --- about section --- */
+.about-menu > a {
+    display: block;
+    width: 300px;
+    height: 30px;
+    background: #ea322d;
+    color: #fffffc;
+    font-size: 16px;
+    padding-top: 3px;
+    text-decoration: none;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 20px;
+}
+.about-menu a.costanswer {
+    display: block;
+    height: 30px;
+    background: #ff9933;
+    color: #202020;
+    font-size: 16px;
+    padding-top: 3px;
+    text-decoration: none;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 20px;
+}
+.about-menu a.active.costanswer, a.costanswer:hover, a.costanswer:focus {
+    background-color: #2a6635;
+    color: #fffffc;
 }

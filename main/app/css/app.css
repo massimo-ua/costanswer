@@ -1154,3 +1154,10 @@ div.well.costanswer.subscription.description {
     font-weight: bolder;
     margin-right: 5px;
 }
+/* -- dialogs --*/
+.ngdialog.ngdialog-theme-plain.custom-width .ngdialog-content {
+    width: 150px;
+}
+.ngdialog.ngdialog-theme-plain.custom-width-90prc .ngdialog-content {
+    width: 90%;
+}
