@@ -11,6 +11,7 @@
                     closeByDocument: false,
                     closeByEscape: false,
                     showClose: true,
+                    closeByNavigation: true,
                     controller: MenuPopupController,
                     controllerAs: 'vm'
                 };
