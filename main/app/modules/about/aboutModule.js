@@ -20,6 +20,11 @@
                 url: '/what-is-costanswer',
                 parent: 'about',
                 templateUrl: 'app/modules/about/views/what-is-costanswer.html',
+            })
+            .state('about.product-cost-vs-service-cost', {
+                url: '/product-cost-vs-service-cost',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/product-cost-vs-service-cost.html',
             });
     }
     AboutConfig.$inject = ['$stateProvider'];
