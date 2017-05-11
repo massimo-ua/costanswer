@@ -25,6 +25,11 @@
                 url: '/product-cost-vs-service-cost',
                 parent: 'about',
                 templateUrl: 'app/modules/about/views/product-cost-vs-service-cost.html',
+            })
+            .state('about.process-costing', {
+                url: '/process-costing',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/process-costing.html',
             });
     }
     AboutConfig.$inject = ['$stateProvider'];
