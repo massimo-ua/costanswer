@@ -30,6 +30,16 @@
                 url: '/process-costing',
                 parent: 'about',
                 templateUrl: 'app/modules/about/views/process-costing.html',
+            })
+            .state('about.per-batch-approach', {
+                url: '/per-batch-approach',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/per-batch-approach.html',
+            })
+            .state('about.checkups', {
+                url: '/checkups',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/checkups.html',
             });
     }
     AboutConfig.$inject = ['$stateProvider'];

@@ -22,7 +22,7 @@
                     {"id": 14, "name": "Variable overhead", "sref": "about.variable-overhead", "iconClass": "ion-clipboard", "disabled": false},
                     {"id": 15, "name": "Fixed overhead", "sref": "about.fixed-overhead", "iconClass": "ion-clipboard", "disabled": false},
                     {"id": 16, "name": "Cost analysis", "sref": "about.cost-analysis", "iconClass": "ion-clipboard", "disabled": false},
-                    {"id": 17, "name": "Check ups", "sref": "about.check-ups", "iconClass": "ion-clipboard", "disabled": false}
+                    {"id": 17, "name": "Check ups", "sref": "about.checkups", "iconClass": "ion-clipboard", "disabled": false}
                 ];
             }
         };
