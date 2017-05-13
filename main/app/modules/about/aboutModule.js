@@ -40,7 +40,28 @@
                 url: '/checkups',
                 parent: 'about',
                 templateUrl: 'app/modules/about/views/checkups.html',
+            })
+            .state('about.theory-in-brief', {
+                url: '/theory-in-brief',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/theory-in-brief.html',
+            })
+            .state('about.inventory-accounting', {
+                url: '/inventory-accounting',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/inventory-accounting.html',
+            })
+            .state('about.job-order-costing', {
+                url: '/job-order-costing',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/job-order-costing.html',
+            })
+            .state('about.variable-overhead', {
+                url: '/variable-overhead',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/variable-overhead.html',
             });
+            
     }
     AboutConfig.$inject = ['$stateProvider'];
     angular.module('costAnswer.about').config(AboutConfig);
