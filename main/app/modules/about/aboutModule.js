@@ -60,6 +60,46 @@
                 url: '/variable-overhead',
                 parent: 'about',
                 templateUrl: 'app/modules/about/views/variable-overhead.html',
+            })
+            .state('about.direct-vs-indirect', {
+                url: '/direct-vs-indirect',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/direct-vs-indirect.html',
+            })
+            .state('about.costing-methods', {
+                url: '/costing-methods',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/costing-methods.html',
+            })
+            .state('about.your-costing-method', {
+                url: '/your-costing-method',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/your-costing-method.html',
+            })
+            .state('about.fixed-overhead', {
+                url: '/fixed-overhead',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/fixed-overhead.html',
+            })
+            .state('about.variable-vs-fixed', {
+                url: '/variable-vs-fixed',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/variable-vs-fixed.html',
+            })
+            .state('about.standard-costing', {
+                url: '/standard-costing',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/standard-costing.html',
+            })
+            .state('about.forecast-vs-actual', {
+                url: '/forecast-vs-actual',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/forecast-vs-actual.html',
+            })
+            .state('about.cost-analysis', {
+                url: '/cost-analysis',
+                parent: 'about',
+                templateUrl: 'app/modules/about/views/cost-analysis.html',
             });
             
     }
