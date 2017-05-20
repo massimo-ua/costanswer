@@ -20,7 +20,8 @@
         'costAnswer.auth',
         'costAnswer.dashboard',
         'costAnswer.terms',
-        'costAnswer.about'
+        'costAnswer.about',
+        'costAnswer.manual'
     ])
     .run(['$rootScope', '$state', '$stateParams','authService', function ($rootScope, $state, $stateParams, authService) {
         $rootScope.$state = $state;
