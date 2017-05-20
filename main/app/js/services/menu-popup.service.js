@@ -1,12 +1,12 @@
 (function(){
     'use strict';
-    angular.module('costAnswer.about.services')
+    angular.module('costAnswer.services')
     .factory('menuPopupService', menuPopupService);
-    function menuPopupService(ngDialog, $log, menuListService) {
+    function menuPopupService(ngDialog, $log) {
         return {
-            open: function() {
+            open: function(list) {
                 var config = {
-                    template: 'app/modules/about/views/dialogs/about-menu.html',
+                    template: 'app/views/dialogs/menu.html',
                     className: 'ngdialog-theme-plain custom-width-90prc',
                     closeByDocument: false,
                     closeByEscape: false,
@@ -18,10 +18,10 @@
                 ngDialog.open(config);
                 function MenuPopupController() {
                     var vm = this;
-                    vm.listItems = menuListService.list();
+                    vm.listItems = list;
                 }
             }
         };
     }
-    menuPopupService.$inject = ['ngDialog','$log','menuListService'];
+    menuPopupService.$inject = ['ngDialog','$log'];
 }());
