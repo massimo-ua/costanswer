@@ -38,6 +38,20 @@
                 url: '/reports',
                 parent: 'manual',
                 templateUrl: 'app/modules/manual/views/reports.html',
+            })
+           .state('manual-standard-costing', {
+                url: '/manual-standard-costing',
+                redirectTo: 'manual-standard-costing.inventory',
+                views: {
+                    "main": {
+                        template: '<manual-standard-costing></manual-standard-costing>'
+                    }
+                }
+            })
+            .state('manual-standard-costing.inventory', {
+                url: '/inventory',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-inventory.html',
             });
             
     }
