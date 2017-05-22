@@ -398,7 +398,7 @@
                     })
                     .catch(function(){
                         $scope.id = undefined;            
-                    })
+                    });
             if($localStorage.uuid !== undefined) {
                 DataModel.Project.uuid({ uuid: $localStorage.uuid })
                     .$promise
