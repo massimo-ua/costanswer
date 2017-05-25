@@ -27,7 +27,7 @@
                         {"id": 9, "name": "VMOH", "sref": "manual-standard-costing.vmoh", "iconClass": "ion-ios-home", "disabled": false},
                         {"id": 10, "name": "WIP beginning", "sref": "manual-standard-costing.wip-beginning", "iconClass": "ion-social-buffer", "disabled": false},
                         {"id": 11, "name": "WIP ending", "sref": "manual-standard-costing.wip-ending", "iconClass": "ion-connection-bars", "disabled": false},
-                        {"id": 12, "name": "Up to main sections", "sref": "manual", "iconClass": "ion-connection-bars", "disabled": false},
+                        {"id": 12, "name": "Back to main sections", "sref": "manual", "iconClass": "ion-connection-bars", "disabled": false},
                     ];
                 }
         };

@@ -56,8 +56,7 @@
             })
             .state('property.wb', {
                 url: '/wip-beginning',
-                controller: 'propertyWipBeginningController',
-                templateUrl: 'app/modules/core/standard/views/property/wip-beginning.html',
+                template: '<property-wip-beginning></property-wip-beginning>',
             })
             .state('property.dm', {
                 url: '/direct-materials',
