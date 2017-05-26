@@ -80,8 +80,7 @@
             })
             .state('property.we', {
                 url: '/wip-ending',
-                controller: 'propertyWipEndingController',
-                templateUrl: 'app/modules/core/standard/views/property/plan.html',
+                template: '<property-wip-ending></property-wip-ending>',
             })
             .state('property.mu', {
                 url: '/mark-up',

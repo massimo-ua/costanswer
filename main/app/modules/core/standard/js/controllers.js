@@ -694,7 +694,7 @@
             }
         }
     }])
-    .controller('propertyWipEndingController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log){
+    /*.controller('propertyWipEndingController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log){
         function init() {
             $scope.form = {};
             $scope.form.amount = [];
@@ -775,7 +775,7 @@
                         $scope.controls.formDisabled = false;
                     });
         }
-    }])
+    }])*/
     .controller('propertyMarkUpController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', '$log', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService, $log){
         function init() {
             $scope.product_id = $stateParams.id;
