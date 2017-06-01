@@ -52,8 +52,27 @@
                 url: '/inventory',
                 parent: 'manual-standard-costing',
                 templateUrl: 'app/modules/manual/views/standard-costing-inventory.html',
+            })
+            .state('manual-standard-costing.machine-hours', {
+                url: '/machine-hours',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-machine-hours.html',
+            })
+            .state('manual-standard-costing.markup', {
+                url: '/markup',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-markup.html',
+            })
+            .state('manual-standard-costing.vmoh', {
+                url: '/vmoh',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-vmoh.html',
+            })
+            .state('manual-standard-costing.wip-ending', {
+                url: '/wip-ending',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-wip-ending.html',
             });
-            
     }
     ManualConfig.$inject = ['$stateProvider'];
     angular.module('costAnswer.manual').config(ManualConfig);
