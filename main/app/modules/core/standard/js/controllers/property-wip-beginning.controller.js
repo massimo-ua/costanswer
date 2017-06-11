@@ -6,7 +6,7 @@
             templateUrl: 'app/modules/core/standard/views/property/wip-beginning.html',
             controller: propertyWipBeginningController
         });
-    function propertyWipBeginningController($log, $localStorage, $stateParams, DataModel, monthService, standardService) {
+    function propertyWipBeginningController($log, $localStorage, $stateParams, DataModel, monthService, standardService, toastr) {
         var vm = this;
         //$log.error('singleProductController');
         function init() {
@@ -72,6 +72,8 @@
                     })
                     .catch(function(error){
                         vm.controls.buttonText = "Save";
+                            var suggestedValue = parseInt(error.data.errors[0].suggestion) / 100;
+                            toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, vm.month_number).full + '. Please, change your input data and try again. Suggested value: ' + suggestedValue, 'Аttention!');
                     });
             }
             else {
@@ -83,7 +85,8 @@
                         refreshReport();
                     })
                     .catch(function(error){
-                        $log.error(error);
+                        var suggestedValue = parseInt(error.data.errors[0].suggestion) / 100;
+                        toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, vm.month_number).full + '. Please, change your input data and try again. Suggested value: ' + suggestedValue, 'Аttention!');
                     })
                     .finally(function(){
                         vm.controls.buttonText = "Update";
@@ -91,5 +94,5 @@
             }
         };
     }
-    propertyWipBeginningController.$inject = ['$log', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService'];
+    propertyWipBeginningController.$inject = ['$log', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', 'toastr'];
 }());
