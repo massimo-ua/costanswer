@@ -72,6 +72,36 @@
                 url: '/wip-ending',
                 parent: 'manual-standard-costing',
                 templateUrl: 'app/modules/manual/views/standard-costing-wip-ending.html',
+            })
+            .state('manual-standard-costing.direct-labor', {
+                url: '/direct-labor',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-direct-labor.html',
+            })
+            .state('manual-standard-costing.direct-materials', {
+                url: '/direct-materials',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-direct-materials.html',
+            })
+            .state('manual-standard-costing.product-creation', {
+                url: '/product-creation',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-product-creation.html',
+            })
+            .state('manual-standard-costing.production-plan', {
+                url: '/production-plan',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-production-plan.html',
+            })
+            .state('manual-standard-costing.sales-plan', {
+                url: '/sales-plan',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-sales-plan.html',
+            })
+            .state('manual-standard-costing.wip-beginning', {
+                url: '/wip-beginning',
+                parent: 'manual-standard-costing',
+                templateUrl: 'app/modules/manual/views/standard-costing-wip-beginning.html',
             });
     }
     ManualConfig.$inject = ['$stateProvider'];
