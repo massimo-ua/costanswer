@@ -73,7 +73,7 @@
                     .catch(function(error){
                         vm.controls.buttonText = "Save";
                             var suggestedValue = parseInt(error.data.errors[0].suggestion) / 100;
-                            toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, vm.month_number).full + '. Please, change your input data and try again. Suggested value: ' + suggestedValue, 'Аttention!');
+                            toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, vm.month_number).full + '. Please, change your "WIP beginning Units" and try again. Suggested value: ' + suggestedValue, 'Аttention!');
                     });
             }
             else {
@@ -86,7 +86,7 @@
                     })
                     .catch(function(error){
                         var suggestedValue = parseInt(error.data.errors[0].suggestion) / 100;
-                        toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, vm.month_number).full + '. Please, change your input data and try again. Suggested value: ' + suggestedValue, 'Аttention!');
+                        toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, vm.month_number).full + '. Please, change your "WIP beginning Units" and try again. Suggested value: ' + suggestedValue, 'Аttention!');
                     })
                     .finally(function(){
                         vm.controls.buttonText = "Update";

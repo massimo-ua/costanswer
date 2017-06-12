@@ -6,7 +6,7 @@
             templateUrl: 'app/modules/core/standard/views/property/wip-ending.html',
             controller: propertyWipEndingController
         });
-    function propertyWipEndingController($log, $localStorage, $stateParams, DataModel, monthService, standardService) {
+    function propertyWipEndingController($log, $localStorage, $stateParams, DataModel, monthService, standardService, toastr) {
         var vm = this;
          function init() {
             vm.form = {};
@@ -31,6 +31,7 @@
                     .$promise
                         .then(function(response){
                             vm.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                            vm.begin_month = response.begin_month;
                         });
             }
             DataModel.Product.getWipEnding({ id: vm.product_id })
@@ -86,7 +87,8 @@
                         refreshReport();
                     })
                     .catch(function(error){
-                        $log.error(error);
+                        var suggestedValue = parseInt(error.data.errors[0].suggestion) / 100;
+                        toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, vm.begin_month).full + '. Please, change your "WIP ending Units" and try again. Suggested value: ' + suggestedValue, 'Аttention!');
                     })
                     .finally(function(){
                         vm.controls.buttonText = vm.updateMode ? "Update" : "Save";
@@ -94,5 +96,5 @@
                     });
         };
     }
-    propertyWipEndingController.$inject = ['$log', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService'];
+    propertyWipEndingController.$inject = ['$log', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', 'toastr'];
 }());
