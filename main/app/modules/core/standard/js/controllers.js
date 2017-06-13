@@ -122,7 +122,7 @@
         }
         init();
     }])
-    .controller('propertyInventoryController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
+    /*.controller('propertyInventoryController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
@@ -199,7 +199,7 @@
                     });
             }
         }
-    }])
+    }])*/
     .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', 'toastr', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log, toastr){
         function init() {
             $scope.form = {};
