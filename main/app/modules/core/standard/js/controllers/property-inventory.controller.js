@@ -37,6 +37,7 @@
                         .then(function(response){
                             vm.project = response;
                             vm.controls.namePlaceholder = monthService.Month(response.begin_month).full + ',' + vm.controls.namePlaceholder;
+                            vm.month_number = response.begin_month;
                         });
             }
             refreshReport();
