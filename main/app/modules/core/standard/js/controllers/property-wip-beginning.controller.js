@@ -86,8 +86,14 @@
                         refreshReport();
                     })
                     .catch(function(error){
-                        var suggestedValue = parseInt(error.data.errors[0].suggestion) / 100;
-                        toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, vm.month_number).full + '. Please, change your "WIP beginning Units" and try again. Suggested value: ' + suggestedValue, 'Аttention!');
+                        var suggestedValue = 0;
+                        var fieldName = '';
+                        angular.forEach(error.data.errors, function(value){
+                            suggestedValue = parseInt(value.suggestion) / 100;
+                            fieldName = (value.app_err_code == 'BSN_UNSUF_INV_QTY') ? 'WIP beginning Units' : 'WIP beginning $';
+                            toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(value.month, vm.month_number).full + '. Please, change your "' + fieldName + '" and try again. Suggested value: ' + suggestedValue, 'Аttention!');
+
+                        });
                     })
                     .finally(function(){
                         vm.controls.buttonText = "Update";
