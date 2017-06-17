@@ -63,7 +63,7 @@
                 vm.controls.buttonText = "Saving...";
                 wip.beginning_costs = Math.round(vm.form.beginning_costs * 100);
                 wip.beginning_quantity = Math.round(vm.form.beginning_quantity * 100);
-                wip.month_number = vm.month_number;
+                wip.month_number = 1;
                 wip.year_number = vm.year_number;
                 wip.$saveWip({ id: vm.product_id })
                     .then(function(response){
