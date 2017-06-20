@@ -3,8 +3,8 @@
 
     angular.module('costAnswer.core.controllers')
         .controller('ProjectSettingsController',ProjectSettingsController);
-    ProjectSettingsController.$inject = ['$state', '$localStorage', '$log', 'toastr', 'PROJECT_TYPES', 'CURRENCIES', 'MONTHES', 'DataModel'];
-    function ProjectSettingsController($state, $localStorage, $log, toastr, PROJECT_TYPES, CURRENCIES, MONTHES, DataModel) {
+    ProjectSettingsController.$inject = ['$state', '$localStorage', '$log', 'toastr', 'PROJECT_TYPES', 'CurrencyService', 'MONTHES', 'DataModel'];
+    function ProjectSettingsController($state, $localStorage, $log, toastr, PROJECT_TYPES, CurrencyService, MONTHES, DataModel) {
         var vm = this;
         function init() {
             vm.nextNew = true;
@@ -13,13 +13,13 @@
             } catch(err) {
                 $log.info(err.name + ' ' + err.message);
             }
-            if(vm.projectUuid != undefined) {
+            if(vm.projectUuid !== undefined) {
                 DataModel.Project.uuid({ uuid: vm.projectUuid })
                     .$promise
                         .then(function(response){
                             vm.settings.begin_month = parseInt(response.begin_month);
                             vm.settings.begin_year = parseInt(response.begin_year);
-                            vm.settings.currency_id = parseInt(response.currency_id);
+                            vm.settings.currency_id = response.currency_id;
                             vm.settings.company_name = response.company_name;
                             vm.projectId = response.id;
                             vm.nextNew = false;
@@ -29,13 +29,20 @@
                         });
             }
             vm.settings = {};
-            vm.currencies = CURRENCIES;
+            CurrencyService.list()
+                .then(function(list){
+                    vm.currencies = list;
+                })
+                .catch(function(error){
+                    $log.error(error);
+                });
             vm.monthes = MONTHES;
         }
         init();
         vm.next = function() {
+            var project;
             if(vm.nextNew) {
-                var project = new DataModel.Project();
+                project = new DataModel.Project();
                 project.begin_month = vm.settings.begin_month;
                 project.begin_year = vm.settings.begin_year;
                 project.currency_id = vm.settings.currency_id;
@@ -51,7 +58,7 @@
                     });
             } else {
                 if(vm.projectId) {
-                    var project = new DataModel.Project();
+                        project = new DataModel.Project();
                         project.begin_month = vm.settings.begin_month;
                         project.begin_year = vm.settings.begin_year;
                         project.currency_id = vm.settings.currency_id;
@@ -63,6 +70,6 @@
                 }
                 $state.go('moh');
             }
-        }
+        };
     }
 }());

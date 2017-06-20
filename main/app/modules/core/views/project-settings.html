@@ -14,7 +14,7 @@
                     name="currency"
                     ng-required="true"
                     ng-change="false"
-                    ng-options="currency.code as currency.charCode+' ('+currency.name+')' for currency in vm.currencies">
+                    ng-options="currency.code as currency.charcode +' ('+currency.name+')' for currency in vm.currencies">
                 </select>
 				<div class="help-block error" ng-show="vm.settingsForm.currency.$dirty && vm.settingsForm.currency.$error.required">Please, fill in your email</div>
 			</div>
