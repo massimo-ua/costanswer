@@ -19,8 +19,8 @@
                 });
             }])
             .controller('mohIndirectMaterialsController', [
-            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
-            function($scope, toastr, $localStorage, mohService, DataModel) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel', 'ProjectDataService',
+            function($scope, toastr, $localStorage, mohService, DataModel, ProjectDataService) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
@@ -47,10 +47,11 @@
                     mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
                         $scope.instantReport = response;
                     });
-                    //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
-                    //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
-                    //}
-                };
+                    ProjectDataService.list()
+                        .then(function(response){
+                            $scope.controls.costPlaceholder = response.currency.symbol;
+                        });
+                }
                 init();
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
@@ -78,8 +79,8 @@
                 }
             }])
             .controller('mohProductionManagersSalariesController', [
-            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
-            function($scope, toastr, $localStorage, mohService, DataModel) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel', 'ProjectDataService',
+            function($scope, toastr, $localStorage, mohService, DataModel, ProjectDataService) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
@@ -112,6 +113,11 @@
                     mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
                         $scope.instantReport = response;
                     });
+                    ProjectDataService.list()
+                        .then(function(response){
+                            $scope.controls.salaryPlaceholder = response.currency.symbol;
+                            $scope.controls.taxPlaceholder = response.currency.symbol;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
@@ -143,8 +149,8 @@
                 }
             }])
             .controller('mohProductionFacilitiesInsuranceController', [
-            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
-            function($scope, toastr, $localStorage, mohService, DataModel) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel', 'ProjectDataService',
+            function($scope, toastr, $localStorage, mohService, DataModel, ProjectDataService) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
@@ -171,10 +177,14 @@
                     mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
                         $scope.instantReport = response;
                     });
+                    ProjectDataService.list()
+                        .then(function(response){
+                            $scope.controls.costPlaceholder = response.currency.symbol;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
-                };
+                }
                 init();
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
@@ -202,8 +212,8 @@
                 }
             }])
             .controller('mohProductionPropertyTaxesController', [
-            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
-            function($scope, toastr, $localStorage, mohService, DataModel) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel', 'ProjectDataService',
+            function($scope, toastr, $localStorage, mohService, DataModel, ProjectDataService) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
@@ -229,6 +239,10 @@
                     $scope.reportId = "ppt";
                     mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
                         $scope.instantReport = response;
+                    });
+                    ProjectDataService.list()
+                        .then(function(response){
+                            $scope.controls.costPlaceholder = response.currency.symbol;
                     });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
@@ -261,8 +275,8 @@
                 }
             }])
             .controller('mohIndirectLaborController', [
-            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
-            function($scope, toastr, $localStorage, mohService, DataModel) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel', 'ProjectDataService',
+            function($scope, toastr, $localStorage, mohService, DataModel, ProjectDataService) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
@@ -295,6 +309,11 @@
                     mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
                         $scope.instantReport = response;
                     });
+                    ProjectDataService.list()
+                        .then(function(response){
+                            $scope.controls.salaryPlaceholder = response.currency.symbol;
+                            $scope.controls.taxPlaceholder = response.currency.symbol;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
@@ -326,8 +345,8 @@
                 }
             }])
             .controller('mohProductionMachineryRentController', [
-            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
-            function($scope, toastr, $localStorage, mohService, DataModel) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel', 'ProjectDataService',
+            function($scope, toastr, $localStorage, mohService, DataModel, ProjectDataService) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
@@ -354,10 +373,14 @@
                     mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
                         $scope.instantReport = response;
                     });
+                    ProjectDataService.list()
+                        .then(function(response){
+                            $scope.controls.costPlaceholder = response.currency.symbol;
+                    });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
                     //}
-                };
+                }
                 init();
                 $scope.onSave = function(newItem, callback) {
                     mohService.onSave($scope.mohId, $scope.component, $scope.year_number, $scope.month_number, newItem, function(response){
@@ -385,8 +408,8 @@
                 }
             }])
             .controller('mohProductionUtilitiesAndOtherOverheadExpencesController', [
-            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
-            function($scope, toastr, $localStorage, mohService, DataModel) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel', 'ProjectDataService',
+            function($scope, toastr, $localStorage, mohService, DataModel, ProjectDataService) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
@@ -412,6 +435,10 @@
                     $scope.reportId = "puaooe";
                     mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
                         $scope.instantReport = response;
+                    });
+                    ProjectDataService.list()
+                        .then(function(response){
+                            $scope.controls.costPlaceholder = response.currency.symbol;
                     });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");
@@ -444,8 +471,8 @@
                 }
             }])
             .controller('mohProductionFacilitiesAmortizationController', [
-            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel',
-            function($scope, toastr, $localStorage, mohService, DataModel) {
+            '$scope', 'toastr', '$localStorage', 'mohService', 'DataModel', 'ProjectDataService',
+            function($scope, toastr, $localStorage, mohService, DataModel, ProjectDataService) {
                 function init() {
                     $scope.gridOptions = mohService.getGridOptions('ICR');
                     $scope.form = {};
@@ -471,6 +498,10 @@
                     $scope.reportId = "pfa";
                     mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
                         $scope.instantReport = response;
+                    });
+                    ProjectDataService.list()
+                        .then(function(response){
+                            $scope.controls.costPlaceholder = response.currency.symbol;
                     });
                     //if($scope.indirectMaterials && $scope.indirectMaterials.length > 0) {
                     //$scope.gridOptions.data = mohService.getInstanceResult("indirectMaterials", "Indirect Materials");

@@ -243,7 +243,7 @@
             var config = {
                 method: 'GET',
                 url: API_PREFIX + '/report/total/'+uuid
-            }
+            };
             return $http(config);
         },
         }

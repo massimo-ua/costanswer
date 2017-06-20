@@ -23,7 +23,8 @@
         'costAnswer.about',
         'costAnswer.manual'
     ])
-    .run(['$rootScope', '$state', '$stateParams','authService', function ($rootScope, $state, $stateParams, authService) {
+    .run(['$rootScope', '$state', '$stateParams','authService', 'CurrencyService', function ($rootScope, $state, $stateParams, authService, CurrencyService) {
+        CurrencyService.list();
         $rootScope.$state = $state;
         authService.setStorageType('localStorage');
         $rootScope.$on('$stateChangeStart', function(event, toState, params) {
