@@ -6,7 +6,7 @@
             templateUrl: 'app/modules/core/standard/views/property/wip-beginning.html',
             controller: propertyWipBeginningController
         });
-    function propertyWipBeginningController($log, $localStorage, $stateParams, DataModel, monthService, standardService, toastr) {
+    function propertyWipBeginningController($log, $localStorage, $stateParams, DataModel, monthService, standardService, toastr, ProjectDataService) {
         var vm = this;
         //$log.error('singleProductController');
         function init() {
@@ -38,13 +38,13 @@
                         vm.id = undefined;            
                     });
             if($localStorage.uuid !== undefined) {
-                DataModel.Project.uuid({ uuid: $localStorage.uuid })
-                    .$promise
-                        .then(function(response){
-                            vm.project = response;
-                            vm.controls.namePlaceholder = monthService.Month(response.begin_month).full + ',' + vm.controls.namePlaceholder;
-                            vm.month_number = response.begin_month;
-                        });
+                ProjectDataService.list()
+                    .then(function(response){
+                        vm.project = response;
+                        vm.controls.namePlaceholder = monthService.Month(response.begin_month).full + ', ' + response.currency.symbol;
+                        vm.month_number = response.begin_month;
+                        vm.controls.Name = "WIP beginning " + response.currency.symbol;
+                });
             }
             refreshReport();
         }
@@ -101,5 +101,5 @@
             }
         };
     }
-    propertyWipBeginningController.$inject = ['$log', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', 'toastr'];
+    propertyWipBeginningController.$inject = ['$log', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', 'toastr', 'ProjectDataService'];
 }());
