@@ -122,85 +122,7 @@
         }
         init();
     }])
-    /*.controller('propertyInventoryController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
-        //console.log('singleProductController');
-        function init() {
-            $scope.product_id = $stateParams.id;
-            $scope.reportId = 'inventory';
-            $scope.form = {};
-            $scope.month_number = 1;
-            $scope.year_number = 1;
-            $scope.instantReport = [];
-            $scope.controls = {
-                buttonText: "Save",
-                nameMain: "Finished goods beginning",
-                namePlaceholder: "Units",
-                nameErrorText: "Please, fill in amount of finished goods"
-            }
-            DataModel.Product.getInventory({ id: $scope.product_id })
-                .$promise
-                    .then(function(response){
-                        $scope.id = response[0].id;
-                        $scope.controls.buttonText = "Update";
-                        $scope.form.finished_goods_beginning = parseInt(response[0].finished_goods_beginning) / 100;
-                    })
-                    .catch(function(){
-                        $scope.id = undefined;            
-                    })
-            if($localStorage.uuid !== undefined) {
-                DataModel.Project.uuid({ uuid: $localStorage.uuid })
-                    .$promise
-                        .then(function(response){
-                            $scope.project = response;
-                            $scope.controls.namePlaceholder = monthService.Month(response.begin_month).full + ',' + $scope.controls.namePlaceholder;
-                        });
-            }
-            refreshReport();
-        }
-        function refreshReport() {
-            if($scope.product_id) {
-                standardService.getInstantReport($scope.product_id, $scope.reportId, function(response){
-                    $scope.instantReport = response;
-                });
-            }
-            return;
-        }
-        init();
-
-        $scope.onSave = function(form) {
-            var inventory = new DataModel.Product();
-            if($scope.id == undefined) {
-                $scope.controls.buttonText = "Saving...";
-                inventory.finished_goods_beginning = Math.round($scope.form.finished_goods_beginning * 100);
-                inventory.month_number = $scope.month_number;
-                inventory.year_number = $scope.year_number;
-                inventory.$saveInventory({ id: $scope.product_id })
-                    .then(function(response){
-                        $scope.controls.buttonText = "Update";
-                        $scope.id = response.id;
-                        refreshReport();
-                    })
-                    .catch(function(error){
-                        $scope.controls.buttonText = "Save";
-                    });
-            }
-            else {
-                $scope.controls.buttonText = "Updating...";
-                inventory.finished_goods_beginning = Math.round($scope.form.finished_goods_beginning * 100);
-                inventory.$updateInventory({ id: $scope.id })
-                    .then(function(){
-                        refreshReport();
-                    })
-                    .catch(function(error){
-                        console.log(error);
-                    })
-                    .finally(function(){
-                        $scope.controls.buttonText = "Update";
-                    });
-            }
-        }
-    }])*/
-    .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', 'toastr', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log, toastr){
+    .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', 'toastr', 'ProjectDataService', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log, toastr, ProjectDataService){
         function init() {
             $scope.form = {};
             $scope.form.amount = [];
@@ -211,20 +133,19 @@
             $scope.reportId = 'inventory';
             $scope.min = function(index) {
                 return index === 0 ? 1 : 0;
-            }
+            };
             $scope.controls = {
                 buttonText: "Save",
                 nameMain: "Finished goods manufactured",
                 namePlaceholder: "Units",
                 nameErrorText: "Please, fill in amount of finished goods"
-            }
+            };
             if($localStorage.uuid !== undefined) {
-                DataModel.Project.uuid({ uuid: $localStorage.uuid })
-                    .$promise
-                        .then(function(response){
-                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
-                            $scope.begin_month = response.begin_month;
-                        });
+                ProjectDataService.list()
+                    .then(function(response){
+                        $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        $scope.begin_month = response.begin_month;
+                });
             }
             DataModel.Product.getProductionPlan({ id: $scope.product_id })
                 .$promise
@@ -245,7 +166,7 @@
                     })
                     .catch(function(error){
                         $log.debug(error);
-                    })
+                    });
             refreshReport();
         }
         function refreshReport() {
@@ -287,7 +208,7 @@
                     });
         }
     }])
-    .controller('propertySalesPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', 'toastr', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log, toastr){
+    .controller('propertySalesPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', 'toastr', 'ProjectDataService', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log, toastr, ProjectDataService){
         function init() {
             $scope.form = {};
             $scope.form.amount = [];
@@ -298,20 +219,19 @@
             $scope.reportId = 'inventory';
             $scope.min = function(index) {
                 return 0;
-            }
+            };
             $scope.controls = {
                 buttonText: "Save",
                 nameMain: "Finished goods sold",
                 namePlaceholder: "Units",
                 nameErrorText: "Please, fill in amount of finished goods"
-            }
+            };
             if($localStorage.uuid !== undefined) {
-                DataModel.Project.uuid({ uuid: $localStorage.uuid })
-                    .$promise
-                        .then(function(response){
-                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
-                            $scope.begin_month = response.begin_month;
-                        });
+                ProjectDataService.list()
+                    .then(function(response){
+                        $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        $scope.begin_month = response.begin_month;
+                });
             }
             DataModel.Product.getSalesPlan({ id: $scope.product_id })
                 .$promise
@@ -332,7 +252,7 @@
                     })
                     .catch(function(error){
                         $log.debug(error);
-                    })
+                    });
                     refreshReport();
         }
         function refreshReport() {
@@ -374,7 +294,7 @@
                     });
         };
     }])
-    .controller('propertyDirectMaterialsController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
+    .controller('propertyDirectMaterialsController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', 'ProjectDataService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService, ProjectDataService){
         function init() {
             $scope.form = {};
             $scope.product_id = $stateParams.id;
@@ -409,22 +329,22 @@
                 hPlaceholder: "+-%"
             };
             if($localStorage.uuid !== undefined) {
-                DataModel.Project.uuid({ uuid: $localStorage.uuid })
-                    .$promise
-                        .then(function(response){
-                            $scope.project = response;
-                            $scope.controls.gPlaceholder = monthService.Month(response.begin_month).full + ', ' + $scope.controls.gPlaceholder;
-                            $scope.controls.cPlaceholder = $scope.controls.cPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
-                            $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
-                            DataModel.Product.get({ id: $stateParams.id })
-                                .$promise
-                                    .then(function(response){
-                                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
-                                            //$scope.controls.gPlaceholder = 'Units, Batch';
-                                            $scope.controls.cPlaceholder = 'Batch, Units';
-                                        }
-                            });
+                ProjectDataService.list()
+                    .then(function(response){
+                        $scope.project = response;
+                        $scope.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        $scope.begin_month = response.begin_month;
+                        $scope.controls.gPlaceholder = monthService.Month(response.begin_month).full + ', ' + response.currency.symbol;
+                        $scope.controls.dPlaceholder = response.currency.symbol;
+                        DataModel.Product.get({ id: $stateParams.id })
+                            .$promise
+                                .then(function(response){
+                                    if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                                        //$scope.controls.gPlaceholder = 'Units, Batch';
+                                        $scope.controls.cPlaceholder = 'Batch, Units';
+                                    }
                         });
+                });
             }
             standardService.DMList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
@@ -460,9 +380,9 @@
         }
         $scope.onLoad = function(component_id) {
             refreshReport(component_id);
-        }
+        };
     }])
-    .controller('propertyDirectLaborController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
+    .controller('propertyDirectLaborController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', 'ProjectDataService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService, ProjectDataService){
         function init() {
             $scope.product_id = $stateParams.id;
             $scope.year_number = 1;
@@ -489,18 +409,19 @@
                 eErrorText: "Please, fill in annual growth rate value"
             };
             if($localStorage.uuid !== undefined) {
-                DataModel.Project.uuid({ uuid: $localStorage.uuid })
-                    .$promise
-                        .then(function(response){
-                            $scope.controls.bPlaceholder = $scope.controls.bPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
-                            DataModel.Product.get({ id: $stateParams.id })
-                                .$promise
-                                    .then(function(response){
-                                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
-                                            $scope.controls.bPlaceholder = 'Batch, Hours';
-                                        }
-                            });
+                ProjectDataService.list()
+                    .then(function(response){
+                        $scope.controls.bPlaceholder = $scope.controls.bPlaceholder + 's, ' + monthService.Month(response.begin_month).full;
+                        $scope.controls.cPlaceholder = response.currency.symbol;
+                        $scope.controls.dPlaceholder = response.currency.symbol;
+                        DataModel.Product.get({ id: $stateParams.id })
+                            .$promise
+                                .then(function(response){
+                                    if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                                        $scope.controls.bPlaceholder = 'Batch, Hours';
+                                    }
                         });
+                });
             }
             standardService.DLList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
@@ -538,7 +459,7 @@
             refreshReport(component_id);
         }
     }])
-    .controller('propertyVariableOverheadController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
+    .controller('propertyVariableOverheadController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', 'ProjectDataService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService, ProjectDataService){
         function init() {
             $scope.product_id = $stateParams.id;
             $scope.year_number = 1;
@@ -556,18 +477,18 @@
                 bErrorText: "Please, fill in amount required per batch"
             };
             if($localStorage.uuid !== undefined) {
-                DataModel.Project.uuid({ uuid: $localStorage.uuid })
-                    .$promise
-                        .then(function(response){
-                            $scope.controls.bPlaceholder = $scope.controls.bPlaceholder + ', ' + monthService.Month(response.begin_month).full;
-                            DataModel.Product.get({ id: $stateParams.id })
-                                .$promise
-                                    .then(function(response){
-                                        if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
-                                            $scope.controls.bPlaceholder = 'Batch, $';
-                                        }
-                            });
+                ProjectDataService.list()
+                    .then(function(response){
+                        $scope.controls.bPlaceholder = response.currency.symbol + ', ' + monthService.Month(response.begin_month).full;
+                        $scope.currency_symbol = response.currency.symbol;
+                        DataModel.Product.get({ id: $stateParams.id })
+                            .$promise
+                                .then(function(response){
+                                    if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
+                                        $scope.controls.bPlaceholder = 'Batch, ' + $scope.currency_symbol;
+                                    }
                         });
+                    });
             }
             standardService.VOList($scope.product_id, function(itemsList){
                 $scope.itemsList = itemsList;
@@ -605,7 +526,7 @@
             refreshReport(component_id);
         }
     }])
-    .controller('propertyMachineHoursController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService){
+    .controller('propertyMachineHoursController', ['$scope', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', 'ProjectDataService', function($scope, $localStorage, $stateParams, DataModel, monthService, standardService, ProjectDataService){
         //console.log('singleProductController');
         function init() {
             $scope.product_id = $stateParams.id;
@@ -622,7 +543,7 @@
                 rateMain: "Hourly rate",
                 ratePlaceholder: "$",
                 rateErrorText: "Please, fill in hourly rate (0 allowed)"
-            }
+            };
             DataModel.Product.getMachineHours({ id: $scope.product_id })
                 .$promise
                     .then(function(response){
@@ -635,18 +556,18 @@
                         $scope.id = undefined;            
                     });
             if($localStorage.uuid !== undefined) {
-                DataModel.Project.uuid({ uuid: $localStorage.uuid })
-                    .$promise
-                        .then(function(response){
-                            $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + 's, ' + monthService.Month(response.begin_month).full;
-                            DataModel.Product.get({ id: $stateParams.id })
-                                .$promise
-                                    .then(function(response){
+                ProjectDataService.list()
+                    .then(function(response){
+                        $scope.controls.namePlaceholder = $scope.controls.namePlaceholder + 's, ' + monthService.Month(response.begin_month).full;
+                        $scope.controls.ratePlaceholder = response.currency.symbol;
+                        DataModel.Product.get({ id: $stateParams.id })
+                            .$promise
+                                .then(function(response){
                                         if(standardService.isBatchMode(response.quantity_calculation_method_id)) {
                                             $scope.controls.namePlaceholder = 'Batch, Units';
                                         }
-                            });
                         });
+                    });
             }
             refreshReport();
         }

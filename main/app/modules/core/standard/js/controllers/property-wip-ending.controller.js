@@ -6,7 +6,7 @@
             templateUrl: 'app/modules/core/standard/views/property/wip-ending.html',
             controller: propertyWipEndingController
         });
-    function propertyWipEndingController($log, $localStorage, $stateParams, DataModel, monthService, standardService, toastr) {
+    function propertyWipEndingController($log, $localStorage, $stateParams, DataModel, monthService, standardService, toastr, ProjectDataService) {
         var vm = this;
          function init() {
             vm.form = {};
@@ -27,12 +27,13 @@
                 endingQuantityPlaceholder: "Units",
             };
             if($localStorage.uuid !== undefined) {
-                DataModel.Project.uuid({ uuid: $localStorage.uuid })
-                    .$promise
-                        .then(function(response){
-                            vm.monthes = monthService.AbsoluteMonthes(response.begin_month);
-                            vm.begin_month = response.begin_month;
-                        });
+                ProjectDataService.list()
+                    .then(function(response){
+                        vm.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        vm.begin_month = response.begin_month;
+                        vm.controls.nameTitle = "WIP ending " + response.currency.symbol;
+                        vm.controls.namePlaceholder = response.currency.symbol;
+                });
             }
             DataModel.Product.getWipEnding({ id: vm.product_id })
                 .$promise
@@ -102,5 +103,5 @@
                     });
         };
     }
-    propertyWipEndingController.$inject = ['$log', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', 'toastr'];
+    propertyWipEndingController.$inject = ['$log', '$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', 'toastr', 'ProjectDataService'];
 }());
