@@ -769,10 +769,10 @@
     .controller('propertyReportController', [
             '$scope', '$localStorage', 'standardService', '$log',
             '$stateParams', 'monthService', 'DataModel', 'PROJECT_TYPES',
-            'currencyService',
+            'CurrencyService',
             'EXPORT_PREFIX',
             function($scope, $localStorage, standardService, $log,
-            $stateParams, monthService, DataModel, PROJECT_TYPES, currencyService, EXPORT_PREFIX
+            $stateParams, monthService, DataModel, PROJECT_TYPES, CurrencyService, EXPORT_PREFIX
             ) {
                 function init() {
                     if($localStorage.uuid !== undefined) {
@@ -784,7 +784,10 @@
                             .$promise
                                 .then(function(response){
                                     $scope.reportHeader[0][0] = {name: "Company name", value: response.company_name};
-                                    $scope.reportHeader[1][0] = {name: "Currency", value: currencyService.getCurrency(response.currency_id).charCode};
+                                    CurrencyService.getCurrency(response.currency_id)
+                                        .then(function(currency){
+                                            $scope.reportHeader[1][0] = {name: "Currency", value: currency.charcode};
+                                        });
                                     $scope.reportHeader[4][0] = {name: "Time mode", value: PROJECT_TYPES[response.type_id]};
                                     $scope.reportHeader[2][0] = {name: "Year to begin", value: response.begin_year};
                                     $scope.reportHeader[3][0] = {name: "Month to begin", value: monthService.Month(response.begin_month).short};

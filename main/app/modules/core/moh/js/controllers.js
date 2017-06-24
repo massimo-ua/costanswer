@@ -534,8 +534,8 @@
                 }
             }])
             .controller('mohReportController', [
-            '$scope', '$state', 'toastr', '$localStorage', 'mohService', 'DataModel', 'monthService', 'currencyService', 'PROJECT_TYPES', 'EXPORT_PREFIX',
-            function($scope, $state, toastr, $localStorage, mohService, DataModel, monthService, currencyService, PROJECT_TYPES, EXPORT_PREFIX) {
+            '$scope', '$state', 'toastr', '$localStorage', 'mohService', 'DataModel', 'monthService', 'CurrencyService', 'PROJECT_TYPES', 'EXPORT_PREFIX',
+            function($scope, $state, toastr, $localStorage, mohService, DataModel, monthService, CurrencyService, PROJECT_TYPES, EXPORT_PREFIX) {
                 function init() {
                     $scope.reportHeader = [];
                     for(var i=0;i<4;i++) {
@@ -553,13 +553,16 @@
                             .$promise
                                 .then(function(response){
                                     $scope.reportHeader[0][0] = {name: "Company name", value: response.company_name};
-                                    $scope.reportHeader[1][0] = {name: "Currency", value: currencyService.getCurrency(response.currency_id).charCode};
+                                    CurrencyService.getCurrency(response.currency_id)
+                                        .then(function(currency){
+                                            $scope.reportHeader[1][0] = {name: "Currency", value: currency.charcode};
+                                        });
                                     $scope.reportHeader[2][0] = {name: "Year to begin", value: response.begin_year};
                                     $scope.reportHeader[2][1] = {name: "Month to begin", value: monthService.Month(response.begin_month).short};
                                     $scope.reportHeader[3][0] = {name: "Time mode", value: PROJECT_TYPES[response.type_id]};
                                     $scope.reportHeader[3][1] = {name: "", value: ""};
                                 });
-                        if($localStorage.moh != undefined) {
+                        if($localStorage.moh !== undefined) {
                             DataModel.Moh.get({ id: $localStorage.moh }, function(response){
                                 $scope.reportHeader[0][1] = {name: "Calculation based on", value: mohService.getCalculationBase(response.calculation_base_id).name};
                                 $scope.reportHeader[1][1] = {name: "Allocation based on", value: mohService.getAllocationBase(response.allocation_base_id).name};
@@ -569,13 +572,13 @@
                             });
                         }
                     }
-                };
+                }
                 init();
                 $scope.getDownloadLink = function(type) {
                     if($localStorage.uuid) {
                         return EXPORT_PREFIX + '/moh/' + $localStorage.uuid + '/' + type;
                     }
                     return; 
-                } 
+                }; 
             }]);
 }());
