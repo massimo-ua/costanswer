@@ -54,9 +54,9 @@ angular.module('costAnswer.core.controllers')
                 }
                 $localStorage.type = type;
                 $state.go('projectSettings');
-            }
+            };
         }]);
-        var ProjectReportController = function(toastr, $log, $localStorage, DataModel, monthService, currencyService, PROJECT_TYPES, standardService, EXPORT_PREFIX) {
+        var ProjectReportController = function(toastr, $log, $localStorage, DataModel, monthService, CurrencyService, PROJECT_TYPES, standardService, EXPORT_PREFIX) {
             var vm = this;
             vm.someText = "ProjectReportController";
             vm.reportHeader = [];
@@ -70,7 +70,10 @@ angular.module('costAnswer.core.controllers')
                                     vm.reportHeader[0][0] = {name: "Company name", value: response.company_name};
                                     vm.reportHeader[0][1] = {name: "Month to begin", value: monthService.Month(response.begin_month).short};
                                     vm.reportHeader[1] = [];
-                                    vm.reportHeader[1][0] = {name: "Currency", value: currencyService.getCurrency(response.currency_id).charCode};
+                                    CurrencyService.getCurrency(response.currency_id)
+                                        .then(function(currency){
+                                            vm.reportHeader[1][0] = {name: "Currency", value: currency.charcode};
+                                        });
                                     vm.reportHeader[1][1] = {name: "Time mode", value: PROJECT_TYPES[response.type_id]};
                                     vm.reportHeader[2] = [];
                                     vm.reportHeader[2][0] = {name: "Year to begin", value: response.begin_year};
@@ -94,6 +97,6 @@ angular.module('costAnswer.core.controllers')
             } 
         }
         //
-        ProjectReportController.$inject = ['toastr','$log','$localStorage','DataModel','monthService','currencyService','PROJECT_TYPES','standardService', 'EXPORT_PREFIX'];
+        ProjectReportController.$inject = ['toastr','$log','$localStorage','DataModel','monthService','CurrencyService','PROJECT_TYPES','standardService', 'EXPORT_PREFIX'];
         //
         angular.module('costAnswer.core.controllers').controller('ProjectReportController', ProjectReportController);
