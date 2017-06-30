@@ -490,7 +490,7 @@
                         nameMain: "Name of asset",
                         namePlaceholder: "Name",
                         nameErrorText: "Please, fill in Name of asset",
-                        costMain: "Amount for amortization",
+                        costMain: "Amount of depreciation",
                         costPlaceholder: "$",
                         costErrorText: "Please, fill in Monthly payment"
                     };
