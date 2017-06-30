@@ -93,7 +93,7 @@
                         angular.forEach(error.data.errors, function(value){
                             suggestedValue = parseInt(value.suggestion) / 100;
                             fieldName = (value.app_err_code == 'BSN_UNSUF_INV_QTY') ? 'WIP ending Units' : 'WIP ending $';
-                            toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(value.month, vm.begin_month).full + '. Please, change your "' + fieldName + '" and try again. Suggested value: ' + suggestedValue, 'Аttention!');
+                            toastr.error('Insufficient total work-in-process in ' + monthService.AbsoluteMonth(value.month, vm.begin_month).full + '. Please, change your "' + fieldName + '" and try again. Suggested value: ' + suggestedValue, 'Аttention!');
 
                         });
                     })
