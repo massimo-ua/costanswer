@@ -28,16 +28,8 @@ angular.module('costAnswer.core')
                     }
                 }
             })
-            .state('process', {
-                url: '/process',
-                views: {
-                    "main": {
-                        template: '<coming-soon></coming-soon>'
-                    }
-                }
-            })
-            .state('job-order', {
-                url: '/job-order',
+            .state('coming-soon', {
+                url: '/coming-soon',
                 views: {
                     "main": {
                         template: '<coming-soon></coming-soon>'

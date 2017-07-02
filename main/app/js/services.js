@@ -49,7 +49,7 @@
                     break;
                 }
                 for(var i=0;i<list.length;i++) {
-                    list[i].disabled = disabled.indexOf( list[i].id ) > -1
+                    list[i].disabled = disabled.indexOf( list[i].id ) > -1;
                 }
                 return list;
             }
@@ -58,8 +58,8 @@
     angular.module('costAnswer.services').value('DATAINPUT_HEADER', [
         {"id": 1, "name": "Fixed Manufacturing Overhead", "sref": "moh"},
         {"id": 2, "name": "Standard Costing", "sref": "standard"},
-        {"id": 3, "name": "Process Costing", "sref": "process"},
-        {"id": 4, "name": "Job Order Costing", "sref": "job-order"}
+        {"id": 3, "name": "Process Costing", "sref": "coming-soon"},
+        {"id": 4, "name": "Job Order Costing", "sref": "coming-soon"}
     ]);
     angular.module('costAnswer.services').value('DATAINPUT_FOOTER', [
         {"id": 1, "name": "Clear", "sref": null},
