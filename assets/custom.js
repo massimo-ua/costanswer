@@ -843,13 +843,14 @@ function showHideProduct(el) {
 
 function feedback(el) {
     var form = $(el).attr('id');
-    var msg = $('form#' + form).serializeArray();
+    var msg = $('form#' + form).serialize();
     $.ajax({
         type: 'POST',
-        url: '/feedback',
+        url: 'http://www.acl.pp.ua:10101/feedback/data',
         data: msg,
+        dataType: 'json',
         success: function (data) {
-            if (data == 'ok') {
+            if (data.message == 'ok') {
                 fancybox('feedback_send');
                 $('#' + form).trigger("reset");
                 $('#' + form + ' input').removeClass('errorForm');
@@ -869,7 +870,7 @@ function feedback(el) {
             });
             $('.errorForm').bind('keyup', function () {
                 $(this).removeClass('errorForm');
-            })
+            });
             //$(".noteFormBlock").after('<div class="noteForm"><span class="red">Убедиться в правильности заполнения полей</span> <div>');
         },
         error: function (xhr, str) {
