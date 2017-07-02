@@ -15,6 +15,7 @@
         'angularUtils.directives.dirPagination',
         'costAnswer.services',
         'costAnswer.filters',
+        'costAnswer.controllers',
         'costAnswer.directives',
         'costAnswer.core',
         'costAnswer.auth',

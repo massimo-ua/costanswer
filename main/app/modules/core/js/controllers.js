@@ -4,7 +4,7 @@ angular.module('costAnswer.core.controllers',[
     ]);
 angular.module('costAnswer.core.controllers')
         .controller('descriptionCoreController',['$scope', '$stateParams', function($scope, $stateParams){
-            var descriptionKey = ($stateParams.costingMethod == undefined) ? 'standard-costing' : $stateParams.costingMethod;
+            var descriptionKey = ($stateParams.costingMethod === undefined) ? 'standard-costing' : $stateParams.costingMethod;
             $scope.description = null;
             function search(){
                 for (var i=0,len=$scope.data.length;i<len;i++) {
@@ -56,7 +56,7 @@ angular.module('costAnswer.core.controllers')
                 $state.go('projectSettings');
             };
         }]);
-        var ProjectReportController = function(toastr, $log, $localStorage, DataModel, monthService, CurrencyService, PROJECT_TYPES, standardService, EXPORT_PREFIX) {
+        var ProjectReportController = function(toastr, $log, $localStorage, DataModel, monthService, CurrencyService, PROJECT_TYPES, standardService, EXPORT_PREFIX, FileDownloaderService, $http, $window, $document) {
             var vm = this;
             vm.someText = "ProjectReportController";
             vm.reportHeader = [];
@@ -87,16 +87,53 @@ angular.module('costAnswer.core.controllers')
                                     $log.debug(error);
                                 });
                     }
-            };
+            }
             init();
             vm.getDownloadLink = function(type) {
                     if($localStorage.uuid) {
                         return EXPORT_PREFIX + '/project/' + $localStorage.uuid + '/' + type;
                     }
                     return; 
-            } 
-        }
+            };
+            /*vm.downloadReport = function(reporttype) {
+                //FileDownloaderService.getProjectReport($localStorage.uuid,reporttype);
+                var config = {
+                method: 'GET',
+                responseType : 'arraybuffer',
+                headers : {
+                    'Content-type' : 'application/' + reporttype,
+                },
+                url: EXPORT_PREFIX + '/project/' + $localStorage.uuid + '/' + reporttype
+            };
+            $http(config)
+                .then(function(response){
+                    var file = new Blob([response.data], {type: 'application/pdf'});
+
+                var isChrome = !!$window.chrome && !!$window.chrome.webstore;
+                var isIE = /*@cc_on!@*//*false || !!$document.documentMode;
+                var isEdge = !isIE && !!$window.StyleMedia;
+
+
+                if (isChrome){
+                    var url = $window.URL || $window.webkitURL;
+                    var downloadLink = angular.element('<a></a>');
+                    downloadLink.attr('href', url.createObjectURL(file));
+                    downloadLink.attr('target','_self');
+                    downloadLink.attr('download', 'invoice.pdf');
+                    downloadLink[0].click();
+                }
+                else if(isEdge || isIE){
+                    $window.navigator.msSaveOrOpenBlob(file,'invoice.pdf');
+
+                }
+                else {
+                    var fileURL = URL.createObjectURL(file);
+                    $window.open(fileURL);
+                }
+                });
+            };*/
+        };
         //
-        ProjectReportController.$inject = ['toastr','$log','$localStorage','DataModel','monthService','CurrencyService','PROJECT_TYPES','standardService', 'EXPORT_PREFIX'];
+        ProjectReportController.$inject = ['toastr','$log','$localStorage','DataModel','monthService','CurrencyService','PROJECT_TYPES','standardService', 'EXPORT_PREFIX', 'FileDownloaderService', '$http', '$window', '$document'];
         //
         angular.module('costAnswer.core.controllers').controller('ProjectReportController', ProjectReportController);

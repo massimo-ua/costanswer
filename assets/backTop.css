@@ -1,5 +1,5 @@
 /*Main stylesheet for Backtop jQuery Plugin */
-#backTop{
+#back-top {
     width: 13px;
     height: 13px;
     padding:10px;
@@ -10,7 +10,7 @@
     display:none;
     box-sizing:content-box;
     -webkit-box-sizing:content-box;
-    background:url(totop.png) no-repeat center center rgba(255,255,255,0.8);
+    background: #221d1d url(up-arrow.png) no-repeat center center;
     background-size: 20px;
 }
 /*#backTop.white{*/
