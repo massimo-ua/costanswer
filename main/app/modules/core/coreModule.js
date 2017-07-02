@@ -7,7 +7,7 @@ angular.module('costAnswer.core', [
     'costAnswer.core.components'
     ]);
 angular.module('costAnswer.core')
-    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', '$compileProvider', function($stateProvider, $urlRouterProvider, $compileProvider) {  
         $stateProvider
             .state('descriptionCore', {
                 url: '/description/:costingMethod',
@@ -22,11 +22,27 @@ angular.module('costAnswer.core')
                 url: '/start',
                 views: { 
                     "main": {
-                controller: 'StartCoreController',
-                controllerAs: 'vm',
-                templateUrl: 'app/modules/core/views/start.html'
+                        controller: 'StartCoreController',
+                        controllerAs: 'vm',
+                        templateUrl: 'app/modules/core/views/start.html'
+                    }
                 }
-            }
+            })
+            .state('process', {
+                url: '/process',
+                views: {
+                    "main": {
+                        template: '<coming-soon></coming-soon>'
+                    }
+                }
+            })
+            .state('job-order', {
+                url: '/job-order',
+                views: {
+                    "main": {
+                        template: '<coming-soon></coming-soon>'
+                    }
+                }
             })
             .state('newProjectType', {
                 url: '/new-project-type',

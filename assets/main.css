@@ -529,15 +529,17 @@ color: #FFC217;
 .main-features-section {
 /*width: 380px;*/
 padding-left: 17px;
-height: 270px;
+height: 180px;
 /*background: #f1edeb;*/
 float: left;
 margin: 10px;
 }
-
+.main-features-section.blank {
+    min-width: 280px;
+}
 .main-features-section section{
 width: 275px;
-height: 200px;
+height: 175px;
 border: 2px solid  #ff9933;
 text-align: center;
 background: #ff9933;
@@ -548,7 +550,7 @@ border-radius: 15px;
 .main-features-section section p{
 font-family: "CenturyGothicRegular";
 font-size: 1.2em;
-min-height: 115px;
+min-height: 95px;
 color: #000000;
 font-weight: bold;
 margin: 5px auto;
@@ -629,7 +631,7 @@ clear: both;background: url(man2.png) no-repeat top center;height: 802px;backgro
 color: #fff;
 font-size: 30px;
 text-align: center;
-margin: 0px;
+margin: 10px 0px 0px 0px;
 }
 
 .info-form  {
@@ -855,12 +857,12 @@ height:80px;
 }
 
 
-
+/*
 #back-top {
     position: fixed;
     bottom: 30px;
     right: 20px;
-    /* margin-left: -150px; */
+    margin-left: -150px;
     background: red;
     display: block;
     width: 30px;
@@ -896,7 +898,7 @@ height:80px;
 }
 #back-top a:hover span {
     background-color: #777;
-}
+}*/
 .errorForm {
     border: 3px solid #FF0003 !important;
     padding: 8px !important;

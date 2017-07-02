@@ -9,14 +9,14 @@
         var settings = $.extend({
             'position' : 400,
             'speed' : 500,
-            'color' : 'white'
+            'color' : 'red'
         }, options);
         
         //Settings
         
-        var position = settings['position'];
-        var speed = settings['speed'];
-        var color = settings['color'];
+        var position = settings.position;
+        var speed = settings.speed;
+        var color = settings.color;
         
         if(color == 'white'){
             backBtn.addClass('white');
@@ -54,6 +54,6 @@
             }); 
         });
 
-    }
+    };
 
 }(jQuery));

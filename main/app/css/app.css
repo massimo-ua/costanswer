@@ -1161,3 +1161,16 @@ div.well.costanswer.subscription.description {
 .ngdialog.ngdialog-theme-plain.custom-width-90prc .ngdialog-content {
     width: 90%;
 }
+/* Coming soon section */
+#coming-soon-block {
+  min-height: 600px;
+  padding: 250px 0px 0px 100px;
+  background: url('/assets/coming-soon-bg.jpg') no-repeat top center;
+}
+
+#coming-soon-block > p {
+  color: #fffffc;
+  font-weight: bolder;
+  font-size: 4em;
+  text-transform: uppercase;
+}
