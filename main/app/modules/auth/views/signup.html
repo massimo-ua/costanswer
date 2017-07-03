@@ -29,7 +29,7 @@
 					<i class="glyphicon glyphicon-lock form-control-feedback costanswer"></i>
 				<div class="help-block error" ng-show="vm.signupForm.confirmpassword.$dirty && vm.signupForm.confirmpassword.$error.required">Please, confirm your password</div>
 			</div>
-			<div class="well well-sm costanswer">By clicking 'Sign up' you are agreeing to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></div>
+			<div class="well well-sm costanswer">By clicking 'Sign up' you are agreeing to our <a ui-sref="TermsOfUse">Terms of Use</a> and <a ui-sref="PrivacyPolicy">Privacy Policy</a></div>
 			<div class="form-group">
 				<input type="button" class="btn btn-lg btn-costanswer btn-block" ng-click="vm.signup()" ng-disabled="vm.signupForm.$invalid" value="{{ vm.buttonText }}" />
 			</div>

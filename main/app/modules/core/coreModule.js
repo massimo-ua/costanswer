@@ -9,7 +9,7 @@ angular.module('costAnswer.core', [
 angular.module('costAnswer.core')
     .config(['$stateProvider', '$urlRouterProvider', '$compileProvider', function($stateProvider, $urlRouterProvider, $compileProvider) {  
         $stateProvider
-            .state('descriptionCore', {
+            /*.state('descriptionCore', {
                 url: '/description/:costingMethod',
                 views: { 
                     "main": {
@@ -17,7 +17,7 @@ angular.module('costAnswer.core')
                             templateUrl: 'app/modules/core/views/description.html'
                     }
                 }
-            })
+            })*/
             .state('startCore', {
                 url: '/start',
                 views: { 
@@ -141,6 +141,6 @@ angular.module('costAnswer.core')
                 controller: 'mohReportController',
                 templateUrl: 'app/modules/core/moh/views/report.html'
             });
-        $urlRouterProvider.otherwise('/description/standard-costing');
+        $urlRouterProvider.otherwise('/about');
     }]);
 }());
