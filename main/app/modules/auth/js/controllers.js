@@ -27,7 +27,7 @@
             });
         }
     }
-    function AuthSignupController(authService, $log, $state, $scope) {
+    function AuthSignupController(authService, $log, $state, $scope, toastr) {
         var vm = this;
         function init() {
             vm.auth = {};
@@ -52,8 +52,7 @@
                     $state.go('authSignupGreetings');
                 })
                 .catch(function(error){
-                    $log.error(error);
-                    vm.invalidSignUp = error.data.message;
+                    toastr.error(error.data.message, 'Signup error');
                 })
                 .finally(function(){
                     vm.buttonText = 'Sign up';
@@ -88,7 +87,7 @@
     }
     //dependencies injection block
     AuthLoginController.$inject = ['authService','$log','$state','$scope','toastr'];
-    AuthSignupController.$inject = ['authService','$log','$state','$scope'];
+    AuthSignupController.$inject = ['authService','$log','$state','$scope','toastr'];
     AuthMenuController.$inject = ['authService','$log','$scope','$state','$localStorage'];
     //controller function linking
     angular.module('costAnswer.auth.controllers')
