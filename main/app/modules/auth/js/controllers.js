@@ -52,7 +52,7 @@
                     $state.go('authSignupGreetings');
                 })
                 .catch(function(error){
-                    toastr.error(error.data.message, 'Signup error');
+                    toastr.error('There was an account registration error!', 'Signup error');
                 })
                 .finally(function(){
                     vm.buttonText = 'Sign up';
