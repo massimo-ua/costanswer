@@ -846,7 +846,7 @@ function feedback(el) {
     var msg = $('form#' + form).serialize();
     $.ajax({
         type: 'POST',
-        url: 'http://www.acl.pp.ua:10101/feedback/data',
+        url: '/api/feedback/data',
         data: msg,
         dataType: 'json',
         success: function (data) {

@@ -1,5 +1,10 @@
 (function(){
     angular.module('costAnswer.services', []);
+    //prefixes
+    angular.module('costAnswer.services').value('AUTH_PREFIX','/api/auth');
+    angular.module('costAnswer.services').value('EXPORT_PREFIX','/api/export');
+    angular.module('costAnswer.services').value('API_PREFIX','/api');
+    //
     angular.module('costAnswer.services').value('PROJECT_TYPES', {1: 'Forecast', 2: 'Actual', 3: 'Variance'});
     angular.module('costAnswer.services').value('CURRENCIES', [{charCode: 'USD', code: 840, name: 'US Dollars'}, {charCode: 'EUR', code: 978, name: 'Euro'}, {charCode: 'GBP', code: 826, name: 'Great Britain Pounds'}]);
     angular.module('costAnswer.services').value('MONTHES', [
@@ -126,6 +131,4 @@
             }
         };
     }]);
-    angular.module('costAnswer.services').value('AUTH_PREFIX','http://www.acl.pp.ua:10101/auth');
-    angular.module('costAnswer.services').value('EXPORT_PREFIX','http://www.acl.pp.ua:10101/export');
 }());
