@@ -16,9 +16,7 @@
             })
             .state('standard.newProduct', {
                 url: '/product/new',
-                controller: 'NewProductController',
-                controllerAs: 'vm',
-                templateUrl: 'app/modules/core/standard/views/property/settings.html',
+                template: '<property-settings></property-settings>'
             })
             .state('standard.singleProduct', {
                 url: '/product/:id',
@@ -35,15 +33,11 @@
             })
             .state('property.settings', {
                 url: '/settings',
-                controller: 'PropertySettingsController',
-                controllerAs: 'vm',
-                templateUrl: 'app/modules/core/standard/views/property/settings.html',
+                template: '<property-settings></property-settings>'
             })
             .state('property.inventory', {
                 url: '/inventory',
-                //controller: 'propertyInventoryController',
-                //templateUrl: 'app/modules/core/standard/views/property/inventory.html',
-                template: '<property-inventory></property-inventory>',
+                template: '<property-inventory></property-inventory>'
             })
             .state('property.pp', {
                 url: '/production-plan',

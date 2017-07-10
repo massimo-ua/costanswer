@@ -8,7 +8,6 @@
         });
     function propertyWipBeginningController($log, $localStorage, $stateParams, DataModel, monthService, standardService, toastr, ProjectDataService) {
         var vm = this;
-        //$log.error('singleProductController');
         function init() {
             vm.product_id = $stateParams.id;
             vm.form = {};
@@ -18,7 +17,6 @@
             vm.reportId = 'wip';
             vm.controls = {
                 buttonText: "Save",
-                //nameMain: "Work in process (WIP) beginning",
                 namePlaceholder: "$",
                 nameErrorText: "Please, fill in amount of beginning WIP costs (0 allowed)",
                 Name: "WIP beginning $",

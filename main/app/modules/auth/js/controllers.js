@@ -1,5 +1,5 @@
 (function(){
-    'use strict'
+    'use strict';
     angular.module('costAnswer.auth.controllers',[]);
     //controller functions definitions
     function AuthLoginController(authService, $log, $state, $scope, toastr) {
@@ -58,7 +58,7 @@
                     vm.buttonText = 'Sign up';
                     vm.auth = {};
                 });
-        }
+        };
     }
     function AuthMenuController(authService,$log,$scope,$state,$localStorage) {
         var vm = this;

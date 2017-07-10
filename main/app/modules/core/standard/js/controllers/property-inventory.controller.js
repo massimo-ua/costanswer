@@ -24,9 +24,11 @@
             DataModel.Product.getInventory({ id: vm.product_id })
                 .$promise
                     .then(function(response){
-                        vm.id = response[0].id;
+                        if(response.length > 0) {
+                            vm.id = response[0].id;
+                            vm.form.finished_goods_beginning = parseInt(response[0].finished_goods_beginning) / 100;
+                        }
                         vm.controls.buttonText = "Update";
-                        vm.form.finished_goods_beginning = parseInt(response[0].finished_goods_beginning) / 100;
                     })
                     .catch(function(){
                         vm.id = undefined;            
@@ -37,7 +39,6 @@
                         .then(function(response){
                             vm.project = response;
                             vm.controls.namePlaceholder = monthService.Month(response.begin_month).full + ',' + vm.controls.namePlaceholder;
-                            vm.month_number = response.begin_month;
                         });
             }
             refreshReport();
