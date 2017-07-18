@@ -1,5 +1,5 @@
 (function(){
-    'use strict'
+    'use strict';
     angular.module('costAnswer.core.standard.components',[]);
     angular.module('costAnswer.core.standard.components')
         .component('caReport', {
