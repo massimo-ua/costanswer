@@ -1,5 +1,8 @@
 (function(){
-    angular.module('costAnswer.core.process',['costAnswer.core.process.components'])
+    angular.module('costAnswer.core.process',[
+        'costAnswer.core.process.components',
+        'costAnswer.core.process.services'
+        ])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('process', {

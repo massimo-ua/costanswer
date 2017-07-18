@@ -11,9 +11,7 @@
             controller: caProductsMenuController
         });
     function caProductsMenuController($log) {
-        this.$onInit = function() {
-            //
-        };
+        this.nameProperty = "name";
     }
     caProductsMenuController.$inject = ['$log'];
 })();

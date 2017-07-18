@@ -149,10 +149,10 @@
                             scope.startItem = 1;
                             scope.activeItem = undefined;
                             scope.displayBlock = parseInt(scope.displayBlock);
-                        };
+                        }
                         init();
                         scope.range = function(start,total) {
-                            if(scope.itemsList == undefined || scope.itemsList.length == 0) return;
+                            if(scope.itemsList === undefined || scope.itemsList.length == 0) return;
                             var result = [];
                             var i = 1;
                             start = start > 0 ? start : 1;
@@ -161,17 +161,16 @@
                                 result.push(i);
                             }
                             return result;
-                        }
+                        };
                         scope.move = function(i) {
                             if(i > 0 && (scope.startItem + scope.displayBlock) > scope.itemsList.length) {
                                 return;
-                            };
+                            }
                             if(i < 0 && scope.startItem < 2) {
                                 return;
-                            };
-                            //scope.activeItem = undefined;
+                            }
                             scope.startItem += i;
-                        }
+                        };
                         scope.removeItem = function(index) {
                             scope.onDelete()(scope.itemsList[index], function(error){
                                 if(error) {
@@ -181,7 +180,7 @@
                                 scope.itemsList.splice(index,1);
                                 scope.move(-1);
                             });
-                        }
+                        };
 
                     }
                 }

@@ -7,7 +7,7 @@
                 var config = {
                     method: 'GET',
                     url: API_PREFIX + '/products/list/1/'+uuid
-                }
+                };
                 return $http(config);
             },
             quantityCalculationMethods: function(id){
@@ -15,7 +15,7 @@
                     { "id": 1, "name": "Standard quantity per month", shortName: "Month" },
                     { "id": 2, "name": "Standard quantity per batch", shortName: "Batch" } 
                 ];
-                if(id == undefined) {
+                if(id === undefined) {
                     return methods;
                 }
                 for(var i = 0; i < methods.length; i++) {

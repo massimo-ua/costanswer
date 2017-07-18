@@ -1,10 +1,10 @@
 <div class="row m-t-10px">
-    <div ng-cloak ng-show="$ctrl.productsList.length > 0" class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left p-l-0px">
+    <div ng-cloak ng-show="$ctrl.products.length > 0" class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left p-l-0px">
         <button class="btn btn-costanswer btn-square btn-lg" aria-label="Left Align" title="Add product or service">
             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
         </button>
     </div>
     <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 text-left p-l-0px">
-        <div ca-product-menu name-property="$ctrl.nameProperty" display-block="5" items-list="$ctrl.productsList" on-delete="$ctrl.onDelete"></div>
+        <div ca-product-menu name-property="$ctrl.nameProperty" display-block="5" items-list="$ctrl.products" on-delete="$ctrl.onDelete"></div>
     </div>
 </div>
