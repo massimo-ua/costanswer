@@ -16,17 +16,18 @@
                 url: '/start',
                 controller: 'startProductController',
                 templateUrl: 'app/modules/core/process/views/start.html',
-            })
+            })*/
             .state('process.newProduct', {
                 url: '/product/new',
-                template: '<property-settings></property-settings>'
+                template: '<property-settings costing-method="2"></property-settings>'
             })
             .state('process.singleProduct', {
                 url: '/product/:id',
-                redirectTo: 'property',
-                controller: 'singleProductController',
-                templateUrl: 'app/modules/core/process/views/single-product.html',
-            })
+                //redirectTo: 'property',
+                //controller: 'singleProductController',
+                //templateUrl: 'app/modules/core/process/views/single-product.html',
+                template: '<h1>Single product #:id page</h1>'
+            })/*
             .state('property', {
                 parent: "process.singleProduct",
                 redirectTo: 'property.inventory',

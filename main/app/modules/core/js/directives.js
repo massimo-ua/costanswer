@@ -130,7 +130,7 @@
                         reportData: '='
                     },
                     templateUrl: 'app/modules/core/views/directives/ca-instant-report.html'
-                }
+                };
             }]);
         angular.module('costAnswer.core.directives')
             .directive('caProductMenu', [function(){
@@ -183,6 +183,6 @@
                         };
 
                     }
-                }
+                };
             }]);
 }());

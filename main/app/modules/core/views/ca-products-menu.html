@@ -1,10 +1,22 @@
 <div class="row m-t-10px">
-    <div ng-cloak ng-show="$ctrl.products.length > 0" class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left p-l-0px">
-        <button class="btn btn-costanswer btn-square btn-lg" aria-label="Left Align" title="Add product or service">
+    <div ng-cloak ng-show="$ctrl.items.length > 0" class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left p-l-0px">
+        <button class="btn btn-costanswer btn-square btn-lg" aria-label="Left Align" ui-sref="{{ $ctrl.config.addItem.sref }}" title="{{$ctrl.config.addItem.text}}">
             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
         </button>
     </div>
     <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 text-left p-l-0px">
-        <div ca-product-menu name-property="$ctrl.nameProperty" display-block="5" items-list="$ctrl.products" on-delete="$ctrl.onDelete"></div>
+        <div class="row m-b-10px">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <a ng-show="$ctrl.startItem > 1" ng-click="$ctrl.move(-1)" class="glyphicon glyphicon-chevron-left toolset" title="{{$ctrl.config.backward.text}}"></a>
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <ul ng-show="$ctrl.items.length > 0" class="nav nav-pills costanswer nav-justified">
+                    <li class ="item-list-pills" role="presentation" ng-repeat = "i in $ctrl.range($ctrl.startItem, $ctrl.displayBlock)"><a ui-sref-active="active" ui-sref="{{ $ctrl.config.items.sref }}({ id: $ctrl.items[i-1].id })" >{{ $ctrl.items[i-1][$ctrl.config.items.displayPropertyName] | strTruncate:false:15 }}<span class="glyphicon glyphicon-remove toolset remove small pull-right" title="{{$ctrl.config.removeItem.text}}" ng-click="$ctrl.removeItem(i-1)"></span></a></li>
+                </ul>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <a ng-show="($ctrl.startItem + $ctrl.config.displayBlock) <= $ctrl.items.length" ng-click="$ctrl.move(1)" class="glyphicon glyphicon-chevron-right toolset" title="{{$ctrl.config.forward.text}}"></a>
+            </div>
+        </div>
     </div>
 </div>

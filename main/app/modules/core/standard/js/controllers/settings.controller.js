@@ -3,6 +3,9 @@
     angular.module('costAnswer.core.standard.controllers')
         .component('propertySettings', {
             restrict: 'E',
+            bindings: {
+                costingMethod: '<'
+            },
             templateUrl: 'app/modules/core/standard/views/property/settings.html',
             controller: PropertySettingsController
         });
@@ -17,7 +20,7 @@
     )
     {
         var vm = this;
-        function init() {
+        vm.$onInit = function() {
                 vm.form = {};
                 vm.item = {};
                 vm.controls = {
@@ -54,8 +57,7 @@
                 } else {
                     vm.form.quantity_calculation_method_id = 1;
                 }
-            }
-            init();
+            };
             vm.checkQuantityPerBatch = function(){
                 return vm.form.quantity_calculation_method_id == 2;
             };
@@ -69,7 +71,7 @@
                     var product = new DataModel.Product();
                     product.project_uuid = $localStorage.uuid;
                     product.name = form.name;
-                    product.costing_method_id = 1;
+                    product.costing_method_id = vm.costingMethod;
                     product.measurement_unit = form.measurement_unit;
                     product.division = form.division;
                     product.order_number = form.order_number;
