@@ -1,12 +1,12 @@
 (function(){
     'use strict';
-    angular.module('costAnswer.core.standard.controllers')
+    angular.module('costAnswer.core.components')
         .component('propertySettings', {
-            restrict: 'E',
             bindings: {
-                costingMethod: '<'
+                costingMethod: '<',
+                returnSref: '<'
             },
-            templateUrl: 'app/modules/core/standard/views/property/settings.html',
+            templateUrl: 'app/modules/core/views/settings.html',
             controller: PropertySettingsController
         });
         function PropertySettingsController(
@@ -20,6 +20,7 @@
     )
     {
         var vm = this;
+        console.log(vm);
         vm.$onInit = function() {
                 vm.form = {};
                 vm.item = {};
@@ -84,7 +85,7 @@
                             $scope.$emit('NEW_ST_PRODUCT', response);
                             vm.form = {};
                             vm.itemForm.$setPristine();
-                            $state.go('standard.singleProduct', { id: response.id }, {
+                            $state.go(vm.sref, { id: response.id }, {
                                 reload: true
                             });
                         })

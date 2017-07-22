@@ -16,7 +16,7 @@
             })
             .state('standard.newProduct', {
                 url: '/product/new',
-                template: '<property-settings costing-method="1"></property-settings>'
+                template: '<property-settings costing-method="1" sref="standard.singleProduct"></property-settings>'
             })
             .state('standard.singleProduct', {
                 url: '/product/:id',

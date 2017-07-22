@@ -11,7 +11,7 @@
             </div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                 <ul ng-show="$ctrl.items.length > 0" class="nav nav-pills costanswer nav-justified">
-                    <li class ="item-list-pills" role="presentation" ng-repeat = "i in $ctrl.range($ctrl.startItem, $ctrl.displayBlock)"><a ui-sref-active="active" ui-sref="{{ $ctrl.config.items.sref }}({ id: $ctrl.items[i-1].id })" >{{ $ctrl.items[i-1][$ctrl.config.items.displayPropertyName] | strTruncate:false:15 }}<span class="glyphicon glyphicon-remove toolset remove small pull-right" title="{{$ctrl.config.removeItem.text}}" ng-click="$ctrl.removeItem(i-1)"></span></a></li>
+                    <li class ="item-list-pills" role="presentation" ng-repeat = "i in $ctrl.range($ctrl.startItem, $ctrl.config.displayBlock)"><a ui-sref-active="active" ui-sref="{{ $ctrl.config.items.sref }}({ id: $ctrl.items[i-1].id })" >{{ $ctrl.items[i-1][$ctrl.config.items.displayPropertyName] | strTruncate:false:15 }}<span class="glyphicon glyphicon-remove toolset remove small pull-right" title="{{$ctrl.config.removeItem.text}}" ng-click="$ctrl.removeItem(i-1)"></span></a></li>
                 </ul>
             </div>
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">

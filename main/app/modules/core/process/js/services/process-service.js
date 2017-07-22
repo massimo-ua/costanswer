@@ -4,13 +4,7 @@
     .factory('processService', processService);
     function processService($log) {
         var factory = {};
-        factory.productsList = function(uuid) {
-                var config = {
-                    method: 'GET',
-                    url: API_PREFIX + '/products/list/2/'+uuid
-                };
-                return $http(config);
-            };
+        return factory;
     }
     processService.$inject = ['$log'];
 })();

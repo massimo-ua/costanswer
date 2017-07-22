@@ -19,7 +19,7 @@
             })*/
             .state('process.newProduct', {
                 url: '/product/new',
-                template: '<property-settings costing-method="2"></property-settings>'
+                template: '<property-settings costing-method="2" return-sref="singleProduct"></property-settings>'
             })
             .state('process.singleProduct', {
                 url: '/product/:id',
