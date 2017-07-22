@@ -27,8 +27,7 @@
                 parent: "standard.singleProduct",
                 redirectTo: 'property.inventory',
                 url: "/property",
-                controller: 'propertyController',
-                templateUrl: 'app/modules/core/standard/views/property/home.html'
+                template: '<ca-property-home></ca-property-home>'
             })
             .state('property.settings', {
                 url: '/settings',

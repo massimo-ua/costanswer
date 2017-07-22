@@ -28,8 +28,7 @@
                 parent: "process.singleProduct",
                 redirectTo: 'process-property.inventory',
                 url: "/property",
-                controller: 'propertyController',
-                templateUrl: 'app/modules/core/process/views/property/home.html'
+                template: '<ca-property-home></ca-property-home>'
             })
             .state('process-property.inventory', {
                 url: '/inventory',

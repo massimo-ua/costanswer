@@ -113,12 +113,6 @@
         }
         init();
     }])
-    .controller('propertyController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
-        //console.log('singleProductController');
-        function init() {
-        }
-        init();
-    }])
     .controller('propertyProductionPlanController', ['$scope', '$localStorage', 'standardService', '$stateParams', 'monthService', 'DataModel', '$log', 'toastr', 'ProjectDataService', function($scope, $localStorage, standardService, $stateParams, monthService, DataModel, $log, toastr, ProjectDataService){
         function init() {
             $scope.form = {};
