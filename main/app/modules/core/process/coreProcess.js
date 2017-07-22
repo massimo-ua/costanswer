@@ -22,10 +22,8 @@
             .state('process.singleProduct', {
                 url: '/product/:id',
                 redirectTo: 'property',
-                //controller: 'singleProductController',
-                //templateUrl: 'app/modules/core/process/views/single-product.html',
                 template: '<h1>Single product #:id page</h1>'
-            })/*
+            })
             .state('property', {
                 parent: "process.singleProduct",
                 redirectTo: 'property.inventory',
@@ -33,9 +31,14 @@
                 controller: 'propertyController',
                 templateUrl: 'app/modules/core/process/views/property/home.html'
             })
+            .state('property.inventory', {
+                url: '/inventory',
+                //template: '<property-inventory></property-inventory>'
+                template: '<h1>property-inventory</h1>'
+            })
             .state('property.settings', {
                 url: '/settings',
                 template: '<property-settings></property-settings>'
-            })*/;   
+            });   
     }]);
 }());
