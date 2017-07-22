@@ -23,7 +23,7 @@
                 }
                 return [];
             },
-            productPropeties: function() {
+            /*productPropeties: function() {
                 return [
                     {"id": 1, "name": "Product/Service settings", "sref": "property.settings", "iconClass": "ion-settings", "disabled": false},
                     {"id": 2, "name": "Inventory", "sref": "property.inventory", "iconClass": "ion-ios-home", "disabled": false},
@@ -38,7 +38,7 @@
                     {"id": 11, "name": "Markup", "sref": "property.mu", "iconClass": "ion-pricetags", "disabled": false},
                     {"id": 12, "name": "Report", "sref": "property.report", "iconClass": "ion-clipboard", "disabled": false}
                 ];
-            },
+            },*/
             isBatchMode: function(mode) {
                 return parseInt(mode) == 2;
             },

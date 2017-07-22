@@ -2,9 +2,9 @@
     'use strict';
     angular.module('costAnswer.core.services')
     .factory('menuService', menuService);
-    function menuService($log, API_PREFIX, $http) {
+    function menuService($log) {
         var factory = {};
-        var productProperties = {
+        var Properties = {
             'standard': [
                     {"id": 1, "name": "Product/Service settings", "sref": "property.settings", "iconClass": "ion-settings", "disabled": false},
                     {"id": 2, "name": "Inventory", "sref": "property.inventory", "iconClass": "ion-ios-home", "disabled": false},
@@ -28,10 +28,10 @@
             ],
             'job-order': []
         };
-        factory.productPropeties = function(costingMethodName) {
-            return productProperties[costingMethodName];
+        factory.productProperties = function(costingMethodName) {
+            return Properties[costingMethodName];
         };
         return factory;
     }
-    menuService.$inject = ['$log','API_PREFIX','$http'];
+    menuService.$inject = ['$log'];
 })();

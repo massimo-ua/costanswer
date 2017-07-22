@@ -20,8 +20,7 @@
             .state('standard.singleProduct', {
                 url: '/product/:id',
                 redirectTo: 'property',
-                controller: 'singleProductController',
-                templateUrl: 'app/modules/core/standard/views/single-product.html',
+                template: '<ca-product-home costing-method-name="standard"></ca-product-home>',
             })
             .state('property', {
                 parent: "standard.singleProduct",
