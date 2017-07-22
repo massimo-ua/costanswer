@@ -13,8 +13,7 @@
             })
             .state('process.start', {
                 url: '/start',
-                template: '<h1>Process start page<h1>',
-                //template: <costing-start><costing-start>
+                template: '<ca-costing-start next-sref="process.newProduct"></ca-costing-start>'
             })
             .state('process.newProduct', {
                 url: '/product/new',

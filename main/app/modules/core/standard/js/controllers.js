@@ -103,10 +103,7 @@
                     $scope.controls.formDisabled = false;
                     $scope.controls.buttonText = "Save";
                 });
-        }
-    }])
-    .controller('startProductController', ['$scope', function($scope){
-
+        };
     }])
     .controller('singleProductController', ['$scope', '$state', 'standardService', '$stateParams', function($scope, $state, standardService, $stateParams){
         //console.log('singleProductController');

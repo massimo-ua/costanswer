@@ -11,8 +11,7 @@
             })
             .state('standard.start', {
                 url: '/start',
-                controller: 'startProductController',
-                templateUrl: 'app/modules/core/standard/views/start.html',
+                template: '<ca-costing-start next-sref="standard.newProduct"></ca-costing-start>'
             })
             .state('standard.newProduct', {
                 url: '/product/new',
