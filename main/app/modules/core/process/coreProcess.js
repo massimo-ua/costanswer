@@ -21,24 +21,24 @@
             })
             .state('process.singleProduct', {
                 url: '/product/:id',
-                redirectTo: 'property',
+                redirectTo: 'process-property',
                 template: '<h1>Single product #:id page</h1>'
             })
-            .state('property', {
+            .state('process-property', {
                 parent: "process.singleProduct",
-                redirectTo: 'property.inventory',
+                redirectTo: 'process-property.inventory',
                 url: "/property",
                 controller: 'propertyController',
                 templateUrl: 'app/modules/core/process/views/property/home.html'
             })
-            .state('property.inventory', {
+            .state('process-property.inventory', {
                 url: '/inventory',
                 //template: '<property-inventory></property-inventory>'
                 template: '<h1>property-inventory</h1>'
             })
-            .state('property.settings', {
+            .state('process-property.settings', {
                 url: '/settings',
-                template: '<property-settings></property-settings>'
+                template: '<process-property-settings></process-property-settings>'
             });   
     }]);
 }());
