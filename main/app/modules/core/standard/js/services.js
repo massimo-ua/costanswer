@@ -37,7 +37,7 @@
                     {"id": 10, "name": "Work in process (WIP) ending", "sref": "property.we", "iconClass": "ion-ios-alarm", "disabled": false},
                     {"id": 11, "name": "Markup", "sref": "property.mu", "iconClass": "ion-pricetags", "disabled": false},
                     {"id": 12, "name": "Report", "sref": "property.report", "iconClass": "ion-clipboard", "disabled": false}
-                ]
+                ];
             },
             isBatchMode: function(mode) {
                 return parseInt(mode) == 2;

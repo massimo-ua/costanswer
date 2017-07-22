@@ -22,7 +22,7 @@
             .state('process.singleProduct', {
                 url: '/product/:id',
                 redirectTo: 'process-property',
-                template: '<h1>Single product #:id page</h1>'
+                template: '<ca-product-home costing-method-name="process"></ca-product-home>'
             })
             .state('process-property', {
                 parent: "process.singleProduct",
