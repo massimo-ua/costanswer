@@ -21,7 +21,7 @@
             })
             .state('process.singleProduct', {
                 url: '/product/:id',
-                //redirectTo: 'property',
+                redirectTo: 'property',
                 //controller: 'singleProductController',
                 //templateUrl: 'app/modules/core/process/views/single-product.html',
                 template: '<h1>Single product #:id page</h1>'
