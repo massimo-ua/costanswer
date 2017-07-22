@@ -6,7 +6,7 @@
             templateUrl: 'app/modules/core/process/views/home.html',
             controller: caProcessHomeController
         });
-    function caProcessHomeController($log, entityService, $localStorage) {
+    function caProcessHomeController($log, entityService, $localStorage, $state, DataModel) {
         var vm = this;
         vm.$onInit = function() {
             entityService.products($localStorage.uuid,2)
@@ -40,9 +40,19 @@
                 }
             };
         };
-        vm.onDelete = function() {
-            $log.debug('DELETE');
+        vm.onDelete = function(item, callback) {
+            DataModel.Product.remove({id: item.id})
+                .$promise
+                    .then(function(response){
+                        callback();
+                        $state.go('process.start', undefined, {
+                            reload: true
+                        });
+                    })
+                    .catch(function(error){
+                        callback(error);
+                    });
         };
     }
-    caProcessHomeController.$inject = ['$log', 'entityService', '$localStorage'];
+    caProcessHomeController.$inject = ['$log', 'entityService', '$localStorage', '$state', 'DataModel'];
 }());

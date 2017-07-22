@@ -4,7 +4,7 @@
         .component('propertySettings', {
             bindings: {
                 costingMethod: '<',
-                returnSref: '<'
+                returnSref: '@'
             },
             templateUrl: 'app/modules/core/views/settings.html',
             controller: PropertySettingsController
@@ -20,7 +20,6 @@
     )
     {
         var vm = this;
-        console.log(vm);
         vm.$onInit = function() {
                 vm.form = {};
                 vm.item = {};
@@ -85,7 +84,7 @@
                             $scope.$emit('NEW_ST_PRODUCT', response);
                             vm.form = {};
                             vm.itemForm.$setPristine();
-                            $state.go(vm.sref, { id: response.id }, {
+                            $state.go(vm.returnSref, { id: response.id }, {
                                 reload: true
                             });
                         })

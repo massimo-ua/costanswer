@@ -7,19 +7,18 @@
         $stateProvider
             .state('process', {
                 url: '/process',
-                //redirectTo: 'process.start',
+                redirectTo: 'process.start',
                 parent: "projectDataInput",
                 template: '<ca-process-home></ca-process-home>'
-                //template: '<coming-soon></coming-soon>'
             })
-            /*.state('process.start', {
+            .state('process.start', {
                 url: '/start',
-                controller: 'startProductController',
-                templateUrl: 'app/modules/core/process/views/start.html',
-            })*/
+                template: '<h1>Process start page<h1>',
+                //template: <costing-start><costing-start>
+            })
             .state('process.newProduct', {
                 url: '/product/new',
-                template: '<property-settings costing-method="2" return-sref="singleProduct"></property-settings>'
+                template: '<property-settings costing-method="2" return-sref="process.singleProduct"></property-settings>'
             })
             .state('process.singleProduct', {
                 url: '/product/:id',
