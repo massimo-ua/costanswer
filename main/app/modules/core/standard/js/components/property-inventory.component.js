@@ -2,8 +2,7 @@
     'use strict';
     angular.module('costAnswer.core.standard.controllers')
         .component('propertyInventory', {
-            restrict: 'E',
-            templateUrl: 'app/modules/core/standard/views/property/inventory.html',
+            templateUrl: 'app/modules/core/standard/views/product-inventory.html',
             controller: propertyInventoryController
         });
     function propertyInventoryController($log, $localStorage, $stateParams, DataModel, monthService, standardService, toastr) {
@@ -11,11 +10,11 @@
             function init() {
             vm.product_id = $stateParams.id;
             vm.reportId = 'inventory';
-            vm.form = {};
+            vm.item = {};
             vm.month_number = 1;
             vm.year_number = 1;
             vm.instantReport = [];
-            vm.controls = {
+            vm.config = {
                 buttonText: "Save",
                 nameMain: "Finished goods beginning",
                 namePlaceholder: "Units",
@@ -26,9 +25,9 @@
                     .then(function(response){
                         if(response.length > 0) {
                             vm.id = response[0].id;
-                            vm.form.finished_goods_beginning = parseInt(response[0].finished_goods_beginning) / 100;
+                            vm.item.finished_goods_beginning = parseInt(response[0].finished_goods_beginning) / 100;
                         }
-                        vm.controls.buttonText = "Update";
+                        vm.config.buttonText = "Update";
                     })
                     .catch(function(){
                         vm.id = undefined;            
@@ -38,7 +37,7 @@
                     .$promise
                         .then(function(response){
                             vm.project = response;
-                            vm.controls.namePlaceholder = monthService.Month(response.begin_month).full + ',' + vm.controls.namePlaceholder;
+                            vm.config.namePlaceholder = monthService.Month(response.begin_month).full + ',' + vm.config.namePlaceholder;
                         });
             }
             refreshReport();
@@ -56,25 +55,25 @@
         vm.onSave = function(form) {
             var inventory = new DataModel.Product();
             if(vm.id === undefined) {
-                vm.controls.buttonText = "Saving...";
-                inventory.finished_goods_beginning = Math.round(vm.form.finished_goods_beginning * 100);
+                vm.config.buttonText = "Saving...";
+                inventory.finished_goods_beginning = Math.round(form.finished_goods_beginning * 100);
                 inventory.month_number = vm.month_number;
                 inventory.year_number = vm.year_number;
                 inventory.$saveInventory({ id: vm.product_id })
                     .then(function(response){
-                        vm.controls.buttonText = "Update";
+                        vm.config.buttonText = "Update";
                         vm.id = response.id;
                         refreshReport();
                     })
                     .catch(function(error){
-                        vm.controls.buttonText = "Save";
+                        vm.config.buttonText = "Save";
                         var suggestedValue = parseInt(error.data.errors[0].suggestion) / 100;
                         toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, vm.month_number).full + '. Please, change your "Finished goods beginning" and try again. Suggested value: ' + suggestedValue, 'Аttention!');
                     });
             }
             else {
-                vm.controls.buttonText = "Updating...";
-                inventory.finished_goods_beginning = Math.round(vm.form.finished_goods_beginning * 100);
+                vm.config.buttonText = "Updating...";
+                inventory.finished_goods_beginning = Math.round(form.finished_goods_beginning * 100);
                 inventory.$updateInventory({ id: vm.id })
                     .then(function(){
                         refreshReport();
@@ -84,7 +83,7 @@
                         toastr.error('Insufficient inventory in ' + monthService.AbsoluteMonth(error.data.errors[0].month, vm.month_number).full + '. Please, change your "Finished goods beginning" and try again. Suggested value: ' + suggestedValue, 'Аttention!');
                     })
                     .finally(function(){
-                        vm.controls.buttonText = "Update";
+                        vm.config.buttonText = "Update";
                     });
             }
         };
