@@ -12,8 +12,16 @@
             }
         }
         init();
-        $scope.$on('NEW_ST_PRODUCT', function(event, data) {
+        $scope.$on('PRODUCT_CREATED', function(event, data) {
             $scope.productsList.push(data);
+            event.stopPropagation();
+        });
+        $scope.$on('PRODUCT_UPDATED', function(event, data) {
+            $scope.productsList.forEach(function(product){
+                if(product.id == data.id) {
+                    product = data;
+                }
+            });
             event.stopPropagation();
         });
         $scope.onDelete = function(item, callback) {

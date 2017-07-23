@@ -81,7 +81,7 @@
                     }
                     product.$save()
                         .then(function(response){
-                            $scope.$emit('NEW_ST_PRODUCT', response);
+                            $scope.$emit('PRODUCT_CREATED', response);
                             vm.form = {};
                             vm.itemForm.$setPristine();
                             $state.go(vm.returnSref, { id: response.id }, {
@@ -103,6 +103,9 @@
                         vm.item.quantity_per_batch = Math.round(form.quantity_per_batch * 100);
                     }
                     vm.item.$update({ id: $stateParams.id })
+                        .then(function(response){
+                            $scope.$emit('PRODUCT_UPDATED', response);
+                        })
                         .finally(function(){
                             vm.controls.buttonText = "Update";
                             vm.controls.formDisabled = false;

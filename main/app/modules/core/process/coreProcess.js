@@ -37,7 +37,7 @@
             })
             .state('process-property.settings', {
                 url: '/settings',
-                template: '<process-property-settings></process-property-settings>'
+                template: '<property-settings></property-settings>'
             });   
     }]);
 }());
