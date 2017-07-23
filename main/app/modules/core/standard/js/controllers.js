@@ -1,68 +1,6 @@
 (function(){
     angular.module('costAnswer.core.standard.controllers',[]);
     angular.module('costAnswer.core.standard.controllers')
-    .controller('standardController', ['$scope', 'standardService', '$localStorage', 'DataModel', '$state', function($scope, standardService, $localStorage, DataModel, $state){
-        function init() {
-            $scope.nameProperty = "name";
-            $scope.productsList = [];
-            if($localStorage.uuid) {
-                standardService.productsList($localStorage.uuid).then(function(response){
-                    $scope.productsList = response.data;
-                });
-            }
-        }
-        init();
-        $scope.$on('PRODUCT_CREATED', function(event, data) {
-            $scope.productsList.push(data);
-            event.stopPropagation();
-        });
-        $scope.$on('PRODUCT_UPDATED', function(event, data) {
-            
-            $scope.productsList.forEach(function(product,index,list){
-                if(product.id == data.id) {
-                    list[index].name = data.name;
-                }
-            });
-            event.stopPropagation();
-        });
-        $scope.onDelete = function(item, callback) {
-            DataModel.Product.remove({id: item.id})
-                .$promise
-                    .then(function(response){
-                        callback();
-                        $state.go('standard.start', undefined, {
-                            reload: true
-                        });
-                    })
-                    .catch(function(error){
-                        callback(error);
-                    });
-               //mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-               //    $scope.instantReport = response;
-               //});
-        }
-            
-            
-            
-            /*ngDialog.openConfirm({
-                        template: 'app/modules/core/standard/views/dialogs/add-product.html',
-                        className: 'ngdialog-theme-plain',
-                        closeByDocument: false,
-                        closeByEscape: false,
-                        showClose: true,
-                        scope: $scope
-            })
-            .then(
-                function(value) {
-                    console.log(value);
-                    $scope.itemsList.push(value);
-                    resetForm();
-                },
-                function(value){
-                    console.log(value);
-                    resetForm();
-                });*/
-    }])
     .controller('standardProductController', ['$scope', function($scope){
         console.log('Standard Costing Product Home');
     }])

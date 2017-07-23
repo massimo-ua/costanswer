@@ -6,8 +6,7 @@
                 url: '/standard',
                 redirectTo: 'standard.start',
                 parent: "projectDataInput",
-                controller: 'standardController',
-                templateUrl: 'app/modules/core/standard/views/home.html'
+                template: '<ca-standard-home></ca-standard-home>'
             })
             .state('standard.start', {
                 url: '/start',

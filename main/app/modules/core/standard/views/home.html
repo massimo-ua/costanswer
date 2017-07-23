@@ -1,13 +1,4 @@
-<div class="row m-t-10px">
-    <div ng-cloak ng-show="productsList.length > 0" class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left p-l-0px">
-        <button class="btn btn-costanswer btn-square btn-lg" aria-label="Left Align" ui-sref="standard.newProduct" title="Add product or service">
-            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-        </button>
-    </div>
-    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 text-left p-l-0px">
-        <div ca-product-menu name-property="nameProperty" display-block="5" items-list="productsList" on-delete="onDelete"></div>
-    </div>
-</div>
+<ca-products-menu items="$ctrl.products" config="$ctrl.config" on-delete="$ctrl.onDelete"></ca-products-menu>
 <div class="row moh-data-input ui-view-container">
     <div ui-view></div>
 </div>
