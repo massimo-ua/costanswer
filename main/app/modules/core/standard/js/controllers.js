@@ -17,9 +17,10 @@
             event.stopPropagation();
         });
         $scope.$on('PRODUCT_UPDATED', function(event, data) {
-            $scope.productsList.forEach(function(product){
+            
+            $scope.productsList.forEach(function(product,index,list){
                 if(product.id == data.id) {
-                    product = data;
+                    list[index].name = data.name;
                 }
             });
             event.stopPropagation();
