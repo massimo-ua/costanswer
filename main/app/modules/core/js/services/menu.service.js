@@ -20,6 +20,7 @@
                     {"id": 12, "name": "Report", "sref": "property.report", "iconClass": "ion-clipboard", "disabled": false}
                 ],
             'process': [
+                    {"id": 0, "name": "Processes", "sref": "process-property.processes", "iconClass": "ion-loop", "disabled": false},
                     {"id": 1, "name": "Product/Service settings", "sref": "process-property.settings", "iconClass": "ion-settings", "disabled": false},
                     {"id": 2, "name": "Inventory", "sref": "process-property.inventory", "iconClass": "ion-ios-home", "disabled": false},
                     {"id": 3, "name": "Sales plan", "sref": "process-property.sp", "iconClass": "ion-connection-bars", "disabled": false},

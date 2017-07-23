@@ -37,6 +37,10 @@
             .state('process-property.settings', {
                 url: '/settings',
                 template: '<property-settings></property-settings>'
+            })
+            .state('process-property.processes', {
+                url: '/processes',
+                template: '<h1>Processes</h1>'
             });   
     }]);
 }());
