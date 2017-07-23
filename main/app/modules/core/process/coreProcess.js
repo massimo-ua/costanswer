@@ -32,8 +32,7 @@
             })
             .state('process-property.inventory', {
                 url: '/inventory',
-                //template: '<property-inventory></property-inventory>'
-                template: '<h1>property-inventory</h1>'
+                template: '<ca-process-product-inventory></ca-process-product-inventory>'
             })
             .state('process-property.settings', {
                 url: '/settings',
