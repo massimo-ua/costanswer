@@ -41,6 +41,18 @@
             .state('process-property.processes', {
                 url: '/processes',
                 template: '<h1>Processes</h1>'
+            })
+            .state('process-property.sp', {
+                url: '/sales-plan',
+                template: '<h1>Process Product Sales Plan</h1>'
+            })
+            .state('process-property.mu', {
+                url: '/markup',
+                template: '<h1>Process Product Markup</h1>'
+            })
+            .state('process-property.report', {
+                url: '/report',
+                template: '<h1>Process Product Report</h1>'
             });   
     }]);
 }());
