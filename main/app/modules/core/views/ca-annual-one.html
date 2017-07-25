@@ -8,12 +8,12 @@
             <table class="table table-condensed">
             <thead>
                 <tr>
-                    <th class="text-center" ng-repeat="month in $ctrl.monthes">{{ $ctrl.month.short }}</th>
+                    <th class="text-center" ng-repeat="month in $ctrl.config.monthes">{{ month.short }}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                <td ng-repeat="month in $ctrl.monthes"><input name="goods" ng-class="{'has-error': itemForm.goods.$dirty && itemForm.goods[$index].$invalid}" type="number" ng-required="true" ng-model="$ctrl.item.amount[$index].value" min="{{ $ctrl.config.min }}" class="form-control costanswer" placeholder="{{ $ctrl.config.namePlaceholder }}" /></td>
+                <td ng-repeat="month in $ctrl.config.monthes"><input name="goods" ng-class="{'has-error': itemForm.goods.$dirty && itemForm.goods[$index].$invalid}" type="number" ng-required="true" ng-model="$ctrl.item.amount[$index].value" min="{{ $ctrl.config.min }}" class="form-control costanswer" placeholder="{{ $ctrl.config.namePlaceholder }}" /></td>
                 </tr>
             </tbody>
             </table>

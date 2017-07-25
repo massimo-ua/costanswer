@@ -27,7 +27,7 @@
             if($localStorage.uuid !== undefined) {
                 ProjectDataService.list()
                     .then(function(response){
-                        vm.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        vm.config.monthes = monthService.AbsoluteMonthes(response.begin_month);
                         vm.begin_month = response.begin_month;
                 });
             }
