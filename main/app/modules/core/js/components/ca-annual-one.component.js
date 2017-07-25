@@ -3,7 +3,9 @@
     angular.module('costAnswer.core.components')
         .component('caAnnualOne', {
             bindings: {
-                nextSref: '@'
+                item: '<',
+                config: '<',
+                onSave: '&'
             },
             templateUrl: 'app/modules/core/views/ca-annual-one.html',
             controller: caAnnualOneController
