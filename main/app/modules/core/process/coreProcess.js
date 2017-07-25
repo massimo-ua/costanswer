@@ -44,7 +44,7 @@
             })
             .state('process-property.sp', {
                 url: '/sales-plan',
-                template: '<h1>Process Product Sales Plan</h1>'
+                template: '<ca-process-product-sales-plan></ca-process-product-sales-plan>'
             })
             .state('process-property.mu', {
                 url: '/markup',
