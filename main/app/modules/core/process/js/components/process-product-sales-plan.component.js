@@ -6,7 +6,7 @@
             templateUrl: 'app/modules/core/process/views/sales-plan.html',
             controller: caProcessProductSalesPlanController
         });
-    function caProcessProductSalesPlanController($log, $localStorage, DataModel, ProjectDataService, monthService, standardService, toastr) {
+    function caProcessProductSalesPlanController($log, $localStorage, DataModel, ProjectDataService, monthService, standardService, toastr, $stateParams) {
         var vm = this;
         vm.$onInit = function() {
             vm.items = {};
@@ -91,5 +91,5 @@
                     });
         };
     }
-    caProcessProductSalesPlanController.$inject = ['$log','$localStorage','DataModel','ProjectDataService','monthService','standardService','toastr'];
+    caProcessProductSalesPlanController.$inject = ['$log','$localStorage','DataModel','ProjectDataService','monthService','standardService','toastr', '$stateParams'];
 }());
