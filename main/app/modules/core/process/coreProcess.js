@@ -48,7 +48,7 @@
             })
             .state('process-property.mu', {
                 url: '/markup',
-                template: '<h1>Process Product Markup</h1>'
+                template: '<ca-process-product-markup></ca-process-product-markup>'
             })
             .state('process-property.report', {
                 url: '/report',
