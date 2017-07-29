@@ -28,7 +28,7 @@ function caProcessProductMarkup($localStorage, $stateParams, DataModel, monthSer
 							.$promise
 									.then(function(response){
 											vm.project = response;
-											vm.config.monthes = monthService.AbsoluteMonthes(response.begin_month);
+											vm.controls.monthes = monthService.AbsoluteMonthes(response.begin_month);
 									});
 			}
 			if($stateParams.id !== undefined) {
