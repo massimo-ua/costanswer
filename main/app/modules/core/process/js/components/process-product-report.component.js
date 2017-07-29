@@ -42,7 +42,7 @@
                           vm.reportHeader[1][1] = {name: "Meas. Unit", value: response.measurement_unit};
                           vm.reportHeader[2][1] = {name: "Division", value: response.division};
                           vm.reportHeader[3][1] = {name: "Order #", value: response.order_number};
-                          vm.reportHeader[4][1] = {name: "Standard quantity per", value: standardService.quantityCalculationMethods(parseInt(response.quantity_calculation_method_id)).shortName };
+                          vm.reportHeader[4][1] = {name: "Standard quantity per", value: quantityCalculationMethod.get(parseInt(response.quantity_calculation_method_id)).shortName };
                       })
                       .catch(function(error){
                           $log.debug(error);
@@ -67,6 +67,7 @@
       'DataModel',
       'PROJECT_TYPES',
       'CurrencyService',
-      'EXPORT_PREFIX'
+      'EXPORT_PREFIX',
+      'quantityCalculationMethod'
   ];
 }());

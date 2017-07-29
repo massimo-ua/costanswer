@@ -630,9 +630,9 @@
             '$scope', '$localStorage', 'standardService', '$log',
             '$stateParams', 'monthService', 'DataModel', 'PROJECT_TYPES',
             'CurrencyService',
-            'EXPORT_PREFIX',
+            'EXPORT_PREFIX', 'quantityCalculationMethod',
             function($scope, $localStorage, standardService, $log,
-            $stateParams, monthService, DataModel, PROJECT_TYPES, CurrencyService, EXPORT_PREFIX
+            $stateParams, monthService, DataModel, PROJECT_TYPES, CurrencyService, EXPORT_PREFIX, quantityCalculationMethod
             ) {
                 function init() {
                     if($localStorage.uuid !== undefined) {
@@ -659,7 +659,7 @@
                                     $scope.reportHeader[1][1] = {name: "Meas. Unit", value: response.measurement_unit};
                                     $scope.reportHeader[2][1] = {name: "Division", value: response.division};
                                     $scope.reportHeader[3][1] = {name: "Order #", value: response.order_number};
-                                    $scope.reportHeader[4][1] = {name: "Standard quantity per", value: standardService.quantityCalculationMethods(parseInt(response.quantity_calculation_method_id)).shortName };
+                                    $scope.reportHeader[4][1] = {name: "Standard quantity per", value: quantityCalculationMethod.get(parseInt(response.quantity_calculation_method_id)).shortName };
                                 })
                                 .catch(function(error){
                                     $log.debug(error);

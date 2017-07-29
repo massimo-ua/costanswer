@@ -10,6 +10,7 @@
                 };
                 return $http(config);
             },
+            /*
             quantityCalculationMethods: function(id){
                 var methods = [
                     { "id": 1, "name": "Standard quantity per month", shortName: "Month" },
@@ -23,6 +24,7 @@
                 }
                 return [];
             },
+            */
             isBatchMode: function(mode) {
                 return parseInt(mode) == 2;
             },
