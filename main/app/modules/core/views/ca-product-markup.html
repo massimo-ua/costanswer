@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <tr>
-                <td ng-repeat="i in []|range:12:1"><input name="a" ng-class="{'has-error': itemForm.a.$dirty && itemForm.a.$invalid}" type="number" ng-required="true" ng-model="$ctrl.form.mark_up_rate[i].value" min="0" max="100" class="form-control costanswer text-center" placeholder="{{ $ctrl.config.aPlaceholder }}" /></td>
+                <td ng-repeat="i in []|range:12:1"><input name="a" ng-class="{'has-error': itemForm.a.$dirty && itemForm.a.$invalid}" type="number" ng-required="true" ng-model="$ctrl.item.mark_up_rate[i].value" min="0" max="100" class="form-control costanswer text-center" placeholder="{{ $ctrl.config.aPlaceholder }}" /></td>
                 </tr>
             </tbody>
             </table>
@@ -26,16 +26,19 @@
     </div>
     <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
 	<div ng-class="{'has-error': itemForm.b.$dirty && itemForm.b.$invalid}" class="form-group">
-		<input name="b" type="number" min="0" max="100" ng-required="false" ng-model="$ctrl.form.vat_rate" class="form-control costanswer" placeholder="{{ $ctrl.config.bPlaceholder }}" />
+		<input name="b" type="number" min="0" max="100" ng-required="false" ng-model="$ctrl.item.vat_rate" class="form-control costanswer" placeholder="{{ $ctrl.config.bPlaceholder }}" />
 		<div class="help-block error" ng-show="itemForm.b.$dirty && itemForm.b.$error.required">{{ $ctrl.config.bErrorText }}</div>
 	</div>
     </div>
 </div>
       <div class="row">
               <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
-                  <button type="button" ng-disabled="itemForm.$invalid" class="btn btn-costanswer" ng-click="$ctrl.onSave()($ctrl.form)"> {{ $ctrl.config.buttonText }} </button>
+                  <button type="button" ng-disabled="itemForm.$invalid" class="btn btn-costanswer" ng-click="$ctrl.onSave()($ctrl.item)"> {{ $ctrl.config.buttonText }} </button>
               </div>
       </div>
         </fieldset>
     </ng-form>
+</div>
+<div>
+{{ $ctrl }}
 </div>
