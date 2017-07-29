@@ -52,7 +52,7 @@
             })
             .state('process-property.report', {
                 url: '/report',
-                template: '<h1>Process Product Report</h1>'
-            });   
+                template: '<ca-process-product-report></ca-process-product-report>'
+            });
     }]);
 }());
