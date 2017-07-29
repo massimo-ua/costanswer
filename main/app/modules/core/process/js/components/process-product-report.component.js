@@ -14,7 +14,8 @@
       DataModel,
       PROJECT_TYPES,
       CurrencyService,
-      EXPORT_PREFIX
+      EXPORT_PREFIX,
+      quantityCalculationMethod
     ) {
         var vm = this;
         vm.$onInit = function() {
