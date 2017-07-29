@@ -1,7 +1,7 @@
 (function(){
 	'use strict';
 	angular.module('costAnswer.core.process.components')
-		.componet('caProcessProductMarkup', {
+		.component('caProcessProductMarkup', {
 			templateUrl: 'app/modules/core/process/views/product-markup.html',
 			controller: caProcessProductMarkup
 });
