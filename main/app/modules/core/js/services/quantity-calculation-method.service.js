@@ -21,11 +21,3 @@
     }
     quantityCalculationMethod.$inject = ['$log'];
 })();
-
-
-
-
-
-quantityCalculationMethod: function(id){
-
-},
