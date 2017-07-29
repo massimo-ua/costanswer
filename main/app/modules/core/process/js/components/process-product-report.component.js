@@ -2,7 +2,7 @@
     'use strict';
     angular.module('costAnswer.core.process.components')
         .component('caProcessProductReport', {
-            templateUrl: 'app/modules/core/process/views/report.html',
+            templateUrl: 'app/modules/core/process/views/product-report.html',
             controller: caProcessProductReportController
         });
     function caProcessProductReportController(
