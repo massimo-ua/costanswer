@@ -11,7 +11,7 @@
                 };
                 return $http(config);
         };
-        factory.getTotalProductReport: function(id){
+        factory.getTotalProductReport = function(id){
                     var config = {
                         method: 'GET',
                         url: API_PREFIX + '/report/product/'+id+'/total/'
