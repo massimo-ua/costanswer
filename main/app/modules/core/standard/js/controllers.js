@@ -678,11 +678,5 @@
                     }
                 };
                 init();
-                $scope.getDownloadLink = function(type) {
-                    if($localStorage.uuid) {
-                        return EXPORT_PREFIX + '/product/' + $stateParams.id + '/' + type;
-                    }
-                    return;
-                }
             }]);
 }());

@@ -71,13 +71,13 @@
                             scope.controls.formDisabled = false;
                         });
                     }
-                    
+
                     scope.range = function(start,total) {
                         if(scope.itemsList == undefined || scope.itemsList.length == 0) return;
                         var result = [];
                         var i = 1;
                         start = start > 0 ? start : 1;
-                        var end = (scope.itemsList.length >= (start + total-1)) ? start + total - 1 : scope.itemsList.length; 
+                        var end = (scope.itemsList.length >= (start + total-1)) ? start + total - 1 : scope.itemsList.length;
                         for(i=start;i<=end;i++) {
                             result.push(i);
                         }
@@ -156,7 +156,7 @@
                             var result = [];
                             var i = 1;
                             start = start > 0 ? start : 1;
-                            var end = (scope.itemsList.length >= (start + total-1)) ? start + total - 1 : scope.itemsList.length; 
+                            var end = (scope.itemsList.length >= (start + total-1)) ? start + total - 1 : scope.itemsList.length;
                             for(i=start;i<=end;i++) {
                                 result.push(i);
                             }
