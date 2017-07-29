@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create();
 
     //script paths
-    var jsFiles = 'main/app/js/services/currency.service.js',
+    var jsFiles = 'main/app/js/services/*.js',
         jsDest = 'main/app/dist/js';
 
     gulp.task('scripts', function() {
