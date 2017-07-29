@@ -495,7 +495,7 @@
                         $scope.form.hourly_rate = parseInt(response[0].hourly_rate) / 100;
                     })
                     .catch(function(){
-                        $scope.id = undefined;            
+                        $scope.id = undefined;
                     });
             if($localStorage.uuid !== undefined) {
                 ProjectDataService.list()
@@ -668,7 +668,7 @@
                     }
                     $scope.product_id = $stateParams.id;
                     if($scope.product_id) {
-                        standardService.getTotalProductReport($scope.product_id)
+                        entityService.getTotalProductReport($scope.product_id)
                         .then(function(response){
                             $scope.report = response.data.reportdata;
                             $scope.reportstyles = response.data.reportstyles;
@@ -682,7 +682,7 @@
                     if($localStorage.uuid) {
                         return EXPORT_PREFIX + '/product/' + $stateParams.id + '/' + type;
                     }
-                    return; 
+                    return;
                 }
             }]);
 }());

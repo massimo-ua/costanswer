@@ -11,6 +11,13 @@
                 };
                 return $http(config);
         };
+        factory.getTotalProductReport: function(id){
+                    var config = {
+                        method: 'GET',
+                        url: API_PREFIX + '/report/product/'+id+'/total/'
+                    }
+                    return $http(config);
+        };
         return factory;
     }
     entityService.$inject = ['$log','API_PREFIX','$http'];
