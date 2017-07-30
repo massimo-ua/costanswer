@@ -40,7 +40,7 @@
             })
             .state('process-property.processes', {
                 url: '/processes',
-                template: '<div ui-view="processes" class="container fluid"></div>'
+                template: '<div ui-view></div>'
             })
             .state('process-property.sp', {
                 url: '/sales-plan',
@@ -57,11 +57,7 @@
             .state('process-product-processes', {
                 url: '/process',
                 parent: "process-property.processes",
-                views: {
-                    "processes": {
-                      template: '<ca-process-product-report></ca-process-product-report>'
-                    }
-                }
+                template: '<ca-process-product-report></ca-process-product-report>'
             });
     }]);
 }());
