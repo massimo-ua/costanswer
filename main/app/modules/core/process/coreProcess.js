@@ -56,7 +56,6 @@
             })
             .state('process-product-processes', {
                 url: '/process',
-                parent: "process-property.processes",
                 views: {
                   "processes": {
                     template: "<h1>Inside Processes</h1>"
