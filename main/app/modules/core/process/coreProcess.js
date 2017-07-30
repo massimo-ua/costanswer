@@ -53,6 +53,15 @@
             .state('process-property.report', {
                 url: '/report',
                 template: '<ca-process-product-report></ca-process-product-report>'
+            })
+            .state('process-product-process', {
+                url: '/process',
+                views: {
+                    "process-product": {
+                        //template: '<ca-process-product-process></ca-process-product-process>'
+                        template: '<h1>Process Product Processes Home</h1>'
+                    }
+                }
             });
     }]);
 }());
