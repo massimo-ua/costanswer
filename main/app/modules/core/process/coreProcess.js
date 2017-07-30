@@ -54,10 +54,10 @@
                 url: '/report',
                 template: '<ca-process-product-report></ca-process-product-report>'
             })
-            .state('process-component', {
-                url: '/process-component',
+            .state('product-process', {
+                url: '/',
                 parent: 'process-property.processes',
-                template: "<h1>AAAAAAAAAAAA</h1>"
+                template: "<h1>Home</h1>"
                 //template: '<ca-process-product-report></ca-process-product-report>'
             });
     }]);
