@@ -40,7 +40,7 @@
             })
             .state('process-property.processes', {
                 url: '/processes',
-                template: '<div ui-view></div>'
+                template: '<div ui-view>AAAAAAAAAAAA</div>'
             })
             .state('process-property.sp', {
                 url: '/sales-plan',
@@ -54,7 +54,7 @@
                 url: '/report',
                 template: '<ca-process-product-report></ca-process-product-report>'
             })
-            .state('process-product-processes', {
+            .state('process-components', {
                 url: '/components',
                 parent: 'process-property.processes',
                 template: "<h1>AAAAAAAAAAAA</h1>"
