@@ -27,7 +27,7 @@
             .state('process-property', {
                 parent: "process.singleProduct",
                 redirectTo: 'process-property.inventory',
-                url: "/property",
+                url: '/property',
                 template: '<ca-property-home></ca-property-home>'
             })
             .state('process-property.inventory', {
