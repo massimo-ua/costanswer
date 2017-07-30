@@ -58,6 +58,7 @@
                 url: '/process',
                 views: {
                   "processes": {
+                    parent: 'process-property.processes',
                     template: "<h1>AAAAAAAAAAAA</h1>"
                   }
                 }
