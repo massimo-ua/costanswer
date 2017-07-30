@@ -27,37 +27,42 @@
             .state('process-property', {
                 parent: "process.singleProduct",
                 redirectTo: 'process-property.inventory',
-                url: "",
+                url: "/property",
                 template: '<ca-property-home></ca-property-home>'
             })
             .state('process-property.inventory', {
-                url: 'inventory',
+                url: '/inventory',
                 template: '<ca-process-product-inventory></ca-process-product-inventory>'
             })
             .state('process-property.settings', {
-                url: 'settings',
+                url: '/settings',
                 template: '<property-settings></property-settings>'
             })
             .state('process-property.processes', {
-                url: 'processes',
-                template: '<div ui-view></div>'
+                url: '/processes',
+                template: '<div ui-view="processes" class="container fluid"></div>'
             })
             .state('process-property.sp', {
-                url: 'sales-plan',
+                url: '/sales-plan',
                 template: '<ca-process-product-sales-plan></ca-process-product-sales-plan>'
             })
             .state('process-property.mu', {
-                url: 'markup',
+                url: '/markup',
                 template: '<ca-process-product-markup></ca-process-product-markup>'
             })
             .state('process-property.report', {
-                url: 'report',
+                url: '/report',
                 template: '<ca-process-product-report></ca-process-product-report>'
             })
-            .state('process-property.processes.process', {
-                url: '/',
+            .state('process-product-processes', {
+                url: '/process',
                 parent: "process-property.processes",
-                template: '<ca-process-product-report></ca-process-product-report>'
+                views: {
+                  "processes": {
+                    template: "<h1>Inside Processes</h1>"
+                  }
+                }
+                //template: '<ca-process-product-report></ca-process-product-report>'
             });
     }]);
 }());
