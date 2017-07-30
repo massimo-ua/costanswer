@@ -54,14 +54,9 @@
                 url: '/report',
                 template: '<ca-process-product-report></ca-process-product-report>'
             })
-            .state('process-product-process', {
-                url: '/process',
-                views: {
-                    "process-product": {
-                        //template: '<ca-process-product-process></ca-process-product-process>'
-                        template: '<h1>Process Product Processes Home</h1>'
-                    }
-                }
+            .state('process-property.processes', {
+                url: '/processes',
+                template: '<div ui-view="processes" class="container fluid"><h1>Processes</h1></div>'
             });
     }]);
 }());
