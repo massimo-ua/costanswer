@@ -56,7 +56,7 @@
             })
             .state('process-property.processes', {
                 url: '/processes',
-                template: '<div ui-view="processes" class="container fluid"><h1>Processes</h1></div>'
+                template: '<div ui-view="processes" class="container fluid"></div>'
             });
     }]);
 }());
