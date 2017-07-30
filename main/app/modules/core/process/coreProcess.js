@@ -56,12 +56,8 @@
             })
             .state('process-product-processes', {
                 url: '/process',
-                views: {
-                  "processes": {
                     parent: 'process-property.processes',
                     template: "<h1>AAAAAAAAAAAA</h1>"
-                  }
-                }
                 //template: '<ca-process-product-report></ca-process-product-report>'
             });
     }]);
