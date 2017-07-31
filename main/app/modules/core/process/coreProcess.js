@@ -55,16 +55,16 @@
                 template: '<ca-process-product-report></ca-process-product-report>'
             })
             .state('product-process', {
-                url: '/',
+                url: '/property',
                 parent: 'process-property.processes',
                 template: '<ca-process-product-process></ca-process-product-process>'
             })
             .state('product-process.new', {
-              url: '/new',
+              url: '/property/new',
               template: '<h1>product-process.new</h1>'
             })
             .state('product-process.process', {
-              url: '/:processId',
+              url: '/property/:processId',
               template: '<h1>product-process.process</h1>'
             });
     }]);
