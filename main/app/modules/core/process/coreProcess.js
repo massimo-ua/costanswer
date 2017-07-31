@@ -55,17 +55,17 @@
                 template: '<ca-process-product-report></ca-process-product-report>'
             })
             .state('product-process', {
-                url: '/p',
+                url: '/',
                 parent: 'process-property.processes',
                 template: '<ca-process-product-process></ca-process-product-process>'
             })
-            /*.state('product-process.new', {
-              url: '/p/new',
+            .state('product-process.new', {
+              url: '/new',
               template: '<h1>product-process.new</h1>'
             })
             .state('product-process.process', {
-              url: '/p/:processId',
+              url: '/:processId',
               template: '<h1>product-process.process</h1>'
-            })*/;
+            });
     }]);
 }());
