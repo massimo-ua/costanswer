@@ -1,10 +1,10 @@
 <div class="row m-t-10px">
-    <div ng-cloak ng-show="$ctrl.items.length > 0" class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left p-l-0px">
+    <div ng-cloak class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left p-l-0px">
         <button class="btn btn-costanswer btn-square btn-lg" aria-label="Left Align" ui-sref="{{ $ctrl.config.addItem.sref }}" title="{{$ctrl.config.addItem.text}}">
             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
         </button>
     </div>
-    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 text-left p-l-0px">
+    <div ng-show="$ctrl.items.length > 0" class="col-xs-11 col-sm-11 col-md-11 col-lg-11 text-left p-l-0px">
         <div class="row m-b-10px">
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 <a ng-show="$ctrl.startItem > 1" ng-click="$ctrl.move(-1)" class="glyphicon glyphicon-chevron-left toolset" title="{{$ctrl.config.backward.text}}"></a>
