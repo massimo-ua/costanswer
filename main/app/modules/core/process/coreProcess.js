@@ -57,8 +57,7 @@
             .state('product-process', {
                 url: '/',
                 parent: 'process-property.processes',
-                template: "<h1>Home</h1>"
-                //template: '<ca-process-product-report></ca-process-product-report>'
+                template: '<ca-process-product-process></ca-process-product-process>'
             });
     }]);
 }());
