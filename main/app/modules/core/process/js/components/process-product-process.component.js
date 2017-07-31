@@ -5,14 +5,14 @@
             templateUrl: 'app/modules/core/process/views/product-process.html',
             controller: caProcessProductProcessController
         });
-        var vm = this;
         function caProcessProductProcessController($log, $stateParams, entityService, $scope, $state, DataModel) {
-        vm.$onInit = function() {
-          entityService.getProductProcesses($stateParams.id)
-            .then(function(response){
-                vm.processes = response.data;
-            });
-          vm.config = {
+          var vm = this;
+          vm.$onInit = function() {
+            entityService.getProductProcesses($stateParams.id)
+              .then(function(response){
+                  vm.processes = response.data;
+                });
+              vm.config = {
               items: {
                   displayPropertyName: "name",
                   sref: "product-process.process"
