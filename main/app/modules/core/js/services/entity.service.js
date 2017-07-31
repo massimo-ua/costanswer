@@ -21,7 +21,7 @@
         factory.getProductProcesses = function(productId){
                     var config = {
                         method: 'GET',
-                        url: API_PREFIX + '/product/'+id+'/processes'
+                        url: API_PREFIX + '/product/'+productId+'/processes'
                     };
                     return $http(config);
         };

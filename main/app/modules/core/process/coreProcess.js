@@ -58,6 +58,16 @@
                 url: '/',
                 parent: 'process-property.processes',
                 template: '<ca-process-product-process></ca-process-product-process>'
+            })
+            .state('product-process.new', {
+              url: '/new',
+              parent: 'product-process',
+              template: '<h1>product-process.new</h1>'
+            })
+            .state('product-process.process', {
+              url: '/:processId',
+              parent: 'product-process',
+              template: '<h1>product-process.process</h1>'
             });
     }]);
 }());
