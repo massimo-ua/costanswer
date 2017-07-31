@@ -15,7 +15,8 @@
               vm.config = {
               items: {
                   displayPropertyName: "name",
-                  sref: "product-process.process"
+                  sref: "product-process.process",
+                  srefName: 'processId'
               },
               addItem: {
                   display: true,
