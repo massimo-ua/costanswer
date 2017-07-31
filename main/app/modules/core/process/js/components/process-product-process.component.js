@@ -8,7 +8,7 @@
         var vm = this;
         function caProcessProductProcessController($log, $stateParams, entityService, $scope, $state, DataModel) {
         vm.$onInit = function() {
-          entityService.getProductProcesses($stateParams)
+          entityService.getProductProcesses($stateParams.id)
             .then(function(response){
                 vm.processes = response.data;
             });
