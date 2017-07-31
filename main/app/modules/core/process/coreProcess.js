@@ -55,17 +55,17 @@
                 template: '<ca-process-product-report></ca-process-product-report>'
             })
             .state('product-process', {
-                url: '/',
+                url: '/p',
                 parent: 'process-property.processes',
                 template: '<ca-process-product-process></ca-process-product-process>'
             })
             .state('product-process.new', {
-              url: '/new',
+              url: '/p/new',
               parent: 'product-process',
               template: '<h1>product-process.new</h1>'
             })
             .state('product-process.process', {
-              url: '/:processId',
+              url: '/p/:processId',
               parent: 'product-process',
               template: '<h1>product-process.process</h1>'
             });
