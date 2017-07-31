@@ -15,7 +15,14 @@
                     var config = {
                         method: 'GET',
                         url: API_PREFIX + '/report/product/'+id+'/total/'
-                    }
+                    };
+                    return $http(config);
+        };
+        factory.getProductProcesses = function(productId){
+                    var config = {
+                        method: 'GET',
+                        url: API_PREFIX + '/product/'+id+'/processes'
+                    };
                     return $http(config);
         };
         return factory;

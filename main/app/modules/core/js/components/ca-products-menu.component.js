@@ -5,7 +5,7 @@
             bindings: {
                 items: '<',
                 config: '<',
-                onDelete: '&' 
+                onDelete: '&'
             },
             templateUrl: 'app/modules/core/views/ca-products-menu.html',
             controller: caProductsMenuController
@@ -21,7 +21,7 @@
             var result = [];
             var i = 1;
             start = start > 1 ? start : 1;
-            var end = (vm.items.length >= (start + total-1)) ? start + total - 1 : vm.items.length; 
+            var end = (vm.items.length >= (start + total-1)) ? start + total - 1 : vm.items.length;
             for(i=start;i<=end;i++) {
                 result.push(i);
             }
