@@ -60,11 +60,11 @@
                 template: '<ca-process-product-process></ca-process-product-process>'
             })
             .state('product-process.new', {
-              url: '/property/new',
+              url: '/new',
               template: '<h1>product-process.new</h1>'
             })
             .state('product-process.process', {
-              url: '/property/:processId',
+              url: '/:processId',
               template: '<h1>product-process.process</h1>'
             });
     }]);
