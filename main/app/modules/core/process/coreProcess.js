@@ -55,7 +55,7 @@
                 template: '<ca-process-product-report></ca-process-product-report>'
             })
             .state('product-process', {
-                url: '',
+                url: '/p',
                 parent: 'process-property.processes',
                 template: '<ca-process-product-process></ca-process-product-process>'
             })
