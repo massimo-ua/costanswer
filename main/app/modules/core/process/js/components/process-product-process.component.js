@@ -62,5 +62,5 @@
                     });
         };
     }
-    caProcessProductProcessController.$inject = ['$log', ' $stateParams', 'entityService', '$scope', '$state', 'DataModel'];
+    caProcessProductProcessController.$inject = ['$log', '$stateParams', 'entityService', '$scope', '$state', 'DataModel'];
 }());

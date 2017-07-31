@@ -43,7 +43,7 @@ function caProcessProductMarkup($localStorage, $stateParams, DataModel, monthSer
 									});
 			}
 			refreshReport();
-	}
+	};
 	function refreshReport() {
 			if($stateParams.id) {
 					standardService.getInstantReport($stateParams.id, vm.reportId, function(response){
@@ -66,7 +66,7 @@ function caProcessProductMarkup($localStorage, $stateParams, DataModel, monthSer
 									vm.controls.buttonText = vm.updateMode ? "Update" : "Save";
 									vm.controls.formDisabled = false;
 							});
-	}
+	};
 }
 caProcessProductMarkup.$inject = ['$localStorage', '$stateParams', 'DataModel', 'monthService', 'standardService', '$log'];
 })();
