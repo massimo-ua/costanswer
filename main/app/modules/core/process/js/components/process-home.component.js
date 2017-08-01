@@ -19,6 +19,9 @@
             vm.config = {
                 items: {
                     displayPropertyName: "name",
+                    srefParamsGenerator: function(id) {
+                        return {id: id}
+                    },
                     sref: "process.singleProduct"
                 },
                 addItem: {

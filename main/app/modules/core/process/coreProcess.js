@@ -8,7 +8,7 @@
             .state('process', {
                 url: '/process',
                 redirectTo: 'process.start',
-                parent: "projectDataInput",
+                parent: 'projectDataInput',
                 template: '<ca-process-home></ca-process-home>'
             })
             .state('process.start', {
