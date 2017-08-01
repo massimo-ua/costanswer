@@ -19,8 +19,9 @@
             vm.config = {
                 items: {
                     displayPropertyName: "name",
-                    sref: function(id) {
-                       return $state.href('process.singleProduct', {'id': id});
+                    sref: 'process.singleProduct',
+                    params: function(id) {
+                        return {'id': id};
                     }
                 },
                 addItem: {
