@@ -49,7 +49,7 @@
         });
         $scope.$on('PRODUCT_UPDATED', function(event, data) {
             vm.products.forEach(function(product,index,list){
-                if(product.id == data.id) {
+                if(product.id === data.id) {
                     list[index].name = data.name;
                 }
             });

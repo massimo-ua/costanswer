@@ -40,7 +40,8 @@
             })
             .state('process-property.processes', {
                 url: '/processes',
-                template: '<div ui-view></div>'
+                redirectTo: 'product-process.home',
+                template: '<ca-product-processes></ca-product-processes>'
             })
             .state('process-property.sp', {
                 url: '/sales-plan',
@@ -58,6 +59,10 @@
                 url: '/property',
                 parent: 'process-property.processes',
                 template: '<ca-process-product-process></ca-process-product-process>'
+            })
+            .state('product-process.home', {
+                url: '/home',
+                template: '<h1>product-process.home</h1>'
             })
             .state('product-process.new', {
               url: '/new',
