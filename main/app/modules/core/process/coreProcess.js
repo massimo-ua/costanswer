@@ -40,7 +40,7 @@
             })
             .state('process-property.processes', {
                 url: '/processes',
-                redirectTo: 'product-process.home',
+                redirectTo: 'product-process',
                 template: '<ca-process-product-processes></ca-process-product-processes>'
             })
             .state('process-property.sp', {
@@ -55,11 +55,11 @@
                 url: '/report',
                 template: '<ca-process-product-report></ca-process-product-report>'
             })
-            /*tate('product-process', {
+            .state('product-process', {
                 url: '/property',
-
+                redirectTo: 'product-process.home'
                 template: '<ca-process-product-process></ca-process-product-process>'
-            })*/
+            })
             .state('product-process.home', {
                 url: '/home',
                 parent: 'process-property.processes',
