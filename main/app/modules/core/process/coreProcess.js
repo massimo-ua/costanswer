@@ -57,7 +57,7 @@
             })
             .state('product-process', {
                 url: '/property',
-                redirectTo: 'product-process.home'
+                redirectTo: 'product-process.home',
                 template: '<ca-process-product-process></ca-process-product-process>'
             })
             .state('product-process.home', {
