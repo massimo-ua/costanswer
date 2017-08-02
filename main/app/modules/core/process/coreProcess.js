@@ -62,17 +62,14 @@
             })
             .state('product-process.home', {
                 url: '/home',
-                parent: 'process-property.processes',
                 template: '<h1>product-process.home</h1>'
             })
             .state('product-process.new', {
               url: '/new',
-                parent: 'process-property.processes',
                 template: '<h1>product-process.new</h1>'
             })
             .state('product-process.process', {
               url: '/:processId',
-                parent: 'process-property.processes',
               template: '<h1>product-process.process</h1>'
             });
     }]);
