@@ -55,21 +55,24 @@
                 url: '/report',
                 template: '<ca-process-product-report></ca-process-product-report>'
             })
-            .state('product-process', {
+            /*tate('product-process', {
                 url: '/property',
-                parent: 'process-property.processes',
+
                 template: '<ca-process-product-process></ca-process-product-process>'
-            })
+            })*/
             .state('product-process.home', {
                 url: '/home',
+                parent: 'process-property.processes',
                 template: '<h1>product-process.home</h1>'
             })
             .state('product-process.new', {
               url: '/new',
-              template: '<h1>product-process.new</h1>'
+                parent: 'process-property.processes',
+                template: '<h1>product-process.new</h1>'
             })
             .state('product-process.process', {
               url: '/:processId',
+                parent: 'process-property.processes',
               template: '<h1>product-process.process</h1>'
             });
     }]);
