@@ -19,7 +19,10 @@
             vm.config = {
                 items: {
                     displayPropertyName: "name",
-                    sref: "standard.singleProduct"
+                    sref: "standard.singleProduct",
+                    params: function(id) {
+                        return {'id': id};
+                    }
                 },
                 addItem: {
                     display: true,
