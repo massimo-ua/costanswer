@@ -102,14 +102,21 @@
                     replace: true,
                     scope: {
                         tabsList: '=',
-                        initialState: '@'
+                        initialState: '@',
+                        config: '@'
                     },
                     templateUrl: 'app/modules/core/views/directives/ca-footed-tabs.html',
                     link: function(scope, elem, attrs) {
-                        var i;
                         function init() {
-                            for(i=0;i<scope.tabsList.length;i++) {
-                                if(scope.tabsList[i].sref == scope.initialState) {
+                            if(scope.config !== undefined && scope.config.srefParams) {
+                                scope.srefParams = scope.config.srefParams;
+                            } else {
+                                scope.srefParams = function(){
+                                    return {};
+                                };
+                            }
+                            for(var i=0;i<scope.tabsList.length;i++) {
+                                if(scope.tabsList[i].sref === scope.initialState) {
                                     scope.tabText = scope.tabsList[i].name;
                                 }
                             }

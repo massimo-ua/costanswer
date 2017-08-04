@@ -1,6 +1,6 @@
 <div class="row">	
     <ul  class="nav nav-pills costanswer nav-justified custom-not-stacked">
-		<li class="footed" ng-click="$parent.tabText = tab.name" ng-repeat="tab in tabsList track by tab.id" ng-class="{'disabled': tab.disabled}"><a ui-sref="{{ tab.sref }}" eat-click-if="tab.disabled" ui-sref-active="active"><i ng-class="tab.iconClass"></i></a></li>
+		<li class="footed" ng-click="$parent.tabText = tab.name" ng-repeat="tab in tabsList track by tab.id" ng-class="{'disabled': tab.disabled}"><a ui-sref="{{ tab.sref }}(srefParams())" eat-click-if="tab.disabled" ui-sref-active="active"><i ng-class="tab.iconClass"></i></a></li>
 	</ul>
 	<div class="tab-content footed clearfix">
 	    <div class="tab-pane costanswer active">

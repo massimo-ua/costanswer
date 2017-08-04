@@ -72,6 +72,16 @@
             .state('product-process.process', {
               url: '/:processId',
               template: '<ca-process-product-process-container></ca-process-product-process-container>'
+            })
+            .state('product-process-component', {
+                parent: 'product-process.process',
+                redirectTo: 'product-process-component.settings',
+                url: '/c',
+                template: '<div ui-view></div>'
+            })
+            .state('product-process-component.settings', {
+                url: '/settings',
+                template: '<ca-process-product-process-component-settings></ca-process-product-process-component-settings>'
             });
     }]);
 }());

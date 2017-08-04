@@ -9,7 +9,14 @@
         var vm = this;
         vm.tabsList = menuService.properties('process-property');
         vm.initialState = $state.current.name;
-
+        vm.config = {
+            srefParams: function(){
+                return {
+                    id: $stateParams.id,
+                    processId: $stateParams.processId
+                }
+            }
+        };
     }
     caProcessProductProcessContainerController.$inject = ['$log', '$state', '$stateParams', 'menuService'];
 }());
