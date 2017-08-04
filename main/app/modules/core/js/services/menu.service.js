@@ -29,13 +29,13 @@
             ],
             'job-order': [],
             'process-property': [
-                {"id": 1, "name": "Process settings", "sref": "property.settings", "iconClass": "ion-settings", "disabled": false},
-                {"id": 2, "name": "Production plan", "sref": "property.pp", "iconClass": "ion-social-buffer", "disabled": false},
-                {"id": 3, "name": "Direct materials", "sref": "property.dm", "iconClass": "ion-paintbucket", "disabled": false},
-                {"id": 4, "name": "Direct labor", "sref": "property.dl", "iconClass": "ion-ios-people", "disabled": false},
-                {"id": 5, "name": "Variable manufacturing overhead (VMOH)", "sref": "property.vo", "iconClass": "ion-ios-pie", "disabled": false},
-                {"id": 6, "name": "Machine hours", "sref": "property.mh", "iconClass": "ion-ios-cog", "disabled": false},
-                {"id": 7, "name": "Work in process (WIP) ending", "sref": "property.we", "iconClass": "ion-ios-alarm", "disabled": false}
+                {"id": 1, "name": "Process settings", "sref": "product-process-component.settings", "iconClass": "ion-settings", "disabled": false},
+                {"id": 2, "name": "Production plan", "sref": "product-process-component.pp", "iconClass": "ion-social-buffer", "disabled": false},
+                {"id": 3, "name": "Direct materials", "sref": "product-process-component.dm", "iconClass": "ion-paintbucket", "disabled": false},
+                {"id": 4, "name": "Direct labor", "sref": "product-process-component.dl", "iconClass": "ion-ios-people", "disabled": false},
+                {"id": 5, "name": "Variable manufacturing overhead (VMOH)", "sref": "product-process-component.vo", "iconClass": "ion-ios-pie", "disabled": false},
+                {"id": 6, "name": "Machine hours", "sref": "product-process-component.mh", "iconClass": "ion-ios-cog", "disabled": false},
+                {"id": 7, "name": "Work in process (WIP) ending", "sref": "product-process-component.we", "iconClass": "ion-ios-alarm", "disabled": false}
             ]
         };
         factory.properties = function(key) {
