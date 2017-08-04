@@ -71,7 +71,7 @@
             })
             .state('product-process.process', {
               url: '/:processId',
-              template: '<h1>product-process.process</h1>'
+              template: '<ca-process-product-process-container></ca-process-product-process-container>'
             });
     }]);
 }());

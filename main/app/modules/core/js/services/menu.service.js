@@ -27,10 +27,19 @@
                     {"id": 4, "name": "Markup", "sref": "process-property.mu", "iconClass": "ion-pricetags", "disabled": false},
                     {"id": 5, "name": "Report", "sref": "process-property.report", "iconClass": "ion-clipboard", "disabled": false}
             ],
-            'job-order': []
+            'job-order': [],
+            'process-property': [
+                {"id": 1, "name": "Process settings", "sref": "property.settings", "iconClass": "ion-settings", "disabled": false},
+                {"id": 2, "name": "Production plan", "sref": "property.pp", "iconClass": "ion-social-buffer", "disabled": false},
+                {"id": 3, "name": "Direct materials", "sref": "property.dm", "iconClass": "ion-paintbucket", "disabled": false},
+                {"id": 4, "name": "Direct labor", "sref": "property.dl", "iconClass": "ion-ios-people", "disabled": false},
+                {"id": 5, "name": "Variable manufacturing overhead (VMOH)", "sref": "property.vo", "iconClass": "ion-ios-pie", "disabled": false},
+                {"id": 6, "name": "Machine hours", "sref": "property.mh", "iconClass": "ion-ios-cog", "disabled": false},
+                {"id": 7, "name": "Work in process (WIP) ending", "sref": "property.we", "iconClass": "ion-ios-alarm", "disabled": false}
+            ]
         };
-        factory.productProperties = function(costingMethodName) {
-            return Properties[costingMethodName];
+        factory.properties = function(key) {
+            return Properties[key];
         };
         return factory;
     }
