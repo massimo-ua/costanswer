@@ -13,12 +13,14 @@
             }
         };
         function linkFn(scope, element, attrs){
+            element.attr('name',scope.config.formName);
             //main loop over config properties
             scope.config.properties.forEach(function(property,index,properties){
                 var inputBlock = angular.element('<div></div>');
                 var labelBlock = angular.element('<div></div>');
                 inputBlock.attr('class',property.input.wrapperClass);
                 labelBlock.attr('class',property.label.wrapperClass);
+                inputBlock.append('<div ng-class="{\'has-error\': ' + scope.config.formName + '.'+property.attributes.name+'.$dirty && ' + scope.config.formName + '.'+property.attributes.name+'.$invalid}" class="form-group"></div>');
                 var inputElement;
                 switch (property.input.key) {
                     case "input":
@@ -34,6 +36,7 @@
                 }
                 if(property.label.text !== undefined) labelElement.text(property.label.text);
                 inputBlock.append(inputElement);
+                inputBlock.append('<div class="help-block error" ng-show="' + scope.config.formName + '.'+property.attributes.name+'.$dirty && ' + scope.config.formName + '.'+property.attributes.name+'.$error.required">'+property.errorText+'</div>');
                 labelBlock.append(labelElement);
                 element.append(labelBlock);
                 element.append(inputBlock);

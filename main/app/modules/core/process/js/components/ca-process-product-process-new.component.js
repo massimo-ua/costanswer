@@ -10,8 +10,10 @@
         var vm = this;
         vm.$onInit = function() {
             vm.config = {
+                formName: 'settingsForm',
                 properties: [
                     {
+                        errorText: 'Please enter process name',
                         input: {
                             wrapperClass: 'col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
                             key: 'input',
@@ -36,6 +38,7 @@
                         }
                     },
                     {
+                        errorText: 'Please enter department name',
                         input: {
                             wrapperClass: 'col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
                             key: 'input',
