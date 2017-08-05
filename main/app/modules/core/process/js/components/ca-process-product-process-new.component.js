@@ -14,38 +14,47 @@
                     {
                         input: {
                             wrapperClass: 'col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
-                            type: 'text',
                             key: 'input',
-                            name: 'name',
-                            maxLength: 20,
-                            required: true,
-                            class: 'form-control costanswer text-center m-b-10px',
-                            placeholder: 'Name',
-                            model: 'name'
+                            attributes: {
+                                type: 'text',
+                                name: 'name',
+                                maxLength: 20,
+                                required: true,
+                                class: 'form-control costanswer text-center m-b-10px',
+                                placeholder: 'Name',
+                                'ng-model': 'name'
+                            }
+
                         },
                         label: {
                             wrapperClass: 'col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
-                            for: 'name',
-                            class: 'text-center m-b-10px',
+                            attributes: {
+                                for: 'name',
+                                class: 'text-center m-b-10px'
+                            },
                             text: 'Process name:'
                         }
                     },
                     {
                         input: {
                             wrapperClass: 'col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
-                            type: 'text',
                             key: 'input',
-                            name: 'department',
-                            maxLength: 20,
-                            required: true,
-                            class: 'form-control costanswer text-center m-b-10px',
-                            placeholder: 'Department',
-                            model: 'department'
+                            attributes: {
+                                type: 'text',
+                                name: 'department',
+                                maxLength: 20,
+                                required: true,
+                                class: 'form-control costanswer text-center m-b-10px',
+                                placeholder: 'unit',
+                                'ng-model': 'department'
+                            }
                         },
                         label: {
                             wrapperClass: 'col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
-                            for: 'department',
-                            class: 'text-center m-b-10px',
+                            attributes: {
+                                for: 'department',
+                                class: 'text-center m-b-10px'
+                            },
                             text: 'Department:'
                         }
                     }
