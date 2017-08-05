@@ -19,7 +19,7 @@
                             name: 'name',
                             maxLength: 20,
                             required: true,
-                            class: 'form-control costanswer',
+                            class: 'form-control costanswer text-center',
                             placeholder: 'Name',
                             model: 'name'
                         },
@@ -28,6 +28,25 @@
                             for: 'name',
                             class: 'text-center m-b-20px',
                             text: 'Process name:'
+                        }
+                    },
+                    {
+                        input: {
+                            wrapperClass: 'col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
+                            type: 'text',
+                            key: 'input',
+                            name: 'department',
+                            maxLength: 20,
+                            required: true,
+                            class: 'form-control costanswer text-center',
+                            placeholder: 'Department',
+                            model: 'department'
+                        },
+                        label: {
+                            wrapperClass: 'col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
+                            for: 'department',
+                            class: 'text-center m-b-20px',
+                            text: 'Department:'
                         }
                     }
                     ]
