@@ -14,8 +14,8 @@
         };
         function linkFn(scope, element, attrs){
             //main loop over config properties
-            console.log(scope.config);
             scope.config.properties.forEach(function(index,property,properties){
+                console.log(property);
                 var inputBlock = angular.element('<div></div>');
                 var labelBlock = angular.element('<div></div>');
                 inputBlock.attr('class',property.input.wrapperClass);
