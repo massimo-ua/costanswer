@@ -20,7 +20,7 @@
                 var labelBlock = angular.element('<div></div>');
                 inputBlock.attr('class',property.input.wrapperClass);
                 labelBlock.attr('class',property.label.wrapperClass);
-                inputBlock.append('<div ng-class="{\'has-error\': ' + scope.config.formName + '.'+property.input.name+'.$dirty && ' + scope.config.formName + '.'+property.input.name+'.$invalid}" class="form-group"></div>');
+                inputBlock.append('<div ng-class="{\'has-error\': ' + scope.config.formName + '.'+property.input.attributes.name+'.$dirty && ' + scope.config.formName + '.'+property.input.attributes.name+'.$invalid}" class="form-group"></div>');
                 var inputElement;
                 switch (property.input.key) {
                     case "input":
@@ -36,7 +36,7 @@
                 }
                 if(property.label.text !== undefined) labelElement.text(property.label.text);
                 inputBlock.append(inputElement);
-                inputBlock.append('<div class="help-block error" ng-show="' + scope.config.formName + '.'+property.input.name+'.$dirty && ' + scope.config.formName + '.'+property.input.name+'.$error.required">'+property.errorText+'</div>');
+                inputBlock.append('<div class="help-block error" ng-show="' + scope.config.formName + '.'+property.input.attributes.name+'.$dirty && ' + scope.config.formName + '.'+property.input.attributes.name+'.$error.required">'+property.errorText+'</div>');
                 labelBlock.append(labelElement);
                 element.append(labelBlock);
                 element.append(inputBlock);
