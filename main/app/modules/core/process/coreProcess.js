@@ -67,7 +67,7 @@
             })
             .state('product-process.new', {
               url: '/new',
-              template: '<h1>product-process.new</h1>'
+              template: '<ca-process-product-process-new></ca-process-product-process-new>'
             })
             .state('product-process.process', {
               url: '/:processId',
