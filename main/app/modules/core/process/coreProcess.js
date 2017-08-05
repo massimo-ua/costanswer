@@ -63,7 +63,7 @@
             })
             .state('product-process.home', {
                 url: '/home',
-                template: '<h1>product-process.home</h1>'
+                template: '<ca-costing-start next-sref="product-process.new" button-text="Create new process"></ca-costing-start>'
             })
             .state('product-process.new', {
               url: '/new',
