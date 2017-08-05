@@ -3,18 +3,9 @@
     angular.module('costAnswer.core.components')
         .component('caCostingStart', {
             bindings: {
-                nextSref: '<',
-                buttonText: '<?'
+                nextSref: '@',
+                buttonText: '@?'
             },
-            templateUrl: 'app/modules/core/views/ca-costing-start.html',
-            controller: caCostingStartController
+            templateUrl: 'app/modules/core/views/ca-costing-start.html'
         });
-    function caCostingStartController($log) {
-        var vm = this;
-        vm.$onInit = function(){
-            vm.buttonValue = vm.buttonText || 'Create product or service';
-            vm.sref = vm.nextSref;
-        };
-    }
-    caCostingStartController.$inject = ['$log'];
 })();
