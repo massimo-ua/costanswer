@@ -3,8 +3,8 @@
     angular.module('costAnswer.core.components')
         .component('caCostingStart', {
             bindings: {
-                nextSref: '<',
-                buttonText: '<?'
+                nextSref: '@',
+                buttonText: '@?'
             },
             templateUrl: 'app/modules/core/views/ca-costing-start.html',
             controller: caCostingStartController
