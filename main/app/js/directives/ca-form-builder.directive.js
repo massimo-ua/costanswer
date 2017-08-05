@@ -8,7 +8,7 @@
             link: linkFn,
             restrict: 'A',
             scope: {
-                config: '&',
+                config: '=',
                 model: '='
             }
         };
