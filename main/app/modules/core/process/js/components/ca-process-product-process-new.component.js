@@ -19,14 +19,14 @@
                             name: 'name',
                             maxLength: 20,
                             required: true,
-                            class: 'form-control costanswer text-center',
+                            class: 'form-control costanswer text-center m-b-10px',
                             placeholder: 'Name',
                             model: 'name'
                         },
                         label: {
                             wrapperClass: 'col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
                             for: 'name',
-                            class: 'text-center m-b-20px',
+                            class: 'text-center m-b-10px',
                             text: 'Process name:'
                         }
                     },
