@@ -11,6 +11,9 @@
         });
     function caCostingStartController($log) {
         var vm = this;
+        vm.$onInit(function(){
+            vm.buttonText = vm.buttonText || 'Create product or service';
+        });
     }
     caCostingStartController.$inject = ['$log'];
 })();
