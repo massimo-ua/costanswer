@@ -6,11 +6,8 @@
     function caFormBuilder() {
         return {
             link: linkFn,
-            restrict: 'A',
-            scope: {
-                config: '=',
-                model: '='
-            }
+            scope: false,
+            restrict: 'A'
         };
         function linkFn(scope, element, attrs){
             element.attr('name',scope.config.formName);
