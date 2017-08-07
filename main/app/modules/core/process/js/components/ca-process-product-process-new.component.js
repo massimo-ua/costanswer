@@ -31,9 +31,7 @@
                     }
                 }
             ];
-            vm.formOptions = {
-                uniqueFormId: 'settingsForm'
-            };
+            vm.formOptions = {};
             vm.model = {};
             vm.settingsForm = {};
         };
