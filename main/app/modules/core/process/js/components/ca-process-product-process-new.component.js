@@ -36,6 +36,7 @@
         vm.onSave = function() {
             $log.debug('form submitted:', vm.model);
         };
+        vm.process = {};
     }
     caProcessProductProcessNewController.$inject = ['$log'];
 }());
