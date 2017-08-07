@@ -13,6 +13,8 @@
         'ngAnimate',
         'ngDialog',
         'angularUtils.directives.dirPagination',
+        'formly',
+        'formlyBootstrap',
         'costAnswer.services',
         'costAnswer.filters',
         'costAnswer.controllers',
