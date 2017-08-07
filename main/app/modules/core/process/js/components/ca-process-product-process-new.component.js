@@ -34,7 +34,7 @@
             vm.formOptions = {};
         };
         vm.onSave = function() {
-            $log.debug('form submitted:', vm.model);
+           console.log('form submitted:', vm.process, vm);
         };
         vm.process = {};
     }
