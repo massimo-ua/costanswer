@@ -1,5 +1,5 @@
 <ng-form novalidate>
-    <formly-form model="$ctrl.model" fields="$ctrl.settings" form="$ctrl.settingsForm">
+    <formly-form result="$ctrl.model" fields="$ctrl.settings" options="$ctrl.formOptions" ng-submit="$ctrl.onSave()" form="$ctrl.settingsForm">
         <button type="submit" class="btn btn-primary" ng-disabled="$ctrl.settingsForm.$invalid">Save</button>
     </formly-form>
 </ng-form>
