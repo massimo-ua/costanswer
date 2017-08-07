@@ -48,6 +48,7 @@
                 }
             ];
             vm.formOptions = {};
+            vm.buttonText = "Save";
         };
         vm.onSave = function() {
            console.log('form submitted:', vm.process, vm);
