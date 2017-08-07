@@ -11,7 +11,7 @@
         vm.$onInit = function() {
             vm.settings = [
                 {
-                    template: '<div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4"></div></div>'
+                    template: '<div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4"><formly-error-summary></formly-error-summary></div></div>'
                 },
                 {
                   className: 'row',
