@@ -32,7 +32,6 @@
                 }
             ];
             vm.formOptions = {};
-            vm.model = {};
         };
         vm.onSave = function() {
             $log.debug('form submitted:', vm.model);
