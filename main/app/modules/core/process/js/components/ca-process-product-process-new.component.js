@@ -11,7 +11,7 @@
         vm.$onInit = function() {
             vm.settings = [
                 {
-                    template: '<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div></div>'
+                    template: '<div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4"></div></div>'
                 },
                 {
                   className: 'row',
@@ -20,6 +20,9 @@
                           className: 'col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4',
                           key: 'name',
                           type: 'input',
+                          ngModelElAttrs: {
+                              class: 'form-control costanswer'
+                          },
                           templateOptions: {
                               type: 'text',
                               label: 'Name',
@@ -31,6 +34,9 @@
                           className: 'col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4',
                           key: 'department',
                           type: 'input',
+                          ngModelElAttrs: {
+                              class: 'form-control costanswer'
+                          },
                           templateOptions: {
                               type: 'text',
                               label: 'Department',
