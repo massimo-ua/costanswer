@@ -51,7 +51,7 @@
             vm.buttonText = "Save";
         };
         vm.onSave = function() {
-           console.log('form submitted:', vm.process, vm);
+           $log.debug('form submitted:', vm.process, vm);
         };
         vm.process = {};
     }
