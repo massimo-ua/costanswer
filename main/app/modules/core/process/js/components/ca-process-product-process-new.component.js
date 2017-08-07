@@ -11,26 +11,34 @@
         vm.$onInit = function() {
             vm.settings = [
                 {
-                    className: 'col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4',
-                    key: 'name',
-                    type: 'input',
-                    templateOptions: {
-                        type: 'text',
-                        label: 'Name',
-                        placeholder: 'Enter process name',
-                        required: true
-                    }
+                    template: '<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div></div>'
                 },
                 {
-                    className: 'col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4',
-                    key: 'department',
-                    type: 'input',
-                    templateOptions: {
-                        type: 'text',
-                        label: 'Department',
-                        placeholder: 'Enter department name',
-                        required: false
-                    }
+                  className: 'row',
+                  fieldGroup: [
+                      {
+                          className: 'col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4',
+                          key: 'name',
+                          type: 'input',
+                          templateOptions: {
+                              type: 'text',
+                              label: 'Name',
+                              placeholder: 'Enter process name',
+                              required: true
+                          }
+                      },
+                      {
+                          className: 'col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4',
+                          key: 'department',
+                          type: 'input',
+                          templateOptions: {
+                              type: 'text',
+                              label: 'Department',
+                              placeholder: 'Enter department name',
+                              required: false
+                          }
+                      }
+                  ]
                 }
             ];
             vm.formOptions = {};
