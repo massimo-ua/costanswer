@@ -11,6 +11,7 @@
         vm.$onInit = function() {
             vm.settings = [
                 {
+                    className: 'col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4',
                     key: 'name',
                     type: 'input',
                     templateOptions: {
@@ -21,6 +22,7 @@
                     }
                 },
                 {
+                    className: 'col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4',
                     key: 'department',
                     type: 'input',
                     templateOptions: {
