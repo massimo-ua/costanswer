@@ -25,8 +25,8 @@
                           },
                           templateOptions: {
                               type: 'text',
-                              label: 'Name',
-                              placeholder: 'Enter process name',
+                              label: 'Name:',
+                              placeholder: 'Name',
                               required: true
                           }
                       },
@@ -39,8 +39,8 @@
                           },
                           templateOptions: {
                               type: 'text',
-                              label: 'Department',
-                              placeholder: 'Enter department name',
+                              label: 'Department:',
+                              placeholder: 'unit',
                               required: false
                           }
                       }
