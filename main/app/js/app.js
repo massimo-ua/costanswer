@@ -47,7 +47,7 @@
                 $state.go(toState.redirectTo, params);
             }
         });
-        formlyConfigProvider.setWrapper([
+        formlyConfig.setWrapper([
             {
                 template: [
                     '<div class="formly-template-wrapper form-group"',
