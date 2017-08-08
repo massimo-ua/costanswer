@@ -26,7 +26,7 @@
         'costAnswer.about',
         'costAnswer.manual'
     ])
-    .run(['$rootScope', '$state', '$stateParams','authService', 'CurrencyService', function ($rootScope, $state, $stateParams, authService, CurrencyService) {
+    .run(['$rootScope', '$state', '$stateParams','authService', 'CurrencyService', 'formlyConfigProvider', '$templateCache', function($rootScope, $state, $stateParams, authService, CurrencyService, formlyConfigProvider, $templateCache) {
         CurrencyService.list();
         $rootScope.$state = $state;
         authService.setStorageType('localStorage');
@@ -47,6 +47,34 @@
                 $state.go(toState.redirectTo, params);
             }
         });
+        formlyConfigProvider.setWrapper([
+            {
+                template: [
+                    '<div class="formly-template-wrapper form-group"',
+                    'ng-class="{\'has-error\': options.validation.errorExistsAndShouldBeVisible}">',
+                    '<label for="{{::id}}">{{options.templateOptions.required ? \'*\' : \'\'}}{{options.templateOptions.label}}</label>',
+                    '<formly-transclude></formly-transclude>',
+                    '<div class="validation"',
+                    //'ng-if="options.validation.errorExistsAndShouldBeVisible"',
+                    'ng-messages="options.formControl.$error">',
+                    '<div ng-messages-include="validation.html"></div>',
+                    '<div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">',
+                    '{{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}',
+                    '</div>',
+                    '</div>',
+                    '</div>'
+                ].join(' ')
+            }
+        ]);
+        $templateCache.put('validation.html',
+        ['<div ng-message="required">Please fill this out, it is required.</div>'
+        ,'<div ng-message="minlength">Your answer is too short, please add more characters</div>'
+        ,'<div ng-message="maxlength">Your answer is too long, please shorten it.</div>'
+        ,'<div ng-message="email">Please provide a valid Email address</div>'
+        ,'<div ng-message="pattern">Value does not match expected pattern, please try again.</div>'
+        ,'<div ng-message="number">Please only enter a numerical answer</div>'
+        ,'<div ng-message="date">Please enter a valid date</div>'].join('')
+        );
     }]);
 
     /*
