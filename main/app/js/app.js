@@ -47,11 +47,11 @@
                 $state.go(toState.redirectTo, params);
             }
         });
-        formlyConfig.setWrapper([
+        /*formlyConfig.setWrapper([
             {
                 template: [
-                    '<div class="formly-template-wrapper form-group"',
-                    'ng-class="{\'has-error\': options.validation.errorExistsAndShouldBeVisible}">',
+                    '<div class="form-group"',
+                    'ng-class="{\'has-error\': options.formControl.$invalid}">',
                     '<label for="{{::id}}">{{options.templateOptions.required ? \'*\' : \'\'}}{{options.templateOptions.label}}</label>',
                     '<formly-transclude></formly-transclude>',
                     '<div class="validation"',
@@ -74,7 +74,7 @@
         ,'<div ng-message="pattern">Value does not match expected pattern, please try again.</div>'
         ,'<div ng-message="number">Please only enter a numerical answer</div>'
         ,'<div ng-message="date">Please enter a valid date</div>'].join('')
-        );
+        );*/
     }]);
 
     /*
