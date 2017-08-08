@@ -26,7 +26,7 @@
         'costAnswer.about',
         'costAnswer.manual'
     ])
-    .run(['$rootScope', '$state', '$stateParams','authService', 'CurrencyService', 'formlyConfigProvider', '$templateCache', function($rootScope, $state, $stateParams, authService, CurrencyService, formlyConfigProvider, $templateCache) {
+    .run(['$rootScope', '$state', '$stateParams','authService', 'CurrencyService', 'formlyConfig', '$templateCache', function($rootScope, $state, $stateParams, authService, CurrencyService, formlyConfig, $templateCache) {
         CurrencyService.list();
         $rootScope.$state = $state;
         authService.setStorageType('localStorage');
