@@ -55,6 +55,7 @@
            console.log('form submitted:', vm.process, vm);
         };
         vm.process = {};
+        vm.buttonText = 'Save';
     }
     caProcessProductProcessNewController.$inject = ['$log'];
 }());
