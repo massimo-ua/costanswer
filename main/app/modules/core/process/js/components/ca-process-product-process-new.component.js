@@ -45,17 +45,14 @@
                   ]
                 }
             ];
-            vm.formOptions = {
-                formState: {
-                    disabled: true
-                }
-            };
+            vm.formOptions = {};
         };
         vm.onSave = function() {
            console.log('form submitted:', vm.process, vm);
         };
         vm.process = {};
         vm.buttonText = 'Save';
+        vm.formDisabled = false;
     }
     caProcessProductProcessNewController.$inject = ['$log'];
 }());

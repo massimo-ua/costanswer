@@ -71,13 +71,10 @@
                 template:
                     [
                         '<div class="form-group"',
-                        '<div ng-class="{\'has-error\': fc.$invalid}">',
-                        '<fieldset ng-disabled="fc.formState.disabled">',
-                        '<label for="{{::id}}">{{options.templateOptions.required ? \'*\' : \'\'}}{{options.templateOptions.label}}:</label>',
+                        '<div ng-class="{\'has-error\': fc.$dirty && fc.$invalid}">',
+                        '<label for="{{::id}}">{{to.required ? \'*\' : \'\'}}{{to.label}}:</label>',
                         '<formly-transclude></formly-transclude>',
                         '<div class="help-block error" ng-show="options.$dirty && options.$error.length > 0">{{ to.errorText }}</div>',
-                        '</fieldset>',
-                        '<pre>{{ fc }}</pre>',
                         '</div>',
                         '</div>'
                     ].join(' '),
