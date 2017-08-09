@@ -47,6 +47,10 @@
                 $state.go(toState.redirectTo, params);
             }
         });
+        formlyConfig.setType({
+            name: 'input',
+            template: '<input ng-model="model[options.key]" />'
+        });
         formlyConfig.setWrapper([
             {
                 /*template: [
@@ -81,7 +85,8 @@
                         //'</div>',
                         '</div>',
                         '<div><pre>{{ options }}</pre></div>'
-                    ].join(' ')
+                    ].join(' '),
+                types: 'input'
             }
         ]);
         $templateCache.put('validation.html',
