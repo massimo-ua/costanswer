@@ -24,7 +24,8 @@
                               type: 'text',
                               label: 'Name',
                               placeholder: 'Name',
-                              required: true
+                              required: true,
+                              errorText: 'Please, fill in process name'
                           }
                       },
                       {
@@ -44,8 +45,10 @@
                   ]
                 }
             ];
-            vm.formOptions = {};
-            vm.buttonText = "Save";
+            vm.formOptions = {
+                formDisabled: false,
+                buttonText: 'Save'
+            };
         };
         vm.onSave = function() {
            console.log('form submitted:', vm.process, vm);

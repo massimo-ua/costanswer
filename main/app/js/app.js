@@ -70,14 +70,14 @@
                 ].join(' '),*/
                 template:
                     [
-                        '<div class="form-group">',
-                        '<label for="{{::id}}">{{options.templateOptions.required ? \'*\' : \'\'}}{{options.templateOptions.label}}:</label>',
                         '<div ng-class="{\'has-error\': options.$dirty && options.$invalid}" class="form-group">',
+                        '<fieldset ng-disabled="fc.formDisabled">',
+                        '<label for="{{::id}}">{{options.templateOptions.required ? \'*\' : \'\'}}{{options.templateOptions.label}}:</label>',
                         '<formly-transclude></formly-transclude>',
+                        '<div class="help-block error" ng-show="options.$dirty && options.$error.length > 0">{{ to.errorText }}</div>',
                         '</div>',
-                        '<div class="help-block error" ng-show="options.$dirty && options.$error.length > 0">{{ options.errorText }}</div>',
-                        '</div>',
-                        '<div><pre>{{ options }}</pre></div>'
+                        '<div><pre>{{ options }}</pre></div>',
+                        '</fieldset>'
                     ].join(' '),
                 types: 'input'
             }
