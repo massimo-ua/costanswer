@@ -69,7 +69,7 @@
                         '<div class="form-group">',
                         //'ng-class="{\'has-error\': options.formControl.$invalid}">',
                         //'<label for="{{::id}}">{{options.templateOptions.required ? \'*\' : \'\'}}{{options.templateOptions.label}}</label>',
-                        '<label for="{{::id}}">{{options.templateOptions.label}}</label>'
+                        '<label for="{{::id}}">{{options.templateOptions.label}}</label>',
                         '<formly-transclude></formly-transclude>',
                         //'<div class="validation"',
                         //'ng-if="options.validation.errorExistsAndShouldBeVisible"',
