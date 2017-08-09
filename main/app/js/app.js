@@ -14,7 +14,7 @@
         'ngDialog',
         'angularUtils.directives.dirPagination',
         'formly',
-        'formlyBootstrap',
+        //'formlyBootstrap',
         'costAnswer.services',
         'costAnswer.filters',
         'costAnswer.controllers',
@@ -47,9 +47,9 @@
                 $state.go(toState.redirectTo, params);
             }
         });
-        /*formlyConfig.setWrapper([
+        formlyConfig.setWrapper([
             {
-                template: [
+                /*template: [
                     '<div class="form-group"',
                     'ng-class="{\'has-error\': options.formControl.$invalid}">',
                     '<label for="{{::id}}">{{options.templateOptions.required ? \'*\' : \'\'}}{{options.templateOptions.label}}</label>',
@@ -63,7 +63,26 @@
                     '</div>',
                     '</div>',
                     '</div>'
-                ].join(' ')
+                ].join(' '),*/
+                template:
+                    [
+                        '<div class="form-group">',
+                        //'ng-class="{\'has-error\': options.formControl.$invalid}">',
+                        //'<label for="{{::id}}">{{options.templateOptions.required ? \'*\' : \'\'}}{{options.templateOptions.label}}</label>',
+                        '<label for="{{::id}}">{{options.templateOptions.label}}</label>'
+                        '<formly-transclude></formly-transclude>',
+                        //'<div class="validation"',
+                        //'ng-if="options.validation.errorExistsAndShouldBeVisible"',
+                        //'ng-messages="options.formControl.$error">',
+                        //'<div ng-messages-include="validation.html"></div>',
+                        //'<div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">',
+                        //'{{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}',
+                        //'</div>',
+                        //'</div>',
+                        '</div>',
+                        '<div><pre>{{ options }}</pre></div>'
+                    ].join(' '),
+                types: 'input'
             }
         ]);
         $templateCache.put('validation.html',
@@ -74,7 +93,7 @@
         ,'<div ng-message="pattern">Value does not match expected pattern, please try again.</div>'
         ,'<div ng-message="number">Please only enter a numerical answer</div>'
         ,'<div ng-message="date">Please enter a valid date</div>'].join('')
-        );*/
+        );
     }]);
 
     /*
