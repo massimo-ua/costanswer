@@ -81,8 +81,7 @@
                         //'</div>',
                         '</div>',
                         '<div><pre>{{ options }}</pre></div>'
-                    ].join(' '),
-                types: 'input'
+                    ].join(' ')
             }
         ]);
         $templateCache.put('validation.html',
