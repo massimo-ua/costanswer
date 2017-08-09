@@ -46,8 +46,9 @@
                 }
             ];
             vm.formOptions = {
-                formDisabled: false,
-                buttonText: 'Save'
+                formState: {
+                    disabled: true
+                }
             };
         };
         vm.onSave = function() {
