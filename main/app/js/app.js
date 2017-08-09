@@ -70,12 +70,13 @@
                 ].join(' '),*/
                 template:
                     [
-                        '<div ng-class="{\'has-error\': options.$dirty && options.$invalid}" class="form-group">',
+                        '<div ng-class="{\'has-error\': showError}" class="form-group">',
+                        '<fieldset ng-disabled="fc.formState.disabled">',
                         '<label for="{{::id}}">{{options.templateOptions.required ? \'*\' : \'\'}}{{options.templateOptions.label}}:</label>',
                         '<formly-transclude></formly-transclude>',
                         '<div class="help-block error" ng-show="options.$dirty && options.$error.length > 0">{{ to.errorText }}</div>',
-                        '</div>',
-                        '<div><pre>{{ options }}</pre></div>'
+                        '</fieldset>',
+                        '</div>'
                     ].join(' '),
                 types: 'input'
             }
