@@ -11,10 +11,8 @@
         vm.$onInit = function() {
             vm.settings = [
                 {
-                  className: 'row',
                   fieldGroup: [
                       {
-                          className: 'col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
                           key: 'name',
                           type: 'input',
                           ngModelElAttrs: {
@@ -29,7 +27,6 @@
                           }
                       },
                       {
-                          className: 'col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center',
                           key: 'department',
                           type: 'input',
                           ngModelElAttrs: {

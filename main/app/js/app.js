@@ -70,12 +70,10 @@
                 ].join(' '),*/
                 template:
                     [
-                        '<div class="form-group"',
-                        '<div class="control-group" ng-class="{\'error\': options.validation.errorExistsAndShouldBeVisible}">',
-                        '<label for="{{::id}}">{{to.required ? \'*\' : \'\'}}{{to.label}}:</label>',
+                        '<div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 form-group text-center" ng-class="{\'has-error\': options.validation.errorExistsAndShouldBeVisible}">',
+                        '<label class="control-label" for="{{::id}}">{{to.required ? \'*\' : \'\'}}{{to.label}}:</label>',
                         '<formly-transclude></formly-transclude>',
                         '<div class="help-block error" ng-show="options.validation.errorExistsAndShouldBeVisible">{{ to.errorText }}</div>',
-                        '</div>',
                         '</div>'
                     ].join(' '),
                 types: 'input'
