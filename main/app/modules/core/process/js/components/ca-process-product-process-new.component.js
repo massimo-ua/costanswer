@@ -53,7 +53,7 @@
             var process = new DataModel.Process();
             process.name = vm.process.name;
             if(vm.process.department !== undefined) process.department = vm.process.department;
-            process.save()
+            process.$save()
                 .$promise
                 .then(function(response){
                     $scope.$emit('PROCESS_CREATED', response);
