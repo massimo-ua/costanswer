@@ -75,6 +75,7 @@
                         '<label for="{{::id}}">{{to.required ? \'*\' : \'\'}}{{to.label}}:</label>',
                         '<formly-transclude></formly-transclude>',
                         '<div class="help-block error" ng-show="options.validation.errorExistsAndShouldBeVisible">{{ to.errorText }}</div>',
+                        '<div class="help-block error" ng-show="options.validation.errorExistsAndShouldBeVisible">Error</div>',
                         '</div>',
                         '</div>'
                     ].join(' '),
