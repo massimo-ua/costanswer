@@ -71,7 +71,7 @@
                 template:
                     [
                         '<div class="form-group"',
-                        '<div class="control-group" ng-class="{\'error\': fc.$dirty && fc.$invalid}">',
+                        '<div class="control-group" ng-class="{\'error\': options.validation.errorExistsAndShouldBeVisible}">',
                         '<label for="{{::id}}">{{to.required ? \'*\' : \'\'}}{{to.label}}:</label>',
                         '<formly-transclude></formly-transclude>',
                         '<div class="help-block error" ng-show="options.validation.errorExistsAndShouldBeVisible">{{ to.errorText }}</div>',
