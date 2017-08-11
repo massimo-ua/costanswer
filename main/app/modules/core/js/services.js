@@ -29,6 +29,9 @@
                     url: API_PREFIX+'/projects/:uuid'
                 }
             }),
+            Process: $resource(API_PREFIX+'/processes/:id', { id: '@_id' }, {
+                update: { method: 'PUT' }
+            }),
             Moh: $resource(API_PREFIX+'/moh/:id', { id: '@_id' }, {
                 update: { method: 'PUT' },
                 saveWithUuid: {
