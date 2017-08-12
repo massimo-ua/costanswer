@@ -4,7 +4,7 @@
         .component('caProcessProductProcessSettings', {
             restrict: 'E',
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-settings.html',
-            controller: caProcessProductProcessNewController
+            controller: caProcessProductProcessSettingsController
         });
     function caProcessProductProcessSettingsController($log, DataModel, $scope, $stateParams) {
         var vm = this;
