@@ -6,7 +6,7 @@
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-new.html',
             controller: caProcessProductProcessNewController
         });
-    function caProcessProductProcessNewController($log, DataModel, $scope) {
+    function caProcessProductProcessNewController($log, DataModel, $scope, $stateParams) {
         var vm = this;
         vm.$onInit = function() {
             vm.settings = [
@@ -52,6 +52,7 @@
             vm.buttonText = "Saving...";
             var process = new DataModel.Process();
             process.name = vm.process.name;
+            process.product_id = $stateParams.id;
             if(vm.process.department !== undefined) process.department = vm.process.department;
             process.$save()
                 .then(function(response){
@@ -63,5 +64,5 @@
                 });
         };
     }
-    caProcessProductProcessNewController.$inject = ['$log', 'DataModel', '$scope'];
+    caProcessProductProcessNewController.$inject = ['$log', 'DataModel', '$scope', '$stateParams'];
 }());
