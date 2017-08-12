@@ -14,6 +14,7 @@
             if($stateParams.processId !== undefined) {
                 DataModel.Process
                     .get({id: $stateParams.processId})
+                    .$promise
                         .then(function(response){
                             vm.process = response;
                             vm.buttonText = 'Update';
