@@ -9,6 +9,16 @@
     function caProcessProductProcessNewController($log, DataModel, $scope, $stateParams) {
         var vm = this;
         vm.$onInit = function() {
+            vm.process = {};
+            vm.buttonText = 'Save';
+            if($stateParams.processId !== undefined) {
+                DataModel.Process
+                    .get({id: $stateParams.processId})
+                        .then(function(response){
+                            vm.process = response;
+                            vm.buttonText = 'Update';
+                        });
+            }
             vm.settings = [
                 {
                   fieldGroup: [
@@ -43,25 +53,39 @@
                 }
             ];
             vm.formOptions = {};
-            vm.process = {};
-            vm.buttonText = 'Save';
             vm.formDisabled = false;
         };
         vm.onSave = function() {
             vm.formDisabled = true;
-            vm.buttonText = "Saving...";
-            var process = new DataModel.Process();
-            process.name = vm.process.name;
-            process.product_id = $stateParams.id;
-            if(vm.process.department !== undefined) process.department = vm.process.department;
-            process.$save()
-                .then(function(response){
-                    $scope.$emit('PROCESS_CREATED', response);
-                    vm.buttonText = "Update";
-                })
-                .finally(function(){
-                    vm.formDisabled = false;
-                });
+            if(vm.process.id !== undefined) {
+                vm.buttonText = "Updating...";
+                vm.process.$update()
+                    .then(function(response){
+                        $scope.$emit('PROCESS_UPDATED', response);
+                        vm.buttonText = "Update";
+                    })
+                    .finally(function(){
+                        vm.formDisabled = false;
+                    });
+            }
+            else {
+                vm.buttonText = "Saving...";
+                var process = new DataModel.Process();
+                process.name = vm.process.name;
+                process.product_id = $stateParams.id;
+                if(vm.process.department !== undefined) process.department = vm.process.department;
+                process.$save()
+                    .then(function(response){
+                        $scope.$emit('PROCESS_CREATED', response);
+                        vm.process.id = response.id;
+                        vm.buttonText = "Update";
+                    })
+                    .finally(function(){
+                        vm.formDisabled = false;
+                    });
+            }
+
+
         };
     }
     caProcessProductProcessNewController.$inject = ['$log', 'DataModel', '$scope', '$stateParams'];
