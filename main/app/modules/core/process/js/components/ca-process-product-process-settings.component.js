@@ -1,12 +1,12 @@
 (function(){
     'use strict';
     angular.module('costAnswer.core.process.components')
-        .component('caProcessProductProcessNew', {
+        .component('caProcessProductProcessSettings', {
             restrict: 'E',
-            templateUrl: 'app/modules/core/process/views/ca-process-product-process-new.html',
+            templateUrl: 'app/modules/core/process/views/ca-process-product-process-settings.html',
             controller: caProcessProductProcessNewController
         });
-    function caProcessProductProcessNewController($log, DataModel, $scope, $stateParams) {
+    function caProcessProductProcessSettingsController($log, DataModel, $scope, $stateParams) {
         var vm = this;
         vm.$onInit = function() {
             vm.process = {};
@@ -88,5 +88,5 @@
 
         };
     }
-    caProcessProductProcessNewController.$inject = ['$log', 'DataModel', '$scope', '$stateParams'];
+    caProcessProductProcessSettingsController.$inject = ['$log', 'DataModel', '$scope', '$stateParams'];
 }());

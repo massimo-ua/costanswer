@@ -67,10 +67,11 @@
             })
             .state('product-process.new', {
               url: '/new',
-              template: '<ca-process-product-process-new></ca-process-product-process-new>'
+              template: '<ca-process-product-process-settings></ca-process-product-process-settings>'
             })
             .state('product-process.process', {
               url: '/:processId',
+                redirectTo: 'product-process-component',
               template: '<ca-process-product-process-container></ca-process-product-process-container>'
             })
             .state('product-process-component', {
@@ -81,7 +82,7 @@
             })
             .state('product-process-component.settings', {
                 url: '/settings',
-                template: '<ca-process-product-process-component-settings></ca-process-product-process-component-settings>'
+                template: '<ca-process-product-process-settings></ca-process-product-process-settings>'
             });
     }]);
 }());
