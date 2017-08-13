@@ -60,7 +60,7 @@
             vm.formDisabled = true;
             if(vm.process.id !== undefined) {
                 vm.buttonText = "Updating...";
-                vm.process.$update()
+                vm.process.$update({id: $stateParams.processId})
                     .then(function(response){
                         $scope.$emit('PROCESS_UPDATED', response);
                         vm.buttonText = "Update";
