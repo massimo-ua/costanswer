@@ -23,24 +23,36 @@
                 {
                     fieldGroup: [
                         {
-                            key: 'name',
+                            key: 'beginning_quantity',
                             type: 'input',
                             templateOptions: {
-                                type: 'text',
-                                label: 'Name',
-                                placeholder: 'Name',
+                                type: 'number',
+                                label: 'Work in process (WIP) beginning',
+                                placeholder: 'Units',
                                 required: true,
-                                errorText: 'Please, fill in process name'
+                                errorText: 'Please, fill in WIP beginning quantity'
                             }
                         },
                         {
-                            key: 'department',
+                            key: 'beginning_conversion_costs_complete',
                             type: 'input',
                             templateOptions: {
-                                type: 'text',
-                                label: 'Department',
-                                placeholder: 'unit',
-                                required: false
+                                type: 'number',
+                                label: 'WIP beginning conversion cost completed',
+                                placeholder: '$',
+                                required: true,
+                                errorText: 'Please, fill in WIP beginning conversion cost completed'
+                            }
+                        },
+                        {
+                            key: 'beginning_direct_materials_complete',
+                            type: 'input',
+                            templateOptions: {
+                                type: 'number',
+                                label: 'Cost of WIP beginning direct materials completed',
+                                placeholder: '$',
+                                required: true,
+                                errorText: 'Please, fill in WIP beginning direct materials completed'
                             }
                         }
                     ]
