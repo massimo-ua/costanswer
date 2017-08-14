@@ -83,6 +83,10 @@
             .state('product-process-component.settings', {
                 url: '/settings',
                 template: '<ca-process-product-process-settings></ca-process-product-process-settings>'
+            })
+            .state('product-process-component.wb', {
+                url: '/wip-beginning',
+                template: '<ca-process-product-process-wb></ca-process-product-process-wb>'
             });
     }]);
 }());
