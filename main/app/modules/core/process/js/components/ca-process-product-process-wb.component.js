@@ -30,6 +30,7 @@
                                 label: 'Work in process (WIP) beginning',
                                 placeholder: 'Units',
                                 required: true,
+                                min: 0,
                                 errorText: 'Please, fill in WIP beginning quantity'
                             }
                         },
@@ -41,6 +42,7 @@
                                 label: 'WIP beginning conversion cost completed',
                                 placeholder: '$',
                                 required: true,
+                                min: 0,
                                 errorText: 'Please, fill in WIP beginning conversion cost completed'
                             }
                         },
@@ -52,6 +54,7 @@
                                 label: 'Cost of WIP beginning direct materials completed',
                                 placeholder: '$',
                                 required: true,
+                                min: 0,
                                 errorText: 'Please, fill in WIP beginning direct materials completed'
                             }
                         }
