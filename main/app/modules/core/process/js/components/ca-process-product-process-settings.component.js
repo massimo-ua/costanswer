@@ -26,9 +26,6 @@
                       {
                           key: 'name',
                           type: 'input',
-                          ngModelElAttrs: {
-                              class: 'form-control costanswer'
-                          },
                           templateOptions: {
                               type: 'text',
                               label: 'Name',
@@ -40,9 +37,6 @@
                       {
                           key: 'department',
                           type: 'input',
-                          ngModelElAttrs: {
-                              class: 'form-control costanswer'
-                          },
                           templateOptions: {
                               type: 'text',
                               label: 'Department',

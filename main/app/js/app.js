@@ -26,7 +26,7 @@
         'costAnswer.about',
         'costAnswer.manual'
     ])
-    .run(['$rootScope', '$state', '$stateParams','authService', 'CurrencyService', 'formlyConfig', '$templateCache', function($rootScope, $state, $stateParams, authService, CurrencyService, formlyConfig, $templateCache) {
+    .run(['$rootScope', '$state', '$stateParams','authService', 'CurrencyService', '$templateCache', function($rootScope, $state, $stateParams, authService, CurrencyService, formlyConfig, $templateCache) {
         CurrencyService.list();
         $rootScope.$state = $state;
         authService.setStorageType('localStorage');
@@ -47,47 +47,6 @@
                 $state.go(toState.redirectTo, params);
             }
         });
-        formlyConfig.setType({
-            name: 'input',
-            template: '<input ng-model="model[options.key]" />'
-        });
-        formlyConfig.setWrapper([
-            {
-                /*template: [
-                    '<div class="form-group"',
-                    'ng-class="{\'has-error\': options.formControl.$invalid}">',
-                    '<label for="{{::id}}">{{options.templateOptions.required ? \'*\' : \'\'}}{{options.templateOptions.label}}</label>',
-                    '<formly-transclude></formly-transclude>',
-                    '<div class="validation"',
-                    //'ng-if="options.validation.errorExistsAndShouldBeVisible"',
-                    'ng-messages="options.formControl.$error">',
-                    '<div ng-messages-include="validation.html"></div>',
-                    '<div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">',
-                    '{{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}',
-                    '</div>',
-                    '</div>',
-                    '</div>'
-                ].join(' '),*/
-                template:
-                    [
-                        '<div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 form-group text-center" ng-class="{\'has-error\': options.formControl.$dirty && options.formControl.$invalid}">',
-                        '<label class="control-label" for="{{::id}}">{{to.label}}:</label>',
-                        '<formly-transclude></formly-transclude>',
-                        '<div class="help-block error" ng-show="options.validation.errorExistsAndShouldBeVisible">{{ to.errorText }}</div>',
-                        '</div>'
-                    ].join(' '),
-                types: 'input'
-            }
-        ]);
-        $templateCache.put('validation.html',
-        ['<div ng-message="required">Please fill this out, it is required.</div>'
-        ,'<div ng-message="minlength">Your answer is too short, please add more characters</div>'
-        ,'<div ng-message="maxlength">Your answer is too long, please shorten it.</div>'
-        ,'<div ng-message="email">Please provide a valid Email address</div>'
-        ,'<div ng-message="pattern">Value does not match expected pattern, please try again.</div>'
-        ,'<div ng-message="number">Please only enter a numerical answer</div>'
-        ,'<div ng-message="date">Please enter a valid date</div>'].join('')
-        );
     }]);
 
     /*
