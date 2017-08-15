@@ -30,7 +30,18 @@
                 }
             }),
             Process: $resource(API_PREFIX+'/processes/:id', { id: '@_id' }, {
-                update: { method: 'PUT' }
+                update: { method: 'PUT' },
+                getWip: {
+                    method: 'GET',
+                    isArray: true,
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/processes/:id/wip'
+                },
+                saveWip: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/processes/:id/wip'
+                }
             }),
             Moh: $resource(API_PREFIX+'/moh/:id', { id: '@_id' }, {
                 update: { method: 'PUT' },
@@ -246,7 +257,10 @@
                     method: 'POST',
                     params: { id: '@id' },
                     url: API_PREFIX+'/products/:id/markup'
-                }
+                },
+                Wip: $resource(API_PREFIX+'/wip/:id', { id: '@_id' }, {
+                    update: { method: 'PUT' }
+                })
             })
         };
     }]);
