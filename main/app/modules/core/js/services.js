@@ -256,10 +256,9 @@
                     method: 'POST',
                     params: { id: '@id' },
                     url: API_PREFIX+'/products/:id/markup'
-                },
-                Wip: $resource(API_PREFIX+'/wip/:id', { id: '@_id' }, {
-                    update: { method: 'PUT' }
-                })
+                }),
+            Wip: $resource(API_PREFIX+'/wip/:id', { id: '@_id' }, {
+                update: { method: 'PUT' }
             })
         };
     }]);
