@@ -12,7 +12,8 @@
             vm.buttonText = 'Save';
             if($stateParams.processId !== undefined) {
                 DataModel.Process
-                    .$getWip({id: $stateParams.processId})
+                    .getWip({id: $stateParams.processId})
+                    .$promise
                     .then(function(response){
                         vm.model.id = response.id;
                         vm.model.beginning_quantity = response.beginning_quantity / 100;
