@@ -33,7 +33,6 @@
                 update: { method: 'PUT' },
                 getWip: {
                     method: 'GET',
-                    isArray: true,
                     params: { id: '@id' },
                     url: API_PREFIX+'/processes/:id/wip'
                 },
