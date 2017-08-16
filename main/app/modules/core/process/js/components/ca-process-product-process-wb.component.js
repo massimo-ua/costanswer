@@ -5,17 +5,19 @@
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-wb.html',
             controller: caProcessProductProcessWbController
         });
-    function caProcessProductProcessWbController($log, DataModel, $scope, $stateParams) {
+    function caProcessProductProcessWbController(DataModel, $stateParams) {
         var vm = this;
         vm.$onInit = function() {
             vm.model = {};
             vm.buttonText = 'Save';
             if($stateParams.processId !== undefined) {
                 DataModel.Process
-                    .get({id: $stateParams.processId})
-                    .$promise
+                    .$getWip({id: $stateParams.processId})
                     .then(function(response){
-                        vm.process = response;
+                        vm.model.id = response.id;
+                        vm.model.beginning_quantity = response.beginning_quantity / 100;
+                        vm.model.beginning_conversion_costs_complete = response.beginning_conversion_costs_complete / 100;
+                        vm.model.beginning_direct_materials_complete = response.beginning_direct_materials_complete / 100;
                         vm.buttonText = 'Update';
                     });
             }
@@ -66,11 +68,15 @@
         };
         vm.onSave = function() {
             vm.formDisabled = true;
-            if(vm.process.id !== undefined) {
+            var wip;
+            if(vm.model.id !== undefined) {
                 vm.buttonText = "Updating...";
-                vm.process.$update({id: $stateParams.processId})
+                wip = DataModel.Wip();
+                wip.beginning_quantity = vm.model.beginning_quantity * 100;
+                wip.beginning_conversion_costs_complete = vm.model.beginning_conversion_costs_complete * 100;
+                wip.beginning_direct_materials_complete = vm.model.beginning_direct_materials_complete * 100;
+                wip.$update({id: $stateParams.processId})
                     .then(function(response){
-                        $scope.$emit('PROCESS_UPDATED', response);
                         vm.buttonText = "Update";
                     })
                     .finally(function(){
@@ -79,14 +85,15 @@
             }
             else {
                 vm.buttonText = "Saving...";
-                var process = new DataModel.Process();
-                process.name = vm.process.name;
-                process.product_id = $stateParams.id;
-                if(vm.process.department !== undefined) process.department = vm.process.department;
-                process.$save()
+                wip = new DataModel.Process();
+                wip.year_number = 1;
+                wip.month_number = 1;
+                wip.beginning_quantity = vm.model.beginning_quantity * 100;
+                wip.beginning_conversion_costs_complete = vm.model.beginning_conversion_costs_complete * 100;
+                wip.beginning_direct_materials_complete = vm.model.beginning_direct_materials_complete * 100;
+                wip.$saveWip({ id: $stateParams.processId })
                     .then(function(response){
-                        $scope.$emit('PROCESS_CREATED', response);
-                        vm.process.id = response.id;
+                        vm.model.id = response.id;
                         vm.buttonText = "Update";
                     })
                     .finally(function(){
@@ -95,5 +102,5 @@
             }
         };
     }
-    caProcessProductProcessWbController.$inject = ['$log', 'DataModel', '$scope', '$stateParams'];
+    caProcessProductProcessWbController.$inject = ['DataModel', '$stateParams'];
 }());
