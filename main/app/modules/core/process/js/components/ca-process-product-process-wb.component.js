@@ -76,7 +76,7 @@
                 wip.beginning_quantity = vm.model.beginning_quantity * 100;
                 wip.beginning_conversion_costs_complete = vm.model.beginning_conversion_costs_complete * 100;
                 wip.beginning_direct_materials_complete = vm.model.beginning_direct_materials_complete * 100;
-                wip.$update({ id: model.id })
+                wip.$update({ id: vm.model.id })
                     .then(function(response){
                         vm.buttonText = "Update";
                     })
