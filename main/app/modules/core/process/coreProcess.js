@@ -87,6 +87,10 @@
             .state('product-process-component.wb', {
                 url: '/wip-beginning',
                 template: '<ca-process-product-process-wb></ca-process-product-process-wb>'
+            })
+            .state('product-process-component.pp', {
+                url: '/production-plan',
+                template: '<ca-process-product-process-pp></ca-process-product-process-pp>'
             });
     }]);
 }());
