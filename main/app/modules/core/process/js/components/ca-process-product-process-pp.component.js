@@ -8,13 +8,11 @@
     function caProcessProductProcessPpController(DataModel, $stateParams, ProjectDataService) {
         var vm = this;
         vm.$onInit = function() {
-            if($localStorage.uuid !== undefined) {
-                ProjectDataService.list()
-                    .then(function(response){
-                        vm.monthes = monthService.AbsoluteMonthes(response.begin_month);
-                        vm.begin_month = response.begin_month;
-                    });
-            }
+            ProjectDataService.list()
+                .then(function(response){
+                    vm.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                    vm.begin_month = response.begin_month;
+                });
             vm.model = {};
             vm.buttonText = 'Save';
             if($stateParams.processId !== undefined) {
