@@ -7,7 +7,7 @@
         </thead>
         <tbody>
         <tr>
-            <td ng-repeat="month in monthes"><input name="goods" ng-class="{'has-error': itemForm.goods.$dirty && itemForm.goods[$index].$invalid}" type="number" ng-required="true" ng-model="form.amount[$index].value" min="{{ min($index) }}" class="form-control costanswer" placeholder="{{ controls.namePlaceholder }}" /></td>
+            <td ng-repeat="month in monthes"><input name="goods" ng-class="{'has-error': itemForm.goods.$dirty && itemForm.goods[$index].$invalid}" type="number" ng-required="true" ng-model="model[options.key][$index]" min="{{ min($index) }}" class="form-control costanswer" placeholder="{{ controls.namePlaceholder }}" /></td>
         </tr>
         </tbody>
     </table>

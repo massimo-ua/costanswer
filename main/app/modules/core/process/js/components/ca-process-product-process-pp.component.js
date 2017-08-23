@@ -26,39 +26,25 @@
                 {
                     fieldGroup: [
                         {
-                            key: 'beginning_quantity',
-                            type: 'input',
+                            key: 'goods_started_in_production',
+                            type: 'annualMonthly',
                             templateOptions: {
                                 type: 'number',
-                                label: 'Work in process (WIP) beginning',
+                                label: 'Units started into production',
                                 placeholder: 'Units',
                                 required: true,
-                                min: 0,
-                                errorText: 'Please, fill in WIP beginning quantity'
+                                min: 0
                             }
                         },
                         {
-                            key: 'beginning_conversion_costs_complete',
-                            type: 'input',
+                            key: 'goods_transfered_out',
+                            type: 'annualMonthly',
                             templateOptions: {
                                 type: 'number',
-                                label: 'WIP beginning conversion cost completed',
-                                placeholder: '$',
+                                label: 'Units completed and transferred out to the next process or warehouse',
+                                placeholder: 'Units',
                                 required: true,
-                                min: 0,
-                                errorText: 'Please, fill in WIP beginning conversion cost completed'
-                            }
-                        },
-                        {
-                            key: 'beginning_direct_materials_complete',
-                            type: 'input',
-                            templateOptions: {
-                                type: 'number',
-                                label: 'Cost of WIP beginning direct materials completed',
-                                placeholder: '$',
-                                required: true,
-                                min: 0,
-                                errorText: 'Please, fill in WIP beginning direct materials completed'
+                                min: 0
                             }
                         }
                     ]
