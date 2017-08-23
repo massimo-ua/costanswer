@@ -25,7 +25,7 @@
             },
             {
                 template: [
-
+                    '<formly-transclude></formly-transclude>'
                 ].join(' '),
                 types: 'annualMonthly'
             }
