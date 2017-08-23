@@ -5,9 +5,16 @@
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-pp.html',
             controller: caProcessProductProcessPpController
         });
-    function caProcessProductProcessPpController(DataModel, $stateParams) {
+    function caProcessProductProcessPpController(DataModel, $stateParams, ProjectDataService) {
         var vm = this;
         vm.$onInit = function() {
+            if($localStorage.uuid !== undefined) {
+                ProjectDataService.list()
+                    .then(function(response){
+                        vm.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                        vm.begin_month = response.begin_month;
+                    });
+            }
             vm.model = {};
             vm.buttonText = 'Save';
             if($stateParams.processId !== undefined) {
@@ -33,7 +40,8 @@
                                 label: 'Units started into production',
                                 placeholder: 'Units',
                                 required: true,
-                                min: 0
+                                min: 0,
+                                monthes: vm.monthes
                             }
                         },
                         {
@@ -44,7 +52,8 @@
                                 label: 'Units completed and transferred out to the next process or warehouse',
                                 placeholder: 'Units',
                                 required: true,
-                                min: 0
+                                min: 0,
+                                monthes: vm.monthes
                             }
                         }
                     ]
@@ -89,5 +98,5 @@
             }
         };
     }
-    caProcessProductProcessPpController.$inject = ['DataModel', '$stateParams'];
+    caProcessProductProcessPpController.$inject = ['DataModel', '$stateParams', 'ProjectDataService'];
 }());
