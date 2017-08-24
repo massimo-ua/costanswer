@@ -9,7 +9,22 @@
         });
         formlyConfig.setType({
             name: 'annualMonthly',
-            template: '<input class="form-control costanswer" ng-model="model[options.key]" />'
+            template: [
+                '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">',
+                '<table class="table table-condensed">',
+                '<thead>',
+                '<tr>',
+                '<th class="text-center" ng-repeat="month in data.monthes">{{ month.short }}</th>',
+                '</tr>',
+                '</thead>',
+                '<tbody>',
+                '<tr>',
+                '<td ng-repeat="month in data.monthes"><input name="goods" ng-class="{\'has-error\': itemForm.goods.$dirty && itemForm.goods[$index].$invalid}" type="number" ng-required="true" ng-model="model[options.key][$index]" min="{{ min($index) }}" class="form-control costanswer" placeholder="{{ controls.namePlaceholder }}" /></td>', '        '</tr>',
+                '</tbody>',
+                '</table>',
+                '</div>',
+                '<rep>{{ data }}</rep>'
+            ].join(' ')
         });
         formlyConfig.setWrapper([
             {
