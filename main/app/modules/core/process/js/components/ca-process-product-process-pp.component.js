@@ -12,13 +12,10 @@
             vm.buttonText = 'Save';
             if($stateParams.processId !== undefined) {
                 DataModel.Process
-                    .getWip({id: $stateParams.processId})
+                    .productionPlan({id: $stateParams.processId})
                     .$promise
                     .then(function(response){
-                        vm.model.id = response.id;
-                        vm.model.beginning_quantity = response.beginning_quantity / 100;
-                        vm.model.beginning_conversion_costs_complete = response.beginning_conversion_costs_complete / 100;
-                        vm.model.beginning_direct_materials_complete = response.beginning_direct_materials_complete / 100;
+                        vm.model = response;
                         vm.buttonText = 'Update';
                     });
             }
