@@ -38,7 +38,7 @@
             template: [
                 '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">',
                 '<fieldset ng-disabled="controls.formDisabled">',
-                '<div ng-show="controls.nameMain" class="col-xs-12 col-md-12 col-lg-12 text-center">',
+                '<div ng-show="to.label" class="col-xs-12 col-md-12 col-lg-12 text-center">',
                 '<label class="control-label m-b-20px" for="{{::id}}">{{to.label}}:</label>',
                 '</div>',
                 '<formly-transclude></formly-transclude>',
