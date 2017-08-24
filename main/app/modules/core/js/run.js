@@ -9,7 +9,7 @@
         });
         formlyConfig.setType({
             name: 'annualMonthly',
-            templateUrl: 'app/modules/core/views/annual-monthly.html'
+            template: '<input class="form-control costanswer" ng-model="model[options.key]" />'
         });
         formlyConfig.setWrapper([
             {
@@ -25,7 +25,9 @@
             },
             {
                 template: [
-                    '<formly-transclude></formly-transclude>'
+                    '<div>',
+                    '<formly-transclude></formly-transclude>',
+                    '</div>'
                 ].join(' '),
                 types: 'annualMonthly'
             }

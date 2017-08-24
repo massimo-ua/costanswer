@@ -8,11 +8,6 @@
     function caProcessProductProcessPpController(DataModel, $stateParams, ProjectDataService, monthService) {
         var vm = this;
         vm.$onInit = function() {
-            ProjectDataService.list()
-                .then(function(response){
-                    vm.monthes = monthService.AbsoluteMonthes(response.begin_month);
-                    vm.begin_month = response.begin_month;
-                });
             vm.model = {};
             vm.buttonText = 'Save';
             if($stateParams.processId !== undefined) {
@@ -29,6 +24,9 @@
             }
             vm.settings = [
                 {
+                    data: {
+                        monthes: []
+                    },
                     fieldGroup: [
                         {
                             key: 'goods_started_in_production',
@@ -59,6 +57,11 @@
             ];
             vm.formOptions = {};
             vm.formDisabled = false;
+            ProjectDataService.list()
+                .then(function(response){
+                    vm.settings.data.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                    vm.begin_month = response.begin_month;
+                });
         };
         vm.onSave = function() {
             vm.formDisabled = true;
