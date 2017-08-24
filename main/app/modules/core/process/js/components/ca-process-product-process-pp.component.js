@@ -24,9 +24,6 @@
             }
             vm.settings = [
                 {
-                    data: {
-                        monthes: []
-                    },
                     fieldGroup: [
                         {
                             key: 'goods_started_in_production',
@@ -57,7 +54,7 @@
             vm.formDisabled = false;
             ProjectDataService.list()
                 .then(function(response){
-                    vm.settings.fieldGroup.forEach(function(item,index,array){
+                    vm.settings[0].fieldGroup.forEach(function(item,index,array){
                         array[index]['templateOptions']['monthes'] = monthService.AbsoluteMonthes(response.begin_month);
                     });
                     vm.begin_month = response.begin_month;
