@@ -61,7 +61,7 @@
                 });
         };
         vm.onSave = function() {
-            console.log(vm.form); return;
+            console.log(vm.model); return;
             vm.formDisabled = true;
             var wip;
             if(vm.model.id !== undefined) {
