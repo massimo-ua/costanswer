@@ -54,7 +54,6 @@
             vm.formDisabled = false;
             ProjectDataService.list()
                 .then(function(response){
-                    console.log(vm.settings);
                     for(var i=0; i<vm.settings["0"]["fieldGroup"].length;i++) {
                         vm.settings["0"]["fieldGroup"][i]["templateOptions"]["monthes"] = monthService.AbsoluteMonthes(response.begin_month);
                     }
@@ -62,6 +61,7 @@
                 });
         };
         vm.onSave = function() {
+            console.log(vm.form); return;
             vm.formDisabled = true;
             var wip;
             if(vm.model.id !== undefined) {
