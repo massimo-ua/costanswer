@@ -55,9 +55,9 @@
             ProjectDataService.list()
                 .then(function(response){
                     console.log(vm.settings);
-                    vm.settings[0].fieldGroup.forEach(function(item,index,array){
-                        array[index]['templateOptions']['monthes'] = monthService.AbsoluteMonthes(response.begin_month);
-                    });
+                    for(var i=0; i<vm.settings["0"]["fieldGroup"].length;i++) {
+                        vm.settings["0"]["fieldGroup"][i]["templateOptions"]["monthes"] = monthService.AbsoluteMonthes(response.begin_month);
+                    }
                     vm.begin_month = response.begin_month;
                 });
         };
