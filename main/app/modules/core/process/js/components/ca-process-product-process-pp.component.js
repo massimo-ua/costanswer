@@ -36,8 +36,7 @@
                                 label: 'Units started into production',
                                 placeholder: 'Units',
                                 required: true,
-                                min: 0,
-                                monthes: vm.monthes
+                                min: 0
                             }
                         },
                         {
@@ -48,8 +47,7 @@
                                 label: 'Units completed and transferred out to the next process or warehouse',
                                 placeholder: 'Units',
                                 required: true,
-                                min: 0,
-                                monthes: vm.monthes
+                                min: 0
                             }
                         }
                     ]
@@ -59,7 +57,9 @@
             vm.formDisabled = false;
             ProjectDataService.list()
                 .then(function(response){
-                    vm.settings.data.monthes = monthService.AbsoluteMonthes(response.begin_month);
+                    vm.settings.fieldGroup.forEach(function(item,index,array){
+                        array[index]['templateOptions']['monthes'] = monthService.AbsoluteMonthes(response.begin_month);
+                    });
                     vm.begin_month = response.begin_month;
                 });
         };
