@@ -19,10 +19,9 @@
                 '</thead>',
                 '<tbody>',
                 '<tr>',
-                '<td ng-repeat="month in to.monthes"><input class="form-control costanswer" ng-model="model[month.short][options.key]" /></td>',
+                '<td ng-repeat="month in to.monthes"><input class="form-control costanswer" ng-model="model[$index][options.key]" /></td>',
                 '</table>',
-                '</div>',
-                '<rep>{{ data }}</rep>'
+                '</div>'
             ].join(' ')
         });
         formlyConfig.setWrapper([
