@@ -54,6 +54,7 @@
             vm.formDisabled = false;
             ProjectDataService.list()
                 .then(function(response){
+                    console.log(vm.settings);
                     vm.settings[0].fieldGroup.forEach(function(item,index,array){
                         array[index]['templateOptions']['monthes'] = monthService.AbsoluteMonthes(response.begin_month);
                     });
