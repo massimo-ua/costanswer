@@ -8,7 +8,6 @@
     function caProcessProductProcessPpController(DataModel, $stateParams, ProjectDataService, monthService) {
         var vm = this;
         vm.$onInit = function() {
-            vm.model = {};
             vm.buttonText = 'Save';
             if($stateParams.processId !== undefined) {
                 DataModel.Process
