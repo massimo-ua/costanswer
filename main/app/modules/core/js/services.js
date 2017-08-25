@@ -296,11 +296,12 @@
         function processProductionPlanResponseConverter(response) {
             console.log(response);
             var data = JSON.parse(response);
+            console.log(data);
             var model = {};
             for(var i = 0; i < data.length; i++) {
-                model[+data[i]["month_number"]-1] = {};
-                model[+data[i]["month_number"]-1]["goods_started_in_production"] = parseInt(data[i]["goods_started_in_production"]) / 100;
-                model[+data[i]["month_number"]-1]["goods_transfered_out"] = parseInt(data[i]["goods_transfered_out"]) / 100;
+                model[i] = {};
+                model[i]["goods_started_in_production"] = parseInt(data[i]["goods_started_in_production"]) / 100;
+                model[i]["goods_transfered_out"] = parseInt(data[i]["goods_transfered_out"]) / 100;
             }
             console.log(model);
             return model;
