@@ -73,6 +73,7 @@
                 })
                 .finally(function(){
                     vm.buttonText = vm.updateMode ? "Update" : "Save";
+                    vm.formDisabled = false;
                 });
         };
     }
