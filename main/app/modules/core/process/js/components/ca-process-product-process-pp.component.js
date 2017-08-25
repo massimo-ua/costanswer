@@ -9,14 +9,17 @@
         var vm = this;
         vm.$onInit = function() {
             vm.model = {};
+            vm.updateMode = false;
             vm.buttonText = 'Save';
             if($stateParams.processId !== undefined) {
                 DataModel.Process
                     .productionPlan({id: $stateParams.processId})
                     .$promise
                     .then(function(response){
-                        //vm.model = response;
-                        //vm.buttonText = 'Update';
+                        if(response.length == 12) {
+                            vm.model = response;
+                            vm.buttonText = 'Update';
+                        }
                     });
             }
             vm.settings = [
@@ -59,35 +62,17 @@
         };
         vm.onSave = function() {
             vm.formDisabled = true;
-            var plan;
-            if(vm.model.id !== undefined) {
-                vm.buttonText = "Updating...";
-                wip = new DataModel.Wip();
-                wip.beginning_quantity = vm.model.beginning_quantity * 100;
-                wip.beginning_conversion_costs_complete = vm.model.beginning_conversion_costs_complete * 100;
-                wip.beginning_direct_materials_complete = vm.model.beginning_direct_materials_complete * 100;
-                wip.$update({ id: vm.model.id })
-                    .then(function(response){
-                        vm.buttonText = "Update";
-                    })
-                    .finally(function(){
-                        vm.formDisabled = false;
-                    });
-            }
-            else {
-                vm.buttonText = "Saving...";
-                plan = new DataModel.Process();
-                plan.data = vm.model;
-                plan.year_number = 1;
-                plan.$saveProductionPlan({ id: $stateParams.processId })
-                    .then(function(response){
-                        //vm.model.id = response.id;
-                        vm.buttonText = "Update";
-                    })
-                    .finally(function(){
-                        vm.formDisabled = false;
-                    });
-            }
+            vm.buttonText = vm.updateMode ? "Updating..." : "Saving...";
+            var plan = new DataModel.Process();
+            plan.data = vm.model;
+            plan.year_number = 1;
+            plan.$saveProductionPlan({ id: $stateParams.processId })
+                .then(function(){
+                    vm.buttonText = "Update";
+                })
+                .finally(function(){
+                    vm.formDisabled = false;
+                });
         };
     }
     caProcessProductProcessPpController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
