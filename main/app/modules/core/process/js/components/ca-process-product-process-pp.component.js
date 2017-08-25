@@ -58,9 +58,8 @@
                 });
         };
         vm.onSave = function() {
-            console.log(vm.model); return;
             vm.formDisabled = true;
-            var wip;
+            var plan;
             if(vm.model.id !== undefined) {
                 vm.buttonText = "Updating...";
                 wip = new DataModel.Wip();
@@ -77,13 +76,9 @@
             }
             else {
                 vm.buttonText = "Saving...";
-                wip = new DataModel.Process();
-                wip.year_number = 1;
-                wip.month_number = 1;
-                wip.beginning_quantity = vm.model.beginning_quantity * 100;
-                wip.beginning_conversion_costs_complete = vm.model.beginning_conversion_costs_complete * 100;
-                wip.beginning_direct_materials_complete = vm.model.beginning_direct_materials_complete * 100;
-                wip.$saveWip({ id: $stateParams.processId })
+                plan = new DataModel.Process();
+                plan.year_number = 1;
+                plan.$saveProductionPlan({ id: $stateParams.processId })
                     .then(function(response){
                         vm.model.id = response.id;
                         vm.buttonText = "Update";
