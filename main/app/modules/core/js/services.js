@@ -46,6 +46,12 @@
                     params: { id: '@id' },
                     url: API_PREFIX+'/processes/:id/inventory',
                     transformResponse: processProductionPlanResponseConverter
+                },
+                saveProductionPlan: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/processes/:id/inventory',
+                    transformRequest: processProductionPlanRequestConverter
                 }
             }),
             Moh: $resource(API_PREFIX + '/moh/:id', {id: '@_id'}, {
@@ -268,6 +274,25 @@
                 update: {method: 'PUT'}
             })
         };
+
+        function processProductionPlanRequestConverter(form) {
+            // prepare data in correct format to meet backend requirements
+            console.log(form);
+            var data = {};
+            for(var k in form) {
+                data[k] = {};
+                data[k].month_number = +k + 1;
+                data[k].goods_started_in_production = Math.round(form[k].goods_started_in_production * 100);
+                data[k].goods_transfered_out = Math.round(form[k].goods_transfered_out * 100);
+            }
+            // create output object structure
+            var plan = {};
+            plan.year_number = form.year_number;
+            plan.data = data;
+            console.log(plan);
+            // serializing object before return
+            return angular.toJson(plan);
+        }
 
         function processProductionPlanResponseConverter(response) {
             console.log(response);
