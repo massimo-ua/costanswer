@@ -77,6 +77,7 @@
             else {
                 vm.buttonText = "Saving...";
                 plan = new DataModel.Process();
+                plan.data = vm.form;
                 plan.year_number = 1;
                 plan.$saveProductionPlan({ id: $stateParams.processId })
                     .then(function(response){

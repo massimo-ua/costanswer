@@ -279,11 +279,11 @@
             // prepare data in correct format to meet backend requirements
             console.log(form);
             var data = {};
-            for(var k in form) {
+            for(var k in form.data) {
                 data[k] = {};
                 data[k].month_number = +k + 1;
-                data[k].goods_started_in_production = Math.round(form[k].goods_started_in_production * 100);
-                data[k].goods_transfered_out = Math.round(form[k].goods_transfered_out * 100);
+                data[k].goods_started_in_production = Math.round(form.data[k].goods_started_in_production * 100);
+                data[k].goods_transfered_out = Math.round(form.data[k].goods_transfered_out * 100);
             }
             // create output object structure
             var plan = {};
