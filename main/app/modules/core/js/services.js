@@ -50,6 +50,7 @@
                 saveProductionPlan: {
                     method: 'POST',
                     params: { id: '@id' },
+                    isArray: true,
                     url: API_PREFIX+'/processes/:id/inventory',
                     transformRequest: processProductionPlanRequestConverter
                 }
@@ -277,7 +278,6 @@
 
         function processProductionPlanRequestConverter(form) {
             // prepare data in correct format to meet backend requirements
-            console.log(form);
             var data = {};
             for(var k in form.data) {
                 data[k] = {};
@@ -289,14 +289,20 @@
             var plan = {};
             plan.year_number = form.year_number;
             plan.data = data;
-            console.log(plan);
             // serializing object before return
             return angular.toJson(plan);
         }
 
         function processProductionPlanResponseConverter(response) {
             console.log(response);
-            return response;
+            var data = JSON.parse(response);
+            var model = {};
+            for(var i = 0; i < data.length; i++) {
+                model[+data[i]["month_number"]-1] = {};
+                model[+data[i]["month_number"]-1]["goods_started_in_production"] = parseInt(data[i]["goods_started_in_production"]) / 100;
+                model[+data[i]["month_number"]-1]["goods_transfered_out"] = parseInt(data[i]["goods_transfered_out"]) / 100;
+            }
+            return model;
         }
     }]);
 }());
