@@ -69,10 +69,10 @@
             plan.year_number = 1;
             plan.$saveProductionPlan({ id: $stateParams.processId })
                 .then(function(){
-                    vm.buttonText = "Update";
+                    vm.updateMode = true;
                 })
                 .finally(function(){
-                    vm.formDisabled = false;
+                    vm.buttonText = vm.updateMode ? "Update" : "Save";
                 });
         };
     }

@@ -279,6 +279,7 @@
         function processProductionPlanRequestConverter(form) {
             // prepare data in correct format to meet backend requirements
             var data = {};
+            console.log(form);
             for(var k in form.data) {
                 data[k] = {};
                 data[k].month_number = +k + 1;
@@ -290,6 +291,7 @@
             plan.year_number = form.year_number;
             plan.data = data;
             // serializing object before return
+            console.log(plan);
             return angular.toJson(plan);
         }
 
