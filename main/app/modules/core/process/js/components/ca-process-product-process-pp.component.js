@@ -81,7 +81,7 @@
                 plan.year_number = 1;
                 plan.$saveProductionPlan({ id: $stateParams.processId })
                     .then(function(response){
-                        vm.model.id = response.id;
+                        //vm.model.id = response.id;
                         vm.buttonText = "Update";
                     })
                     .finally(function(){
