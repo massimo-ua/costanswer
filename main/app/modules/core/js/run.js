@@ -18,7 +18,7 @@
                 '</thead>',
                 '<tbody>',
                 '<tr>',
-                '<td ng-repeat="month in to.monthes"><input class="form-control costanswer" ng-model="model[$index][options.key]" />{{ $index }}</td>',
+                '<td ng-repeat="month in to.monthes"><input class="form-control costanswer" ng-model="model[$index][options.key]" /></td>',
                 '</table>'
             ].join(' ')
         });
