@@ -16,8 +16,11 @@
                     .productionPlan({id: $stateParams.processId})
                     .$promise
                     .then(function(response){
+                        if(!angular.equals({}, response)) {
                             vm.model = response;
                             vm.buttonText = 'Update';
+                            vm.updateMode = true;
+                        }
                     });
             }
             vm.settings = [
