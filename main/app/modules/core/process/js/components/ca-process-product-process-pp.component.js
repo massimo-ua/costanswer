@@ -16,6 +16,7 @@
                     .productionPlan({id: $stateParams.processId})
                     .$promise
                     .then(function(response){
+                        console.log(response);
                         if(response.length == 12) {
                             vm.model = response;
                             vm.buttonText = 'Update';
