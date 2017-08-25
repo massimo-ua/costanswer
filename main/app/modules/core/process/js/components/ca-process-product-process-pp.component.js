@@ -8,15 +8,15 @@
     function caProcessProductProcessPpController(DataModel, $stateParams, ProjectDataService, monthService) {
         var vm = this;
         vm.$onInit = function() {
-            vm.model;
+            vm.model = {};
             vm.buttonText = 'Save';
             if($stateParams.processId !== undefined) {
                 DataModel.Process
                     .productionPlan({id: $stateParams.processId})
                     .$promise
                     .then(function(response){
-                        vm.model = response;
-                        vm.buttonText = 'Update';
+                        //vm.model = response;
+                        //vm.buttonText = 'Update';
                     });
             }
             vm.settings = [
