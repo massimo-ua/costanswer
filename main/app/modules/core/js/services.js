@@ -296,7 +296,7 @@
         }
 
         function processProductionPlanResponseConverter(response) {
-            var data = JSON.parse(response);
+            var data = JSON.parse(angular.toJson(response));
             var model = {};
             for(var i = 0; i < data.length; i++) {
                 model[i] = {};
