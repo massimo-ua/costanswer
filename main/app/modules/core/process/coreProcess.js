@@ -91,6 +91,10 @@
             .state('product-process-component.pp', {
                 url: '/production-plan',
                 template: '<ca-process-product-process-pp></ca-process-product-process-pp>'
+            })
+            .state('product-process-component.dm', {
+                url: '/direct-materials',
+                template: '<ca-process-product-process-dm></ca-process-product-process-dm>'
             });
     }]);
 }());
