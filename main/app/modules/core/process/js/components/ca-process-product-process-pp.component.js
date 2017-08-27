@@ -28,7 +28,7 @@
                     fieldGroup: [
                         {
                             key: 'goods_started_in_production',
-                            type: 'annualMonthly',
+                            type: 'ca-annualMonthly',
                             templateOptions: {
                                 type: 'number',
                                 label: 'Units started into production',
@@ -39,7 +39,7 @@
                         },
                         {
                             key: 'goods_transfered_out',
-                            type: 'annualMonthly',
+                            type: 'ca-annualMonthly',
                             templateOptions: {
                                 type: 'number',
                                 label: 'Units completed and transferred out to the next process or warehouse',

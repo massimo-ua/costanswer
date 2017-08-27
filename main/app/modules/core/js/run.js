@@ -4,11 +4,11 @@
         .run(coreRun);
     function coreRun(formlyConfig, $templateCache){
         formlyConfig.setType({
-            name: 'input',
+            name: 'ca-input',
             template: '<input class="form-control costanswer" ng-model="model[options.key]" />'
         });
         formlyConfig.setType({
-            name: 'annualMonthly',
+            name: 'ca-annualMonthly',
             template: [
                 '<table class="table table-condensed">',
                 '<thead>',
@@ -32,7 +32,7 @@
                         '<div class="help-block error" ng-show="options.validation.errorExistsAndShouldBeVisible">{{ to.errorText }}</div>',
                         '</div>'
                     ].join(' '),
-                types: 'input'
+                types: 'ca-input'
             });
         formlyConfig.setWrapper({
             template: [
@@ -43,7 +43,7 @@
                 '<formly-transclude></formly-transclude>',
                 '</div>'
             ].join(' '),
-            types: 'annualMonthly'
+            types: 'ca-annualMonthly'
         });
     }
     coreRun.$inject = ['formlyConfig', '$templateCache'];

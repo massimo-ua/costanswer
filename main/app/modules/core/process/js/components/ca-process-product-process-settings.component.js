@@ -25,7 +25,7 @@
                   fieldGroup: [
                       {
                           key: 'name',
-                          type: 'input',
+                          type: 'ca-input',
                           templateOptions: {
                               type: 'text',
                               label: 'Name',
@@ -36,7 +36,7 @@
                       },
                       {
                           key: 'department',
-                          type: 'input',
+                          type: 'ca-input',
                           templateOptions: {
                               type: 'text',
                               label: 'Department',

@@ -27,7 +27,7 @@
                     fieldGroup: [
                         {
                             key: 'beginning_quantity',
-                            type: 'input',
+                            type: 'ca-input',
                             templateOptions: {
                                 type: 'number',
                                 label: 'Work in process (WIP) beginning',
@@ -39,7 +39,7 @@
                         },
                         {
                             key: 'beginning_conversion_costs_complete',
-                            type: 'input',
+                            type: 'ca-input',
                             templateOptions: {
                                 type: 'number',
                                 label: 'WIP beginning conversion cost completed',
@@ -51,7 +51,7 @@
                         },
                         {
                             key: 'beginning_direct_materials_complete',
-                            type: 'input',
+                            type: 'ca-input',
                             templateOptions: {
                                 type: 'number',
                                 label: 'Cost of WIP beginning direct materials completed',
