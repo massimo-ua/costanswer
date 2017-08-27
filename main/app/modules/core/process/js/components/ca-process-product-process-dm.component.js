@@ -11,6 +11,10 @@
             vm.model = {};
             vm.updateMode = false;
             vm.buttonText = 'Save';
+            ProjectDataService.list()
+                .then(function(response){
+                    vm.project_begin_month = response.begin_month;
+                });
             if($stateParams.processId !== undefined) DataModel.Process
                 .productionPlan({id: $stateParams.processId})
                 .$promise
@@ -23,27 +27,118 @@
                 });
             vm.settings = [
                 {
+                    className: "row",
                     fieldGroup: [
                         {
-                            key: 'goods_started_in_production',
-                            type: 'ca-annualMonthly',
+                            key: 'name',
+                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-2",
+                            type: 'ca-input-ww',
+                            templateOptions: {
+                                type: 'text',
+                                label: 'Name of raw material',
+                                placeholder: 'Name',
+                                required: true
+                            }
+                        },
+                        {
+                            key: 'purchasing_price_per_unit',
+                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-8"
+                            type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
-                                label: 'Units started into production',
-                                placeholder: 'Units',
+                                label: 'Price per unit',
+                                placeholder: '$',
+                                required: true,
+                                min: 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    className: "row",
+                    fieldGroup: [
+                        {
+                            key: 'measurement_unit',
+                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-2",
+                            type: 'ca-input-ww',
+                            templateOptions: {
+                                type: 'text',
+                                label: 'Measurement unit',
+                                placeholder: 'Unit',
+                                required: true
+                            }
+                        },
+                        {
+                            key: 'normal_waste',
+                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-8"
+                            type: 'ca-input-ww',
+                            templateOptions: {
+                                type: 'number',
+                                label: 'Normal waste',
+                                placeholder: '%',
+                                required: true,
+                                min: 0,
+                                max: 100
+                            }
+                        }
+                    ]
+                },
+                {
+                    className: "row",
+                    fieldGroup: [
+                        {
+                            key: 'batch_quantity_required',
+                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-2",
+                            type: 'ca-input-ww',
+                            templateOptions: {
+                                type: 'number',
+                                label: 'Batch quantity required',
+                                placeholder: 'Unit',
                                 required: true,
                                 min: 0
                             }
                         },
                         {
-                            key: 'goods_transfered_out',
+                            key: 'material_beginning',
+                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-8"
+                            type: 'ca-input-ww',
+                            templateOptions: {
+                                type: 'number',
+                                label: 'Cost of raw material beginning',
+                                placeholder: '$',
+                                required: true,
+                                min: 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    className: "row",
+                    fieldGroup: [
+                        {
+                            key: 'safety_stock',
                             type: 'ca-annualMonthly',
                             templateOptions: {
                                 type: 'number',
-                                label: 'Units completed and transferred out to the next process or warehouse',
-                                placeholder: 'Units',
+                                label: 'Safety stock',
+                                placeholder: '%',
                                 required: true,
-                                min: 0
+                                min: 0,
+                                max: 100,
+                                monthes: monthService.AbsoluteMonthes(vm.project_begin_month)
+                            }
+                        },
+                        {
+                            key: 'season_price_change_rate',
+                            type: 'ca-annualMonthly',
+                            templateOptions: {
+                                type: 'number',
+                                label: 'Season price change',
+                                placeholder: '+-%',
+                                required: true,
+                                min: -100,
+                                max: 100,
+                                monthes: monthService.AbsoluteMonthes(vm.project_begin_month)
                             }
                         }
                     ]

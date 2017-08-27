@@ -3,13 +3,18 @@
     angular.module('costAnswer.core')
         .run(coreRun);
     function coreRun(formlyConfig, $templateCache){
-        formlyConfig.setType({
-            name: 'ca-input',
-            template: '<input class="form-control costanswer" ng-model="model[options.key]" />'
-        });
-        formlyConfig.setType({
-            name: 'ca-annualMonthly',
-            template: [
+        formlyConfig.setType([
+            {
+                name: 'ca-input-ww',
+                template: '<input class="form-control costanswer" ng-model="model[options.key]" />'
+            },
+            {
+                name: 'ca-input',
+                template: '<input class="form-control costanswer" ng-model="model[options.key]" />'
+            },
+            {
+                name: 'ca-annualMonthly',
+                template: [
                 '<table class="table table-condensed">',
                 '<thead>',
                 '<tr>',
@@ -20,9 +25,10 @@
                 '<tr>',
                 '<td ng-repeat="month in to.monthes"><input class="form-control costanswer" ng-model="model[$index][options.key]" /></td>',
                 '</table>'
-            ].join(' ')
-        });
-        formlyConfig.setWrapper(
+                ].join(' ')
+            }
+        ]);
+        formlyConfig.setWrapper([
             {
                 template:
                     [
@@ -33,8 +39,8 @@
                         '</div>'
                     ].join(' '),
                 types: 'ca-input'
-            });
-        formlyConfig.setWrapper({
+            },
+            {
             template: [
                 '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">',
                 '<div ng-show="to.label" class="col-xs-12 col-md-12 col-lg-12 text-center">',
@@ -44,7 +50,7 @@
                 '</div>'
             ].join(' '),
             types: 'ca-annualMonthly'
-        });
+        }]);
     }
     coreRun.$inject = ['formlyConfig', '$templateCache'];
 }());
