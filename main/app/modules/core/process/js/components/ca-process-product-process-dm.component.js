@@ -42,7 +42,7 @@
                         },
                         {
                             key: 'purchasing_price_per_unit',
-                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-8",
+                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-6",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
@@ -70,7 +70,7 @@
                         },
                         {
                             key: 'normal_waste',
-                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-8",
+                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-6",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
@@ -100,7 +100,7 @@
                         },
                         {
                             key: 'material_beginning',
-                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-8",
+                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-6",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
@@ -146,13 +146,6 @@
             ];
             vm.formOptions = {};
             vm.formDisabled = false;
-            ProjectDataService.list()
-                .then(function(response){
-                    for(var i=0; i<vm.settings["0"]["fieldGroup"].length;i++) {
-                        vm.settings["0"]["fieldGroup"][i]["templateOptions"]["monthes"] = monthService.AbsoluteMonthes(response.begin_month);
-                    }
-                    vm.begin_month = response.begin_month;
-                });
         };
         vm.onSave = function() {
             vm.formDisabled = true;
