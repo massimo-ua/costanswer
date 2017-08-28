@@ -32,8 +32,8 @@
             {
                 template:
                     [
-                        '<div class="form-group text-center m-t-10px" ng-class="{\'has-error\': options.formControl.$dirty && options.formControl.$invalid}">',
-                        '<label class="control-label m-t-10px" for="{{::id}}">{{to.label}}:</label>',
+                        '<div class="form-group text-center" ng-class="{\'has-error\': options.formControl.$dirty && options.formControl.$invalid}">',
+                        '<label class="control-label" for="{{::id}}">{{to.label}}:</label>',
                         '<formly-transclude></formly-transclude>',
                         '<div class="help-block error" ng-show="options.validation.errorExistsAndShouldBeVisible">{{ to.errorText }}</div>',
                         '</div>'
