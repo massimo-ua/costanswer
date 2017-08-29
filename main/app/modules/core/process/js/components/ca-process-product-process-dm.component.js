@@ -42,7 +42,7 @@
                         },
                         {
                             key: 'purchasing_price_per_unit',
-                            className: "col-xs-12 col-sm-12 col-md-2",
+                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-1",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
@@ -70,7 +70,7 @@
                         },
                         {
                             key: 'normal_waste',
-                            className: "col-xs-12 col-sm-12 col-md-2",
+                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-1",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
@@ -92,7 +92,7 @@
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
-                                label: 'Batch quantity required',
+                                label: 'Standard quantity required',
                                 placeholder: 'Unit',
                                 required: true,
                                 min: 0
