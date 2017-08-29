@@ -77,7 +77,7 @@
                 '<formly-transclude></formly-transclude>',
                 '</div>'
             ].join(' '),
-            types: 'ca-annualMonthly'
+            types: ['ca-annualMonthly','ca-annualMonthly-first-red']
         }]);
     }
     coreRun.$inject = ['formlyConfig', '$templateCache'];
