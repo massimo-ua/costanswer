@@ -26,6 +26,23 @@
                 '<td ng-repeat="month in to.monthes"><input class="form-control costanswer" ng-model="model[$index][options.key]" /></td>',
                 '</table>'
                 ].join(' ')
+            },
+            {
+                name: 'ca-annualMonthly-first-red',
+                template: [
+                    '<table class="table table-condensed">',
+                    '<thead>',
+                    '<tr>',
+                    '<th class="text-center" ng-repeat="month in to.monthes">{{ month.short }}</th>',
+                    '</tr>',
+                    '</thead>',
+                    '<tbody>',
+                    '<tr>',
+                    '<td class="td-monthly-width-fix">',
+                    '<input type="text" class="form-control costanswer text-center white-on-red" value="100%" ng-disabled="true" /></td>',
+                    '<td ng-repeat="i in []|range:11:1"><input class="form-control costanswer" ng-model="model[i][options.key]" /></td>',
+                    '</table>'
+                ].join(' ')
             }
         ]);
         formlyConfig.setWrapper([

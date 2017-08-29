@@ -37,6 +37,7 @@
                                 type: 'text',
                                 label: 'Name of raw material',
                                 placeholder: 'Name',
+                                maxlength: 20,
                                 required: true
                             }
                         },
@@ -65,6 +66,7 @@
                                 type: 'text',
                                 label: 'Measurement unit',
                                 placeholder: 'Unit',
+                                maxlength: 20,
                                 required: true
                             }
                         },
