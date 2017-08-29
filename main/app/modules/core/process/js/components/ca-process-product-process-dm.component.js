@@ -31,7 +31,7 @@
                     fieldGroup: [
                         {
                             key: 'name',
-                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-2",
+                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-2",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'text',
@@ -42,7 +42,7 @@
                         },
                         {
                             key: 'purchasing_price_per_unit',
-                            className: "col-xs-12 col-sm-12 col-md-4",
+                            className: "col-xs-12 col-sm-12 col-md-3",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
@@ -59,7 +59,7 @@
                     fieldGroup: [
                         {
                             key: 'measurement_unit',
-                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-2",
+                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-2",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'text',
@@ -70,7 +70,7 @@
                         },
                         {
                             key: 'normal_waste',
-                            className: "col-xs-12 col-sm-12 col-md-4",
+                            className: "col-xs-12 col-sm-12 col-md-3",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
@@ -88,7 +88,7 @@
                     fieldGroup: [
                         {
                             key: 'batch_quantity_required',
-                            className: "col-xs-12 col-sm-12 col-md-4 col-md-offset-2",
+                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-2",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
@@ -100,7 +100,7 @@
                         },
                         {
                             key: 'material_beginning',
-                            className: "col-xs-12 col-sm-12 col-md-4",
+                            className: "col-xs-12 col-sm-12 col-md-3",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
