@@ -42,7 +42,7 @@
                         },
                         {
                             key: 'purchasing_price_per_unit',
-                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-1",
+                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-2",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
@@ -70,7 +70,7 @@
                         },
                         {
                             key: 'normal_waste',
-                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-1",
+                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-2",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
@@ -100,7 +100,7 @@
                         },
                         {
                             key: 'material_beginning',
-                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-1",
+                            className: "col-xs-12 col-sm-12 col-md-3 col-md-offset-2",
                             type: 'ca-input-ww',
                             templateOptions: {
                                 type: 'number',
