@@ -148,6 +148,7 @@
             ];
             vm.formOptions = {};
             vm.formDisabled = false;
+            vm.nameProperty = 'name';
         };
         vm.onSave = function() {
             vm.formDisabled = true;
