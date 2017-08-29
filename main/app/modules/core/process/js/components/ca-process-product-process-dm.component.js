@@ -132,7 +132,7 @@
                         },
                         {
                             key: 'season_price_change_rate',
-                            type: 'ca-annualMonthly',
+                            type: 'ca-annualMonthly-first-red',
                             templateOptions: {
                                 type: 'number',
                                 label: 'Season price change',
