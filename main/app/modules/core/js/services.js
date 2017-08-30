@@ -52,6 +52,12 @@
                     params: { id: '@id' },
                     url: API_PREFIX+'/processes/:id/inventory',
                     transformRequest: processProductionPlanRequestConverter
+                },
+                saveDM: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/processes/:id/directmaterial',
+                    transformRequest: processDirectMaterialsRequestConverter
                 }
             }),
             Moh: $resource(API_PREFIX + '/moh/:id', {id: '@_id'}, {
@@ -274,6 +280,10 @@
                 update: {method: 'PUT'}
             })
         };
+
+        function processDirectMaterialsRequestConverter(data) {
+
+        }
 
         function processProductionPlanRequestConverter(form) {
             // prepare data in correct format to meet backend requirements

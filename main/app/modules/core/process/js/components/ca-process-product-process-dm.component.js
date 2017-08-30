@@ -151,8 +151,9 @@
             vm.formDisabled = false;
             vm.nameProperty = 'name';
             vm.controls = {};
+            vm.year_number = 1;
         };
-        vm.onSave = function() {
+        /*vm.onSave = function() {
             vm.formDisabled = true;
             vm.buttonText = vm.updateMode ? "Updating..." : "Saving...";
             var plan = new DataModel.Process();
@@ -166,6 +167,30 @@
                     vm.buttonText = vm.updateMode ? "Update" : "Save";
                     vm.formDisabled = false;
                 });
+        };*/
+        vm.onSave = function(newItem, callback) {
+            var dm = new DataModel.Process();
+            dm.payload = newItem;
+            dm.year_number = vm.year_number;
+            dm.$saveDM({ id: $stateParams.processId })
+                .then(function(response){
+                    callback(response);
+                });
+        };
+        vm.onUpdate = function(item, callback) {
+            /*standardService.onDMUpdate($scope.year_number, item, function(){
+                callback();
+                refreshReport();
+            });*/
+        };
+        vm.onDelete = function(item, callback) {
+            /*standardService.onDMDelete(item, function(){
+                callback();
+                refreshReport();
+            });*/
+        };
+        vm.onLoad = function(component_id) {
+            //refreshReport(component_id);
         };
     }
     caProcessProductProcessDmController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
