@@ -150,6 +150,7 @@
             vm.formOptions = {};
             vm.formDisabled = false;
             vm.nameProperty = 'name';
+            vm.controls = {};
         };
         vm.onSave = function() {
             vm.formDisabled = true;
