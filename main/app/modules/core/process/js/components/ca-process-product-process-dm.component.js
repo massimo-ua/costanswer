@@ -169,6 +169,7 @@
                 });
         };*/
         vm.onSave = function(newItem, callback) {
+            console.log(newItem); return;
             var dm = new DataModel.Process();
             dm.payload = newItem;
             dm.year_number = vm.year_number;
