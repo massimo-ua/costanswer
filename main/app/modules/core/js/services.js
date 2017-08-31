@@ -281,8 +281,27 @@
             })
         };
 
-        function processDirectMaterialsRequestConverter(data) {
-
+        function processDirectMaterialsRequestConverter(form) {
+            var data = {};
+            form = JSON.parse(angular.toJson(form));
+            for(var k in form.data) {
+                data[k] = {};
+                data[k].month_number = +k + 1;
+                data[k].safety_stock = Math.round(form.data[k].safety_stock / 100);
+                data[k].season_price_change_rate = Math.round((form.data[k].season_price_change_rate || 0) / 100);
+            }
+            // create output object structure
+            var dm = {};
+            dm.year_number = form.year_number;
+            dm.data = data;
+            dm.batch_quantity_required = form.batch_quantity_required * 100;
+            dm.material_beginning = form.material_beginning * 100;
+            dm.measurement_unit = form.measurement_unit;
+            dm.name = form.name;
+            dm.normal_waste = form.normal_waste / 100;
+            dm.purchasing_price_per_unit = form.purchasing_price_per_unit * 100;
+            // serializing object before return
+            return angular.toJson(dm);
         }
 
         function processProductionPlanRequestConverter(form) {
