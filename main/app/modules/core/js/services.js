@@ -284,7 +284,7 @@
         function processDirectMaterialsRequestConverter(form) {
             var data = {};
             form = JSON.parse(angular.toJson(form));
-            for(var k in form.payload) {
+            for(var k = 0; k < 12; k++) {
                 data[k] = {};
                 data[k].month_number = +k + 1;
                 data[k].safety_stock = Math.round(form.payload[k].safety_stock / 100);
