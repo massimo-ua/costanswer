@@ -287,8 +287,8 @@
             for(var k = 0; k < 12; k++) {
                 data[k] = {};
                 data[k].month_number = +k + 1;
-                data[k].safety_stock = Math.round(form.payload[k].safety_stock / 100);
-                data[k].season_price_change_rate = Math.round((form.payload[k].season_price_change_rate || 0) / 100);
+                data[k].safety_stock = form.payload[k].safety_stock / 100;
+                data[k].season_price_change_rate = (form.payload[k].season_price_change_rate || 0) / 100;
             }
             // create output object structure
             var dm = {};
