@@ -62,7 +62,8 @@
                 directMaterial: {
                     method: 'GET',
                     params: { id: '@id' },
-                    url: API_PREFIX+'/processes/:id/directmaterial'
+                    url: API_PREFIX+'/processes/:id/directmaterial',
+                    isArray: true
                     //transformResponse: processDirectMaterialResponseConverter
                 }
 
