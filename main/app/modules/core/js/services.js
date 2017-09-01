@@ -294,12 +294,12 @@
             var dm = {};
             dm.year_number = form.payload.year_number;
             dm.data = data;
-            dm.batch_quantity_required = form.payload.batch_quantity_required * 100;
-            dm.material_beginning = form.payload.material_beginning * 100;
+            dm.data[0].batch_quantity_required = form.payload.batch_quantity_required * 100;
+            dm.data[0].material_beginning = form.payload.material_beginning * 100;
             dm.measurement_unit = form.payload.measurement_unit;
             dm.name = form.payload.name;
-            dm.normal_waste = form.payload.normal_waste / 100;
-            dm.purchasing_price_per_unit = form.payload.purchasing_price_per_unit * 100;
+            dm.data[0].normal_waste = form.payload.normal_waste / 100;
+            dm.data[0].purchasing_price_per_unit = form.payload.purchasing_price_per_unit * 100;
             // serializing object before return
             return angular.toJson(dm);
         }
