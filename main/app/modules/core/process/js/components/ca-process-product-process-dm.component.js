@@ -157,7 +157,7 @@
         vm.onSave = function(newItem, callback) {
             var dm = new DataModel.Process();
             dm.payload = newItem;
-            dm.year_number = vm.year_number;
+            dm.payload.year_number = vm.year_number;
             dm.$saveDM({ id: $stateParams.processId })
                 .then(function(response){
                     callback(response);
