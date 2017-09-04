@@ -293,6 +293,7 @@
             var data = JSON.parse(response);
             var models = [];
             for(var i = 0; i < data.length; i++) {
+                models[i] = {};
                 models[i].payload = {};
                 models[i].payload.id = data[i].id;
                 models[i].payload.name = data[i].name;
