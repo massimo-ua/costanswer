@@ -4,7 +4,7 @@
         'costAnswer.core.standard.services'
         ]);
     angular.module('costAnswer.core.services')
-    .factory('DataModel', ['$resource', 'API_PREFIX', function($resource, API_PREFIX){
+    .factory('DataModel', ['$resource', 'API_PREFIX', 'helperService', function($resource, API_PREFIX, helperService){
         return {
             Project: $resource(API_PREFIX+'/projects/:id', { id: '@_id' }, {
                 update: { method: 'PUT' },
@@ -63,8 +63,8 @@
                     method: 'GET',
                     params: { id: '@id' },
                     url: API_PREFIX+'/processes/:id/directmaterial',
-                    isArray: true
-                    //transformResponse: processDirectMaterialResponseConverter
+                    isArray: true,
+                    transformResponse: processDirectMaterialsResponseConverter
                 }
 
             }),
@@ -289,10 +289,27 @@
             })
         };
 
-        function processDirectMaterialResponseConverter(response) {
-
+        function processDirectMaterialsResponseConverter(response) {
+            var data = JSON.parse(response);
+            var models = [];
+            for(var i = 0; i < data.length; i++) {
+                models[i].payload = {};
+                models[i].payload.id = data[i].id;
+                models[i].payload.name = data[i].name;
+                models[i].payload.measurement_unit = data[i].measurement_unit;
+                for(var y = 0; y < data[i].params.length; y++) {
+                    if(y == 0) {
+                        models[i].payload.batch_quantity_required = helperService.unit2form(data[i].params[y].batch_quantity_required);
+                        models[i].payload.material_beginning = helperService.unit2form(data[i].params[y].material_beginning);
+                        models[i].payload.purchasing_price_per_unit = helperService.unit2form(data[i].params[y].purchasing_price_per_unit);
+                        models[i].payload.normal_waste = helperService.percent2form(data[i].params[y].normal_waste);
+                    }
+                    models[i].payload[y].safety_stock = helperService.percent2form(data[i].params[y].safety_stock);
+                    models[i].payload[y].season_price_change_rate = helperService.percent2form(data[i].params[y].season_price_change_rate);
+                }
+                return models;
+            }
         }
-
         function processDirectMaterialsRequestConverter(form) {
             var data = {};
             form = JSON.parse(angular.toJson(form));
