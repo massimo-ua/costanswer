@@ -299,6 +299,7 @@
                 models[i].payload.name = data[i].name;
                 models[i].payload.measurement_unit = data[i].measurement_unit;
                 for(var y = 0; y < data[i].params.length; y++) {
+                    models[i].payload[y] = {};
                     if(y == 0) {
                         models[i].payload.batch_quantity_required = helperService.unit2form(data[i].params[y].batch_quantity_required);
                         models[i].payload.material_beginning = helperService.unit2form(data[i].params[y].material_beginning);
