@@ -156,7 +156,9 @@
         };
         vm.onSave = function(newItem, callback) {
             var dm = new DataModel.Process();
-            dm = newItem;
+            for(var k in newItem) {
+                dm[k] = newItem[k];
+            }
             dm.year_number = vm.year_number;
             dm.$saveDirectMaterial({ id: $stateParams.processId })
                 .then(function(response){
