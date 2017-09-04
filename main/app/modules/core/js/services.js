@@ -294,20 +294,19 @@
             var models = [];
             for(var i = 0; i < data.length; i++) {
                 models[i] = {};
-                models[i].payload = {};
-                models[i].payload.id = data[i].id;
-                models[i].payload.name = data[i].name;
-                models[i].payload.measurement_unit = data[i].measurement_unit;
+                models[i].id = data[i].id;
+                models[i].name = data[i].name;
+                models[i].measurement_unit = data[i].measurement_unit;
                 for(var y = 0; y < data[i].params.length; y++) {
-                    models[i].payload[y] = {};
+                    models[i][y] = {};
                     if(y == 0) {
-                        models[i].payload.batch_quantity_required = helperService.unit2form(data[i].params[y].batch_quantity_required);
-                        models[i].payload.material_beginning = helperService.unit2form(data[i].params[y].material_beginning);
-                        models[i].payload.purchasing_price_per_unit = helperService.unit2form(data[i].params[y].purchasing_price_per_unit);
-                        models[i].payload.normal_waste = helperService.percent2form(data[i].params[y].normal_waste);
+                        models[i].batch_quantity_required = helperService.unit2form(data[i].params[y].batch_quantity_required);
+                        models[i].material_beginning = helperService.unit2form(data[i].params[y].material_beginning);
+                        models[i].purchasing_price_per_unit = helperService.unit2form(data[i].params[y].purchasing_price_per_unit);
+                        models[i].normal_waste = helperService.percent2form(data[i].params[y].normal_waste);
                     }
-                    models[i].payload[y].safety_stock = helperService.percent2form(data[i].params[y].safety_stock);
-                    models[i].payload[y].season_price_change_rate = helperService.percent2form(data[i].params[y].season_price_change_rate);
+                    models[i][y].safety_stock = helperService.percent2form(data[i].params[y].safety_stock);
+                    models[i][y].season_price_change_rate = helperService.percent2form(data[i].params[y].season_price_change_rate);
                 }
                 return models;
             }
@@ -318,19 +317,19 @@
             for(var k = 0; k < 12; k++) {
                 data[k] = {};
                 data[k].month_number = +k + 1;
-                data[k].safety_stock = form.payload[k].safety_stock / 100;
-                data[k].season_price_change_rate = (form.payload[k].season_price_change_rate || 0) / 100;
+                data[k].safety_stock = form[k].safety_stock / 100;
+                data[k].season_price_change_rate = (form[k].season_price_change_rate || 0) / 100;
             }
             // create output object structure
             var dm = {};
-            dm.year_number = form.payload.year_number;
+            dm.year_number = form.year_number;
             dm.data = data;
-            dm.data[0].batch_quantity_required = form.payload.batch_quantity_required * 100;
-            dm.data[0].material_beginning = form.payload.material_beginning * 100;
-            dm.measurement_unit = form.payload.measurement_unit;
-            dm.name = form.payload.name;
-            dm.data[0].normal_waste = form.payload.normal_waste / 100;
-            dm.data[0].purchasing_price_per_unit = form.payload.purchasing_price_per_unit * 100;
+            dm.data[0].batch_quantity_required = form.batch_quantity_required * 100;
+            dm.data[0].material_beginning = form.material_beginning * 100;
+            dm.measurement_unit = form.measurement_unit;
+            dm.name = form.name;
+            dm.data[0].normal_waste = form.normal_waste / 100;
+            dm.data[0].purchasing_price_per_unit = form.purchasing_price_per_unit * 100;
             // serializing object before return
             return angular.toJson(dm);
         }
