@@ -317,11 +317,8 @@
             form = JSON.parse(angular.toJson(form));
             for(var k = 0; k < 12; k++) {
                 data[k] = {};
-                if(form[k].id !== undefined) {
-                    data[k].id = form[k].id;
-                } else {
-                    data[k].month_number = +k + 1;
-                }
+                if(form[k].id !== undefined) data[k].id = form[k].id;
+                data[k].month_number = +k + 1;
                 data[k].safety_stock = helperService.form2percent(form[k].safety_stock);
                 data[k].season_price_change_rate = helperService.form2percent(form[k].season_price_change_rate || 0);
             }
