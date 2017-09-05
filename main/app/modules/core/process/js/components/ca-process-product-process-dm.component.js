@@ -166,6 +166,7 @@
                 });
         };
         vm.onUpdate = function(item, callback) {
+            console.log(item);
             /*standardService.onDMUpdate($scope.year_number, item, function(){
                 callback();
                 refreshReport();

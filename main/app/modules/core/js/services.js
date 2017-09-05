@@ -305,6 +305,7 @@
                         models[i].purchasing_price_per_unit = helperService.unit2form(data[i].params[y].purchasing_price_per_unit);
                         models[i].normal_waste = helperService.percent2form(data[i].params[y].normal_waste);
                     }
+                    models[i][y].id = data[i].params[y].id;
                     models[i][y].safety_stock = helperService.percent2form(data[i].params[y].safety_stock);
                     models[i][y].season_price_change_rate = helperService.percent2form(data[i].params[y].season_price_change_rate);
                 }
