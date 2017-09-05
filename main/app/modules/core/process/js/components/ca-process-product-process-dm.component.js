@@ -154,24 +154,19 @@
             vm.controls = {};
             vm.year_number = 1;
         };
-        vm.onSave = function(newItem, callback) {
+        vm.onSave = saveFormData(item, callback);
+        vm.onUpdate = saveFormData(item, callback);
+        function saveFormData(item, callback) {
             var dm = new DataModel.Process();
-            for(var k in newItem) {
-                dm[k] = newItem[k];
+            for(var k in item) {
+                dm[k] = item[k];
             }
             dm.year_number = vm.year_number;
             dm.$saveDirectMaterial({ id: $stateParams.processId })
                 .then(function(response){
                     callback(response);
                 });
-        };
-        vm.onUpdate = function(item, callback) {
-            console.log(item);
-            /*standardService.onDMUpdate($scope.year_number, item, function(){
-                callback();
-                refreshReport();
-            });*/
-        };
+        }
         vm.onDelete = function(item, callback) {
             /*standardService.onDMDelete(item, function(){
                 callback();
