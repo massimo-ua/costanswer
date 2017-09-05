@@ -299,7 +299,7 @@
                 models[i].measurement_unit = data[i].measurement_unit;
                 for(var y = 0; y < data[i].params.length; y++) {
                     models[i][y] = {};
-                    if(y == 0) {
+                    if (y == 0) {
                         models[i].batch_quantity_required = helperService.unit2form(data[i].params[y].batch_quantity_required);
                         models[i].material_beginning = helperService.unit2form(data[i].params[y].material_beginning);
                         models[i].purchasing_price_per_unit = helperService.unit2form(data[i].params[y].purchasing_price_per_unit);
@@ -309,8 +309,8 @@
                     models[i][y].safety_stock = helperService.percent2form(data[i].params[y].safety_stock);
                     models[i][y].season_price_change_rate = helperService.percent2form(data[i].params[y].season_price_change_rate);
                 }
-                return models;
             }
+            return models;
         }
         function processDirectMaterialsRequestConverter(form) {
             var data = {};
