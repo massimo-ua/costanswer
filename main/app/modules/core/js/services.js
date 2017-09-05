@@ -317,20 +317,25 @@
             form = JSON.parse(angular.toJson(form));
             for(var k = 0; k < 12; k++) {
                 data[k] = {};
-                data[k].month_number = +k + 1;
-                data[k].safety_stock = form[k].safety_stock / 100;
-                data[k].season_price_change_rate = (form[k].season_price_change_rate || 0) / 100;
+                if(form[k].id !== undefined) {
+                    data[k].id = form[k].id;
+                } else {
+                    data[k].month_number = +k + 1;
+                }
+                data[k].safety_stock = helperService.form2percent(form[k].safety_stock);
+                data[k].season_price_change_rate = helperService.form2percent(form[k].season_price_change_rate || 0);
             }
             // create output object structure
             var dm = {};
+            if(form.id !== undefined) dm.id = form.id;
             dm.year_number = form.year_number;
             dm.data = data;
-            dm.data[0].batch_quantity_required = form.batch_quantity_required * 100;
-            dm.data[0].material_beginning = form.material_beginning * 100;
+            dm.data[0].batch_quantity_required = helperService.form2unit(form.batch_quantity_required);
+            dm.data[0].material_beginning = helperService.form2unit(form.material_beginning);
             dm.measurement_unit = form.measurement_unit;
             dm.name = form.name;
-            dm.data[0].normal_waste = form.normal_waste / 100;
-            dm.data[0].purchasing_price_per_unit = form.purchasing_price_per_unit * 100;
+            dm.data[0].normal_waste = helperService.form2percent(form.normal_waste);
+            dm.data[0].purchasing_price_per_unit = helperService.form2unit(form.purchasing_price_per_unit);
             // serializing object before return
             return angular.toJson(dm);
         }
