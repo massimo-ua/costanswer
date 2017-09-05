@@ -154,8 +154,8 @@
             vm.controls = {};
             vm.year_number = 1;
         };
-        vm.onSave = saveFormData(item, callback);
-        vm.onUpdate = saveFormData(item, callback);
+        vm.onSave = saveFormData;
+        vm.onUpdate = saveFormData;
         function saveFormData(item, callback) {
             var dm = new DataModel.Process();
             for(var k in item) {
