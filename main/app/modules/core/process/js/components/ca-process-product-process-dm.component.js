@@ -156,11 +156,13 @@
         };
         vm.onSave = saveFormData;
         vm.onUpdate = saveFormData;
+        vm.onClear = function(){
+            vm.form.$setPristine();
+            vm.form.$setUntouched();
+        };
         function saveFormData(item, callback) {
             var dm = new DataModel.Process();
-            for(var k in item) {
-                dm[k] = item[k];
-            }
+            for(var k in item) dm[k] = item[k];
             dm.year_number = vm.year_number;
             dm.$saveDirectMaterial({ id: $stateParams.processId })
                 .then(function(response){
