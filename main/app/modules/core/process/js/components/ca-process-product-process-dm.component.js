@@ -151,8 +151,9 @@
             vm.formOptions = {};
             vm.formDisabled = false;
             vm.nameProperty = 'name';
-            vm.controls = {};
-            vm.year_number = 1;
+            vm.controls = {
+                buttonText: "Add"
+            };
         };
         vm.onSave = saveFormData;
         vm.onUpdate = saveFormData;
