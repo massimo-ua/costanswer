@@ -2,11 +2,13 @@
     <div ca-thumbler name-property="$ctrl.nameProperty" display-block="5" items-list="$ctrl.itemsList" item-form="theFormlyForm" item-model="$ctrl.model" controls="$ctrl.controls" on-save="$ctrl.onSave" on-update="$ctrl.onUpdate" on-delete="$ctrl.onDelete" on-load="$ctrl.onLoad"></div>
 </div>
 <div class="row">
+    <form name="$ctrl.form" novalidate>
     <fieldset ng-disabled="$ctrl.formDisabled">
-        <formly-form model="$ctrl.model" fields="$ctrl.settings" options="$ctrl.formOptions">
+        <formly-form form="$ctrl.form" model="$ctrl.model" fields="$ctrl.settings" options="$ctrl.formOptions">
             <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center">
                 <button type="button" ng-click="$ctrl.controls.addItem($ctrl.model)" class="btn btn-costanswer" ng-disabled="settingsForm.$invalid">{{ $ctrl.controls.buttonText }}</button>
             </div>
         </formly-form>
     </fieldset>
+    </form>
 </div>

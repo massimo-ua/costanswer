@@ -12,7 +12,6 @@
             vm.updateMode = false;
             vm.buttonText = 'Save';
             vm.year_number = 1;
-            vm.Form = {};
             ProjectDataService.list()
                 .then(function(response){
                     vm.project_begin_month = response.begin_month;
