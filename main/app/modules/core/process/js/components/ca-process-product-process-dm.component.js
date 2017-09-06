@@ -168,10 +168,10 @@
                 });
         }
         vm.onDelete = function(item, callback) {
-            /*standardService.onDMDelete(item, function(){
-                callback();
-                refreshReport();
-            });*/
+            if(item && item.id) {
+                DataModel.Product.deleteDirectMaterial({ id: item.id });
+            }
+            callback();
         };
         vm.onLoad = function(component_id) {
             //refreshReport(component_id);
