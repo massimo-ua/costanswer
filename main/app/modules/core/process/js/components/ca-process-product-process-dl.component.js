@@ -16,7 +16,7 @@
                 .then(function(response){
                     vm.project_begin_month = response.begin_month;
                 });
-            if($stateParams.processId !== undefined) DataModel.Process
+            /*if($stateParams.processId !== undefined) DataModel.Process
                 .directMaterial({id: $stateParams.processId})
                 .$promise
                 .then(function (response) {
@@ -25,7 +25,7 @@
                         vm.buttonText = 'Update';
                         vm.updateMode = true;
                     }
-                });
+                });*/
             vm.settings = [
                 {
                     className: "row",
@@ -102,13 +102,13 @@
             vm.form.$setUntouched();
         };
         function saveFormData(item, callback) {
-            var dm = new DataModel.Process();
+            /*var dm = new DataModel.Process();
             for(var k in item) dm[k] = item[k];
             dm.year_number = vm.year_number;
             dm.$saveDirectMaterial({ id: $stateParams.processId })
                 .then(function(response){
                     callback(response);
-                });
+                });*/
         }
         vm.onDelete = function(item, callback) {
             if(item && item.id) {
