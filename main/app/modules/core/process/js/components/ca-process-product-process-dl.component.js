@@ -10,14 +10,13 @@
         vm.$onInit = function() {
             vm.model = {};
             vm.updateMode = false;
-            vm.buttonText = 'Save';
             vm.year_number = 1;
             ProjectDataService.list()
                 .then(function(response){
                     vm.project_begin_month = response.begin_month;
                 });
-            /*if($stateParams.processId !== undefined) DataModel.Process
-                .directMaterial({id: $stateParams.processId})
+            if($stateParams.processId !== undefined) DataModel.Process
+                .directLabor({id: $stateParams.processId})
                 .$promise
                 .then(function (response) {
                     if (response.length > 0) {
@@ -25,7 +24,7 @@
                         vm.buttonText = 'Update';
                         vm.updateMode = true;
                     }
-                });*/
+                });
             vm.settings = [
                 {
                     className: "row",
@@ -90,9 +89,10 @@
             ];
             vm.formOptions = {};
             vm.formDisabled = false;
-            vm.nameProperty = 'name';
+            vm.nameProperty = 'worker';
             vm.controls = {
-                buttonText: "Add"
+                buttonText: "Add",
+                formDisabled: false
             };
         };
         vm.onSave = saveFormData;
@@ -102,17 +102,23 @@
             vm.form.$setUntouched();
         };
         function saveFormData(item, callback) {
-            /*var dm = new DataModel.Process();
-            for(var k in item) dm[k] = item[k];
-            dm.year_number = vm.year_number;
-            dm.$saveDirectMaterial({ id: $stateParams.processId })
+            vm.controls.formDisabled = true;
+            vm.controls.buttonText = vm.item.id ? 'Updating...' : 'Saving...';
+            var dl = new DataModel.Process();
+            for(var k in item) dl[k] = item[k];
+            dl.year_number = vm.year_number;
+            dl.$saveDirectLabor({ id: $stateParams.processId })
                 .then(function(response){
                     callback(response);
-                });*/
+                })
+                .finally(function(){
+                    vm.controls.formDisabled = false;
+                    vm.controls.buttonText = 'Add';
+                });
         }
         vm.onDelete = function(item, callback) {
             if(item && item.id) {
-                DataModel.Product.deleteDirectMaterial({ id: item.id });
+                DataModel.Product.deleteDirectLabor({ id: item.id });
             }
             callback();
         };

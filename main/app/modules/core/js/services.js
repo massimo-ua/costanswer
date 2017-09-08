@@ -65,8 +65,20 @@
                     url: API_PREFIX+'/processes/:id/directmaterial',
                     isArray: true,
                     transformResponse: processDirectMaterialsResponseConverter
+                },
+                saveDirectLabor: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/processes/:id/directlabor',
+                    transformRequest: processDirectLaborRequestConverter
+                },
+                directLabor: {
+                    method: 'GET',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/processes/:id/directlabor',
+                    isArray: true,
+                    transformResponse: processDirectLaborResponseConverter
                 }
-
             }),
             Moh: $resource(API_PREFIX + '/moh/:id', {id: '@_id'}, {
                 update: {method: 'PUT'},
@@ -364,6 +376,13 @@
                 model[i]["goods_transfered_out"] = parseInt(data[i]["goods_transfered_out"]) / 100;
             }
             return model;
+        }
+
+        function processDirectLaborRequestConverter(form) {
+            //
+        }
+        function processDirectLaborResponseConverter(response) {
+            //
         }
     }]);
 }());

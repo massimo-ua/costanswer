@@ -10,7 +10,6 @@
         vm.$onInit = function() {
             vm.model = {};
             vm.updateMode = false;
-            vm.buttonText = 'Save';
             vm.year_number = 1;
             ProjectDataService.list()
                 .then(function(response){
@@ -151,7 +150,8 @@
             vm.formDisabled = false;
             vm.nameProperty = 'name';
             vm.controls = {
-                buttonText: "Add"
+                buttonText: "Add",
+                formDisabled: false
             };
         };
         vm.onSave = saveFormData;
@@ -161,12 +161,18 @@
             vm.form.$setUntouched();
         };
         function saveFormData(item, callback) {
+            vm.controls.formDisabled = true;
+            vm.controls.buttonText = vm.item.id ? 'Updating...' : 'Saving...';
             var dm = new DataModel.Process();
             for(var k in item) dm[k] = item[k];
             dm.year_number = vm.year_number;
             dm.$saveDirectMaterial({ id: $stateParams.processId })
                 .then(function(response){
                     callback(response);
+                })
+                .finally(function(){
+                    vm.controls.formDisabled = false;
+                    vm.controls.buttonText = 'Add';
                 });
         }
         vm.onDelete = function(item, callback) {
