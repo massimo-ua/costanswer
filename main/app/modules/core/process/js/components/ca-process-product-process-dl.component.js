@@ -103,7 +103,7 @@
         };
         function saveFormData(item, callback) {
             vm.controls.formDisabled = true;
-            vm.controls.buttonText = vm.item.id ? 'Updating...' : 'Saving...';
+            vm.controls.buttonText = item.id ? 'Updating...' : 'Saving...';
             var dl = new DataModel.Process();
             for(var k in item) dl[k] = item[k];
             dl.year_number = vm.year_number;
