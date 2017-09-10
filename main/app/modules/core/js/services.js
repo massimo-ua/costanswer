@@ -387,6 +387,7 @@
             dl.hours_per_batch_required = helperService.form2unit(form.hours_per_batch_required);
             dl.payroll_taxes = helperService.form2unit(form.payroll_taxes);
             dl.annual_growth_rate = helperService.form2percent(form.annual_growth_rate);
+            dl.year_number = form.year_number;
             return angular.toJson(dl);
         }
         function processDirectLaborResponseConverter(response) {
