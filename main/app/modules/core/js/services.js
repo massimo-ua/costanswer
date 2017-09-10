@@ -380,6 +380,10 @@
 
         function processDirectLaborRequestConverter(form) {
             //
+            form = JSON.parse(angular.toJson(form));
+            var dl = {};
+
+
         }
         function processDirectLaborResponseConverter(response) {
             //
