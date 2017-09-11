@@ -382,6 +382,7 @@
             //
             form = JSON.parse(angular.toJson(form));
             var dl = {};
+            if(form.id !== undefined) dl.id = form.id;
             dl.worker = form.worker;
             dl.params = {};
             dl.params[0] = {};
