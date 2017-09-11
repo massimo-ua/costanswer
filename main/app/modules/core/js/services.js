@@ -383,11 +383,11 @@
             form = JSON.parse(angular.toJson(form));
             var dl = {};
             dl.worker = form.worker;
-            dl.data = [];
-            dl.data[0].hourly_rate = helperService.form2unit(form.hourly_rate);
-            dl.data[0].hours_per_batch_required = helperService.form2unit(form.hours_per_batch_required);
-            dl.data[0].payroll_taxes = helperService.form2unit(form.payroll_taxes);
-            dl.data[0].annual_growth_rate = helperService.form2percent(form.annual_growth_rate);
+            var data = [];
+            data[0]['hourly_rate'] = helperService.form2unit(form.hourly_rate);
+            data[0]['hours_per_batch_required'] = helperService.form2unit(form.hours_per_batch_required);
+            data[0]['payroll_taxes'] = helperService.form2unit(form.payroll_taxes);
+            data[0]['annual_growth_rate'] = helperService.form2percent(form.annual_growth_rate);
             dl.year_number = form.year_number;
             return angular.toJson(dl);
         }
