@@ -397,15 +397,18 @@
         function processDirectLaborResponseConverter(response) {
             //
             var data = JSON.parse(response);
-            var model = {};
-            model.id = data.id;
-            model.param_id = data.params[0].id;
-            model.worker = data.worker;
-            model.hourly_rate = helperService.unit2form(data.params[0].hourly_rate);
-            model.hours_per_batch_required = helperService.unit2form(data.params[0].hours_per_batch_required);
-            model.payroll_taxes = helperService.unit2form(data.params[0].payroll_taxes);
-            model.annual_growth_rate = helperService.percent2form(data.params[0].annual_growth_rate);
-            model.year_number = helperService.int2form(data.params[0].year_number);
+            var model = [];
+            for(var i = 0; i < response.length; ++i) {
+                model[i] = {};
+                model[i].id = data.id;
+                model[i].param_id = data.params[0].id;
+                model[i].worker = data.worker;
+                model[i].hourly_rate = helperService.unit2form(data.params[0].hourly_rate);
+                model[i].hours_per_batch_required = helperService.unit2form(data.params[0].hours_per_batch_required);
+                model[i].payroll_taxes = helperService.unit2form(data.params[0].payroll_taxes);
+                model[i].annual_growth_rate = helperService.percent2form(data.params[0].annual_growth_rate);
+                model[i].year_number = helperService.int2form(data.params[0].year_number);
+            }
             return model;
         }
     }]);
