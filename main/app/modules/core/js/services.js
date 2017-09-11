@@ -392,6 +392,7 @@
         }
         function processDirectLaborResponseConverter(response) {
             //
+            var data = JSON.parse(response);
         }
     }]);
 }());
