@@ -385,6 +385,7 @@
             dl.worker = form.worker;
             dl.params = {};
             dl.params[0] = {};
+            dl.params[0].month_number = 0;
             dl.params[0].hourly_rate = helperService.form2unit(form.hourly_rate);
             dl.params[0].hours_per_batch_required = helperService.form2unit(form.hours_per_batch_required);
             dl.params[0].payroll_taxes = helperService.form2unit(form.payroll_taxes);
