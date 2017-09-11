@@ -400,14 +400,14 @@
             var model = [];
             for(var i = 0; i < response.length; ++i) {
                 model[i] = {};
-                model[i].id = data.id;
-                model[i].param_id = data.params[0].id;
-                model[i].worker = data.worker;
-                model[i].hourly_rate = helperService.unit2form(data.params[0].hourly_rate);
-                model[i].hours_per_batch_required = helperService.unit2form(data.params[0].hours_per_batch_required);
-                model[i].payroll_taxes = helperService.unit2form(data.params[0].payroll_taxes);
-                model[i].annual_growth_rate = helperService.percent2form(data.params[0].annual_growth_rate);
-                model[i].year_number = helperService.int2form(data.params[0].year_number);
+                model[i].id = data[i].id;
+                model[i].param_id = data[i].params[0].id;
+                model[i].worker = data[i].worker;
+                model[i].hourly_rate = helperService.unit2form(data[i].params[0].hourly_rate);
+                model[i].hours_per_batch_required = helperService.unit2form(data[i].params[0].hours_per_batch_required);
+                model[i].payroll_taxes = helperService.unit2form(data[i].params[0].payroll_taxes);
+                model[i].annual_growth_rate = helperService.percent2form(data[i].params[0].annual_growth_rate);
+                model[i].year_number = helperService.int2form(data[i].params[0].year_number);
             }
             return model;
         }
