@@ -385,6 +385,7 @@
             dl.worker = form.worker;
             dl.params = {};
             dl.params[0] = {};
+            if(form.param_id !== undefined) dl.params[0].id = form.param_id;
             dl.params[0].month_number = 0;
             dl.params[0].hourly_rate = helperService.form2unit(form.hourly_rate);
             dl.params[0].hours_per_batch_required = helperService.form2unit(form.hours_per_batch_required);
@@ -396,6 +397,16 @@
         function processDirectLaborResponseConverter(response) {
             //
             var data = JSON.parse(response);
+            var model = {};
+            model.id = data.id;
+            model.param_id = data.params[0].id;
+            model.worker = data.worker;
+            model.hourly_rate = helperService.unit2form(data.params[0].hourly_rate);
+            model.hours_per_batch_required = helperService.unit2form(data.params[0].hours_per_batch_required);
+            model.payroll_taxes = helperService.unit2form(data.params[0].payroll_taxes);
+            model.annual_growth_rate = helperService.percent2form(data.params[0].annual_growth_rate);
+            model.year_number = helperService.int2form(data.params[0].year_number);
+            return model;
         }
     }]);
 }());

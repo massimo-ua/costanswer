@@ -32,6 +32,9 @@
                 return 0;
             }
         };
+        factory.int2form = function(value) {
+          return parseInt(value);
+        };
         function roundToTwo(num) {
             return +(Math.round(num + "e+2")  + "e-2");
         }
