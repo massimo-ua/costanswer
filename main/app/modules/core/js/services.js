@@ -398,7 +398,7 @@
             //
             var data = JSON.parse(response);
             var model = [];
-            for(var i = 0; i < response.length; ++i) {
+            for(var i = 0; i < data.length; ++i) {
                 model[i] = {};
                 model[i].id = data[i].id;
                 model[i].param_id = data[i].params[0].id;
