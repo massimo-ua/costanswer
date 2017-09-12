@@ -99,6 +99,10 @@
             .state('product-process-component.dl', {
                 url: '/direct-labor',
                 template: '<ca-process-product-process-dl></ca-process-product-process-dl>'
+            })
+            .state('product-process-component.vo', {
+                url: '/variable-overhead',
+                template: '<ca-process-product-process-vo></ca-process-product-process-vo>'
             });
     }]);
 }());

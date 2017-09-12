@@ -1,11 +1,11 @@
 (function(){
     'use strict';
     angular.module('costAnswer.core.process.components')
-        .component('caProcessProductProcessDl', {
+        .component('caProcessProductProcessVo', {
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-c.html',
-            controller: caProcessProductProcessDlController
+            controller: caProcessProductProcessVoController
         });
-    function caProcessProductProcessDlController(DataModel, $stateParams, ProjectDataService, monthService) {
+    function caProcessProductProcessVoController(DataModel, $stateParams, ProjectDataService, monthService) {
         var vm = this;
         vm.$onInit = function() {
             vm.model = {};
@@ -126,5 +126,5 @@
             //refreshReport(component_id);
         };
     }
-    caProcessProductProcessDlController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
+    caProcessProductProcessVoController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
 }());
