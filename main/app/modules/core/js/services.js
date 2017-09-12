@@ -78,6 +78,19 @@
                     url: API_PREFIX+'/processes/:id/directlabor',
                     isArray: true,
                     transformResponse: processDirectLaborResponseConverter
+                },
+                saveVariableOverhead: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/processes/:id/variableoverhead',
+                    transformRequest: processVariableOverheadRequestConverter
+                },
+                variableOverhead: {
+                    method: 'GET',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/processes/:id/variableoverhead',
+                    isArray: true,
+                    transformResponse: processVariableOverheadResponseConverter
                 }
             }),
             Moh: $resource(API_PREFIX + '/moh/:id', {id: '@_id'}, {
@@ -408,6 +421,35 @@
                 model[i].hours_per_batch_required = helperService.unit2form(data[i].params[0].hours_per_batch_required);
                 model[i].payroll_taxes = helperService.unit2form(data[i].params[0].payroll_taxes);
                 model[i].annual_growth_rate = helperService.percent2form(data[i].params[0].annual_growth_rate);
+                model[i].year_number = helperService.int2form(data[i].params[0].year_number);
+            }
+            return model;
+        }
+
+        function processVariableOverheadRequestConverter(form) {
+            //
+            form = JSON.parse(angular.toJson(form));
+            var dl = {};
+            if(form.id !== undefined) dl.id = form.id;
+            dl.name = form.name;
+            dl.params = {};
+            dl.params[0] = {};
+            if(form.param_id !== undefined) dl.params[0].id = form.param_id;
+            dl.params[0].month_number = 0;
+            dl.params[0].amount_per_batch = helperService.form2unit(form.amount_per_batch);
+            dl.year_number = form.year_number;
+            return angular.toJson(dl);
+        }
+        function processVariableOverheadResponseConverter(response) {
+            //
+            var data = JSON.parse(response);
+            var model = [];
+            for(var i = 0; i < data.length; ++i) {
+                model[i] = {};
+                model[i].id = data[i].id;
+                model[i].param_id = data[i].params[0].id;
+                model[i].name = data[i].name;
+                model[i].amount_per_batch = helperService.unit2form(data[i].params[0].amount_per_batch);
                 model[i].year_number = helperService.int2form(data[i].params[0].year_number);
             }
             return model;

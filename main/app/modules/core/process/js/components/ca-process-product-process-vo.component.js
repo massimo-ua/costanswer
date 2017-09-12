@@ -16,7 +16,7 @@
                     vm.project_begin_month = response.begin_month;
                 });
             if($stateParams.processId !== undefined) DataModel.Process
-                .directLabor({id: $stateParams.processId})
+                .variableOverhead({id: $stateParams.processId})
                 .$promise
                 .then(function (response) {
                     if (response.length > 0) {
@@ -74,7 +74,7 @@
             var dl = new DataModel.Process();
             for(var k in item) dl[k] = item[k];
             dl.year_number = vm.year_number;
-            dl.$saveDirectLabor({ id: $stateParams.processId })
+            dl.$saveVariableOverhead({ id: $stateParams.processId })
                 .then(function(response){
                     callback(response);
                 })
@@ -85,7 +85,7 @@
         }
         vm.onDelete = function(item, callback) {
             if(item && item.id) {
-                DataModel.Product.deleteDirectLabor({ id: item.id });
+                DataModel.Product.deleteVariableOverhead({ id: item.id });
             }
             callback();
         };
