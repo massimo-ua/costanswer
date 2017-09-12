@@ -30,56 +30,23 @@
                     className: "row",
                     fieldGroup: [
                         {
-                            key: 'worker',
+                            key: 'name',
                             type: 'ca-input',
                             templateOptions: {
                                 type: 'text',
-                                label: 'Worker name/title',
+                                label: 'Name of variable overhead',
                                 placeholder: 'Name',
                                 maxlength: 20,
                                 required: true
                             }
                         },
                         {
-                            key: 'hours_per_batch_required',
+                            key: 'amount_per_batch',
                             type: 'ca-input',
                             templateOptions: {
                                 type: 'number',
-                                label: 'Hours per batch required',
-                                placeholder: 'Hours',
-                                required: true,
-                                min: 0
-                            }
-                        },
-                        {
-                            key: 'hourly_rate',
-                            type: 'ca-input',
-                            templateOptions: {
-                                type: 'number',
-                                label: 'Hourly rate',
+                                label: 'Amount per batch',
                                 placeholder: '$',
-                                required: true,
-                                min: 0
-                            }
-                        },
-                        {
-                            key: 'payroll_taxes',
-                            type: 'ca-input',
-                            templateOptions: {
-                                type: 'number',
-                                label: 'Payroll taxes',
-                                placeholder: '$',
-                                required: true,
-                                min: 0
-                            }
-                        },
-                        {
-                            key: 'annual_growth_rate',
-                            type: 'ca-input',
-                            templateOptions: {
-                                type: 'number',
-                                label: 'Annual growth rate',
-                                placeholder: '%',
                                 required: true,
                                 min: 0
                             }
@@ -89,7 +56,7 @@
             ];
             vm.formOptions = {};
             vm.formDisabled = false;
-            vm.nameProperty = 'worker';
+            vm.nameProperty = 'name';
             vm.controls = {
                 buttonText: "Add",
                 formDisabled: false
