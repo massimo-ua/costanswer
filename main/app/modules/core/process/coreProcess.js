@@ -103,6 +103,10 @@
             .state('product-process-component.vo', {
                 url: '/variable-overhead',
                 template: '<ca-process-product-process-vo></ca-process-product-process-vo>'
+            })
+            .state('product-process-component.mh', {
+                url: '/machine-hours',
+                template: '<ca-process-product-process-mh></ca-process-product-process-mh>'
             });
     }]);
 }());
