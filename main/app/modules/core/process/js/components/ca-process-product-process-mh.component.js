@@ -30,22 +30,22 @@
                     className: "row",
                     fieldGroup: [
                         {
-                            key: 'name',
+                            key: 'hours_per_batch_required',
                             type: 'ca-input',
                             templateOptions: {
-                                type: 'text',
-                                label: 'Name of variable overhead',
-                                placeholder: 'Name',
-                                maxlength: 20,
+                                type: 'number',
+                                label: 'Machine hours per batch required',
+                                placeholder: 'Hours',
+                                min: 0,
                                 required: true
                             }
                         },
                         {
-                            key: 'amount_per_batch',
+                            key: 'hourly_rate',
                             type: 'ca-input',
                             templateOptions: {
                                 type: 'number',
-                                label: 'Amount per batch',
+                                label: 'Hourly rate',
                                 placeholder: '$',
                                 required: true,
                                 min: 0
