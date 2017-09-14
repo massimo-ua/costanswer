@@ -2,7 +2,7 @@
     'use strict';
     angular.module('costAnswer.core.process.components')
         .component('caProcessProductProcessMh', {
-            templateUrl: 'app/modules/core/process/views/ca-process-product-process-c.html',
+            templateUrl: 'app/modules/core/process/views/ca-process-product-process-s.html',
             controller: caProcessProductProcessMhController
         });
     function caProcessProductProcessMhController(DataModel, $stateParams, ProjectDataService, monthService) {
