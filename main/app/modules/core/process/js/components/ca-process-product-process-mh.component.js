@@ -9,21 +9,17 @@
         var vm = this;
         vm.$onInit = function() {
             vm.model = {};
-            vm.updateMode = false;
             vm.year_number = 1;
             ProjectDataService.list()
                 .then(function(response){
                     vm.project_begin_month = response.begin_month;
                 });
             if($stateParams.processId !== undefined) DataModel.Process
-                .variableOverhead({id: $stateParams.processId})
+                .machineHours({id: $stateParams.processId})
                 .$promise
                 .then(function (response) {
-                    if (response.length > 0) {
-                        vm.itemsList = response;
-                        vm.buttonText = 'Update';
-                        vm.updateMode = true;
-                    }
+                        vm.model = response;
+                        vm.controls.buttonText = 'Update';
                 });
             vm.settings = [
                 {
@@ -55,7 +51,6 @@
                 }
             ];
             vm.formOptions = {};
-            vm.formDisabled = false;
             vm.nameProperty = 'name';
             vm.controls = {
                 buttonText: "Save",
@@ -63,32 +58,18 @@
             };
         };
         vm.onSave = saveFormData;
-        vm.onUpdate = saveFormData;
-        vm.onClear = function(){
-            vm.form.$setPristine();
-            vm.form.$setUntouched();
-        };
-        function saveFormData(item, callback) {
+        function saveFormData() {
             vm.controls.formDisabled = true;
-            vm.controls.buttonText = item.id ? 'Updating...' : 'Saving...';
-            var dl = new DataModel.Process();
-            for(var k in item) dl[k] = item[k];
-            dl.year_number = vm.year_number;
-            dl.$saveVariableOverhead({ id: $stateParams.processId })
-                .then(function(response){
-                    callback(response);
-                })
+            vm.controls.buttonText = vm.model.id ? 'Updating...' : 'Saving...';
+            var mh = new DataModel.Process();
+            for(var k in vm.model) mh[k] = vm.model[k];
+            mh.year_number = vm.year_number;
+            mh.$saveMachineHours({ id: $stateParams.processId })
                 .finally(function(){
                     vm.controls.formDisabled = false;
-                    vm.controls.buttonText = 'Add';
+                    vm.controls.buttonText = 'Update';
                 });
         }
-        vm.onDelete = function(item, callback) {
-            if(item && item.id) {
-                DataModel.Product.deleteVariableOverhead({ id: item.id });
-            }
-            callback();
-        };
         vm.onLoad = function(component_id) {
             //refreshReport(component_id);
         };
