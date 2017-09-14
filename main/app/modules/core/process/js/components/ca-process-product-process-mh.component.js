@@ -58,7 +58,7 @@
             vm.formDisabled = false;
             vm.nameProperty = 'name';
             vm.controls = {
-                buttonText: "Add",
+                buttonText: "Save",
                 formDisabled: false
             };
         };
