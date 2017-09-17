@@ -96,7 +96,6 @@
                     method: 'GET',
                     params: { id: '@id' },
                     url: API_PREFIX+'/processes/:id/machinehours',
-                    isArray: true,
                     transformResponse: processMachineHoursResponseConverter
                 },
                 saveMachineHours: {
