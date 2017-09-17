@@ -11,6 +11,12 @@
             vm.model = {};
             vm.year_number = 1;
             vm.month_number = 0;
+            vm.formOptions = {};
+            vm.nameProperty = 'name';
+            vm.controls = {
+                buttonText: "Save",
+                formDisabled: false
+            };
             ProjectDataService.list()
                 .then(function(response){
                     vm.project_begin_month = response.begin_month;
@@ -51,12 +57,6 @@
                     ]
                 }
             ];
-            vm.formOptions = {};
-            vm.nameProperty = 'name';
-            vm.controls = {
-                buttonText: "Save",
-                formDisabled: false
-            };
         };
         vm.onSave = saveFormData;
         function saveFormData() {
