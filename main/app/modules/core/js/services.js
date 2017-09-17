@@ -472,6 +472,8 @@
         }
 
         function processMachineHoursRequestConverter(form) {
+            form.hourly_rate = helperService.form2unit(form.hourly_rate);
+            form.hours_per_batch_required = helperService.form2unit(form.hours_per_batch_required);
             return angular.toJson(form);
         }
     }]);
