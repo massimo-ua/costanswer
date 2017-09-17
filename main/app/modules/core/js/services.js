@@ -468,7 +468,7 @@
         }
 
         function processMachineHoursResponseConverter(response) {
-            return response;
+            return JSON.parse(response);
         }
 
         function processMachineHoursRequestConverter(form) {
