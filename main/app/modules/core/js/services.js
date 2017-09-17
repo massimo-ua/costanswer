@@ -91,7 +91,20 @@
                     url: API_PREFIX+'/processes/:id/variableoverhead',
                     isArray: true,
                     transformResponse: processVariableOverheadResponseConverter
-                }
+                },
+                machineHours: {
+                    method: 'GET',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/processes/:id/machinehours',
+                    isArray: true,
+                    transformResponse: processMachineHoursResponseConverter
+                },
+                saveMachineHours: {
+                    method: 'POST',
+                    params: { id: '@id' },
+                    url: API_PREFIX+'/processes/:id/machinehours',
+                    transformRequest: processMachineHoursRequestConverter
+                },
             }),
             Moh: $resource(API_PREFIX + '/moh/:id', {id: '@_id'}, {
                 update: {method: 'PUT'},
@@ -453,6 +466,14 @@
                 model[i].year_number = helperService.int2form(data[i].params[0].year_number);
             }
             return model;
+        }
+
+        function processMachineHoursResponseConverter(response) {
+            return response;
+        }
+
+        function processMachineHoursRequestConverter(form) {
+            return angular.toJson(form);
         }
     }]);
 }());
