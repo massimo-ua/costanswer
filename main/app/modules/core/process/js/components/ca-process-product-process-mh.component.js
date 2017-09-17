@@ -10,6 +10,7 @@
         vm.$onInit = function() {
             vm.model = {};
             vm.year_number = 1;
+            vm.month_number = 0;
             ProjectDataService.list()
                 .then(function(response){
                     vm.project_begin_month = response.begin_month;
@@ -64,6 +65,7 @@
             var mh = new DataModel.Process();
             for(var k in vm.model) mh[k] = vm.model[k];
             mh.year_number = vm.year_number;
+            mh.month_number = vm.month_number;
             mh.$saveMachineHours({ id: $stateParams.processId })
                 .finally(function(){
                     vm.controls.formDisabled = false;
