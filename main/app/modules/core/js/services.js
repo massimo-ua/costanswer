@@ -468,9 +468,18 @@
         }
 
         function processMachineHoursResponseConverter(response) {
-            var model = JSON.parse(response);
-            model.hourly_rate = helperService.unit2form(model.hourly_rate);
-            model.hours_per_batch_required = helperService.unit2form(model.hours_per_batch_required);
+            var response = JSON.parse(response);
+            var model = {};
+            for(var k in response[0]) {
+                switch(k) {
+                    case "hourly_rate":
+                    case "hours_per_batch_required":
+                        model[k] = helperService.unit2form(response[0][k]);
+                    break;
+                    default:
+                        model[k] = response[0][k];
+                }
+            }
             return model;
         }
 
