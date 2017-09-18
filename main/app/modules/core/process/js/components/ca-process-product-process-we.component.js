@@ -31,6 +31,7 @@
             }
             vm.settings = [
                 {
+                    className: "row",
                     fieldGroup: [
                         {
                             key: 'ending_conversion_costs_complete_rate',
@@ -39,8 +40,8 @@
                                 type: 'number',
                                 label: 'Conversion costs complete',
                                 placeholder: '%',
-                                required: true,
                                 min: 0,
+                                required: true,
                                 errorText: 'Please, fill in conversion cost rate'
                             }
                         }
