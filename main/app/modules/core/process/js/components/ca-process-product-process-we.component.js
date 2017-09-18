@@ -5,7 +5,7 @@
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-s.html',
             controller: caProcessProductProcessWeController
         });
-    function caProcessProductProcessWeController(DataModel, $stateParams, ProjectDataService) {
+    function caProcessProductProcessWeController(DataModel, $stateParams, ProjectDataService, monthService) {
         var vm = this;
 
         vm.$onInit = function() {
@@ -89,5 +89,5 @@
             }
         };*/
     }
-    caProcessProductProcessWeController.$inject = ['DataModel', '$stateParams', 'ProjectDataService'];
+    caProcessProductProcessWeController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
 }());
