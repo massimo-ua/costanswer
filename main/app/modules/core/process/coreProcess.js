@@ -107,6 +107,10 @@
             .state('product-process-component.mh', {
                 url: '/machine-hours',
                 template: '<ca-process-product-process-mh></ca-process-product-process-mh>'
+            })
+            .state('product-process-component.we', {
+                url: '/wip-ending',
+                template: '<ca-process-product-process-we></ca-process-product-process-we>'
             });
     }]);
 }());
