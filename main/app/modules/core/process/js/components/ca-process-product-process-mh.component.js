@@ -12,7 +12,6 @@
             vm.year_number = 1;
             vm.month_number = 0;
             vm.formOptions = {};
-            vm.nameProperty = 'name';
             vm.controls = {
                 buttonText: "Save",
                 formDisabled: false

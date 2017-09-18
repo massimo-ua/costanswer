@@ -7,9 +7,16 @@
         });
     function caProcessProductProcessWeController(DataModel, $stateParams) {
         var vm = this;
+
         vm.$onInit = function() {
             vm.model = {};
-            vm.buttonText = 'Save';
+            vm.year_number = 1;
+            vm.month_number = 0;
+            vm.formOptions = {};
+            vm.controls = {
+                buttonText: "Save",
+                formDisabled: false
+            };
             if($stateParams.processId !== undefined) {
                 DataModel.Process
                     .getWip({id: $stateParams.processId})
@@ -40,8 +47,6 @@
                     ]
                 }
             ];
-            vm.formOptions = {};
-            vm.formDisabled = false;
         };
         vm.onSave = function() {
             vm.formDisabled = true;
