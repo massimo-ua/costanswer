@@ -17,7 +17,11 @@
                 buttonText: "Save",
                 formDisabled: false
             };
-            /*if($stateParams.processId !== undefined) {
+            ProjectDataService.list()
+            .then(function(response){
+                vm.project_begin_month = response.begin_month;
+            });
+            if($stateParams.processId !== undefined) {
                 DataModel.Process
                     .getWip({id: $stateParams.processId})
                     .$promise
@@ -28,7 +32,7 @@
                         vm.model.beginning_direct_materials_complete = response.beginning_direct_materials_complete / 100;
                         vm.buttonText = 'Update';
                     });
-            }*/
+            }
             vm.settings = [
                 {
                     className: "row",
@@ -42,7 +46,7 @@
                                 placeholder: '%',
                                 min: 0,
                                 required: true,
-                                errorText: 'Please, fill in conversion cost rate'
+                                monthes: monthService.AbsoluteMonthes(vm.project_begin_month)
                             }
                         }
                     ]
