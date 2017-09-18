@@ -17,7 +17,7 @@
                 buttonText: "Save",
                 formDisabled: false
             };
-            if($stateParams.processId !== undefined) {
+            /*if($stateParams.processId !== undefined) {
                 DataModel.Process
                     .getWip({id: $stateParams.processId})
                     .$promise
@@ -28,7 +28,7 @@
                         vm.model.beginning_direct_materials_complete = response.beginning_direct_materials_complete / 100;
                         vm.buttonText = 'Update';
                     });
-            }
+            }*/
             vm.settings = [
                 {
                     className: "row",
@@ -49,7 +49,7 @@
                 }
             ];
         };
-        vm.onSave = function() {
+        /*vm.onSave = function() {
             vm.formDisabled = true;
             var wip;
             if(vm.model.id !== undefined) {
@@ -83,7 +83,7 @@
                         vm.formDisabled = false;
                     });
             }
-        };
+        };*/
     }
     caProcessProductProcessWeController.$inject = ['DataModel', '$stateParams'];
 }());
