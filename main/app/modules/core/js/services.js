@@ -495,6 +495,7 @@
             req.data = [];
             req.year_number = form.year_number || 1;
             for(var i=0; i < 12; i++) {
+                req.data[i + 1] = {};
                 req.data[i + 1]["ending_conversion_costs_complete_rate"] = form[i].ending_conversion_costs_complete_rate ? helperService.form2percent(form[i].ending_conversion_costs_complete_rate) : 0;
                 req.data[i + 1]["beginning_quantity"] = form[i].beginning_quantity ? helperService.form2unit(form[i].beginning_quantity) : 0;
                 req.data[i + 1]["beginning_conversion_costs_complete"] = form[i].beginning_conversion_costs_complete ? helperService.form2unit(form[i].beginning_conversion_costs_complete) : 0;
