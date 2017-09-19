@@ -39,7 +39,8 @@
                 saveWip: {
                     method: 'POST',
                     params: { id: '@id' },
-                    url: API_PREFIX+'/processes/:id/wip'
+                    url: API_PREFIX+'/processes/:id/wip',
+                    transformRequest: processWipRequestConverter
                 },
                 productionPlan: {
                     method: 'GET',
@@ -487,6 +488,19 @@
             form.hourly_rate = helperService.form2unit(form.hourly_rate);
             form.hours_per_batch_required = helperService.form2unit(form.hours_per_batch_required);
             return angular.toJson(form);
+        }
+
+        function processWipRequestConverter(form) {
+            req = {};
+            req.data = [];
+            req.year_number = form.year_number || 1;
+            for(var i=0; i < 12; i++) {
+                req.data[i + 1]["ending_conversion_costs_complete_rate"] = form[i].ending_conversion_costs_complete_rate ? helperService.form2percent(form[i].ending_conversion_costs_complete_rate) : 0;
+                req.data[i + 1]["beginning_quantity"] = form[i].beginning_quantity ? helperService.form2unit(form[i].beginning_quantity) : 0;
+                req.data[i + 1]["beginning_conversion_costs_complete"] = form[i].beginning_conversion_costs_complete ? helperService.form2unit(form[i].beginning_conversion_costs_complete) : 0;
+                req.data[i + 1]["beginning_direct_materials_complete"] = form[i].beginning_direct_materials_complete ? helperService.form2unit(form[i].beginning_direct_materials_complete) : 0;
+                return angular.toJson(form);
+            }
         }
     }]);
 }());
