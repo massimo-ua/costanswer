@@ -34,6 +34,7 @@
                 getWip: {
                     method: 'GET',
                     params: { id: '@id' },
+                    isArray: true,
                     url: API_PREFIX+'/processes/:id/wip'
                 },
                 saveWip: {
@@ -503,6 +504,22 @@
                 req.data[i]["beginning_direct_materials_complete"] = form[i].beginning_direct_materials_complete ? helperService.form2unit(form[i].beginning_direct_materials_complete) : 0;
             }
             return angular.toJson(req);
+        }
+
+        function processWipResponseConverter(response) {
+            var response = JSON.parse(response);
+            var model = {};
+            for(var k in response[0]) {
+                switch(k) {
+                    case "hourly_rate":
+                    case "hours_per_batch_required":
+                        model[k] = helperService.unit2form(response[0][k]);
+                    break;
+                    default:
+                        model[k] = response[0][k];
+                }
+            }
+            return model;
         }
     }]);
 }());
