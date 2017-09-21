@@ -35,7 +35,8 @@
                     method: 'GET',
                     params: { id: '@id' },
                     isArray: true,
-                    url: API_PREFIX+'/processes/:id/wip'
+                    url: API_PREFIX+'/processes/:id/wip',
+                    transformResponse: processWipResponseConverter
                 },
                 saveWip: {
                     method: 'POST',
