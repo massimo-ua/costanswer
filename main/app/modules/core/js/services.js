@@ -510,14 +510,24 @@
         function processWipResponseConverter(response) {
             var response = JSON.parse(response);
             var model = {};
-            for(var k in response[0]) {
-                switch(k) {
-                    case "hourly_rate":
-                    case "hours_per_batch_required":
-                        model[k] = helperService.unit2form(response[0][k]);
-                    break;
-                    default:
-                        model[k] = response[0][k];
+            for(var i = 0; i < response.length; i++) {
+                model[response[i]["month_number"] - 1] = {};
+                for(var k in response[i]) {
+                    switch(k) {
+                        case "beginning_conversion_costs_complete":
+                        case "beginning_costs":
+                        case "beginning_direct_materials_complete":
+                        case "beginning_quantity":
+                        case "ending_costs":
+                        case "ending_quantity":
+                            model[response[i]["month_number"] - 1][k] = helperService.unit2form(response[i][k]);
+                        break;
+                        case "ending_conversion_costs_complete_rate":
+                            model[response[i]["month_number"] - 1][k] = helperService.percent2form(response[i][k]);
+                        break;
+                        default:
+                            model[i][k] = response[i][k];
+                    }
                 }
             }
             return model;
