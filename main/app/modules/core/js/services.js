@@ -525,11 +525,12 @@
                         case "ending_conversion_costs_complete_rate":
                             model[response[i]["month_number"] - 1][k] = helperService.percent2form(response[i][k]);
                         break;
-                        default:
-                            model[i][k] = response[i][k];
+                        case "id":
+                            model[response[i]["month_number"] - 1][k] = response[i][k];
                     }
                 }
             }
+            model["year_number"] = response[0]["year_number"];
             return model;
         }
     }]);
