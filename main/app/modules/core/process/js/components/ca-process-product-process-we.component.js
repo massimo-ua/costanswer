@@ -11,7 +11,6 @@
         vm.$onInit = function() {
             vm.model = {};
             vm.year_number = 1;
-            vm.month_number = 0;
             vm.formOptions = {};
             vm.controls = {
                 buttonText: "Save",

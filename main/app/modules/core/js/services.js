@@ -520,12 +520,13 @@
                         case "beginning_quantity":
                         case "ending_costs":
                         case "ending_quantity":
-                            model[response[i]["month_number"] - 1][k] = helperService.unit2form(response[i][k]);
+                            model[response[i]["month_number"] - 1][k] = helperService.unit2form(response[i][k]) || 0;
                         break;
                         case "ending_conversion_costs_complete_rate":
-                            model[response[i]["month_number"] - 1][k] = helperService.percent2form(response[i][k]);
+                            model[response[i]["month_number"] - 1][k] = helperService.percent2form(response[i][k]) || 0;
                         break;
                         case "id":
+                        case "month_number":
                             model[response[i]["month_number"] - 1][k] = response[i][k];
                     }
                 }

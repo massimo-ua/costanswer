@@ -9,17 +9,26 @@
         var vm = this;
         vm.$onInit = function() {
             vm.model = {};
-            vm.buttonText = 'Save';
+            vm.formOptions = {};
+            vm.controls = {
+                buttonText : 'Save',
+                formDisabled: false
+            };
             if($stateParams.processId !== undefined) {
                 DataModel.Process
                     .getWip({id: $stateParams.processId})
                     .$promise
                     .then(function(response){
-                        vm.model.id = response.id;
-                        vm.model.beginning_quantity = response.beginning_quantity / 100;
-                        vm.model.beginning_conversion_costs_complete = response.beginning_conversion_costs_complete / 100;
-                        vm.model.beginning_direct_materials_complete = response.beginning_direct_materials_complete / 100;
-                        vm.buttonText = 'Update';
+                        //if response is not empty
+                        if(response.length > 0) {
+                            //loop over response
+                            for(var i = 0; i < response.length; i++) {
+                                //take only first month (becouse wip beginning is stored only in first month params)
+                                if(response[i]["month_number"] == 1) {
+                                    vm.model = response[i];
+                                }
+                            }
+                        }
                     });
             }
             vm.settings = [
@@ -64,43 +73,22 @@
                     ]
                 }
             ];
-            vm.formOptions = {};
-            vm.formDisabled = false;
         };
         vm.onSave = function() {
-            vm.formDisabled = true;
+            vm.controls.formDisabled = true;
             var wip;
-            if(vm.model.id !== undefined) {
-                vm.buttonText = "Updating...";
-                wip = new DataModel.Wip();
-                wip.beginning_quantity = vm.model.beginning_quantity * 100;
-                wip.beginning_conversion_costs_complete = vm.model.beginning_conversion_costs_complete * 100;
-                wip.beginning_direct_materials_complete = vm.model.beginning_direct_materials_complete * 100;
-                wip.$update({ id: vm.model.id })
-                    .then(function(response){
-                        vm.buttonText = "Update";
-                    })
-                    .finally(function(){
-                        vm.formDisabled = false;
-                    });
-            }
-            else {
                 vm.buttonText = "Saving...";
                 wip = new DataModel.Process();
-                wip.year_number = 1;
-                wip.month_number = 1;
-                wip.beginning_quantity = vm.model.beginning_quantity * 100;
-                wip.beginning_conversion_costs_complete = vm.model.beginning_conversion_costs_complete * 100;
-                wip.beginning_direct_materials_complete = vm.model.beginning_direct_materials_complete * 100;
+                wip.year_number = vm.year_number;
+                wip[0] = {};
+                for(var k in vm.model) {
+                    wip[0][k] = vm.model[k];
+                }
                 wip.$saveWip({ id: $stateParams.processId })
-                    .then(function(response){
-                        vm.model.id = response.id;
-                        vm.buttonText = "Update";
-                    })
                     .finally(function(){
-                        vm.formDisabled = false;
+                        vm.controls.formDisabled = false;
+                        vm.controls.buttonText = "Save";
                     });
-            }
         };
     }
     caProcessProductProcessWbController.$inject = ['DataModel', '$stateParams'];
