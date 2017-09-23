@@ -497,12 +497,15 @@
             req.data = [];
             req.year_number = form.year_number || 1;
             for(var i=0; i < 12; i++) {
-                req.data[i] = {};
-                req.data[i]["month_number"] = i + 1;
-                req.data[i]["ending_conversion_costs_complete_rate"] = form[i].ending_conversion_costs_complete_rate ? helperService.form2percent(form[i].ending_conversion_costs_complete_rate) : 0;
-                req.data[i]["beginning_quantity"] = form[i].beginning_quantity ? helperService.form2unit(form[i].beginning_quantity) : 0;
-                req.data[i]["beginning_conversion_costs_complete"] = form[i].beginning_conversion_costs_complete ? helperService.form2unit(form[i].beginning_conversion_costs_complete) : 0;
-                req.data[i]["beginning_direct_materials_complete"] = form[i].beginning_direct_materials_complete ? helperService.form2unit(form[i].beginning_direct_materials_complete) : 0;
+                if(form[i] !== undefined)
+                {
+                    req.data[i] = {};
+                    req.data[i]["month_number"] = i + 1;
+                    req.data[i]["ending_conversion_costs_complete_rate"] = form[i].ending_conversion_costs_complete_rate ? helperService.form2percent(form[i].ending_conversion_costs_complete_rate) : 0;
+                    req.data[i]["beginning_quantity"] = form[i].beginning_quantity ? helperService.form2unit(form[i].beginning_quantity) : 0;
+                    req.data[i]["beginning_conversion_costs_complete"] = form[i].beginning_conversion_costs_complete ? helperService.form2unit(form[i].beginning_conversion_costs_complete) : 0;
+                    req.data[i]["beginning_direct_materials_complete"] = form[i].beginning_direct_materials_complete ? helperService.form2unit(form[i].beginning_direct_materials_complete) : 0;
+                }
             }
             return angular.toJson(req);
         }
