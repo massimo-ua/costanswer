@@ -10,6 +10,7 @@
         vm.$onInit = function() {
             vm.model = {};
             vm.formOptions = {};
+            vm.reportId = 'wip';
             vm.controls = {
                 buttonText : 'Save',
                 formDisabled: false
@@ -74,6 +75,14 @@
                 }
             ];
         };
+        function refreshReport() {
+            if(vm.product_id) {
+                standardService.getInstantReport(vm.product_id, vm.reportId, function(response){
+                    vm.instantReport = response;
+                });
+            }
+            return;
+        }
         vm.onSave = function() {
             vm.controls.formDisabled = true;
             var wip;
