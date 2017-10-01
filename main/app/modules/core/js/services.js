@@ -34,7 +34,6 @@
                 getWip: {
                     method: 'GET',
                     params: { id: '@id' },
-                    isArray: true,
                     url: API_PREFIX+'/processes/:id/wip',
                     transformResponse: processWipResponseConverter
                 },
