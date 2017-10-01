@@ -42,7 +42,8 @@
                     method: 'POST',
                     params: { id: '@id' },
                     url: API_PREFIX+'/processes/:id/wip',
-                    transformRequest: processWipRequestConverter
+                    transformRequest: processWipRequestConverter,
+                    transformResponse: processWipResponseConverter
                 },
                 productionPlan: {
                     method: 'GET',
@@ -513,6 +514,7 @@
         function processWipResponseConverter(response) {
             var response = JSON.parse(response);
             var model = [];
+            if(response.length == 0) return model;
             for(var i = 0; i < response.length; i++) {
                 model[response[i]["month_number"] - 1] = {};
                 for(var k in response[i]) {

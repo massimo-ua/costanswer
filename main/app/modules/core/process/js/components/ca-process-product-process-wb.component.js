@@ -40,7 +40,7 @@
                             type: 'ca-input',
                             templateOptions: {
                                 type: 'number',
-                                label: 'Work in process (WIP) beginning',
+                                label: 'WIP beginning  (Units)',
                                 placeholder: 'Units',
                                 required: true,
                                 min: 0,
@@ -52,11 +52,11 @@
                             type: 'ca-input',
                             templateOptions: {
                                 type: 'number',
-                                label: 'WIP beginning conversion cost completed',
+                                label: 'WIP beginning conversion cost',
                                 placeholder: '$',
                                 required: true,
                                 min: 0,
-                                errorText: 'Please, fill in WIP beginning conversion cost completed'
+                                errorText: 'Please, fill in WIP beginning conversion cost'
                             }
                         },
                         {
@@ -64,11 +64,11 @@
                             type: 'ca-input',
                             templateOptions: {
                                 type: 'number',
-                                label: 'Cost of WIP beginning direct materials completed',
+                                label: 'WIP beginning direct materials',
                                 placeholder: '$',
                                 required: true,
                                 min: 0,
-                                errorText: 'Please, fill in WIP beginning direct materials completed'
+                                errorText: 'Please, fill in WIP beginning direct materials'
                             }
                         }
                     ]
@@ -94,6 +94,9 @@
                     wip[0][k] = vm.model[k];
                 }
                 wip.$saveWip({ id: $stateParams.processId })
+                    .then(function(response){
+                        vm.model = response[0];
+                    })
                     .finally(function(){
                         vm.controls.formDisabled = false;
                         vm.controls.buttonText = "Save";
