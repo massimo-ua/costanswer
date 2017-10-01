@@ -21,7 +21,7 @@
                     .$promise
                     .then(function(response){
                         //if response is not empty
-                        if(response.length > 0) {
+                        if(!angular.equals(response,{})) {
                             //loop over response
                             for(var i = 0; i < response.length; i++) {
                                 //take only first month (becouse wip beginning is stored only in first month params)
