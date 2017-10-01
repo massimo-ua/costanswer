@@ -514,7 +514,7 @@
 
         function processWipResponseConverter(response) {
             var response = JSON.parse(response);
-            var model = [];
+            var model = {};
             if(response.length == 0) return model;
             for(var i = 0; i < response.length; i++) {
                 model[response[i]["month_number"] - 1] = {};

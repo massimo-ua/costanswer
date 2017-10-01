@@ -94,7 +94,6 @@
                     wip[0][k] = vm.model[k];
                 }
                 wip.$saveWip({ id: $stateParams.processId })
-                    .query()
                     .then(function(response){
                         vm.model = response[0];
                     })
