@@ -23,12 +23,11 @@
                         //if response is not empty
                         if(!angular.equals(response,{})) {
                             //loop over response
-                            for(var i = 0; i < response.length; i++) {
-                                //take only first month (becouse wip beginning is stored only in first month params)
-                                if(response[i]["month_number"] == 1) {
-                                    vm.model = response[i];
+                            angular.forEach(response, function(item, key) {
+                                if(item.month_number == 1) {
+                                    this.model = item;
                                 }
-                            }
+                              }, vm);
                         }
                     });
             }
