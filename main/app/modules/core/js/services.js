@@ -42,6 +42,7 @@
                     method: 'POST',
                     params: { id: '@id' },
                     url: API_PREFIX+'/processes/:id/wip',
+                    isArray: true,
                     transformRequest: processWipRequestConverter,
                     transformResponse: processWipResponseConverter
                 },
