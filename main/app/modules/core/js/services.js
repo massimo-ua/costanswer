@@ -500,6 +500,7 @@
                 if(form[i] !== undefined)
                 {
                     req.data[i] = {};
+                    if(form[i].id) req.data[i]["id"] = form[i].id;
                     req.data[i]["month_number"] = i + 1;
                     req.data[i]["ending_conversion_costs_complete_rate"] = form[i].ending_conversion_costs_complete_rate ? helperService.form2percent(form[i].ending_conversion_costs_complete_rate) : 0;
                     req.data[i]["beginning_quantity"] = form[i].beginning_quantity ? helperService.form2unit(form[i].beginning_quantity) : 0;
