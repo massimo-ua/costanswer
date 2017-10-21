@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru" class=""><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title></title>
 <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
 <meta content="telephone=no" name="format-detection">
-<!-- GA section --> 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -13,7 +13,6 @@
   ga('create', 'UA-102421010-1', 'auto');
   ga('send', 'pageview');
 </script>
-<!-- end of GA section --> 
 <link href="/favicon.ico" rel="favicon">
 <link href="assets/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
 <link href="assets/jquery-ui.1.11.4.css" media="screen" rel="stylesheet" type="text/css">
@@ -23,7 +22,11 @@
 <link href="assets/jquery.fancybox-thumbs.css" media="screen" rel="stylesheet" type="text/css">
 <link href="assets/jquery.bxslider.css" media="screen" rel="stylesheet" type="text/css">
 <link href="assets/style.css" media="screen" rel="stylesheet" type="text/css">
-<link href="assets/main.css" media="screen" rel="stylesheet" type="text/css"><script type="text/javascript" src="assets/jquery-1.11.3.min.js"></script>
+<link href="assets/main.css" media="screen" rel="stylesheet" type="text/css">
+
+<link href="assets/new.css" media="screen" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="assets/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="assets/jquery-ui.1.11.4.min.js"></script>
 <script type="text/javascript" src="assets/jquery.dot.js"></script>
 <script type="text/javascript" src="assets/jquery.backTop.js"></script>
@@ -35,54 +38,33 @@
 <script type="text/javascript" src="assets/jquery.fancybox-media.js"></script>
 <script type="text/javascript" src="assets/jquery.fancybox-thumbs.js"></script>
 
-<style type="text/css">.fancybox-margin{margin-right:15px;}</style></head>
+<style type="text/css">.fancybox-margin{margin-right:15px;}</style>
+</head>
 
 <body>
 
 <div class="content-big">
-    <header>
-    <div class="top-menu">
-        <div class="content-small">
-            <div class="logo">
-                <span>Costanswer</span>
-            </div>
-
-            
-    <nav>
-        <ul>
-            <li class="active-l"><a href="/main/#/start">START </a></li>
-            
-                <li>
-                                        <a href="/" class="" title="">Home</a>
-                </li>
-            
-                <li>
-                                        <a href="/#ABOUT" class="popup-fancy" title="">ABOUT</a>
-                </li>
-            
-                <li>
-                                        <a href="/#FEATURES" class="popup-fancy" title="">FEATURES</a>
-                </li>
-            
-                <li>
-                                        <a href="/#METHODS" class="popup-fancy" title="">SOLUTIONS</a>
-                </li>
-            
-                <li>
-                                        <a href="/#PRICING" class="popup-fancy" title="">PRICING</a>
-                </li>
-            
-                <li>
-                                        <a href="/#CONTACT" class="popup-fancy" title="">CONTACT</a>
-                </li>
-                    </ul>
-    </nav>
-            <div class="log-in">
-            <section>
+    <header id="header">
+    <div class="top-menu container flex justify-between align-center">
+        <a href="/" class="logo inline-flex align-center">
+			<img src="assets/logogl.png" alt="" class="logo__png" />
+        </a>
+		<nav class="menu" id="menu">
+			<ul class="nav inline-flex align-center column-768 align-end-768">
+				<li class="active-l"><a href="/" class="" title="">Home</a></li>
+				<li><a href="/#ABOUT" class="popup-fancy" title="">ABOUT</a></li>
+				<li><a href="/#ABOUT" class="popup-fancy" title="">HOW IT WORKS</a></li>
+				<li><a href="/#FEATURES" class="popup-fancy" title="">FEATURES</a></li>
+				<li><a href="/#METHODS" class="popup-fancy" title="">SOLUTIONS</a></li>
+				<li><a href="/#PRICING" class="popup-fancy" title="">PRICING</a></li>
+				<li><a href="/#CONTACT" class="popup-fancy" title="">CONTACT</a></li>
+				<li><a href="/#CONTACT" class="popup-fancy" title="">HELP</a></li>
+			 </ul>
+		 </nav>
+         <div class="log-in inline-flex align-center">
             <a href="/main/#/signup">Sign Up</a>
-            <span>| </span>
+            <span>|</span>
             <a href="/main/#/login" class="a-login">Login</a>
-        </section>
         <!-- div class="log-pop">
 
             <form id="authForm" action="javascript:void(null);">
@@ -93,240 +75,257 @@
         </div -->
     
 
-</div>        </div>
+       </div>
     </div>
 </header>
-    <div class="page-img">
-        <div class="content-small">
-            <p>Keeping Costs Under Control!</p>
-            <span>Cloud-based cost accounting and budgeting software for</span>
-            <span>small and medium-sized businesses</span>
-            <img src="assets/arrow-down.png">
+    <div class="page-img" id="pageImg">
+		<div class="page-img__shadow"></div>
+        <div class="page-img__wrap container flex column align-start">
+            <h1 class="page-img__tit">Keeping Costs Under Control!</h1>
+			<hr class="page-img__hr" />
+            <p class="page-img__cont">Cloud-based cost accounting and budgeting software for small and medium-sized businesses</p>
+			<a href="#" class="start-anchor _action_cor _page-main_cor">Try it free</a>
+        </div>
+		<i class="fa fa-angle-double-down page-img__arrow inline-flex justify-center align-center" aria-hidden="true"></i>
+    </div>
+    <div class="container flex column align-end" id="ABOUT">
+        <h2 class="dayily__title">Your daily tool for manufacturing or service business</h2>
+		<hr class="dayily__hr" />
+        <p class="dayily__cont">Our simple and user-friendly solution will help you to determine, understand and find the true cost of your products or services.</p>
+	</div>
+	<div class="block-img">
+        <div class="container flex justify-around align-start flex-wrap">
+            <div class="block-img__wrap">
+				<img src="assets/pimg1.png">
+				<p class="block-img__text">Custom manufacturing and mass production</p>
+			</div>
+            <div class="block-img__wrap">
+				<img src="assets/pimg2.png">
+				<p class="block-img__text">Professional, business and customer services</p>
+			</div>
+            <div class="block-img__wrap">
+				<img src="assets/pimg3.png">
+				<p class="block-img__text">Small business and entrepreneurship</p>
+			</div>
+            <div class="block-img__wrap">
+				<img src="assets/pimg5.png">
+				<p class="block-img__text">Farming and gardening</p>
+			</div>
         </div>
     </div>
-    <div class="block"><a name="ABOUT"></a>
-        <div class="content-small">
-            <p class="title">Your daily tool for every type of business</p>
-            <p class="action">Our simple and user-friendly solution
-                will help you to determine, understand and find the true cost of your products or services.</p>
-
-            <div class="block-img">
-                <img src="assets/pimg1.png">
-                <img src="assets/pimg2.png">
-                <img src="assets/pimg3.png">
-                <!-- img src="assets/pimg4.png" -->
-                <img src="assets/pimg5.png">
-            </div>
-            <div class="grey-line"></div>
-        </div>
+	<div class="hworks">
+		<div class="container flex align-center justify-between flex-wrap">
+			<div class="hworks__top flex column">
+				<h3 class="dayily__title _hworks__cor">HOW IT WORKS</h3>
+				<hr class="dayily__hr">
+			</div>
+			<div class="hworks__left flex-768 justify-between-768 flex-wrap-768">
+				<div class="hworks__part">
+					<div class="hworks__part__img__wrap">
+						<img src="assets/works1.jpg" alt="" class="hworks__part__img" />
+						<div class="hworks__part__red flex align-center justify-center">
+							<span class="hworks__part__red__text">Idea</span>
+						</div>
+					</div>
+					<p class="hworks__part__cont">You want to start or continue manufacturing some great products or delivering very useful services.</p>
+				</div>
+				<i class="hworks__left__i fa fa-angle-down flex-768 justify-center-768 align-center-768" aria-hidden="true"></i>
+				<div class="hworks__part">
+					<div class="hworks__part__img__wrap">
+						<img src="assets/works2.jpg" alt="" class="hworks__part__img" />
+						<div class="hworks__part__red flex align-center justify-center">
+							<span class="hworks__part__red__text">Task</span>
+						</div>
+					</div>
+					<p class="hworks__part__cont">You need to know what is and what would be the cost of your product or service during the year and how much money you need to support its production cycle.</p>
+				</div>
+				<i class="hworks__left__i fa fa-angle-down flex-768 justify-center-768 align-center-768" aria-hidden="true"></i>
+			</div>
+			<div class="hworks__right flex column justify-around align-end align-center-768">
+				<img src="assets/monitorb.jpg" alt="" class="hworks_right__img" />
+				<a href="#" class="start-anchor">Try it free</a>
+			</div>
+		</div>
+		<div class="_bot_cor container flex justify-between align-end flex-wrap-768 align-stretch-768">
+			<div class="hworks__part _big_cor">
+				<div class="hworks__part__img__wrap">
+					<img src="assets/works3.jpg" alt="" class="hworks__part__img" />
+					<div class="hworks__part__red flex align-center justify-center">
+						<span class="hworks__part__red__text">Action</span>
+					</div>
+				</div>
+				<p class="hworks__part__cont">You use <b>COSTANSWER</b> to create an annual manufacturing plan that gives you a deep and detailed understanding  of raw materials, labor and overhead budgeting, product cost and selling price, and revenues and gross profit.</p>
+			</div>
+			<div class="hworks__left__i__wrap inline-flex justify-center align-center">
+				<i class="hworks__left__i fa fa-angle-right display-none-768 display-block-500" aria-hidden="true"></i>
+			</div>
+			<div class="hworks__part">
+				<div class="hworks__part__img__wrap">
+					<img src="assets/works4.jpg" alt="" class="hworks__part__img" />
+					<div class="hworks__part__red flex align-center justify-center">
+						<span class="hworks__part__red__text">Decision</span>
+					</div>
+				</div>
+				<p class="hworks__part__cont">You make decisions whether to start, continue or postpone manufacturing certain products or delivering some services.</p>
+			</div>
+			<div class="hworks__left__i__wrap inline-flex justify-center align-center flex-768 justify-center-768">
+				<i class="hworks__left__i fa fa-angle-right" aria-hidden="true"></i>
+			</div>
+			<div class="hworks__part">
+				<div class="hworks__part__img__wrap">
+					<img src="assets/works5.jpg" alt="" class="hworks__part__img" />
+					<div class="hworks__part__red inline-flex align-center justify-center">
+						<span class="hworks__part__red__text">Emotion</span>
+					</div>
+				</div>
+				<p class="hworks__part__cont">You are  happy with your wise decision that helped you to save and earn money!</p>
+			</div>
+		</div>
+	</div>
+	<div class="container" id="FEATURES">
+		<h2 class="dayily__title">MAIN FEATURES</h2>
+		<hr class="dayily__hr _features_features">
+		<div class="features__wrap flex justify-between flex-wrap">
+			<div class="features flex column justify-between align-center">
+				<img src="assets/features1.svg" alt="" class="features__img" />
+				<p>Make costing calculations of an unlimited number of products and their components</p>
+				<a id="mfs1" href="assets/mfs1.jpg" class="features__anchor">Sample</a>
+			</div>
+			<div class="features flex column justify-between align-center">
+				<img src="assets/features2.svg" alt="" class="features__img" />
+				<p>Use the 3 most widely used costing methods simultaneously</p>
+				<a id="mfs2" href="assets/mfs1.jpg" class="features__anchor">Sample</a>
+			</div>
+			<div class="features flex column justify-between align-center">
+				<img src="assets/features3.svg" alt="" class="features__img" />
+				<p>Create an annual manufacturing plan</p>
+				<a id="mfs3" href="assets/mfs1.jpg" class="features__anchor">Sample</a>
+			</div>
+			<div class="features flex column justify-between align-center">
+				<img src="assets/features4.svg" alt="" class="features__img" />
+				<p>Produce a detailed budget of raw  materials, labor and overheads</p>
+				<a id="mfs4" href="assets/mfs1.jpg" class="features__anchor">Sample</a>
+			</div>
+			<div class="features flex column justify-between align-center">
+				<img src="assets/features5.svg" alt="" class="features__img" />
+				<p>Model 5 different bases for  manufacturing overhead allocation</p>
+				<a id="mfs5" href="assets/mfs1.jpg" class="features__anchor">Sample</a>
+			</div>
+			<div class="features flex column justify-between align-center">
+				<img src="assets/features6.svg" alt="" class="features__img" />
+				<p>Find out the values of predetermined overhead rates</p>
+				<a id="mfs6" href="assets/mfs1.jpg" class="features__anchor">Sample</a>
+			</div>
+			<div class="features flex column justify-between align-center">
+				<img src="assets/features7.svg" alt="" class="features__img" />
+				<p>Produce a detailed cost analysis report for finance professionals</p>
+				<a id="mfs7" href="assets/mfs1.jpg" class="features__anchor">Sample</a>
+			</div>
+			<div class="features flex column justify-between align-center">
+				<img src="assets/features8.svg" alt="" class="features__img" />
+				<p>Save reports in PDF or CSV format</p>
+				<a id="mfs8" href="assets/mfs1.jpg" class="features__anchor">Sample</a>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="action-man">
+		<div class="page-img__shadow"></div>
+        <div class="container action-man__wrap flex column align-start">
+            <h3 class="page-img__cont">True cost analysis helps  to evaluate performance and identify areas of your business that need to be improved</h3>
+			<hr class="page-img__hr">
+			<a href="#" class="start-anchor _action_cor">Try it free</a>
+		</div>
     </div>
 
-    <div class="main-features"><a name="FEATURES"></a>
-        <p class="title">main features</p>
-        <div class="features-block" style="height: 945px;">
-        <div class="features-wrap">
-            <div class="content-small">
-            <div class="main-features-section">
-                <section>
-                    <p>Make costing calculations of unlimited number of products and their components</p>
-                    <a id="mfs1" href="assets/mfs1.jpg">Sample</a>
-                </section>
-            </div>
-            <div class="main-features-section">
-                <section>
-                    <p>Use 3 most widely used costing methods simultaneously</p>
-                    <a id="mfs2" href="assets/mfs2.jpg">Sample</a>
-                </section>
-            </div>
-            <div class="main-features-section">
-                <section>
-                    <p>Create an annual manufacturing plan</p>
-                    <a id="mfs3" href="assets/mfs3.jpg">Sample</a>
-                </section>
-            </div>
-            <div class="main-features-section">
-                <section>
-                    <p>Produce a detailed budget of direct materials, direct labor and overheads</p>
-                    <a id="mfs4" href="assets/mfs4.jpg">Sample</a>
-                </section>
-            </div>
-            <div class="main-features-section">
-                <section>
-                    <p>Model 5 different bases for manufacturing overhead allocation</p>
-                    <a id="mfs5" href="assets/mfs5.jpg">Sample</a>
-                </section>
-            </div>
-            <div class="main-features-section">
-                <section>
-                    <p>Find out the values of predetermined overhead rates</p>
-                    <a id="mfs6" href="assets/mfs6.jpg">Sample</a>
-                </section>
-            </div>
-            <div class="main-features-section">
-                <section>
-                    <p>Make correct markup to make your business profitable</p>
-                    <a id="mfs7" href="assets/mfs7.jpg">Sample</a>
-                </section>
-            </div>
-            <div class="main-features-section">
-                <section>
-                    <p>Produce a detailed product cost analysis report for finance professionals</p>
-                    <a id="mfs8" href="assets/mfs8.jpg">Sample</a>
-                </section>
-            </div>
-            <div class="main-features-section blank"></div>
-            <div class="main-features-section">
-                <section>
-                    <p>Project report (PDF)</p>
-                    <a target="self" href="assets/ProjectReportsPDF.zip">Sample</a>
-                </section>
-            </div>
-             <div class="main-features-section">
-                <section>
-                    <p>Project report (CSV)</p>
-                    <a target="self" href="assets/ProjectReportsCSV.zip">Sample</a>
-                </section>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-
-    <div class="action-man">
-        <div class="content-small">
-            <p>True cost analysis<br>
-                helps  to evaluate performance <br>
-                and <br>
-                identify areas of your business <br>
-                that need to be improved
-                <span></span></p>
-
-        </div>
-    </div>
-
-    <div class="costing-method"><a name="METHODS"></a>
-        <div class="content-small">
-            <p class="title">Your costing method</p>
-            <div class="costing cleft">
-                <section>
-                    <span>standard costing</span>
-                    <p>Widely used method to track the estimated  cost of material, labor, overheads and other costs for each unit of production  or purchase in a given accounting period.</p>
-                    <a href="/main/#/about/standard-costing">Read More</a>
-                </section>
-                <img src="assets/woimg.png">
-            </div>
-
-            <div class="costing cright">
-                <img src="assets/woimg1.png">
-                <section>
-                    <span>Job Order Costing</span>
-                    <p>Very popular method <br>
-                        of assigning costs <br>
-                        to specific products <br>
-                        or job orders</p>
-                    <a href="/main/#/about/job-order-costing">Read More</a>
-                </section>
-            </div>
-            <div class="costing cleft">
-                <section>
-                    <span>process costing</span>
-                    <p>The right method to apply costs <br>
-                        to similar products<br>
-                        that are mass-produced <br>
-                        in a continuous fashion<br>
-                    </p>
-                    <a href="/main/#/about/process-costing">Read More</a>
-                </section>
-                <img src="assets/woimg2.png">
-            </div>
-            <div class="costing cright">
-                <img src="assets/woimg3.png">
-                <section>
-                    <span>MANUFACTURING OVERHEAD CALCULATOR</span>
-                    <p>You can model 5 different bases for manufacturing overhead allocation using 2 common approaches to apply it &ndash; &ldquo;full cost applied&rdquo; or &ldquo;predetermined overhead rate&rdquo;</p>
-                    <a href="/main/#/about/fixed-overhead">Read More</a>
-                </section>
-            </div>
-        </div>
-    </div>
-
-    <div class="PRICING"><a name="PRICING"></a>
-        <div class="content-small">
-            <p class="title">PRICING</p>
-            <div class="price">
-                <section>
-                    <span>1</span>
-                    <p>month  subscription</p>
-                </section>
-                <a href="/#">FREE!</a>
-            </div>
-            <div class="price">
-                <section>
-                    <span>6</span>
-                    <p>months  subscription</p>
-                </section>
-                <a href="/#">FREE!</a>
-            </div>
-            <div class="price">
-                <section>
-                    <span>12</span>
-                    <p>months  subscription</p>
-                </section>
-                <a href="/#">FREE!</a>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="info"><a name="CONTACT"></a>
-
-    <div class="content-small">
-        <div class="info-form">
-            <p>&nbsp;</p>
-            <p>Join our beta testing now!</p>
-
-            <form method="post" action="javascript:void(null);" onsubmit="feedback(this);" id="feedbackForm">
-                <div class="half">
-                    
-<input type="text" name="name" id="name" value="" placeholder="First Name">                    
-<input type="text" name="surname" id="surname" value="" placeholder="Last Name">                </div>
-                <div class="half">
-                    
-<input type="text" name="email" id="email" value="" placeholder="E-mail">                    
-<input type="text" name="phone" id="phone" value="" placeholder="Phone Number">                </div>
-                
-<textarea name="message" id="message" placeholder="Your Message" rows="24" cols="80"></textarea>                
-<input type="submit" name="submit" id="feedButton" value="send" class="otpravit">            </form>
-        </div>
-
-        <div class="social">
-            <a href="https://www.facebook.com/" class="face">
-                <span></span>
-                <p>Facebook</p>
-            </a>
-
-            <a href="https://twitter.com/?lang=en" class="twit">
-                <span></span>
-
-                <p>Twitter</p>
-            </a>
-
-            <a href="https://www.linkedin.com/" class="linked">
-                <span></span>
-
-                <p>LinkedIn</p>
-            </a>
-
-            <a href="https://google.com.ua/" class="google">
-                <span></span>
-
-                <p>Google+</p>
-            </a>
-        </div>
-
-
-    </div>
-</div>
+    <div class="container methods" id="METHODS">
+		<div class="flex column align-end">
+			<h3 class="dayily__title">YOUR COSTING METHOD</h3>
+			<hr class="dayily__hr _features_features">
+		</div>
+		<div class="flex flex-wrap">
+			<div class="method__part flex column justify-between _from_back">
+				<h4 class="method__part__tit">standard costing</h4>
+				<hr class="dayily__hr _methods_cor">
+				<p class="method__part__cont">Widely used method to track the estimated  cost of material, labor, overheads and other costs for each unit of production  or purchase in a given accounting period.</p>
+				<a id="mfs6" href="/main/#/about/standard-costing" class="features__anchor">Read More</a>
+			</div>
+			<div class="method__part _one_img"></div>
+		</div>
+		<div class="flex flex-wrap">
+			<div class="method__part _two_img"></div>
+			<div class="method__part flex column justify-between align-end _right_cor align-start-500">
+				<h4 class="method__part__tit">Job Order Costing</h4>
+				<hr class="dayily__hr _methods_cor">
+				<p class="method__part__cont">Very popular method of assigning costs to specific products or job orders.</p>
+				<a id="mfs6" href="/main/#/about/job-order-costing" class="features__anchor">Read More</a>
+			</div>
+		</div>
+		<div class="flex flex-wrap">
+			<div class="method__part flex column justify-between _from_back">
+				<h4 class="method__part__tit">process costing</h4>
+				<hr class="dayily__hr _methods_cor">
+				<p class="method__part__cont">The right method to apply costs to similar products that are mass-produced in a continuous fashion.</p>
+				<a id="mfs6" href="/main/#/about/process-costing" class="features__anchor">Read More</a>
+			</div>
+			<div class="method__part _three_img"></div>
+		</div>
+		<div class="flex flex-wrap">
+			<div class="method__part _thour_img"></div>
+			<div class="method__part flex column justify-between align-end _right_cor align-start-500">
+				<h4 class="method__part__tit">MANUFACTURING OVERHEAD CALCULATOR</h4>
+				<hr class="dayily__hr _methods_cor">
+				<p class="method__part__cont">You can model 5 different bases for manufacturing overhead allocation using 2 common approaches to apply it &ndash; &ldquo;full cost applied&rdquo; or &ldquo;predetermined overhead rate&rdquo;.</p>
+				<a id="mfs6" href="/main/#/about/fixed-overhead" class="features__anchor">Read More</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="hworks _pricing_cor" id="PRICING">
+		<div class="container flex justify-around flex-wrap">
+			<div class="hworks__top flex column">
+				<h3 class="dayily__title _hworks__cor">PRICING</h3>
+				<hr class="dayily__hr">
+			</div>
+			<div class="features _pricing_cor flex column justify-between align-center">
+				<span class="pricing__month flex justify-center align-center">1<br/>month</span>
+				<p>Subscription</p>
+				<a href="/#" class="features__anchor _sub_cor">Free</a>
+			</div>
+			<div class="features _pricing_cor flex column justify-between align-center">
+				<span class="pricing__month flex justify-center align-center">6<br/>months</span>
+				<p>Subscription</p>
+				<a href="/#" class="features__anchor _sub_cor">Free</a>
+			</div>
+			<div class="features _pricing_cor flex column justify-between align-center">
+				<span class="pricing__month flex justify-center align-center">12<br/>months</span>
+				<p>Subscription</p>
+				<a href="/#" class="features__anchor _sub_cor">Free</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="info flex align-center justify-center" id="CONTACT">
+		<div class="container _cont_cor">
+			<h3 class="page-img__tit _contact_cor">Join our beta testing now!</h3>
+			<hr class="page-img__hr">
+			<form class="contact__form flex justify-between align-start flex-wrap" method="post" action="javascript:void(null);" onsubmit="feedback(this);" id="feedbackForm">
+                <input type="text" class="contact__form__el contact__form__inp" name="name" id="name" value="" placeholder="First Name">                    
+				<input type="text" class="contact__form__el contact__form__inp" name="surname" id="surname" value="" placeholder="Last Name">
+                <input type="text" class="contact__form__el contact__form__inp" name="email" id="email" value="" placeholder="E-mail">                    
+				<input type="text" class="contact__form__el contact__form__inp" name="phone" id="phone" value="" placeholder="Phone Number">
+                <textarea name="message" class="contact__form__el contact__form__arr" id="message" placeholder="Your Message" rows="5"></textarea>                
+				<input type="submit" class="start-anchor _action_cor _form_cor" name="submit" id="feedButton" value="Send" class="otpravit">
+			</form>
+		   <div class="soc flex justify-around flex-wrap">
+				<a href="https://www.facebook.com/" class="face flex column align-center justify-center">
+					<img src="assets/face.png" alt="" class="face__img" />
+					<p>Facebook</p>
+				</a>
+		   </div>
+		</div>
+	</div>
 
 <div class="forma-otpravlena popup-mess" id="feedback_send" style="display: none">
     <p class="likeh1" style="text-align:center;">Thank you</p>
@@ -337,18 +336,51 @@
     <p class="likeh1">Error</p>
 
     <p>Error</p>
-</div><footer>
-    <div class="footer-div">
-        <p><b>Costanswer</b> <span>© All Rights Reserved. 2016-2017</span></p>
-        <section>
-            <p>
-                <a href="/main/#/terms-of-use">Terms of Use </a>
-                <a href="/main/#/privacy-policy">Privacy Policy</a>
-            </p>
-        </section>
+</div>
+
+<footer>
+    <div class="container flex justify-between align-base flex-wrap justify-center-630">
+        <p class="footer__cont"><b>Costanswer</b> <span>© All Rights Reserved. 2016-2017</span></p>
+        <a class="footer__anchor" href="/main/#/terms-of-use">Terms of Use </a>
+        <a class="footer__anchor" href="/main/#/privacy-policy">Privacy Policy</a>
     </div>
 </footer>
 <div id="back-top">
     <a title="Go back to top"></a>
 </div>
+<script type="text/javascript">
+	var windowWidth = 0, windowHeight = 0;
+	function dimention(){
+		if (self.innerHeight) {
+			windowWidth = self.innerWidth;
+			windowHeight = self.innerHeight;
+		} else if (document.documentElement && document.documentElement.clientHeight) {
+			windowWidth = document.documentElement.clientWidth;
+			windowHeight = document.documentElement.clientHeight;
+		} else if (document.body) {
+			windowWidth = document.body.clientWidth;
+			windowHeight = document.body.clientHeight;
+		}
+	}
+	function headerHeight(){
+		dimention();
+		window['pageImg'].style.height = (windowHeight - window['header'].clientHeight) + "px";
+	}
+	function toggleMenu(){
+		if(windowWidth < 881){
+			if(window['menu'])window['menu'].addEventListener('click', function(){
+				window['menu'].classList.toggle('toggle');
+			});
+		}else{
+			if(window['menu'])window['menu'].removeEventListener('click', function(){
+				window['menu'].classList.remove('toggle');
+			});
+		}
+	}
+	document.addEventListener('DOMContentLoaded', function(){
+		headerHeight();
+		toggleMenu();
+		window.addEventListener('resize', function(){headerHeight();});
+	});
+</script>
 </body></html>
