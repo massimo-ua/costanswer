@@ -5,12 +5,12 @@
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-s.html',
             controller: caProcessProductProcessWbController
         });
-    function caProcessProductProcessWbController(DataModel, $stateParams) {
+    function caProcessProductProcessWbController(DataModel, $stateParams, reportService) {
         var vm = this;
         vm.$onInit = function() {
             vm.model = {};
             vm.formOptions = {};
-            vm.reportId = 'wip';
+            vm.report_name = 'wip_beginning';
             vm.controls = {
                 buttonText : 'Save',
                 formDisabled: false
@@ -73,10 +73,11 @@
                     ]
                 }
             ];
+            refreshReport();
         };
         function refreshReport() {
-            if(vm.product_id) {
-                standardService.getInstantReport(vm.product_id, vm.reportId, function(response){
+            if($stateParams.processId) {
+                reportService.instant.Process.wip_beginning($stateParams.processId, function(response){
                     vm.instantReport = response;
                 });
             }
@@ -95,6 +96,7 @@
                 wip.$saveWip({ id: $stateParams.processId })
                     .then(function(response){
                         vm.model = response[0];
+                        refreshReport();
                     })
                     .finally(function(){
                         vm.controls.formDisabled = false;
@@ -102,5 +104,5 @@
                     });
         };
     }
-    caProcessProductProcessWbController.$inject = ['DataModel', '$stateParams'];
+    caProcessProductProcessWbController.$inject = ['DataModel', '$stateParams', 'reportService'];
 }());
