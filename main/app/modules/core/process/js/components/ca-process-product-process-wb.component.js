@@ -77,9 +77,10 @@
         };
         function refreshReport() {
             if($stateParams.processId) {
-                reportService.instant.Process.wip_beginning($stateParams.processId, function(response){
-                    vm.instantReport = response.reportdata.report;
-                });
+                reportService.instant.Process.wip_beginning($stateParams.processId)
+                    .then(function(response){
+                        vm.instantReport = response.reportdata.report;
+                    });
             }
             return;
         }
