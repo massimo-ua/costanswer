@@ -79,7 +79,8 @@
             if($stateParams.processId) {
                 reportService.instant.Process.wip_beginning($stateParams.processId)
                     .then(function(response){
-                        vm.instantReport = response.reportdata.report;
+                        vm.instantReport = response.data.reportdata[0];
+                        console.log(vm.instantReport);
                     });
             }
             return;
