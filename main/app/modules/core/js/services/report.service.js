@@ -9,7 +9,7 @@
                 wip_beginning: function(processId) {
                     var config = {
                         method: 'GET',
-                        url: API_PREFIX + '/report/process/instant' + processId + '/wip_beginning'
+                        url: API_PREFIX + '/report/process/instant/' + processId + '/wip_beginning'
                     };
                     return $http(config);
                 }
