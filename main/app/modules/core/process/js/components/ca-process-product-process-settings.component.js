@@ -17,6 +17,7 @@
                     .$promise
                         .then(function(response){
                             vm.process = response;
+                            vm.process.order = parseInt(vm.process.order);
                             vm.buttonText = 'Update';
                         });
             }
