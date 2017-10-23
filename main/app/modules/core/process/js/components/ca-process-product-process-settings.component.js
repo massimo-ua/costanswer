@@ -43,7 +43,17 @@
                               placeholder: 'unit',
                               required: false
                           }
-                      }
+                      },
+                      {
+                        key: 'order',
+                        type: 'ca-input',
+                        templateOptions: {
+                            type: 'number',
+                            label: 'Process order',
+                            placeholder: 'Order',
+                            required: true
+                        }
+                    }
                   ]
                 }
             ];
