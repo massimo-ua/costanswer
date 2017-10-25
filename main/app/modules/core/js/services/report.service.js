@@ -12,6 +12,13 @@
                         url: API_PREFIX + '/report/process/instant/' + processId + '/wip_beginning'
                     };
                     return $http(config);
+                },
+                production_plan: function(processId) {
+                    var config = {
+                        method: 'GET',
+                        url: API_PREFIX + '/report/process/instant/' + processId + '/production_plan'
+                    };
+                    return $http(config);
                 }
             }
         };

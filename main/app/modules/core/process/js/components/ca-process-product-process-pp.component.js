@@ -60,7 +60,17 @@
                     }
                     vm.begin_month = response.begin_month;
                 });
+            refreshReport();
         };
+        function refreshReport() {
+            if($stateParams.processId) {
+                reportService.instant.Process.production_plan($stateParams.processId)
+                    .then(function(response){
+                        vm.instantReport = response.data.reportdata[0];
+                    });
+            }
+            return;
+        }
         vm.onSave = function() {
             vm.formDisabled = true;
             vm.buttonText = vm.updateMode ? "Updating..." : "Saving...";
@@ -70,6 +80,7 @@
             plan.$saveProductionPlan({ id: $stateParams.processId })
                 .then(function(){
                     vm.updateMode = true;
+                    refreshReport();
                 })
                 .finally(function(){
                     vm.buttonText = vm.updateMode ? "Update" : "Save";
