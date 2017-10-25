@@ -8,9 +8,13 @@
     function caProcessProductProcessPpController(DataModel, $stateParams, ProjectDataService, monthService, reportService) {
         var vm = this;
         vm.$onInit = function() {
-            vm.model = {};
             vm.updateMode = false;
-            vm.buttonText = 'Save';
+            vm.model = {};
+            vm.formOptions = {};
+            vm.controls = {
+                buttonText : 'Save',
+                formDisabled: false
+            };
             if($stateParams.processId !== undefined) {
                 DataModel.Process
                     .productionPlan({id: $stateParams.processId})
@@ -72,8 +76,8 @@
             return;
         }
         vm.onSave = function() {
-            vm.formDisabled = true;
-            vm.buttonText = vm.updateMode ? "Updating..." : "Saving...";
+            vm.controls.formDisabled = true;
+            vm.controls.buttonText = vm.updateMode ? "Updating..." : "Saving...";
             var plan = new DataModel.Process();
             plan.data = vm.model;
             plan.year_number = 1;

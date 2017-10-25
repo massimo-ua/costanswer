@@ -10,7 +10,6 @@
         vm.$onInit = function() {
             vm.model = {};
             vm.formOptions = {};
-            vm.report_name = 'wip_beginning';
             vm.controls = {
                 buttonText : 'Save',
                 formDisabled: false
