@@ -11,6 +11,7 @@
             vm.model = {};
             vm.updateMode = false;
             vm.year_number = 1;
+            vm.itemsList = [];
             ProjectDataService.list()
                 .then(function(response){
                     vm.project_begin_month = response.begin_month;
