@@ -23,7 +23,7 @@
                 direct_material: function(processId, directMaterialId) {
                     var config = {
                         method: 'GET',
-                        url: API_PREFIX + '/report/process/instant/' + processId + '/direct_material' + (directMaterialId === 'undefined' ? '' : '/' + directMaterialId)
+                        url: API_PREFIX + '/report/process/instant/' + processId + '/direct_material' + (directMaterialId === undefined ? '' : '/' + directMaterialId)
                     };
                     return $http(config);
                 }
