@@ -95,7 +95,17 @@
                 buttonText: "Add",
                 formDisabled: false
             };
+            refreshReport();
         };
+        function refreshReport(directLaborId) {
+            if($stateParams.processId) {
+                reportService.instant.Process.direct_labor($stateParams.processId, directLaborId)
+                    .then(function(response){
+                        vm.instantReport = response.data.reportdata[0];
+                    });
+            }
+            return;
+        }
         vm.onSave = saveFormData;
         vm.onUpdate = saveFormData;
         vm.onClear = function(){
@@ -111,6 +121,7 @@
             dl.$saveDirectLabor({ id: $stateParams.processId })
                 .then(function(response){
                     callback(response);
+                    refreshReport();
                 })
                 .finally(function(){
                     vm.controls.formDisabled = false;
@@ -121,10 +132,11 @@
             if(item && item.id) {
                 DataModel.Product.deleteDirectLabor({ id: item.id });
             }
+            refreshReport();
             callback();
         };
-        vm.onLoad = function(component_id) {
-            //refreshReport(component_id);
+        vm.onLoad = function(directLaborId) {
+            refreshReport(directLaborId);
         };
     }
     caProcessProductProcessDlController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
