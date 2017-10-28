@@ -26,6 +26,13 @@
                         url: API_PREFIX + '/report/process/instant/' + processId + '/direct_material' + (directMaterialId === undefined ? '' : '/' + directMaterialId)
                     };
                     return $http(config);
+                },
+                direct_labor: function(processId, directLaborId) {
+                    var config = {
+                        method: 'GET',
+                        url: API_PREFIX + '/report/process/instant/' + processId + '/direct_material' + (directLaborId === undefined ? '' : '/' + directLaborId)
+                    };
+                    return $http(config);
                 }
             }
         };
