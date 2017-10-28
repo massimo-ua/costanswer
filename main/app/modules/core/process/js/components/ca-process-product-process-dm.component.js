@@ -194,7 +194,9 @@
             callback();
             refreshReport();
         };
-        vm.onLoad = refreshReport(direct_material_id);
+        vm.onLoad = function(directMaterialId){
+            refreshReport(directMaterialId);
+        };
     }
     caProcessProductProcessDmController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
 }());
