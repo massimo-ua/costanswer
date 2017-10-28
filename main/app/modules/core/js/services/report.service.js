@@ -30,7 +30,7 @@
                 direct_labor: function(processId, directLaborId) {
                     var config = {
                         method: 'GET',
-                        url: API_PREFIX + '/report/process/instant/' + processId + '/direct_material' + (directLaborId === undefined ? '' : '/' + directLaborId)
+                        url: API_PREFIX + '/report/process/instant/' + processId + '/direct_labor' + (directLaborId === undefined ? '' : '/' + directLaborId)
                     };
                     return $http(config);
                 }
