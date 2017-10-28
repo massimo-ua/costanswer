@@ -154,7 +154,17 @@
                 buttonText: "Add",
                 formDisabled: false
             };
+            refreshReport();
         };
+        function refreshReport(direct_material_id) {
+            if($stateParams.processId) {
+                reportService.instant.Process.direct_material($stateParams.processId, direct_material_id)
+                    .then(function(response){
+                        vm.instantReport = response.data.reportdata[0];
+                    });
+            }
+            return;
+        }
         vm.onSave = saveFormData;
         vm.onUpdate = saveFormData;
         vm.onClear = function(){
@@ -170,6 +180,7 @@
             dm.$saveDirectMaterial({ id: $stateParams.processId })
                 .then(function(response){
                     callback(response);
+                    refreshReport();
                 })
                 .finally(function(){
                     vm.controls.formDisabled = false;
@@ -181,10 +192,9 @@
                 DataModel.Product.deleteDirectMaterial({ id: item.id });
             }
             callback();
+            refreshReport();
         };
-        vm.onLoad = function(component_id) {
-            //refreshReport(component_id);
-        };
+        vm.onLoad = refreshReport(direct_material_id);
     }
     caProcessProductProcessDmController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
 }());
