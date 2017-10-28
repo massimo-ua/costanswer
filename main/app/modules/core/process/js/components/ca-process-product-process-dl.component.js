@@ -5,7 +5,7 @@
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-c.html',
             controller: caProcessProductProcessDlController
         });
-    function caProcessProductProcessDlController(DataModel, $stateParams, ProjectDataService, monthService) {
+    function caProcessProductProcessDlController(DataModel, $stateParams, ProjectDataService, monthService, reportService) {
         var vm = this;
         vm.$onInit = function() {
             vm.model = {};
@@ -139,5 +139,5 @@
             refreshReport(directLaborId);
         };
     }
-    caProcessProductProcessDlController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
+    caProcessProductProcessDlController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService', 'reportService'];
 }());
