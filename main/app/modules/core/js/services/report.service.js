@@ -24,10 +24,7 @@
                     var config = {
                         method: 'GET',
                         url: API_PREFIX
-                                + '/report/process/instant/'
-                                + processId
-                                + '/direct_material'
-                                + directMaterialId ? '/' + directMaterialId : ''
+                                + '/report/process/instant/' + processId + '/direct_material' + directMaterialId ? '/' + directMaterialId : ''
                     };
                     return $http(config);
                 }
