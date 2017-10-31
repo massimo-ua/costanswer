@@ -5,10 +5,11 @@
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-c.html',
             controller: caProcessProductProcessVoController
         });
-    function caProcessProductProcessVoController(DataModel, $stateParams, ProjectDataService, monthService) {
+    function caProcessProductProcessVoController(DataModel, $stateParams, ProjectDataService, monthService, reportService) {
         var vm = this;
         vm.$onInit = function() {
             vm.model = {};
+            vm.itemsList = [];
             vm.updateMode = false;
             vm.year_number = 1;
             ProjectDataService.list()
@@ -61,7 +62,17 @@
                 buttonText: "Add",
                 formDisabled: false
             };
+            refreshReport();
         };
+        function refreshReport(variableOverheadId) {
+            if($stateParams.processId) {
+                reportService.instant.Process.variable_overhead($stateParams.processId, variableOverheadId)
+                    .then(function(response){
+                        vm.instantReport = response.data.reportdata[0];
+                    });
+            }
+            return;
+        }
         vm.onSave = saveFormData;
         vm.onUpdate = saveFormData;
         vm.onClear = function(){
@@ -76,6 +87,7 @@
             dl.year_number = vm.year_number;
             dl.$saveVariableOverhead({ id: $stateParams.processId })
                 .then(function(response){
+                    refreshReport();
                     callback(response);
                 })
                 .finally(function(){
@@ -85,13 +97,17 @@
         }
         vm.onDelete = function(item, callback) {
             if(item && item.id) {
-                DataModel.Product.deleteVariableOverhead({ id: item.id });
+                DataModel.Product.deleteVariableOverhead({ id: item.id })
+                    $promise
+                        .then(function(){
+                            refreshReport();
+                        });
             }
             callback();
         };
-        vm.onLoad = function(component_id) {
-            //refreshReport(component_id);
+        vm.onLoad = function(variableOverheadId) {
+            refreshReport(variableOverheadId);
         };
     }
-    caProcessProductProcessVoController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
+    caProcessProductProcessVoController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService', 'reportService'];
 }());

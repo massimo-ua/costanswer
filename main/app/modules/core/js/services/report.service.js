@@ -33,6 +33,13 @@
                         url: API_PREFIX + '/report/process/instant/' + processId + '/direct_labor' + (directLaborId === undefined ? '' : '/' + directLaborId)
                     };
                     return $http(config);
+                },
+                variable_overhead: function(processId, variableOverheadId) {
+                    var config = {
+                        method: 'GET',
+                        url: API_PREFIX + '/report/process/instant/' + processId + '/variable_overhead' + (variableOverheadId === undefined ? '' : '/' + variableOverheadId)
+                    };
+                    return $http(config);
                 }
             }
         };
