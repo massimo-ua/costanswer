@@ -40,6 +40,13 @@
                         url: API_PREFIX + '/report/process/instant/' + processId + '/variable_overhead' + (variableOverheadId === undefined ? '' : '/' + variableOverheadId)
                     };
                     return $http(config);
+                },
+                machine_hour: function(processId, machineHourId) {
+                    var config = {
+                        method: 'GET',
+                        url: API_PREFIX + '/report/process/instant/' + processId + '/machine_hour' + (machineHourId === undefined ? '' : '/' + machineHourId)
+                    };
+                    return $http(config);
                 }
             }
         };

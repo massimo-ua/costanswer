@@ -5,7 +5,7 @@
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-s.html',
             controller: caProcessProductProcessMhController
         });
-    function caProcessProductProcessMhController(DataModel, $stateParams, ProjectDataService, monthService) {
+    function caProcessProductProcessMhController(DataModel, $stateParams, ProjectDataService, monthService, reportService) {
         var vm = this;
         vm.$onInit = function() {
             vm.model = {};
@@ -56,7 +56,17 @@
                     ]
                 }
             ];
+            refreshReport();
         };
+        function refreshReport(machineHourId) {
+            if($stateParams.processId) {
+                reportService.instant.Process.machine_hour($stateParams.processId, machineHourId)
+                    .then(function(response){
+                        vm.instantReport = response.data.reportdata[0];
+                    });
+            }
+            return;
+        }
         vm.onSave = saveFormData;
         function saveFormData() {
             vm.controls.formDisabled = true;
@@ -66,14 +76,17 @@
             mh.year_number = vm.year_number;
             mh.month_number = vm.month_number;
             mh.$saveMachineHours({ id: $stateParams.processId })
+                .then(function(){
+                    refreshReport();
+                })
                 .finally(function(){
                     vm.controls.formDisabled = false;
                     vm.controls.buttonText = 'Update';
                 });
         }
-        vm.onLoad = function(component_id) {
-            //refreshReport(component_id);
+        vm.onLoad = function(machineHourId) {
+            refreshReport(machineHourId);
         };
     }
-    caProcessProductProcessMhController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
+    caProcessProductProcessMhController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService', 'reportService'];
 }());
