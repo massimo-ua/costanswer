@@ -87,8 +87,8 @@
                     refreshReport();
                 })
                 .finally(function(){
-                    vm.buttonText = vm.updateMode ? "Update" : "Save";
-                    vm.formDisabled = false;
+                    vm.controls.buttonText = vm.updateMode ? "Update" : "Save";
+                    vm.controls.formDisabled = false;
                 });
         };
     }
