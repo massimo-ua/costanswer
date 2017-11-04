@@ -47,7 +47,14 @@
                         url: API_PREFIX + '/report/process/instant/' + processId + '/machine_hour' + (machineHourId === undefined ? '' : '/' + machineHourId)
                     };
                     return $http(config);
-                }
+                },
+                wip_ending: function(processId) {
+                    var config = {
+                        method: 'GET',
+                        url: API_PREFIX + '/report/process/instant/' + processId + '/wip_ending'
+                    };
+                    return $http(config);
+                },
             }
         };
         return factory;

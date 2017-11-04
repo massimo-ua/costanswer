@@ -5,7 +5,7 @@
             templateUrl: 'app/modules/core/process/views/ca-process-product-process-s.html',
             controller: caProcessProductProcessWeController
         });
-    function caProcessProductProcessWeController(DataModel, $stateParams, ProjectDataService, monthService) {
+    function caProcessProductProcessWeController(DataModel, $stateParams, ProjectDataService, monthService, reportService) {
         var vm = this;
 
         vm.$onInit = function() {
@@ -48,7 +48,17 @@
                     ]
                 }
             ];
+            refreshReport();
         };
+        function refreshReport() {
+            if($stateParams.processId) {
+                reportService.instant.Process.wip_ending($stateParams.processId)
+                    .then(function(response){
+                        vm.instantReport = response.data.reportdata[0];
+                    });
+            }
+            return;
+        }
         vm.onSave = function() {
             vm.controls.formDisabled = true;
             var wip;
@@ -57,11 +67,14 @@
                 wip.year_number = 1;
                 for(var k in vm.model) wip[k] = vm.model[k];
                 wip.$saveWip({ id: $stateParams.processId })
+                    .then(function(){
+                        refreshReport();
+                    })
                     .finally(function(){
                         vm.controls.formDisabled = false;
                         vm.controls.buttonText = "Save";
                     });
         };
     }
-    caProcessProductProcessWeController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService'];
+    caProcessProductProcessWeController.$inject = ['DataModel', '$stateParams', 'ProjectDataService', 'monthService', 'reportService'];
 }());
