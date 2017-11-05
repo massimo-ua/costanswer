@@ -10,21 +10,6 @@
                 };
                 return $http(config);
             },
-            /*
-            quantityCalculationMethods: function(id){
-                var methods = [
-                    { "id": 1, "name": "Standard quantity per month", shortName: "Month" },
-                    { "id": 2, "name": "Standard quantity per batch", shortName: "Batch" }
-                ];
-                if(id === undefined) {
-                    return methods;
-                }
-                for(var i = 0; i < methods.length; i++) {
-                    if(id == methods[i].id) return methods[i];
-                }
-                return [];
-            },
-            */
             isBatchMode: function(mode) {
                 return parseInt(mode) == 2;
             },

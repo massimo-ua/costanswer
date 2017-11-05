@@ -16,7 +16,8 @@
         $log,
         $scope,
         $localStorage,
-        $state
+        $state,
+        quantityCalculationMethod
     )
     {
         var vm = this;
@@ -38,7 +39,7 @@
                     quantityCalculationMethodLabel: "Standard quantity per",
                     QuantityPerBatchLabel: "Standard quantity per batch"
                 };
-                vm.quantity_calculation_methods = standardService.quantityCalculationMethods();
+                vm.quantity_calculation_methods = quantityCalculationMethod.get();
                 if($stateParams.id) {
                     DataModel.Product.get({ id: $stateParams.id })
                         .$promise
@@ -120,6 +121,7 @@
         '$log',
         '$scope',
         '$localStorage',
-        '$state'
+        '$state',
+        'quantityCalculationMethod'
     ];
 }());
