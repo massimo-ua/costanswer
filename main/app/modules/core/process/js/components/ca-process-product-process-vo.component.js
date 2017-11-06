@@ -98,10 +98,9 @@
         vm.onDelete = function(item, callback) {
             if(item && item.id) {
                 DataModel.Product.deleteVariableOverhead({ id: item.id })
-                    $promise
-                        .then(function(){
-                            refreshReport();
-                        });
+                    .then(function(){
+                        refreshReport();
+                    });
             }
             callback();
         };
