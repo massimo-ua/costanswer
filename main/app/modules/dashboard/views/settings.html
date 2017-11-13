@@ -1,4 +1,5 @@
 <div class="monch__wrap">
+        <form class="login-form _settings_cor flex column">
         <ng-form class="login-form _settings_cor flex column" id="settings-form" name="vm.settingsForm">
             <div ng-class="{'has-error': vm.settingsForm.display_name.$dirty && vm.settingsForm.display_name.$invalid}" class="login-form__inp__wrap">
                 <p class="contact__form__inp flex">
@@ -47,6 +48,7 @@
             <hr class="dayily__hr _methods_cor _login_cor">
             <input type="submit" class="features__anchor _sub_cor _no_margin _new_one_cor" ng-click="vm.updateSettings()" ng-disabled="vm.settingsForm.$invalid" value="{{ vm.buttonText }}" />
         </ng-form>
+        </form>
         <div class="login-form _settings_cor _bot_cor flex column">
             <a class="login-form__bot__but features__anchor flex align-center justify-center" ng-click="vm.changePassword()">
                 <i class="fa fa-unlock-alt" aria-hidden="true"></i><span>Change password</span>
