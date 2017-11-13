@@ -4,14 +4,14 @@
             <div ng-class="{'has-error': vm.settingsForm.display_name.$dirty && vm.settingsForm.display_name.$invalid}" class="login-form__inp__wrap">
                 <p class="contact__form__inp flex">
                     <label for="formEmail" class="contact__form__lab flex align-center justify-center"><i class="fa fa-user" aria-hidden="true"></i></label>
-                    <input name="display-name" type="text" id="formEmail" ng-required="true" ng-model="vm.auth.email" class="contact__form__el" placeholder="Enter your display name" />
+                    <input name="display-name" type="text" id="formEmail" ng-required="true" ng-model="vm.settings.display_name" class="contact__form__el" placeholder="Enter your display name" />
                 </p>
                 <p class="form-error" ng-show="vm.settingsForm.display_name.$dirty && vm.settingsForm.display_name.$error.required">Please, fill in your display name</p>
             </div>
             <div ng-class="{'has-error': vm.settingsForm.company_name.$dirty && vm.settingsForm.company_name.$invalid}" class="login-form__inp__wrap">
                 <p class="contact__form__inp flex">
                     <label for="formEmail" class="contact__form__lab flex align-center justify-center"><i class="fa fa-industry" aria-hidden="true"></i></label>
-                    <input name="company" type="text" id="formEmail" ng-required="true" ng-model="vm.auth.email" class="contact__form__el" placeholder="Enter your company name here" />
+                    <input name="company" type="text" id="formEmail" ng-required="true" ng-model="vm.settings.company_name" class="contact__form__el" placeholder="Enter your company name here" />
                 </p>
                 <p class="form-error" ng-show="vm.settingsForm.company_name.$dirty && vm.settingsForm.company_name.$error.required">Please, fill in your company name</p>
             </div>
