@@ -2,7 +2,10 @@
     'use strict';
     function DashboardHomeController($log, helperService) {
         var vm = this;
-        vm.title = helperService.storage["title"];
+        vm.title = "My Account";
+        helperService.subscribe("title", function(title) {
+            vm.title = title;
+        });
     }
     DashboardHomeController.$inject = ['$log','helperService'];
     angular.module('costAnswer.dashboard.controllers')

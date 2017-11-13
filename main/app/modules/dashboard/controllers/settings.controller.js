@@ -3,7 +3,7 @@
     function DashboardSettingsController($log,authService,DATAINPUT_BUSINESS_PROFILE,popupService,$scope,$state,helperService) {
         var vm = this;
         function init() {
-            helperService.storage["title"] = "Account Settings";
+            helperService.add("title", "Account Settings");
             vm.settings = {};
             authService.fullProfile()
                 .then(function(response){

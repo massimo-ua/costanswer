@@ -4,6 +4,7 @@
     .factory('helperService', helperService);
     function helperService() {
         var storage = {};
+        var subscribers = [];
         var factory = {};
         factory.form2percent = function(value) {
             try {
@@ -39,7 +40,19 @@
         function roundToTwo(num) {
             return +(Math.round(num + "e+2")  + "e-2");
         }
-        factory.storage = storage;
+        factory.add = function(key, value) {
+            storage[key] = value;
+            push(key);
+        };
+        factory.subscribe = function(key, watchFn) {
+            subscribers.push({ key: key, callback: watchFn});
+        };
+        function push(key) {
+            for(var i = 0; i < subscribers.length; i++) {
+                if(subscribers[i].key === key) subscribers[i].callback(storage[key]);
+            }
+            return;
+        }
         return factory;
     }
 }());

@@ -3,7 +3,7 @@
     function DashboardProjectsController($log,DataModel,$localStorage,$state,popupService,ngDialog,$scope,toastr,helperService) {
         var vm = this;
         function init() {
-            helperService.storage["title"] = "My Projects";
+            helperService.add("title", "My Projects");
             vm.confirmButtonText = 'Save';
             DataModel.Project
                 .query({})
