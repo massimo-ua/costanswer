@@ -1,23 +1,11 @@
-<div class="row">
-  <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
-    <div class="panel panel-default">
-      <div class="panel-body">
-    <ul class="nav nav-pills costanswer nav-stacked on-click-make-active">
-        <li><a ui-sref-active="active" ui-sref="dashboard.Projects"> My Projects</a></li>
-        <li><a ui-sref-active="active" ui-sref="dashboard.Settings"> Account Settings</a></li>
-        <li><a ui-sref-active="active" ui-sref="dashboard.Billing"> Billing and upgrade </a></li>
-    </ul>
-  </div>
-  </div>
-  </div>
-  <div class="col-xs-12 col-sm-12 hidden-md hidden-lg">
-    <ul class="nav nav-pills costanswer nav-justified">
-      <li><a ui-sref-active="active" ui-sref="dashboard.Projects"> My Projects</a></li>
-      <li><a ui-sref-active="active" ui-sref="dashboard.Settings"> Account Settings</a></li>
-      <li><a ui-sref-active="active" ui-sref="dashboard.Billing"> Billing and upgrade </a></li>
-    </ul>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 border-left">
-    <div ui-view></div>
-  </div>
+<div class="container grow-full">
+    <!-- h3 class="main__title _monch_cor">Billing and upgrade</h3 -->
+    <div class="flex align-start justify-between flex-wrap">
+      <div class="monch__wrap flex justify-around flex-wrap" ui-view></div>
+      <ul class="left-submenu">
+        <li><a ui-sref-active="active" class="left-submenu_cor-form__bot__but" ui-sref="dashboard.Projects">My Projects</a></li>
+        <li><a ui-sref-active="active" class="left-submenu_cor-form__bot__but" ui-sref="dashboard.Settings">Account Settings</a></li>
+        <li><a ui-sref-active="active" class="left-submenu_cor-form__bot__but" ui-sref="dashboard.Billing">Billing and upgrade</a></li>
+      </ul>
+    </div>
 </div>
