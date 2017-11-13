@@ -3,7 +3,7 @@
     function DashboardBillingsController($log,authService, helperService) {
         var vm = this;
         function init() {
-            helperService.setValue("title","Billing and upgrade");
+            helperService.storage["title"] = "Billing and upgrade";
         }
         init();
         vm.changePlan = function() {

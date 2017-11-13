@@ -39,12 +39,7 @@
         function roundToTwo(num) {
             return +(Math.round(num + "e+2")  + "e-2");
         }
-        factory.setValue = function(key, value) {
-            storage[key] = value;
-        };
-        factory.getValue = function(key) {
-            if(storage[key]) return storage[key];
-        };
+        factory.storage = storage;
         return factory;
     }
 }());
