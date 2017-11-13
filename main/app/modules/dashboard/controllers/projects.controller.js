@@ -1,8 +1,9 @@
 (function(){
     'use strict';
-    function DashboardProjectsController($log,DataModel,$localStorage,$state,popupService,ngDialog,$scope,toastr) {
+    function DashboardProjectsController($log,DataModel,$localStorage,$state,popupService,ngDialog,$scope,toastr,helperService) {
         var vm = this;
         function init() {
+            helperService.setValue("title","My Projects");
             vm.confirmButtonText = 'Save';
             DataModel.Project
                 .query({})
@@ -72,7 +73,7 @@
                 });
         }
     }
-    DashboardProjectsController.$inject = ['$log','DataModel','$localStorage','$state','popupService','ngDialog','$scope','toastr'];
+    DashboardProjectsController.$inject = ['$log','DataModel','$localStorage','$state','popupService','ngDialog','$scope','toastr','helperService'];
     angular.module('costAnswer.dashboard.controllers')
         .controller('DashboardProjectsController', DashboardProjectsController);
 }());
