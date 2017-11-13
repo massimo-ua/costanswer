@@ -3,6 +3,7 @@
     angular.module('costAnswer.services')
     .factory('helperService', helperService);
     function helperService() {
+        var storage = {};
         var factory = {};
         factory.form2percent = function(value) {
             try {
@@ -38,6 +39,13 @@
         function roundToTwo(num) {
             return +(Math.round(num + "e+2")  + "e-2");
         }
+        factory.setValue = function(key, value) {
+            storage[key] = value;
+        };
+        factory.getValue = function(key) {
+            if(hasOwnProperty(storage, key)) return storage[key];
+            else return undefined;
+        };
         return factory;
     }
 }());
