@@ -44,7 +44,6 @@
         };
         factory.getValue = function(key) {
             if(storage[key]) return storage[key];
-            else return undefined;
         };
         return factory;
     }
