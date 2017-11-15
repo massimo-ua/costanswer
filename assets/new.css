@@ -121,6 +121,7 @@ input, button, textarea,select{
 header {
     position: relative;
 	height: 85px;
+	background: #221d1d;
 }
 .logo {
 	width:auto;
