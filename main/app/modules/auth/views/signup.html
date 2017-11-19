@@ -1,4 +1,4 @@
-<div class="row">
+<!-- div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-md-offset-3 col-lg-offset-4">
         <div><h3>COSTANSWER Registration</h3></div>
     </div>
@@ -7,7 +7,6 @@
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-md-offset-3 col-lg-offset-4">
 		<ng-form id="signup-form" name="vm.signupForm">
 			<div ng-class="{'has-error': vm.signupForm.email.$dirty && vm.signupForm.email.$invalid}" class="form-group has-feedback has-feedback-left">
-    				<!-- label class="control-label">Email</label -->
 					<input name="email" type="email" ng-required="true" ng-model="vm.auth.email" class="form-control costanswer" placeholder="Enter your email" />
 					<i class="glyphicon glyphicon-envelope form-control-feedback costanswer"></i>
 				<div class="help-block error" ng-show="vm.signupForm.email.$dirty && vm.signupForm.email.$error.required">Please, fill in your email</div>
@@ -18,13 +17,11 @@
 				<div class="help-block error" ng-show="vm.signupForm.display_name.$dirty && vm.signupForm.display_name.$error.required">Please, fill in display name for your account</div>
 			</div>
 			<div ng-class="{'has-error': vm.signupForm.password.$dirty && vm.signupForm.password.$invalid}" class="form-group has-feedback has-feedback-left">
-    				<!-- label class="control-label">Password</label -->
 					<input name="password" type="password" ng-required="true" ng-model="vm.auth.password" class="form-control costanswer" placeholder="Enter your password" />
 					<i class="glyphicon glyphicon-lock form-control-feedback costanswer"></i>
 				<div class="help-block error" ng-show="vm.signupForm.password.$dirty && vm.signupForm.password.$error.required">Please, fill in your password</div>
 			</div>
 			<div ng-class="{'has-error': vm.signupForm.confirmpassword.$dirty && vm.signupForm.confirmpassword.$invalid}" class="form-group has-feedback has-feedback-left">
-    				<!-- label class="control-label">Confirm password</label -->
 					<input name="confirmpassword" type="password" ng-required="true" ng-model="vm.auth.confirmpassword" class="form-control costanswer" placeholder="Confirm your password" />
 					<i class="glyphicon glyphicon-lock form-control-feedback costanswer"></i>
 				<div class="help-block error" ng-show="vm.signupForm.confirmpassword.$dirty && vm.signupForm.confirmpassword.$error.required">Please, confirm your password</div>
@@ -36,4 +33,48 @@
 			<div class="alert alert-costanswer" role="alert">Already have an account? <a ui-sref="authLogin">Log in!</a></div>
 		</ng-form>
     </div>
-</div>
+</div -->
+<main class="container grow-full">
+	<h3 class="main__title">COSTANSWER Registration</h3>
+	<ng-form id="signup-form" name="vm.signupForm" class="login-form flex column">
+		<div ng-class="{'has-error': vm.signupForm.email.$dirty && vm.signupForm.email.$invalid}" class="login-form__inp__wrap">
+			<!-- label class="control-label">Email</label -->
+			<p class="contact__form__inp flex">
+				<label for="formEmail" class="contact__form__lab flex align-center justify-center"><i class="fa fa-envelope-o" aria-hidden="true"></i></label>
+				<input name="email" type="email" id="formEmail" ng-required="true" ng-model="vm.auth.email" class="contact__form__el" placeholder="Enter your email" />
+			</p>
+			<p class="form-error" ng-show="vm.signupForm.email.$dirty && vm.signupForm.email.$error.required">Please, fill in your email</p>
+		</div>
+		<div ng-class="{'has-error': vm.signupForm.display_name.$dirty && vm.signupForm.display_name.$invalid}" class="login-form__inp__wrap">
+			<p class="contact__form__inp flex">
+				<label for="formDisplayName" class="contact__form__lab flex align-center justify-center"><i class="fa fa-user" aria-hidden="true"></i></label>
+				<input name="text" type="text" id="formDisplayName" ng-required="true" ng-model="vm.auth.display_name" class="contact__form__el" placeholder="Enter your display name" />
+			</p>
+			<p class="form-error" ng-show="m.signupForm.display_name.$dirty && vm.signupForm.display_name.$error.required">Please, fill in display name for your account</p>
+		</div>
+		<div ng-class="{'has-error': vm.signupForm.password.$dirty && vm.signupForm.password.$invalid}" class="login-form__inp__wrap">
+			<p class="contact__form__inp flex">
+				<label for="formPassword" class="contact__form__lab flex align-center justify-center"><i class="fa fa-unlock-alt" aria-hidden="true"></i></label>
+				<input name="password" id="formPassword" type="password" ng-required="true" ng-model="vm.auth.password" class="contact__form__el" placeholder="Enter your password" />
+			</p>
+			<p class="form-error" ng-show="vm.signupForm.password.$dirty && vm.signupForm.password.$error.required">Please, fill in your password</p>
+		</div>
+		<div ng-class="{'has-error': vm.signupForm.confirmpassword.$dirty && vm.signupForm.confirmpassword.$invalid}" class="login-form__inp__wrap">
+			<p class="contact__form__inp flex">
+				<label for="formConfirmPassword" class="contact__form__lab flex align-center justify-center"><i class="fa fa-unlock-alt" aria-hidden="true"></i></label>
+				<input name="confirmpassword" id="formConfirmPassword" type="password" ng-required="true" ng-model="vm.auth.confirmpassword" class="contact__form__el" placeholder="Confirm your password" />
+			</p>
+			<p class="form-error" ng-show="vm.signupForm.confirmpassword.$dirty && vm.signupForm.confirmpassword.$error.required">Please, confirm your password</p>
+		</div>
+		<hr class="dayily__hr _methods_cor _login_cor">
+		<input type="submit" class="features__anchor _sub_cor _no_margin _new_one_cor" ng-click="vm.signup()" ng-disabled="vm.signupForm.$invalid" value="Sign Up" />
+		<p class="main__title-small _p_cor">By continuign you agree to the <a class="footer__anchor" ui-sref="PrivacyPolicy">Privacy Policy</a> and <a class="footer__anchor" ui-sref="TermsOfUse">Terms of Use </a></p>
+	</ng-form>
+	<div class="login-form _bot_cor flex column">
+		<p class="login-form__bot _center_cor">Already have an account? <a ui-sref="authLogin">Login!</a></p>
+		<p class="login-form__bot _or_cor">or</p>
+		<a class="login-form__bot__but features__anchor flex align-center justify-center" ng-click="authenticate('facebook')">
+			<i class="fa fa-facebook-official" aria-hidden="true"></i><span>Sign in with Facebook</span>
+		</a>
+	</div>
+</main>
