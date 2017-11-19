@@ -52,8 +52,7 @@
 <main class="container grow-full">
 	<h3 class="main__title">Try COSTANSWER free</h3>
 	<h4 class="main__title-small login-form">No credit card required. Cancel any time</h4>
-	<ng-form id="login-form" name="vm.loginForm">
-	<form action="#" class="login-form flex column">
+	<ng-form id="login-form" name="vm.loginForm" class="login-form flex column">
 		<div ng-class="{'has-error': vm.loginForm.email.$dirty && vm.loginForm.email.$invalid}" class="login-form__inp__wrap">
 			<!-- label class="control-label">Email</label -->
 			<p class="contact__form__inp flex">
@@ -73,9 +72,6 @@
 		<hr class="dayily__hr _methods_cor _login_cor">
 		<input type="submit" class="features__anchor _sub_cor _no_margin _new_one_cor" ng-click="vm.login()" ng-disabled="vm.loginForm.$invalid" value="Login" />
         <p class="main__title-small _p_cor">By continuign you agree to the <a class="footer__anchor" ui-sref="PrivacyPolicy">Privacy Policy</a> and <a class="footer__anchor" ui-sref="TermsOfUse">Terms of Use </a></p>
-        <a class="footer__anchor" ui-sref="PrivacyPolicy">Terms of Use </a>
-        <a class="footer__anchor" ui-sref="TermsOfUse">Privacy Policy</a>
-	</form>
 	</ng-form>
 	<div class="login-form _bot_cor flex column">
 		<p class="login-form__bot">Do not have account yet? Please, <a ui-sref="authSignup">Sign Up</a></p>
