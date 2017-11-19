@@ -455,7 +455,7 @@ header {
 	margin-top: 30px;
 	display: inline-block;
     background-color: #ff9934;
-    color: #ffffff;
+    color: #ffffff !important;
 	font-size:22px;
 	text-align: center !important;
     border-radius: 5px;
@@ -467,6 +467,7 @@ header {
 	-moz-transition: background-color 1s;
 	-ms-transition: background-color 1s;
 	transition: background-color 1s;
+	text-decoration: none !important;
 }
 .features__anchor:hover{
 	background-color:#2a6535;

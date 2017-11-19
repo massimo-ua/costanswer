@@ -96,6 +96,7 @@ body{
 	font-size:20px;
 	line-height:20px;
 	width:40px;
+	margin: 0px;
 }
 .form-error{
 	font-size: 16px;
@@ -196,6 +197,9 @@ body{
 	-ms-transition:color 1s;
 	transition:color 1s;
     text-decoration: none !important;
+}
+.left-submenu_cor-form__bot__but.active {
+	color: #ff9934 !important;
 }
 .left-submenu_cor-form__bot__but:hover{
 	color:#ff9934;
