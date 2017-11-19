@@ -49,7 +49,7 @@
 </head>
 <body ng-controller="AuthMenuController as vm" class="flex column justify-between">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<!--nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#costanswerNavbar">
@@ -91,8 +91,33 @@
       </ul>
     </div>
   </div>
-</nav>
-
+</nav-->
+<div class="content-big">
+  <header id="header">
+  <div class="top-menu container flex justify-between align-center">
+    <a href="/" class="logo inline-flex align-center">
+      <img src="assets/logogl.png" alt="" class="logo__png" />
+    </a>
+    <nav class="menu" id="menu">
+      <ul class="nav inline-flex align-center column-768 align-end-768">
+        <li class="active-l"><a href="/" class="" title="">Home</a></li>
+        <li><a href="/#ABOUT" class="popup-fancy" title="">ABOUT</a></li>
+        <li><a href="/#ABOUT" class="popup-fancy" title="">HOW IT WORKS</a></li>
+        <li><a href="/#FEATURES" class="popup-fancy" title="">FEATURES</a></li>
+        <li><a href="/#METHODS" class="popup-fancy" title="">SOLUTIONS</a></li>
+        <li><a href="/#PRICING" class="popup-fancy" title="">PRICING</a></li>
+        <li><a href="/#CONTACT" class="popup-fancy" title="">CONTACT</a></li>
+        <li><a href="/#CONTACT" class="popup-fancy" title="">HELP</a></li>
+       </ul>
+     </nav>
+     <div class="log-in inline-flex align-center">
+      <a href="/main/#/signup">Sign Up</a>
+      <span>|</span>
+      <a href="/main/#/login" class="a-login">Login</a>
+    </div>
+  </div>
+</header>
+</div>
 <div ui-view="main" class="container fluid"></div>
 <footer>
     <div class="container flex justify-between align-base flex-wrap justify-center-630">
