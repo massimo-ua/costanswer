@@ -93,7 +93,7 @@
     </div>
   </div>
 </nav-->
-<div class="content-big">
+<!-- div class="content-big">
   <header id="header">
   <div class="top-menu container flex justify-between align-center">
     <a href="/" class="logo inline-flex align-center">
@@ -110,12 +110,6 @@
         <li><a href="/#CONTACT" class="popup-fancy" title="">CONTACT</a></li>
         <li><a href="/#CONTACT" class="popup-fancy" title="">HELP</a></li>
        </ul>
-       <div class="collapse navbar-collapse" ng-controller="MainMenuController as vm">
-        <ul class="nav navbar-nav">
-          <bootstrap-submenu ng-repeat="item in vm.menuItems" menu-item="item">
-          </bootstrap-submenu>
-        </ul>
-      </div>
      </nav>
      <div class="log-in inline-flex align-center">
       <a href="/main/#/signup">Sign Up</a>
@@ -124,6 +118,27 @@
     </div>
   </div>
 </header>
+</div -->
+<div ng-controller="menuController as vm">
+  <nav class="navbar navbar-default">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+  
+      <a class="navbar-brand">ng-bootstrap-submenu</a>
+    </div>
+  
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <bootstrap-submenu ng-repeat="item in vm.menuItems" menu-item="item">
+        </bootstrap-submenu>
+      </ul>
+    </div>
+  </nav>
 </div>
 <div ui-view="main" class="container fluid"></div>
 <footer>
