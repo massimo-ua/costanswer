@@ -119,25 +119,7 @@
   </div>
 </header>
 </div -->
-<div ng-controller="mainMenuController as vm">
-  <nav class="navbar navbar-default">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-  
-    <div>
-      <ul class="nav navbar-nav">
-        <bootstrap-submenu ng-repeat="item in vm.menuItems" menu-item="item">
-        </bootstrap-submenu>
-      </ul>
-    </div>
-  </nav>
-</div>
+<ca-main-menu></ca-main-menu>
 <div ui-view="main" class="container fluid"></div>
 <footer>
     <div class="container flex justify-between align-base flex-wrap justify-center-630">
