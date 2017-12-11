@@ -1,6 +1,6 @@
 (function(){
     'use strict'
-    function MainMenuController() {
+    function mainMenuController() {
         var vm = this;
         console.log('loaded!');
         vm.menuItems = [
@@ -14,5 +14,5 @@
     }
     //controller function linking
     angular.module('costAnswer.controllers')
-        .controller('MainMenuController', MainMenuController)
+        .controller('mainMenuController', mainMenuController)
 }());
