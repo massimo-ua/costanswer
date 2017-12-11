@@ -2,6 +2,7 @@
     'use strict'
     function MainMenuController() {
         var vm = this;
+        console.log('loaded!');
         vm.menuItems = [
             { display: 'Dropdown Item 1', href: '#', children: [
                 { display: 'Child 1', href: '#', children: [
