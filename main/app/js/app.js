@@ -14,7 +14,7 @@
         'ngDialog',
         'angularUtils.directives.dirPagination',
         'formly',
-        //'formlyBootstrap',
+        //'bootstrapSubmenu',
         'costAnswer.services',
         'costAnswer.filters',
         'costAnswer.controllers',

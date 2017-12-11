@@ -36,5 +36,8 @@
     "type": "git",
     "url": "git+https://github.com/massimo-ua/costanswer.git"
   },
-  "author": "grishkov.m@gmail.com"
+  "author": "grishkov.m@gmail.com",
+  "dependencies": {
+    "ng-bootstrap-submenu": "1.0.10"
+  }
 }
