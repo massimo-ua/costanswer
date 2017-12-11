@@ -4,7 +4,7 @@
   "private": true,
   "description": "costanswer UI part",
   "devDependencies": {
-    "bower": "*",
+    "bower": "1.8.2",
     "browser-sync": "^2.18.12",
     "gulp": "^3.9.1",
     "http-server": "*",

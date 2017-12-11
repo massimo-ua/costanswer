@@ -9,22 +9,24 @@
         function caMainMenuController() {
             var vm = this;
             vm.$onInit = function() {
-                vm.menuItems = [
-                    { display: 'Dropdown Item 1', href: '#', children: [
-                      { display: 'Child 1', href: '#', children: [
-                        { display: 'Sub 1', href: 'http://www.google.com', children: []},
-                        { display: 'Sub 2', href: '#', children: [
-                          { display: 'Grand Child 1', href: 'http://www.google.com', children: []},
-                          { display: 'Grand Child 2', href: 'http://www.google.com', children: []}
-                          ]}
-                        ]},
-                      { display: 'Child 2', href: 'http://www.google.com', children: []}
-                      ]},
-                    { display: 'Dropdown Item 2', href: 'http://www.google.com', children: []},
-                    { display: 'Dropdown Item 3', href: '#', children: [
-                      { display: 'Child 3', href: 'http://www.google.com', children: []}
-                      ]}
-                    ];
+                vm.konami = [{
+                    name: "Konami",
+                    link: "#",
+                    subtree: [{
+                      name: "Metal Gear",
+                      link: "#",
+                      subtree: [{
+                        name: "Metal Gear",
+                        link: "metal-gear"
+                      }, {
+                        name: "Metal Gear 2: Solid Snake",
+                        link: "metal-gear2"
+                      }, {
+                        name: "Metal Gear Solid: The Twin Snakes",
+                        link: "metal-gear-solid"
+                      }]
+                    }]
+                  }];
             };
         }
 }());
