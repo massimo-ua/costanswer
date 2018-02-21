@@ -1,27 +1,27 @@
 @font-face {
 	font-family: 'FRABK';
-	src: url('./assets/FRABK.eot');
+	src: url('/assets/FRABK.eot');
 	src: local('FRABK'),
-	url('./assets/FRABK.woff') format('woff'), 
-	url('./assets/FRABK.ttf') format('truetype');
+	url('/assets/FRABK.woff') format('woff'), 
+	url('/assets/FRABK.ttf') format('truetype');
 }
 
 
 @font-face {
 	font-family: 'MYRIADPROREGULAR';
-	src: url('./assets/MYRIADPROREGULAR.eot');
+	src: url('/assets/MYRIADPROREGULAR.eot');
 	src: local('MYRIADPROREGULAR'),
-	url('./assets/MYRIADPROREGULAR.woff') format('woff'), 
-	url('./assets/MYRIADPROREGULAR.ttf') format('truetype');
+	url('/assets/MYRIADPROREGULAR.woff') format('woff'), 
+	url('/assets/MYRIADPROREGULAR.ttf') format('truetype');
 }
 
 
 @font-face {
     font-family: "CenturyGothicRegular";
-    src: url("./assets/CenturyGothicRegular.eot");
-    src: url("./assets/CenturyGothicRegular.eot?#iefix")format("embedded-opentype"),
-    url("./assets/CenturyGothicRegular.woff") format("woff"),
-    url("./assets/CenturyGothicRegular.ttf") format("truetype");
+    src: url("/assets/CenturyGothicRegular.eot");
+    src: url("/assets/CenturyGothicRegular.eot?#iefix")format("embedded-opentype"),
+    url("/assets/CenturyGothicRegular.woff") format("woff"),
+    url("/assets/CenturyGothicRegular.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
 }
