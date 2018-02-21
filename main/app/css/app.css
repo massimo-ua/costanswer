@@ -1174,3 +1174,12 @@ div.well.costanswer.subscription.description {
   font-size: 4em;
   text-transform: uppercase;
 }
+
+/**
+* Prev fix
+*/
+
+header.costanswer {
+  height: 64px;
+  background: #221d1d;
+}
