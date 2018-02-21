@@ -1,3 +1,30 @@
+@font-face {
+	font-family: 'FRABK';
+	src: url('FRABK.eot');
+	src: local('FRABK'),
+	url('FRABK.woff') format('woff'), 
+	url('FRABK.ttf') format('truetype');
+}
+
+
+@font-face {
+	font-family: 'MYRIADPROREGULAR';
+	src: url('MYRIADPROREGULAR.eot');
+	src: local('MYRIADPROREGULAR'),
+	url('MYRIADPROREGULAR.woff') format('woff'), 
+	url('MYRIADPROREGULAR.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: "CenturyGothicRegular";
+    src: url("CenturyGothicRegular.eot");
+    src: url("CenturyGothicRegular.eot?#iefix")format("embedded-opentype"),
+    url("CenturyGothicRegular.woff") format("woff"),
+    url("CenturyGothicRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
 html {
   position: relative;
   min-height: 100%;
