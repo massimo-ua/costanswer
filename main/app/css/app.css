@@ -1236,4 +1236,5 @@ header .active-l a {
 }
 header .nav li a:hover, .log-in a:hover, .footer__anchor:hover  {
   color:#F2B817;
+  background-color: transparent;
 }
