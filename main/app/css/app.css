@@ -1182,3 +1182,22 @@ div.well.costanswer.subscription.description {
 header.costanswer {
   background: #221d1d;
 }
+
+header .nav{
+	list-style-type:none;
+	padding-right: 15px;
+	height: 100%;
+}
+header .nav li {
+	height:100%;
+}
+header .nav li a {
+    text-transform: uppercase;
+    font-family: 'FRABK';
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    height: 21px;
+    height: 100%;
+}
