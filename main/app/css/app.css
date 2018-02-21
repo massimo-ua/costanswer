@@ -1229,12 +1229,12 @@ header .nav li a {
     height: 100%;
 }
 
-header .active-l a {
+header .nav a.active {
   background: #ff9934;
   font-weight:900;
   color: #fff !important;
 }
-header .active-l a:hover {
+header .nav a.active:hover {
   background: #ff9934;
 }
 header .nav li a:hover, .log-in a:hover, .footer__anchor:hover  {
