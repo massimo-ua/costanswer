@@ -14,8 +14,8 @@
         'ngDialog',
         'angularUtils.directives.dirPagination',
         'formly',
-        'ui.bootstrap',
-        'ui.navbar',
+        //'ui.bootstrap', //tbd: cascade menu in help pages
+        //'ui.navbar',
         'costAnswer.services',
         'costAnswer.filters',
         'costAnswer.controllers',
