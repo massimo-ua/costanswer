@@ -695,6 +695,7 @@ footer {
     background-color: #221D1D;
     height: auto;
 	padding: 20px 0px;
+	margin: 30px 0px 0px 0px;
 }
 .footer__cont {
     margin: 0px !important;
