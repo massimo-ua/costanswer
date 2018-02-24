@@ -76,7 +76,7 @@ input, button, textarea,select{
 	-ms-flex-pack: center;
 	justify-content: center;
 }
-.align-center, .nav li, .nav li a {
+.align-center, .aui.nav li, .aui.nav li a {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	-ms-flex-align: center;
@@ -140,15 +140,15 @@ header {
 	font-family: Times New Roman, sans-serif;
 	font-size: 27px;
 }
-.nav{
+.aui.nav{
 	list-style-type:none;
 	padding-right: 15px;
 	height: 100%;
 }
-.nav li {
+.aui.nav li {
 	height:100%;
 }
-.nav li a {
+.aui.nav li a {
     text-transform: uppercase;
     font-family: 'FRABK';
     font-size: 16px;
@@ -163,7 +163,7 @@ header {
 	font-weight:900;
 	color: #fff !important;
 }
-.nav li a:hover, .log-in a:hover, .footer__anchor:hover  {
+.aui.nav li a:hover, .log-in a:hover, .footer__anchor:hover  {
 	color:#F2B817;
 }
 .log-in{
@@ -180,7 +180,7 @@ header {
     font-size: 18px;
 	padding:0px 5px
 }
-.log-in a , .nav li a , .footer__anchor {
+.log-in a , .aui.nav li a , .footer__anchor {
 	-webkit-transition: color 1s ease;
 	-moz-transition: color 1s ease;
 	-ms-transition: color 1s ease;
@@ -747,7 +747,7 @@ footer {
 	.logo > span{
 		font-size: 18px;
 	}
-	.nav li a{
+	.aui.nav li a{
 		font-size: 15px;
 		padding: 5px;
 	}
@@ -805,7 +805,7 @@ footer {
 	.logo > span {
 		font-size: 16px;
 	}
-	.nav li a{
+	.aui.nav li a{
 		font-size: 13px;
 	}
 	.dayily__title{
@@ -918,7 +918,7 @@ footer {
 		background-color:#fffffc;
 		margin-top:12px;
 	}
-	.nav{
+	.aui.nav{
 		height:auto;
 		position:absolute;
 		top:-326px;
@@ -933,15 +933,15 @@ footer {
 		-ms-transition: top 1s ease;
 		transition: top 1s ease;
 	}
-	.nav li {
+	.aui.nav li {
 		height: auto;
 		display: block;
 		width: 100%;
 	}
-	.menu.toggle .nav{
+	.menu.toggle .aui.nav{
 		top:70px;
 	}
-	.nav li a {
+	.aui.nav li a {
 		text-align: left;
 		padding: 0px 30px;
 		display: block;
