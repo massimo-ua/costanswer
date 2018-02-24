@@ -40,7 +40,7 @@ input, button, textarea,select{
 	display: -ms-flexbox;
 	display: flex;
 }
-.inline-flex, .nav li, .nav li a {
+.inline-flex, .aui.nav li, .aui.nav li a {
 	display: -webkit-inline-box;
 	display: -webkit-inline-flex;
 	display: -ms-inline-flexbox;
