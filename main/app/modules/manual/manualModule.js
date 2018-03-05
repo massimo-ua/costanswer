@@ -7,34 +7,34 @@
         $stateProvider
             .state('manual', {
                 url: '/manual',
-                redirectTo: 'manual.fixed-manufacturing-overhead',
+                redirectTo: 'manual/fixed-manufacturing-overhead',
                 views: {
                     "main": {
                         template: '<manual-home></manual-home>'
                     }
                 }
             })
-            .state('manual.fixed-manufacturing-overhead', {
+            .state('manual/fixed-manufacturing-overhead', {
                 url: '/fixed-manufacturing-overhead',
                 parent: 'manual',
                 templateUrl: 'app/modules/manual/views/fixed-manufacturing-overhead.html',
             })
-            .state('manual.instant-calculation-results', {
+            .state('manual/instant-calculation-results', {
                 url: '/instant-calculation-results',
                 parent: 'manual',
                 templateUrl: 'app/modules/manual/views/instant-calculation-results.html',
             })
-            .state('manual.operating-controls', {
+            .state('manual/operating-controls', {
                 url: '/operating-controls',
                 parent: 'manual',
                 templateUrl: 'app/modules/manual/views/operating-controls.html',
             })
-            .state('manual.project-setup', {
+            .state('manual/project-setup', {
                 url: '/project-setup',
                 parent: 'manual',
                 templateUrl: 'app/modules/manual/views/project-setup.html',
             })
-            .state('manual.reports', {
+            .state('manual/reports', {
                 url: '/reports',
                 parent: 'manual',
                 templateUrl: 'app/modules/manual/views/reports.html',
