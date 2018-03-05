@@ -59,7 +59,9 @@
     "@bower_components/satellizer": "sahat/satellizer#*",
     "@bower_components/tinymce": "tinymce/tinymce-dist#4.3.12",
     "@bower_components/tinymce-dist": "tinymce/tinymce-dist#~4.3.0",
+    "angular-utils-pagination": "^0.11.1",
     "crypto-js": "^3.1.9-1",
+    "ionicons": "^3.0.0",
     "ng-bootstrap-submenu": "^1.0.10"
   },
   "engines": {

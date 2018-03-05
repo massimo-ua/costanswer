@@ -159,6 +159,10 @@ ajv@^5.1.0:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
 
+angular-utils-pagination@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/angular-utils-pagination/-/angular-utils-pagination-0.11.1.tgz#efad7c8879beb30ad3d77707f93e3d0ef51f2c66"
+
 "angular@>=1.2.16 1.4.x":
   version "1.4.14"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.14.tgz#9d0feaf60ce6e52ce50f49ee328656d1e1875c37"
@@ -1769,6 +1773,10 @@ interpret@^1.0.0:
 invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
+
+ionicons@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-3.0.0.tgz#40b8daf4fd7a31150bd002160f66496e22a98c3c"
 
 is-absolute@^1.0.0:
   version "1.0.0"
