@@ -8,7 +8,13 @@
         });
     function caDropDownMenuController() {
         var vm = this;
-        
+        vm.$onInit = function() {
+            vm.isVisible = false;
+        };
+
+        vm.toggleRoot = function() {
+            vm.isVisible = !vm.isVisible;
+        };
     }
     //caProcessProductProcessDlController.$inject = [];
 }());
