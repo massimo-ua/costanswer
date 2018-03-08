@@ -13,6 +13,7 @@
         };
 
         vm.toggleRoot = function() {
+            console.log('ewtrew');
             vm.isVisible = !vm.isVisible;
         };
     }
