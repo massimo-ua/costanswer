@@ -629,3 +629,29 @@ a._ornge_cor{
 	word-wrap: break-word;
     word-break: break-all;
 }
+
+/* ca drop down menu */
+
+/* Dropdown Button */
+.ca-dropdown-menu-btn {
+    background-color: inherit;
+    color: #fffffc;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.ca-dropdown-menu-btn:hover, .ca-dropdown-menu-btn:focus {
+	background-color: #ff9934;
+	color: black;
+}
+
+.ca-dropdown-menu-content {
+    display: none;
+    position: absolute;
+    background-color: inherit;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
