@@ -1,6 +1,6 @@
 <div class="ca-dropdown-menu">
     <a class="popup-fancy ca-dropdown-menu-btn" ng-click="$ctrl.toggleRoot()">HELP<i class="fa fa-caret-down"></i></a>
-    <div class="ca-dropdown-menu-content" ng-class="{'show': isVisible}">
+    <div ng-class="{'ca-dropdown-menu-content show': $ctrl.isVisible, 'ca-dropdown-menu-content': !$ctrl.isVisible}">
       <a href="#">Link 1</a>
       <a href="#">Link 2</a>
       <a href="#">Link 3</a>
