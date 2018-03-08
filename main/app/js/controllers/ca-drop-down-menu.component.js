@@ -10,6 +10,12 @@
         var vm = this;
         vm.$onInit = function() {
             vm.isVisible = false;
+            vm.rootTitle = 'HELP';
+            vm.items = [
+                {id: 1, title: 'About Program'},
+                {id: 2, title: 'User Manual'},
+                {id: 3, title: 'FAQ'}
+            ];
         };
 
         vm.toggleRoot = function() {
