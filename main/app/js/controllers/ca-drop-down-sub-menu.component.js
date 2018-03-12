@@ -4,7 +4,8 @@
         .component('caDropDownSubMenu', {
             restrict: 'E',
             bindings: {
-                subs: '<'
+                subs: '<',
+                title: '<'
             },
             templateUrl: 'app/views/ca-drop-down-sub-menu.html',
             controller: caDropDownSubMenuController
@@ -13,6 +14,7 @@
         var vm = this;
         vm.$onInit = function() {
             vm.isVisible = false;
+            console.log(vm.subs);
         };
 
         vm.toggleRoot = function() {
