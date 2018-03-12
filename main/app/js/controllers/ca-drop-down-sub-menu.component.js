@@ -17,7 +17,8 @@
         };
 
         vm.toggleRoot = function() {
-            console.log(vm);
+            console.log(angular.element($event.target).prop('offsetLeft'));
+            console.log(angular.element($event.target).prop('offsetTop'));
             vm.isVisible = !vm.isVisible;
         };
     }
