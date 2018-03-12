@@ -13,11 +13,10 @@
     function caDropDownSubMenuController() {
         var vm = this;
         vm.$onInit = function() {
-            vm.isVisible = true;
+            vm.isVisible = false;
         };
 
         vm.toggleRoot = function(event) {
-            console.log(angular.element(event));
             vm.isVisible = !vm.isVisible;
         };
     }
