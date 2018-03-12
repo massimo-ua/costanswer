@@ -653,7 +653,8 @@ a._ornge_cor{
 
 .ca-dropdown-menu-content {
     display: none;
-    position: absolute;
+	position: absolute;
+	font-size: 12px;
     background-color: #221d1d;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
