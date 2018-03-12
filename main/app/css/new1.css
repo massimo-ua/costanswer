@@ -655,7 +655,7 @@ a._ornge_cor{
     display: none;
 	position: absolute;
     background-color: #221d1d;
-    min-width: 150px;
+    min-width: 140px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
@@ -669,24 +669,6 @@ a._ornge_cor{
 	font-size: 14px !important;
     text-decoration: none;
     display: block !important;
-}
-
-.ca-dropdown-submenu-content {
-    list-style-type: none;
-    position: absolute;
-    padding: 5px 0px 10px;
-    top: -15px;
-    left: 320px;
-    background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, .15);
-    border-radius: 4px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    display: none;
-    z-index: 1;
 }
 
 /* Dropdown Button */
@@ -712,7 +694,7 @@ a._ornge_cor{
     display: none;
 	position: absolute;
 	top: 0px;
-	left: 152px;
+	left: 142px;
     background-color: #221d1d;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
