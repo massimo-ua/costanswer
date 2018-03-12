@@ -14,11 +14,10 @@
         var vm = this;
         vm.$onInit = function() {
             vm.isVisible = true;
-            console.log(vm.subs);
         };
 
         vm.toggleRoot = function() {
-            console.log('sub state changed');
+            console.log(vm);
             vm.isVisible = !vm.isVisible;
         };
     }
