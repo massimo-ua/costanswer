@@ -711,7 +711,8 @@ a._ornge_cor{
 .ca-dropdown-sub-menu-content {
     display: none;
 	position: absolute;
-	left: 160px;
+	top: -6px;
+	left: 152px;
     background-color: #221d1d;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
