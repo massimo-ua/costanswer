@@ -666,7 +666,7 @@ a._ornge_cor{
 .ca-dropdown-menu-content a.ca-dropdown-menu-item {
     color: #ff9934;
 	padding: 12px 16px;
-	font-size: 12px;
+	font-size: 12px !important;
     text-decoration: none;
     display: block !important;
 }
@@ -732,7 +732,8 @@ a._ornge_cor{
     position: absolute;
     padding: 5px 0px 10px;
     top: -6px;
-    left: 160px;
+	left: 160px;
+	font-size: 12px !important;
     background-color: #fff;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
