@@ -710,7 +710,8 @@ a._ornge_cor{
 
 .ca-dropdown-sub-menu-content {
     display: none;
-    position: absolute;
+	position: absolute;
+	left: 160px;
     background-color: #221d1d;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -728,7 +729,7 @@ a._ornge_cor{
     display: block !important;
 }
 
-.ca-dropdown-sub-menu-content {
+/*.ca-dropdown-sub-menu-content {
     list-style-type: none;
     position: absolute;
     padding: 5px 0px 10px;
@@ -744,4 +745,4 @@ a._ornge_cor{
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     display: none;
     z-index: 1;
-}
+}*/
