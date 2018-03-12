@@ -13,7 +13,7 @@
     function caDropDownSubMenuController() {
         var vm = this;
         vm.$onInit = function() {
-            vm.isVisible = false;
+            vm.isVisible = true;
             console.log(vm.subs);
         };
 

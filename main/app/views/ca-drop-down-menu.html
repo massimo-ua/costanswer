@@ -4,4 +4,7 @@
       <a ng-if="!item.subs" ng-repeat="item in $ctrl.items track by item.id" class="ca-dropdown-menu-item" href="#">{{ item.title }}</a>
       <ca-drop-down-sub-menu ng-if="item.subs.length > 0" subs="item.subs" title="item.title"></ca-drop-down-sub-menu>
     </div>
-  </div> 
+</div>
+<div>
+  <ca-drop-down-sub-menu subs="item[0].subs" title="item[0].title"></ca-drop-down-sub-menu>
+</div> 
