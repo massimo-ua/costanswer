@@ -12,7 +12,11 @@
             vm.isVisible = false;
             vm.rootTitle = 'HELP';
             vm.items = [
-                {id: 1, title: 'About Program'},
+                {id: 1, title: 'About Program', subs: [
+                    { id: 10, title: 'Sub 10'},
+                    { id: 20, title: 'Sub 20'},
+                    { id: 30, title: 'Sub 30'}
+                ]},
                 {id: 2, title: 'User Manual'},
                 {id: 3, title: 'FAQ'}
             ];
