@@ -7,9 +7,6 @@
                 title: '<',
                 items: '<'
             },
-            require: {
-                caDropDownSubMenu: ['^caDropDownSubMenu', 'caDropDownSubMenu'] 
-            },
             templateUrl: 'app/views/ca-drop-down-menu.html',
             controller: caDropDownMenuController
         });
