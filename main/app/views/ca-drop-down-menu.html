@@ -2,7 +2,7 @@
     <a class="ca-dropdown-menu-btn" ng-click="$ctrl.toggleRoot()">{{ $ctrl.title }}<i class="fa fa-caret-down"></i></a>
     <div layout="column" ng-class="{'ca-dropdown-menu-content ca-show-menu': $ctrl.isVisible, 'ca-dropdown-menu-content': !$ctrl.isVisible}">
       <div ng-repeat="item in $ctrl.items track by item.id">
-      <a ng-if="!item.subs" class="ca-dropdown-menu-item" ui-sref="item.sref">{{ item.name }}</a>
+      <a ng-if="!item.subs" class="ca-dropdown-menu-item" ui-sref="{{ item.sref }}">{{ item.name }}</a>
       <ca-drop-down-sub-menu ng-if="item.subs" subs="item.subs" ca-title="item.name"></ca-drop-down-sub-menu>
       </div>  
     </div>
