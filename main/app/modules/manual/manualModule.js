@@ -1,6 +1,5 @@
 (function(){
     angular.module('costAnswer.manual', [
-        'costAnswer.manual.services',
         'costAnswer.manual.controllers'
     ]);
     function ManualConfig($stateProvider) {

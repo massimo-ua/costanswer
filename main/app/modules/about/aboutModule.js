@@ -1,6 +1,5 @@
 (function(){
     angular.module('costAnswer.about', [
-        'costAnswer.about.services',
         'costAnswer.about.controllers'
     ]);
     function AboutConfig($stateProvider) {
