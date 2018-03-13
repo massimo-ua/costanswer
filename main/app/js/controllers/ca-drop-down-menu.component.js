@@ -4,7 +4,7 @@
         .component('caDropDownMenu', {
             restrict: 'E',
             bindings: {
-                title: '<',
+                title: '<caTitle',
                 items: '<'
             },
             templateUrl: 'app/views/ca-drop-down-menu.html',

@@ -5,7 +5,7 @@
             restrict: 'E',
             bindings: {
                 subs: '<',
-                title: '<'
+                title: '<caTitle'
             },
             templateUrl: 'app/views/ca-drop-down-sub-menu.html',
             controller: caDropDownSubMenuController
