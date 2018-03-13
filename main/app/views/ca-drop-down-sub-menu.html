@@ -3,7 +3,7 @@
     <div layout="column" ng-class="{'ca-dropdown-sub-menu-content ca-show-sub-menu': $ctrl.isVisible, 'ca-dropdown-sub-menu-content': !$ctrl.isVisible}">
       <div ng-repeat="item in $ctrl.subs track by item.id">
         <a ng-if="!item.subs" class="ca-dropdown-sub-menu-item" ui-sref="{{ item.sref }}">{{ item.name }}</a>
-        <ca-dropdown-sub-menu ng-if="item.subs" subs="item.subs" title="{{ item.name }}" ca-title="item.name"></ca-dropdown-sub-menu>
+        <ca-dropdown-sub-menu ng-if="item.subs" subs="item.subs" ca-title="item.name"></ca-dropdown-sub-menu>
       </div>
     </div>
   </div> 
