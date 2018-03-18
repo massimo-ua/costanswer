@@ -17,11 +17,14 @@
                 .state('authLogout', {
                     url: '/logout',
                     controller: ['authService', '$scope', '$state', function(authService, $scope, $state) {
-                        authService.logout()
-                        .then(function(response){
-                            $scope.$emit('USER_LOGOUT_EVENT');
-                            $state.go('startCore');
-                        });
+                        function init() { 
+                            authService.logout()
+                                .then(function(response){
+                                    $scope.$emit('USER_LOGOUT_EVENT');
+                                    $state.go('startCore');
+                                });
+                        }
+                        init();
                     }]
                 })
                 .state('authSignup', {
