@@ -112,8 +112,7 @@
           <bootstrap-submenu ng-repeat="item in vm.items" menu-item="item">
           </bootstrap-submenu>
         </li>
-       </ul>
-     </nav>
+     <li>
      <div ng-cloak ng-show="!vm.userProfile" class="log-in inline-flex align-center">
       <a ui-sref="authSignup">Sign Up</a>
       <span>|</span>
@@ -123,6 +122,9 @@
       <bootstrap-submenu ng-repeat="item in vm.logged" menu-item="item">
       </bootstrap-submenu>
     </div>
+  </li>
+  </ul>
+</nav>
   </div>
 </header>
 </div>
