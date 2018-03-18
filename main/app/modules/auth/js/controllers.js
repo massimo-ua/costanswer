@@ -69,7 +69,7 @@
                 }
             }
             vm.items = menuListService.help();
-            vm.title = 'HELP';
+            vm.logged = menuListService.logged();
         }
         init();
         vm.logout = function() {

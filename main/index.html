@@ -35,6 +35,7 @@
   <link href="/node_modules/@bower_components/ng-dialog/css/ngDialog.min.css" rel="stylesheet">
   <link href="/node_modules/@bower_components/ng-dialog/css/ngDialog-theme-default.min.css" rel="stylesheet">
   <link href="/node_modules/@bower_components/ng-dialog/css/ngDialog-theme-plain.min.css" rel="stylesheet">
+  <link href="/node_modules/ng-bootstrap-submenu/dist/ng-bootstrap-submenu.css"></link>
   <link rel="stylesheet" href="app/css/app.css">
   <link rel="stylesheet" href="app/css/buttons.css">
   <link rel="stylesheet" href="app/css/lists.css">
@@ -108,14 +109,19 @@
         <li><a href="/#PRICING" class="popup-fancy" title="">PRICING</a></li>
         <li><a href="/#CONTACT" class="popup-fancy" title="">CONTACT</a></li>
         <li>
-          <ca-drop-down-menu items="vm.items" ca-title="vm.title"></ca-drop-down-menu>
+          <bootstrap-submenu ng-repeat="item in vm.items" menu-item="item">
+          </bootstrap-submenu>
         </li>
        </ul>
      </nav>
-     <div class="log-in inline-flex align-center">
-      <a href="/main/#/signup">Sign Up</a>
+     <div ng-cloak ng-show="!vm.userProfile" class="log-in inline-flex align-center">
+      <a ui-sref="signup">Sign Up</a>
       <span>|</span>
-      <a href="/main/#/login" class="a-login">Login</a>
+      <a ui-sref="login">Login</a>
+    </div>
+    <div ng-cloak ng-show="vm.userProfile">
+      <bootstrap-submenu ng-repeat="item in vm.logged" menu-item="item">
+      </bootstrap-submenu>
     </div>
   </div>
 </header>
@@ -162,10 +168,9 @@
   <script src="app/js/services/menu-list.service.js"></script>
   <script src="app/js/controllers.js"></script>
   <script src="app/js/controllers/coming-soon.controller.js"></script>
-  <script src="app/js/controllers/ca-drop-down-sub-menu.component.js"></script>
-  <script src="app/js/controllers/ca-drop-down-menu.component.js"></script>
   <script src="app/js/directives.js"></script>
   <script src="app/js/directives/ca-form-builder.directive.js"></script>
+  <script src="app/js/directives/ng-bootstrap-submenu.js"></script>
   <script src="app/js/filters.js"></script>
   <script src="app/modules/core/coreModule.js"></script>
   <script src="app/modules/core/js/controllers.js"></script>
