@@ -2,7 +2,8 @@
     'use strict';
     angular.module('costAnswer.services')
         .factory('menuListService', menuListService);
-    function menuListService() {
+    menuListService.$inject = ['$filter'];
+    function menuListService($filter) {
         return {
         help: function() {
                 return [
@@ -50,11 +51,11 @@
                     ]}
                 ];
             },
-            logged: function() {
+            logged: function(name) {
                 return [
-                    { "id": 0, "display": "Account", "href": "", children: [
+                    { "id": 0, "display": $filter('strTruncate')(name, '...', 10), "href": "", children: [
                         {"id": 1, "display": "Account", "href": "dashboard" },
-                        {"id": 2, "display": "Account", "href": "logout" }
+                        {"id": 2, "display": "Logout", "href": "authLogout" }
                     ]}
                 ]
             }

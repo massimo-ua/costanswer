@@ -67,9 +67,10 @@
                 if(!vm.userProfile) {
                     vm.userProfile = authService.profile();
                 }
+                vm.logged = menuListService.logged(vm.userProfile.display_name);
             }
             vm.items = menuListService.help();
-            vm.logged = menuListService.logged();
+            
         }
         init();
         vm.logout = function() {
