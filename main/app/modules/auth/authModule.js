@@ -14,6 +14,16 @@
                     }
 
                 })
+                .state('authLogout', {
+                    url: '/logout',
+                    controller: ['authService', '$scope', '$state', function(authService, $scope, $state) {
+                        authService.logout()
+                        .then(function(response){
+                            $scope.$emit('USER_LOGOUT_EVENT');
+                            $state.go('startCore');
+                        });
+                    }]
+                })
                 .state('authSignup', {
                     url: '/signup',
                     views: {
