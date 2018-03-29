@@ -487,6 +487,20 @@ main.container{
 	padding-bottom:40px;
 }
 
+@media (max-width: 767px),(max-device-width: 767px) {
+	.footer{
+		width:100%;
+		margin:0px;
+	}
+	.quick-start {
+		list-style-type: none;
+		padding: 10px 0px;
+	}
+	.quick-start li {
+		margin-left: 0px;
+	}
+}
+
 .main__text._margin_cor,
 .main__title__lsub._margin_cor{
 	margin-top:50px;
