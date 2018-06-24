@@ -21,9 +21,9 @@
   },
   "scripts": {
     "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/@bower_components'), 'main/app/libs', 'junction') } catch (e) { }\"",
-    "prestart": "npm install",
+    "prestart": "yarn install",
     "start": "http-server . -a localhost -p 8000 -c-1",
-    "pretest": "npm install",
+    "pretest": "yarn install",
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js  --single-run",
     "preupdate-webdriver": "npm install",
