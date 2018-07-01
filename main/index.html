@@ -47,148 +47,67 @@
   <link rel="stylesheet" href="app/css/report.css">
   <link rel="stylesheet" href="app/css/new.css">
   <link rel="stylesheet" href="app/css/new1.css">
+  <link rel="stylesheet" href="/assets/stellarnav.css">
   <link rel="stylesheet" href="app/css/header-menu.css">
 </head>
 <body ng-controller="AuthMenuController as vm" class="flex column justify-between">
-
-<!--nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#costanswerNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">COSTANSWER</a>
-    </div>
-    <div class="collapse navbar-collapse" id="costanswerNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="/">HOME</a></li>
-        <li><a href="/#ABOUT">ABOUT</a></li>
-        <li><a href="/#FEATURES">FEATURES</a></li>
-        <li><a href="/#METHODS">SOLUTIONS</a></li>
-        <li><a href="/#PRICING">PRICING</a></li>
-        <li><a href="/#CONTACT">CONTACTS</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">HELP <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a ui-sref="about">About Programme</a></li>
-            <li><a ui-sref="manual">User Manual</a></li>
-            <li><a>FAQ</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul ng-cloak ng-show="!vm.userProfile" class="nav navbar-nav navbar-right">
-        <li><a ui-sref="authSignup"><span class="glyphicon glyphicon-edit"></span> Signup</a></li>
-        <li><a ui-sref="authLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-      <ul ng-cloak ng-show="vm.userProfile" class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Wellcome, {{ vm.userProfile.display_name | strTruncate:false:15 }} <span class="caret"></span></a>
-          <ul style="width:100%;" class="dropdown-menu">
-            <li ui-sref-active="active"><a ui-sref="dashboard"><span class="glyphicon glyphicon-user"></span> Account</a></li>
-            <li><a ng-click="vm.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav-->
 <div class="content-big">
-  <!--header class="costanswer" id="header">
-  <div class="top-menu container flex justify-between align-center">
-    <a href="/" class="logo inline-flex align-center">
-      <img src="/assets/logogl.png" alt="" class="logo__png" />
-    </a>
-    <nav class="menu" id="menu">
-      <ul class="aui nav inline-flex align-center column-768 align-end-768">
-        <li><a href="/" class="popup-fancy active" title="">Home</a></li>
-        <li><a href="/#ABOUT" class="popup-fancy" title="">ABOUT</a></li>
-        <li><a href="/#ABOUT" class="popup-fancy" title="">HOW IT WORKS</a></li>
-        <li><a href="/#FEATURES" class="popup-fancy" title="">FEATURES</a></li>
-        <li><a href="/#METHODS" class="popup-fancy" title="">SOLUTIONS</a></li>
-        <li><a href="/#PRICING" class="popup-fancy" title="">PRICING</a></li>
-        <li><a href="/#CONTACT" class="popup-fancy" title="">CONTACT</a></li>
-        <li>
-          <bootstrap-submenu ng-repeat="item in vm.items" menu-item="item">
-          </bootstrap-submenu>
-        </li>
-     <li>
-     <div ng-cloak ng-show="!vm.userProfile" class="log-in inline-flex align-center">
-      <a ui-sref="authSignup">Sign Up</a>
-      <span>|</span>
-      <a ui-sref="authLogin">Login</a>
-    </div>
-    <div ng-cloak ng-show="vm.userProfile">
-      <bootstrap-submenu ng-repeat="item in vm.logged" menu-item="item">
-      </bootstrap-submenu>
-    </div>
-  </li>
-  </ul>
-</nav>
-  </div>
-</header-->
-<!-- header>
-  <nav>
-    <div id="logo">Your Logo here</div>
-
-    <label for="drop" class="toggle">Menu</label>
-    <input type="checkbox" id="drop" />
-        <ul class="menu">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="#">HOW IT WORKS</a></li>
-            <li><a href="#">FEATURES</a></li>
-            <li><a href="#">SOLUTIONS</a></li>
-            <li><a href="#">PRICING</a></li>
-            <li><a href="#">CONTACT</a></li>
-            <li>
-              <label for="drop-2" class="toggle">HELP +</label>
-              <a href="#">HELP</a>
-              <input type="checkbox" id="drop-2"/>
-              <ul>
-                <li>       
-                  <label for="drop-21" class="toggle">About Programme +</label>
-                  <a href="#">About Programme</a>         
-                  <input type="checkbox" id="drop-21"/>
-                  <ul>
-                      <li><a href="#">HTML/CSS</a></li>
-                      <li><a href="#">jQuery</a></li>
-                      <li><a href="#">Other</a></li>
-                  </ul>
-                  </li>
-                  <li>       
-                    <label for="drop-22" class="toggle">User Manual +</label>
-                    <a href="#">User Manual</a>         
-                    <input type="checkbox" id="drop-22"/>
-                    <ul>
-                        <li><a href="#">HTML/CSS</a></li>
-                        <li><a href="#">jQuery</a></li>
-                        <li><a href="#">Other</a></li>
-                    </ul>
-                    </li>
-                  <li><a href="#">FAQ</a></li>
-              </ul>
-              </li>
-        </ul>
-    </nav>
-</header-->
 <header>
-  <div id="nav__logo"></div>
-  <div id="nav__menu">
-    <div class="nav__item active"><a>HOME</a></div>
-    <div class="nav__item"><a>ABOUT</a></div>
-    <div class="nav__item"><a>HOW IT WORKS</a></div>
-    <div class="nav__item"><a>FEATURES</a></div>
-    <div class="nav__item"><a>SOLUTIONS</a></div>
-    <div class="nav__item"><a>PRICING</a></div>
-    <div class="nav__item"><a>CONTACT</a></div>
-    <div class="nav__item"><a>HELP</a></div>
+  <div class="logo"><a href="/"></a></div>
+  <!-- nav-start -->
+	<div id="main-nav" class="stellarnav">
+		<ul>
+        <li><a class="active" href="">HOME</a></li>
+		    <li><a href="">ABOUT</a></li>
+		    <li><a href="">HOW IT WORKS</a></li>
+		    <li><a href="">FEATURES</a></li>
+        <li><a href="">SOLUTIONS</a></li>
+        <li><a href="">PRICING</a></li>
+		    <li><a href="">CONTACT</a></li>
+		    <li class="drop-left"><a>HELP</a>
+		    	<ul>
+            <li><a href="#">About Programme</a>
+              <ul>
+                  <li><a href="#">About Programme</a></li>
+                  <li><a href="#">About Programme</a></li>
+                  <li><a href="#">About Programme</a></li>
+                  <li><a href="#">About Programme</a></li>
+              </ul>
+            </li>
+            <li><a href="#">User Manual</a>
+              <ul>
+                  <li><a href="#">About Programme</a></li>
+                  <li><a href="#">About Programme</a></li>
+                  <li><a href="#">About Programme</a></li>
+                  <li><a href="#">About Programme</a>
+                    <ul>
+                        <li><a href="#">About Programme</a></li>
+                        <li><a href="#">About Programme</a></li>
+                        <li><a href="#">About Programme</a></li>
+                        <li><a href="#">About Programme</a></li>
+                    </ul>
+                  </li>
+              </ul>
+            </li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </li>
+        <li ng-cloak ng-show="!vm.userProfile">
+          <a ui-sref="authSignup">Sign Up</a>
+        </li>
+        <li ng-cloak ng-show="!vm.userProfile">
+          <a ui-sref="authLogin">Login</a>
+        </li>
+        <li ng-cloak ng-show="vm.userProfile">
+            <a>Wellcome, {{ vm.userProfile.display_name | strTruncate:false:15 }}</a>
+            <ul>
+                <li ui-sref-active="active"><a ui-sref="dashboard"><span class="glyphicon glyphicon-user"></span> Account</a></li>
+                <li><a ng-click="vm.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+        </li>
+    </ul>
   </div>
-  <div id="nav__login">
-    <div class="nav__item"><a>Signup</a></div>
-    <div class="nav__item"><a>Login</a></div>
-  </div>
+  <!-- nav-end -->
 </header>
 </div>
 <div ui-view="main" class="container fluid"></div>
@@ -202,6 +121,7 @@
   <script src="/node_modules/@bower_components/jquery/dist/jquery.js"></script>
   <script src="/node_modules/@bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/node_modules/@bower_components/api-check/dist/api-check.min.js"></script>
+<script src="/assets/stellarnav.min.js"></script>
 
   <!-- application dependencies -->
   <script src="/node_modules/@bower_components/angular/angular.js"></script>
@@ -313,5 +233,12 @@
   <script src="app/modules/manual/manualModule.js"></script>
   <script src="app/modules/manual/js/controllers/home.controller.js"></script>
   <script src="app/modules/manual/js/controllers/standard-costing.controller.js"></script>
+  <script type="text/javascript">
+		jQuery(document).ready(function($) {
+			jQuery('.stellarnav').stellarNav({
+				theme: 'dark'
+			});
+		});
+	</script>
 </body>
 </html>
