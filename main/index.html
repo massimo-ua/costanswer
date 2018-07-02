@@ -47,7 +47,7 @@
   <link rel="stylesheet" href="app/css/report.css">
   <link rel="stylesheet" href="app/css/new.css">
   <link rel="stylesheet" href="app/css/new1.css">
-  <link rel="stylesheet" href="/assets/stellarnav.css">
+  <link rel="stylesheet" href="/assets/stellarnav.min.css">
   <link rel="stylesheet" href="app/css/header-menu.css">
 </head>
 <body ng-controller="AuthMenuController as vm" class="flex column justify-between">
@@ -56,7 +56,7 @@
   <div class="logo"><a href="/"></a></div>
   <!-- nav-start -->
 	<div id="main-nav" class="stellarnav">
-		<ul>
+		<ul id="menu-root">
         <li><a class="active" href="/#ABOUT">HOME</a></li>
 		    <li><a href="/#ABOUT">ABOUT</a></li>
 		    <li><a href="/#ABOUT">HOW IT WORKS</a></li>
@@ -83,7 +83,7 @@
                   <li><a href="/main/#!/about/variable-overhead">Variable overhead</a></li>
                   <li><a href="/main/#!/about/fixed-overhead">Fixed overhead</a></li>
                   <li><a href="/main/#!/about/cost-analysis">Cost analysis</a></li>
-                  <li><a href="/main/#!/about/checkups">Check ups</a></li>
+                  <li><a ui-sref="about/checkups">Check ups</a></li>
               </ul>
             </li>
             <li><a href="/main/#!/manual">User Manual</a>
@@ -143,6 +143,7 @@
   <script src="/node_modules/@bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/node_modules/@bower_components/api-check/dist/api-check.min.js"></script>
 <script src="/assets/stellarnav.min.js"></script>
+<script src="/assets/menu-launcher.js"></script>
 
   <!-- application dependencies -->
   <script src="/node_modules/@bower_components/angular/angular.js"></script>
@@ -254,12 +255,5 @@
   <script src="app/modules/manual/manualModule.js"></script>
   <script src="app/modules/manual/js/controllers/home.controller.js"></script>
   <script src="app/modules/manual/js/controllers/standard-costing.controller.js"></script>
-  <script type="text/javascript">
-		jQuery(document).ready(function($) {
-			jQuery('.stellarnav').stellarNav({
-				theme: 'dark'
-			});
-		});
-	</script>
 </body>
 </html>
