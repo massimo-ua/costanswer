@@ -1242,3 +1242,36 @@ header .nav li a:hover, .log-in a:hover, .footer__anchor:hover  {
   color:#F2B817;
   background-color: transparent;
 }
+
+@media (max-width: 670px),(max-device-width: 670px) {
+	.main__table._max_cor th,
+	.main__table._max_cor td{
+		font-size: 12px;
+		padding: 10px 5px;
+  }
+}
+
+@media (max-width: 620px),(max-device-width: 620px) {
+	.main__table{
+		font-size:14px;
+		line-height:18px;
+	}
+}
+
+@media (max-width: 440px),(max-device-width: 440px) {
+	.main__table{
+		font-size:12px;
+		line-height:16px;
+		font-weight:400;
+	}
+	.main__table._max_cor th, .main__table._max_cor td {
+		font-size: 10px;
+		padding: 7px 5px;
+	}
+}
+
+@media (max-width: 380px),(max-device-width: 380px) {
+	.main__table._max_cor td, .main__table._max_cor th {
+		font-size: 8px;
+	}
+}
