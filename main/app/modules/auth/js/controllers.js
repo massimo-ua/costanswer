@@ -60,14 +60,17 @@
                 });
         };
     }
-    function AuthMenuController(authService,$log,$scope,$state,$localStorage) {
+    function AuthMenuController(authService,$log,$scope,$state,$localStorage,menuListService) {
         var vm = this;
         function init() {
             if(authService.isAuthenticated()) {
                 if(!vm.userProfile) {
                     vm.userProfile = authService.profile();
                 }
+                vm.logged = menuListService.logged(vm.userProfile.display_name);
             }
+            vm.items = menuListService.help();
+            
         }
         init();
         vm.logout = function() {
@@ -88,7 +91,7 @@
     //dependencies injection block
     AuthLoginController.$inject = ['authService','$log','$state','$scope','toastr'];
     AuthSignupController.$inject = ['authService','$log','$state','$scope','toastr'];
-    AuthMenuController.$inject = ['authService','$log','$scope','$state','$localStorage'];
+    AuthMenuController.$inject = ['authService','$log','$scope','$state','$localStorage','menuListService'];
     //controller function linking
     angular.module('costAnswer.auth.controllers')
         .controller('AuthLoginController', AuthLoginController)

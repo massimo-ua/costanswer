@@ -1,8 +1,9 @@
 (function(){
     'use strict';
-    function DashboardSettingsController($log,authService,DATAINPUT_BUSINESS_PROFILE,popupService,$scope,$state) {
+    function DashboardSettingsController($log,authService,DATAINPUT_BUSINESS_PROFILE,popupService,$scope,$state,helperService) {
         var vm = this;
         function init() {
+            helperService.add("title", "Account Settings");
             vm.settings = {};
             authService.fullProfile()
                 .then(function(response){
@@ -65,7 +66,7 @@
                 });
         }
     }
-    DashboardSettingsController.$inject = ['$log','authService','DATAINPUT_BUSINESS_PROFILE','popupService','$scope','$state'];
+    DashboardSettingsController.$inject = ['$log','authService','DATAINPUT_BUSINESS_PROFILE','popupService','$scope','$state','helperService'];
     angular.module('costAnswer.dashboard.controllers')
         .controller('DashboardSettingsController', DashboardSettingsController);
 }());

@@ -1,59 +1,6 @@
 (function(){
     angular.module('costAnswer.core.standard.controllers',[]);
     angular.module('costAnswer.core.standard.controllers')
-    .controller('standardController', ['$scope', 'standardService', '$localStorage', 'DataModel', '$state', function($scope, standardService, $localStorage, DataModel, $state){
-        function init() {
-            $scope.nameProperty = "name";
-            $scope.productsList = [];
-            if($localStorage.uuid) {
-                standardService.productsList($localStorage.uuid).then(function(response){
-                    $scope.productsList = response.data;
-                });
-            }
-        }
-        init();
-        $scope.$on('NEW_ST_PRODUCT', function(event, data) {
-            $scope.productsList.push(data);
-            event.stopPropagation();
-        });
-        $scope.onDelete = function(item, callback) {
-            DataModel.Product.remove({id: item.id})
-                .$promise
-                    .then(function(response){
-                        callback();
-                        $state.go('standard.start', undefined, {
-                            reload: true
-                        });
-                    })
-                    .catch(function(error){
-                        callback(error);
-                    });
-               //mohService.getInstantMohReport($localStorage.uuid, $scope.reportId, function(response){
-               //    $scope.instantReport = response;
-               //});
-        }
-            
-            
-            
-            /*ngDialog.openConfirm({
-                        template: 'app/modules/core/standard/views/dialogs/add-product.html',
-                        className: 'ngdialog-theme-plain',
-                        closeByDocument: false,
-                        closeByEscape: false,
-                        showClose: true,
-                        scope: $scope
-            })
-            .then(
-                function(value) {
-                    console.log(value);
-                    $scope.itemsList.push(value);
-                    resetForm();
-                },
-                function(value){
-                    console.log(value);
-                    resetForm();
-                });*/
-    }])
     .controller('standardProductController', ['$scope', function($scope){
         console.log('Standard Costing Product Home');
     }])
@@ -103,22 +50,13 @@
                     $scope.controls.formDisabled = false;
                     $scope.controls.buttonText = "Save";
                 });
-        }
-    }])
-    .controller('startProductController', ['$scope', function($scope){
-
+        };
     }])
     .controller('singleProductController', ['$scope', '$state', 'standardService', '$stateParams', function($scope, $state, standardService, $stateParams){
         //console.log('singleProductController');
         function init() {
             $scope.productPropeties = standardService.productPropeties();
             $scope.initialState = $state.current.name;
-        }
-        init();
-    }])
-    .controller('propertyController', ['$scope', 'standardService', '$stateParams', function($scope, standardService, $stateParams){
-        //console.log('singleProductController');
-        function init() {
         }
         init();
     }])
@@ -557,7 +495,7 @@
                         $scope.form.hourly_rate = parseInt(response[0].hourly_rate) / 100;
                     })
                     .catch(function(){
-                        $scope.id = undefined;            
+                        $scope.id = undefined;
                     });
             if($localStorage.uuid !== undefined) {
                 ProjectDataService.list()
@@ -692,9 +630,9 @@
             '$scope', '$localStorage', 'standardService', '$log',
             '$stateParams', 'monthService', 'DataModel', 'PROJECT_TYPES',
             'CurrencyService',
-            'EXPORT_PREFIX',
+            'EXPORT_PREFIX', 'quantityCalculationMethod',
             function($scope, $localStorage, standardService, $log,
-            $stateParams, monthService, DataModel, PROJECT_TYPES, CurrencyService, EXPORT_PREFIX
+            $stateParams, monthService, DataModel, PROJECT_TYPES, CurrencyService, EXPORT_PREFIX, quantityCalculationMethod
             ) {
                 function init() {
                     if($localStorage.uuid !== undefined) {
@@ -721,7 +659,7 @@
                                     $scope.reportHeader[1][1] = {name: "Meas. Unit", value: response.measurement_unit};
                                     $scope.reportHeader[2][1] = {name: "Division", value: response.division};
                                     $scope.reportHeader[3][1] = {name: "Order #", value: response.order_number};
-                                    $scope.reportHeader[4][1] = {name: "Standard quantity per", value: standardService.quantityCalculationMethods(parseInt(response.quantity_calculation_method_id)).shortName };
+                                    $scope.reportHeader[4][1] = {name: "Standard quantity per", value: quantityCalculationMethod.get(parseInt(response.quantity_calculation_method_id)).shortName };
                                 })
                                 .catch(function(error){
                                     $log.debug(error);
@@ -730,7 +668,7 @@
                     }
                     $scope.product_id = $stateParams.id;
                     if($scope.product_id) {
-                        standardService.getTotalProductReport($scope.product_id)
+                        entityService.getTotalProductReport($scope.product_id)
                         .then(function(response){
                             $scope.report = response.data.reportdata;
                             $scope.reportstyles = response.data.reportstyles;
@@ -740,11 +678,5 @@
                     }
                 };
                 init();
-                $scope.getDownloadLink = function(type) {
-                    if($localStorage.uuid) {
-                        return EXPORT_PREFIX + '/product/' + $stateParams.id + '/' + type;
-                    }
-                    return; 
-                }
             }]);
 }());

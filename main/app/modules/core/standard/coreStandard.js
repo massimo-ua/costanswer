@@ -6,30 +6,26 @@
                 url: '/standard',
                 redirectTo: 'standard.start',
                 parent: "projectDataInput",
-                controller: 'standardController',
-                templateUrl: 'app/modules/core/standard/views/home.html'
+                template: '<ca-standard-home></ca-standard-home>'
             })
             .state('standard.start', {
                 url: '/start',
-                controller: 'startProductController',
-                templateUrl: 'app/modules/core/standard/views/start.html',
+                template: '<ca-costing-start next-sref="standard.newProduct"></ca-costing-start>'
             })
             .state('standard.newProduct', {
                 url: '/product/new',
-                template: '<property-settings></property-settings>'
+                template: '<property-settings costing-method="1" return-sref="standard.singleProduct"></property-settings>'
             })
             .state('standard.singleProduct', {
                 url: '/product/:id',
                 redirectTo: 'property',
-                controller: 'singleProductController',
-                templateUrl: 'app/modules/core/standard/views/single-product.html',
+                template: '<ca-product-home costing-method-name="standard"></ca-product-home>',
             })
             .state('property', {
                 parent: "standard.singleProduct",
                 redirectTo: 'property.inventory',
                 url: "/property",
-                controller: 'propertyController',
-                templateUrl: 'app/modules/core/standard/views/property/home.html'
+                template: '<ca-property-home></ca-property-home>'
             })
             .state('property.settings', {
                 url: '/settings',

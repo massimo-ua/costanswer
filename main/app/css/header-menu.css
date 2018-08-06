@@ -1,0 +1,50 @@
+header {
+  z-index: 1;
+  min-height: 86px;
+}
+.stellarnav.dark {
+  background-color: rgba(30, 30, 30, 1)
+}
+.stellarnav li a.active {
+  background-color: orange;
+  min-height: 86px;
+  padding-top: 33px;
+}
+.stellarnav.dark li a:hover {
+  color: orange;
+}
+.stellarnav.dark li a.active:hover {
+  color: #fffffc;
+}
+.stellarnav > ul > li > a {
+  padding: 20px 1.37rem;
+}
+.logo {
+  display: none;
+}
+@media only screen and (max-width:768px) {
+header {
+  min-height: 0;
+}
+.stellarnav li a.active {
+  min-height: 0;
+  padding: 0;
+}
+}
+@media only screen and (min-width:1280px) {
+.logo {
+    display: inline-flex;
+    background: url('/assets/logogl.png');
+    background-repeat: no-repeat;
+    background-size: 250px 86px;
+    width: 270px;
+    height: 86px;
+  }
+  header {
+    display: flex;
+  }
+  .stellarnav ul {
+    margin-left: 10rem;
+    text-align: left;
+  }
+}

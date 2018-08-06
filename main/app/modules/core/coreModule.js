@@ -4,7 +4,8 @@ angular.module('costAnswer.core', [
     'costAnswer.core.services',
     'costAnswer.core.directives',
     'costAnswer.core.filters',
-    'costAnswer.core.components'
+    'costAnswer.core.components',
+    'costAnswer.core.process'
     ]);
 angular.module('costAnswer.core')
     .config(['$stateProvider', '$urlRouterProvider', '$compileProvider', function($stateProvider, $urlRouterProvider, $compileProvider) {  

@@ -13,6 +13,9 @@
         'ngAnimate',
         'ngDialog',
         'angularUtils.directives.dirPagination',
+        'formly',
+        //'formlyBootstrap',
+        'bootstrapSubmenu',
         'costAnswer.services',
         'costAnswer.filters',
         'costAnswer.controllers',
@@ -24,7 +27,7 @@
         'costAnswer.about',
         'costAnswer.manual'
     ])
-    .run(['$rootScope', '$state', '$stateParams','authService', 'CurrencyService', function ($rootScope, $state, $stateParams, authService, CurrencyService) {
+    .run(['$rootScope', '$state', '$stateParams','authService', 'CurrencyService', '$templateCache', function($rootScope, $state, $stateParams, authService, CurrencyService, formlyConfig, $templateCache) {
         CurrencyService.list();
         $rootScope.$state = $state;
         authService.setStorageType('localStorage');

@@ -1,79 +1,58 @@
-<div class="row">			
-				<div class="panel panel-default">
-                    <div class="panel-heading">{{ vm.blockHeader }}</div>
-					<div class="panel-body">
-                        <div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-horizontal">
-                            <ng-form id="settings-form" name="vm.settingsForm">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label hidden-xs hidden-sm"> Display name </label>
-                                    <div ng-class="{'has-error': vm.settingsForm.display_name.$dirty && vm.settingsForm.display_name.$invalid}" class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group has-feedback has-feedback-left">
-                                            <input name="display_name" type="text" ng-required="true" maxlength="25" ng-model="vm.settings.display_name" class="form-control costanswer" placeholder="Enter your Display name here" />
-                                            <i class="glyphicon glyphicon-user form-control-feedback costanswer"></i>
-                                        <div class="help-block error" ng-show="vm.settingsForm.display_name.$dirty && vm.settingsForm.display_name.$error.required">Please, fill in your Display name</div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label hidden-xs hidden-sm"> Company name </label>
-                                    <div ng-class="{'has-error': vm.settingsForm.company_name.$dirty && vm.settingsForm.company_name.$invalid}" class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group has-feedback has-feedback-left">
-                                            <input name="company_name" type="text" maxlength="50" ng-model="vm.settings.company_name" class="form-control costanswer" placeholder="Enter your Company name here" />
-                                            <i class="glyphicon glyphicon-barcode form-control-feedback costanswer"></i>
-                                        <div class="help-block error" ng-show="vm.settingsForm.company_name.$dirty && vm.settingsForm.company_name.$error.required">Please, fill in your Company name</div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label hidden-xs hidden-sm"> City </label>
-                                    <div ng-class="{'has-error': vm.settingsForm.city.$dirty && vm.settingsForm.city.$invalid}" class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group has-feedback has-feedback-left">
-                                            <input name="city" type="text" ng-model="vm.settings.city" maxlength="50" class="form-control costanswer" placeholder="Enter your City here" />
-                                            <i class="glyphicon glyphicon-home form-control-feedback costanswer"></i>
-                                        <div class="help-block error" ng-show="vm.settingsForm.city.$dirty && vm.settingsForm.city.$error.required">Please, fill in your City</div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label hidden-xs hidden-sm"> Country </label>
-                                    <div ng-class="{'has-error': vm.settingsForm.country.$dirty && vm.settingsForm.country.$invalid}" class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group has-feedback has-feedback-left">
-                                            <input name="country" type="text" maxlength="50" ng-model="vm.settings.country" class="form-control costanswer" placeholder="Enter your Country here" />
-                                            <i class="glyphicon glyphicon-home form-control-feedback costanswer"></i>
-                                        <div class="help-block error" ng-show="vm.settingsForm.country.$dirty && vm.settingsForm.country.$error.required">Please, fill in your Country</div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label hidden-xs hidden-sm"> Website </label>
-                                    <div ng-class="{'has-error': vm.settingsForm.website.$dirty && vm.settingsForm.website.$invalid}" class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group has-feedback has-feedback-left">
-                                            <input name="website" type="text" ng-model="vm.settings.website" class="form-control costanswer" placeholder="Enter your Website here" />
-                                            <i class="glyphicon glyphicon-globe form-control-feedback costanswer"></i>
-                                        <div class="help-block error" ng-show="vm.settingsForm.website.$dirty && vm.settingsForm.website.$error.required">Please, fill in your Website</div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label hidden-xs hidden-sm"> Business profile </label>
-                                    <div ng-class="{'has-error': vm.settingsForm.business_profie.$dirty && vm.settingsForm.business_profie.$invalid}" class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
-                                        <select class="form-control costanswer"
-                                            ng-disabled = "false"
-                                            ng-model="vm.settings.business_profile"
-                                            name="business_profile"
-                                            ng-options="name as name for name in vm.business_profiles">
-                                            <option value="">Choose business profile...</option>
-                                        </select>
-                                        <div class="help-block error" ng-show="vm.settingsForm.business_profie.$dirty && vm.settingsForm.business_profie.$error.required">Please, select Manufacturing overhead calculation base</div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
-                                        <input type="button" class="btn btn-lg btn-costanswer btn-block" ng-click="vm.updateSettings()" ng-disabled="vm.settingsForm.$invalid" value="{{ vm.buttonText }}" />
-                                    </div>
-                                </div>
-                            </ng-form>
-						</div>
-                        </div>
-                        <div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <ul class="nav nav-pills">
-                                    <li><a ng-click="vm.changePassword()" class="glyphicon glyphicon-lock"> Change password </a></li>
-                                    <li><a ng-click="vm.deleteAccount()" class="glyphicon glyphicon-trash"> Delete account </a></li>
-                                </ul>
-                            </div>
-                        </div>
-					</div>
-				</div>
+<div class="monch__wrap">
+        <ng-form class="login-form _settings_cor flex column" id="settings-form" name="vm.settingsForm">
+            <div ng-class="{'has-error': vm.settingsForm.display_name.$dirty && vm.settingsForm.display_name.$invalid}" class="login-form__inp__wrap">
+                <p class="contact__form__inp flex">
+                    <label for="formEmail" class="contact__form__lab flex align-center justify-center"><i class="fa fa-user" aria-hidden="true"></i></label>
+                    <input name="display-name" type="text" id="formEmail" ng-required="true" ng-model="vm.settings.display_name" class="contact__form__el" placeholder="Enter your display name" />
+                </p>
+                <p class="form-error" ng-show="vm.settingsForm.display_name.$dirty && vm.settingsForm.display_name.$error.required">Please, fill in your display name</p>
+            </div>
+            <div ng-class="{'has-error': vm.settingsForm.company_name.$dirty && vm.settingsForm.company_name.$invalid}" class="login-form__inp__wrap">
+                <p class="contact__form__inp flex">
+                    <label for="formEmail" class="contact__form__lab flex align-center justify-center"><i class="fa fa-industry" aria-hidden="true"></i></label>
+                    <input name="company" type="text" id="formEmail" ng-required="true" ng-model="vm.settings.company_name" class="contact__form__el" placeholder="Enter your company name here" />
+                </p>
+                <p class="form-error" ng-show="vm.settingsForm.company_name.$dirty && vm.settingsForm.company_name.$error.required">Please, fill in your company name</p>
+            </div>
+            <div ng-class="{'has-error': vm.settingsForm.city.$dirty && vm.settingsForm.city.$invalid}" class="login-form__inp__wrap">
+                <p class="contact__form__inp flex">
+                    <label for="formEmail" class="contact__form__lab flex align-center justify-center"><i class="fa fa-university" aria-hidden="true"></i></label>
+                    <input name="city" type="text" id="formEmail" ng-required="true" ng-model="vm.settings.city" class="contact__form__el" placeholder="Enter your city here" />
+                </p>
+                <p class="form-error" ng-show="vm.settingsForm.city.$dirty && vm.settingsForm.city.$error.required">Please, fill in your city</p>
+            </div>
+            <div ng-class="{'has-error': vm.settingsForm.country.$dirty && vm.settingsForm.country.$invalid}" class="login-form__inp__wrap">
+                <p class="contact__form__inp flex">
+                    <label for="formEmail" class="contact__form__lab flex align-center justify-center"><i class="fa fa-flag" aria-hidden="true"></i></label>
+                    <input name="country" type="text" id="formEmail" ng-required="true" ng-model="vm.settings.country" class="contact__form__el" placeholder="Enter your country here" />
+                </p>
+                <p class="form-error" ng-show="vm.settingsForm.country.$dirty && vm.settingsForm.country.$error.required">Please, fill in your country</p>
+            </div>
+            <div ng-class="{'has-error': vm.settingsForm.website.$dirty && vm.settingsForm.website.$invalid}" class="login-form__inp__wrap">
+                <p class="contact__form__inp flex">
+                    <label for="formEmail" class="contact__form__lab flex align-center justify-center"><i class="fa fa-globe" aria-hidden="true"></i></label>
+                    <input name="web" type="url" id="formEmail" ng-required="true" ng-model="vm.settings.website" class="contact__form__el" placeholder="Enter your website here" />
+                </p>
+                <p class="form-error" ng-show="vm.settingsForm.website.$dirty && vm.settingsForm.website.$error.required">Please, fill in your website</p>
+            </div>
+            <div ng-class="{'has-error': vm.settingsForm.business_profie.$dirty && vm.settingsForm.business_profie.$invalid}" class="login-form__inp__wrap">
+                <p class="contact__form__inp flex">
+                    <label for="formEmail" class="contact__form__lab flex align-center justify-center"><i class="fa fa-suitcase" aria-hidden="true"></i></label>
+                    <select class="contact__form__el" ng-disabled = "false" ng-model="vm.settings.business_profile" name="business_profile" ng-options="name as name for name in vm.business_profiles">
+                        <option value="">Choose business profile...</option>
+                    </select>
+                </p>
+                <p class="form-error" ng-show="vm.settingsForm.business_profie.$dirty && vm.settingsForm.business_profie.$error.required">Please, select Manufacturing overhead calculation base</p>
+            </div>
+            <hr class="dayily__hr _methods_cor _login_cor">
+            <input type="submit" class="features__anchor _sub_cor _no_margin _new_one_cor" ng-click="vm.updateSettings()" ng-disabled="vm.settingsForm.$invalid" value="{{ vm.buttonText }}" />
+        </ng-form>
+        <div class="login-form _settings_cor _bot_cor flex column">
+            <a class="login-form__bot__but features__anchor flex align-center justify-center" ng-click="vm.changePassword()">
+                <i class="fa fa-unlock-alt" aria-hidden="true"></i><span>Change password</span>
+            </a>
+            <a class="login-form__bot__but features__anchor flex align-center justify-center" ng-click="vm.deleteAccount()">
+                <i class="fa fa-trash" aria-hidden="true"></i><span>Delete account</span>
+            </a>
+        </div>
 </div>

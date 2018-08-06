@@ -1,16 +1,16 @@
 (function(){
     'use strict';
-    function DashboardBillingsController($log,authService) {
+    function DashboardBillingsController($log,authService, helperService) {
         var vm = this;
         function init() {
-
+            helperService.add("title", "Billing and upgrade");
         }
         init();
         vm.changePlan = function() {
             $log.debug('closeplan');
         }
     }
-    DashboardBillingsController.$inject = ['$log','authService'];
+    DashboardBillingsController.$inject = ['$log','authService', 'helperService'];
     angular.module('costAnswer.dashboard.controllers')
         .controller('DashboardBillingsController', DashboardBillingsController);
 }());

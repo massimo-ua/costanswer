@@ -1,0 +1,11 @@
+<form name="settingsForm">
+    <fieldset ng-disabled="$ctrl.formDisabled">
+        <formly-form model="$ctrl.process" fields="$ctrl.settings" options="$ctrl.formOptions">
+            <div class="col-xs-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 text-center m-t-10px">
+                <button type="button" ng-click="$ctrl.onSave()" class="btn btn-costanswer" ng-disabled="settingsForm.$invalid">{{ $ctrl.buttonText }}</button>
+            </div>
+        </formly-form>
+    </fieldset>
+</form>
+
+

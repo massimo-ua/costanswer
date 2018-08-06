@@ -1,0 +1,26 @@
+<div class="row">
+        <ng-form id="item-form" name="itemForm">
+        <fieldset ng-disabled="$ctrl.config.formDisabled">
+        <div ng-show="$ctrl.config.nameMain" class="col-xs-12 col-md-12 col-lg-12 text-center">
+            <label for="goods" class="text-center m-b-20px">{{ $ctrl.config.nameMain }}:</label>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th class="text-center" ng-repeat="month in $ctrl.config.monthes">{{ month.short }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td ng-repeat="month in $ctrl.config.monthes"><input name="goods" ng-class="{'has-error': itemForm.goods.$dirty && itemForm.goods[$index].$invalid}" type="number" ng-required="true" ng-model="$ctrl.item.amount[$index].value" min="{{ $ctrl.config.min }}" class="form-control costanswer" placeholder="{{ $ctrl.config.namePlaceholder }}" /></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4 m-t-10px text-center">
+            <button type="button" ng-disabled="itemForm.$invalid" class="btn btn-costanswer" ng-click="$ctrl.onSave()($ctrl.item)"> {{ $ctrl.config.buttonText }} </button>
+        </div>
+        </fieldset>
+    </ng-form>
+</div>

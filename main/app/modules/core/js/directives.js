@@ -16,7 +16,8 @@
                     onSave: '&',
                     onUpdate: '&',
                     onDelete: '&',
-                    onLoad: '&'
+                    onLoad: '&',
+                    onClear: '&'
                 },
                 templateUrl: 'app/modules/core/views/directives/ca-thumbler.html',
                 link: function(scope, elem, attrs) {
@@ -59,7 +60,8 @@
                     scope.clearForm = function() {
                         scope.itemModel = {};
                         scope.activeItem = undefined;
-                        scope.itemForm.$setPristine();
+                        if(scope.onClear !== undefined) scope.onClear()();
+                            else scope.itemForm.$setPristine();
                         scope.controls.buttonText = "Add";
                     }
                     scope.removeItem = function(index) {
@@ -70,26 +72,23 @@
                             scope.move(-1);
                             scope.controls.formDisabled = false;
                         });
-                    }
-                    
+                    };
+
                     scope.range = function(start,total) {
                         if(scope.itemsList == undefined || scope.itemsList.length == 0) return;
                         var result = [];
-                        var i = 1;
                         start = start > 0 ? start : 1;
-                        var end = (scope.itemsList.length >= (start + total-1)) ? start + total - 1 : scope.itemsList.length; 
-                        for(i=start;i<=end;i++) {
-                            result.push(i);
-                        }
+                        var end = (scope.itemsList.length >= (start + total-1)) ? start + total - 1 : scope.itemsList.length;
+                        for(var i=start;i<=end;i++) result.push(i);
                         return result;
-                    }
+                    };
                     scope.move = function(i) {
                         if(i > 0 && (scope.startItem + scope.displayBlock) > scope.itemsList.length) {
                             return;
-                        };
+                        }
                         if(i < 0 && scope.startItem < 2) {
                             return;
-                        };
+                        }
                         scope.startItem += i;
                     };
                 }
@@ -102,14 +101,21 @@
                     replace: true,
                     scope: {
                         tabsList: '=',
-                        initialState: '@'
+                        initialState: '@',
+                        config: '@'
                     },
                     templateUrl: 'app/modules/core/views/directives/ca-footed-tabs.html',
                     link: function(scope, elem, attrs) {
-                        var i;
                         function init() {
-                            for(i=0;i<scope.tabsList.length;i++) {
-                                if(scope.tabsList[i].sref == scope.initialState) {
+                            if(scope.config !== undefined && scope.config.srefParams) {
+                                scope.srefParams = scope.config.srefParams;
+                            } else {
+                                scope.srefParams = function(){
+                                    return {};
+                                };
+                            }
+                            for(var i=0;i<scope.tabsList.length;i++) {
+                                if(scope.tabsList[i].sref === scope.initialState) {
                                     scope.tabText = scope.tabsList[i].name;
                                 }
                             }
@@ -130,7 +136,7 @@
                         reportData: '='
                     },
                     templateUrl: 'app/modules/core/views/directives/ca-instant-report.html'
-                }
+                };
             }]);
         angular.module('costAnswer.core.directives')
             .directive('caProductMenu', [function(){
@@ -149,29 +155,28 @@
                             scope.startItem = 1;
                             scope.activeItem = undefined;
                             scope.displayBlock = parseInt(scope.displayBlock);
-                        };
+                        }
                         init();
                         scope.range = function(start,total) {
-                            if(scope.itemsList == undefined || scope.itemsList.length == 0) return;
+                            if(scope.itemsList === undefined || scope.itemsList.length == 0) return;
                             var result = [];
                             var i = 1;
                             start = start > 0 ? start : 1;
-                            var end = (scope.itemsList.length >= (start + total-1)) ? start + total - 1 : scope.itemsList.length; 
+                            var end = (scope.itemsList.length >= (start + total-1)) ? start + total - 1 : scope.itemsList.length;
                             for(i=start;i<=end;i++) {
                                 result.push(i);
                             }
                             return result;
-                        }
+                        };
                         scope.move = function(i) {
                             if(i > 0 && (scope.startItem + scope.displayBlock) > scope.itemsList.length) {
                                 return;
-                            };
+                            }
                             if(i < 0 && scope.startItem < 2) {
                                 return;
-                            };
-                            //scope.activeItem = undefined;
+                            }
                             scope.startItem += i;
-                        }
+                        };
                         scope.removeItem = function(index) {
                             scope.onDelete()(scope.itemsList[index], function(error){
                                 if(error) {
@@ -181,9 +186,9 @@
                                 scope.itemsList.splice(index,1);
                                 scope.move(-1);
                             });
-                        }
+                        };
 
                     }
-                }
+                };
             }]);
 }());
