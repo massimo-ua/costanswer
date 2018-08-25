@@ -6,9 +6,8 @@ var gulp = require('gulp'),
 
     //script paths
     var jsFiles = [
-      'main/app/js/*.js',
-      'main/app/js/controllers/*.js',
-      'main/app/js/services/*.js'
+      'main/app/js/**/*.js',
+      'main/app/modules/**/*.js',
     ],
         jsDest = 'main/app/dist/js';
 

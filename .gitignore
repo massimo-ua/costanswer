@@ -40,3 +40,4 @@ libs
 # web storm
 .idea
 node_modules/*
+main/app/dist/*
