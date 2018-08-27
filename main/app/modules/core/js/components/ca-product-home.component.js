@@ -10,8 +10,10 @@
         });
     function caProductHomeController($log, $state, menuService) {
         var vm = this;
-        vm.tabsList = menuService.properties(vm.costingMethodName);
-        vm.initialState = $state.current.name;
+        vm.$onInit = function() {
+            vm.tabsList = menuService.properties(vm.costingMethodName);
+            vm.initialState = $state.current.name;
+        }
     }
     caProductHomeController.$inject = ['$log','$state','menuService'];
 })();
