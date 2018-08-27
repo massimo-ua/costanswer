@@ -60,7 +60,7 @@
                     scope.clearForm = function() {
                         scope.itemModel = {};
                         scope.activeItem = undefined;
-                        if(scope.onClear !== undefined) scope.onClear()();
+                        if(typeof scope.onClear() === 'function') scope.onClear()();
                             else scope.itemForm.$setPristine();
                         scope.controls.buttonText = "Add";
                     }
